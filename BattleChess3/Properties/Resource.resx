@@ -120,17 +120,29 @@
   <data name="Black" xml:space="preserve">
     <value>Black</value>
   </data>
+  <data name="CanGo" xml:space="preserve">
+    <value>CanGo</value>
+  </data>
+  <data name="Danger" xml:space="preserve">
+    <value>Danger</value>
+  </data>
   <data name="Foot" xml:space="preserve">
     <value>Foot</value>
   </data>
   <data name="Mount" xml:space="preserve">
-    <value>Mount</value>
+    <value>Mout</value>
+  </data>
+  <data name="Neutral" xml:space="preserve">
+    <value>Neutral</value>
   </data>
   <data name="Ninja" xml:space="preserve">
     <value>Ninja</value>
   </data>
-  <data name="NoObject" xml:space="preserve">
+  <data name="Nothing" xml:space="preserve">
     <value>Nothing</value>
+  </data>
+  <data name="Selected" xml:space="preserve">
+    <value>Selected</value>
   </data>
   <data name="White" xml:space="preserve">
     <value>White</value>

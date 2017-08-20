@@ -9,10 +9,9 @@ namespace BattleChess3.Game
     /// </summary>
     public static class Play
     {
-        public static Player WhitePlayer = new Player(Resources.White);
-        public static Player BlackPlayer = new Player(Resources.Black);
-        public static Player NeutralPlayer = new Player(Resources.Neutral);
-        public static string WhooseTurn = Resources.White;
+        public static Player WhitePlayer = new Player(Resource.White);
+        public static Player BlackPlayer = new Player(Resource.Black);
+        public static string WhooseTurn = Resource.White;
 
         public static BaseFigure[][] Board =
         {
@@ -37,35 +36,30 @@ namespace BattleChess3.Game
             var lines = File.ReadAllLines(filePath);
             for (var i = 0; i < 8; i++)
             {
-                var tile = lines[7-i].Split(' ');
+                var tile = lines[7 - i].Split(' ');
                 for (var j = 0; j < 8; j++)
                 {
-                    if (tile[j] == "Nothing")
+                    if (tile[j].Contains(Resource.White))
                     {
-                        continue;
-                    }
-                    if (tile[j].Contains(Resources.White))
-                    {
-                        var figure = TypesOfFigures.GetFigureFromString(tile[j].Replace(Resources.White, ""));
-                        Board[j][i] = new BaseFigure(Resources.White, new Position(j, i), figure);
+                        var figure = TypesOfFigures.GetFigureFromString(tile[j].Replace(Resource.White, ""));
+                        Board[j][i] = new BaseFigure(Resource.White, new Position(j, i), figure);
                         WhitePlayer.CreateFigure(Board[j][i]);
                     }
-                    else if (tile[j].Contains(Resources.Black))
+                    else if (tile[j].Contains(Resource.Black))
                     {
-                        var figure = TypesOfFigures.GetFigureFromString(tile[j].Replace(Resources.Black, ""));
-                        Board[j][i] = new BaseFigure(Resources.Black, new Position(j, i), figure);
+                        var figure = TypesOfFigures.GetFigureFromString(tile[j].Replace(Resource.Black, ""));
+                        Board[j][i] = new BaseFigure(Resource.Black, new Position(j, i), figure);
                         BlackPlayer.CreateFigure(Board[j][i]);
                     }
                     else
                     {
                         var figure = TypesOfFigures.GetFigureFromString(tile[j]);
-                        Board[j][i] = new BaseFigure(Resources.Neutral, new Position(j, i), figure);
-                        NeutralPlayer.CreateFigure(Board[j][i]);
+                        Board[j][i] = new BaseFigure(Resource.Neutral, new Position(j, i), figure);
                     }
                 }
             }
         }
-        
+
         /// <summary>
         /// Sets Selected and Played positions and Makes turns
         /// </summary>
@@ -81,6 +75,65 @@ namespace BattleChess3.Game
                 PlayedPosition = position;
                 MakeTurn();
             }
+            Highlight();
+        }
+
+        /// <summary>
+        /// Recalculates Highlighting
+        /// </summary>
+        public static void Highlight()
+        {
+            if (SelectedPosition == null)
+            {
+                for (var i = 0; i < 64; i++)
+                {
+                    Board[i / 8][i % 8].Highlighted = null;
+                }
+            }
+            else
+            {
+                for (var i = 0; i < 64; i++)
+                {
+                    var position = new Position(i / 8, i % 8);
+                    var figure = GetFigureAtPosition(position);
+                    figure.Highlighted = null;
+                    HighlightDangered(figure);
+                    HighlightCanGo(figure);
+                    HighlightSelected();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Highlights if figure is in danger
+        /// </summary>
+        /// <param name="figure"></param>
+        public static void HighlightDangered(BaseFigure figure)
+        {
+            if (GetFigureAtPosition(SelectedPosition).CanAttack(figure.Position))
+            {
+                figure.Highlighted = Resource.Danger;
+            }
+        }
+
+        /// <summary>
+        /// Highlights if can go to tile
+        /// </summary>
+        /// <param name="figure"></param>
+        public static void HighlightCanGo(BaseFigure figure)
+        {
+            if (GetFigureAtPosition(SelectedPosition).CanMove(figure.Position))
+            {
+                figure.Highlighted = Resource.CanGo;
+            }
+        }
+
+        /// <summary>
+        /// Highlights selected
+        /// </summary>
+        public static void HighlightSelected()
+        {
+            GetFigureAtPosition(SelectedPosition).Highlighted = Resource.Selected;
         }
 
         /// <summary>
@@ -96,7 +149,7 @@ namespace BattleChess3.Game
             }
             else
             {
-                WhooseTurn = WhooseTurn == Resources.White ? Resources.Black : Resources.White;
+                WhooseTurn = WhooseTurn == Resource.White ? Resource.Black : Resource.White;
                 SelectedPosition = null;
                 PlayedPosition = null;
             }
@@ -131,7 +184,7 @@ namespace BattleChess3.Game
         public static void MoveFigureToPosition(Position position, Position newPosition)
         {
             var figure = GetFigureAtPosition(position);
-            SetFigureAtPosition(position, null);
+            SetFigureAtPosition(position, new BaseFigure(Resource.Neutral, position, TypesOfFigures.GetFigureFromString(Resource.Nothing)));
             SetFigureAtPosition(newPosition, figure);
         }
 
@@ -141,7 +194,7 @@ namespace BattleChess3.Game
         /// <param name="position"></param>
         public static void KillFigureAtPosition(Position position)
         {
-            SetFigureAtPosition(position, null);
+            SetFigureAtPosition(position, new BaseFigure(Resource.Neutral, position, TypesOfFigures.GetFigureFromString(Resource.Nothing)));
         }
     }
 }

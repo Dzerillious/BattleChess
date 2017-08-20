@@ -6,10 +6,10 @@ namespace BattleChess3.Figures.FigureTypes
 {
     public class Ninja : SimpleAttackFigure, IFigure
     {
-        public string UnitName => Resources.Ninja;
-        public string UnitType => Resources.Foot;
-        public string Bonus => Resources.Foot;
-        public string AntiBonus => Resources.Mount;
+        public string UnitName => Resource.Ninja;
+        public string UnitType => Resource.Foot;
+        public string Bonus => Resource.Foot;
+        public string AntiBonus => Resource.Mount;
         public int Attack => 50;
         public int Defence => 0;
         public bool MovingWhileAttacking => true;

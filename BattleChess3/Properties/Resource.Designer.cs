@@ -22,14 +22,14 @@ namespace BattleChess3.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    internal class Resource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal Resource() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace BattleChess3.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BattleChess3.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BattleChess3.Properties.Resource", typeof(Resource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -70,6 +70,24 @@ namespace BattleChess3.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CanGo.
+        /// </summary>
+        internal static string CanGo {
+            get {
+                return ResourceManager.GetString("CanGo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Danger.
+        /// </summary>
+        internal static string Danger {
+            get {
+                return ResourceManager.GetString("Danger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Foot.
         /// </summary>
         internal static string Foot {
@@ -79,7 +97,7 @@ namespace BattleChess3.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mount.
+        ///   Looks up a localized string similar to Mout.
         /// </summary>
         internal static string Mount {
             get {
@@ -108,9 +126,18 @@ namespace BattleChess3.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Nothing.
         /// </summary>
-        internal static string NoObject {
+        internal static string Nothing {
             get {
-                return ResourceManager.GetString("NoObject", resourceCulture);
+                return ResourceManager.GetString("Nothing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selected.
+        /// </summary>
+        internal static string Selected {
+            get {
+                return ResourceManager.GetString("Selected", resourceCulture);
             }
         }
         

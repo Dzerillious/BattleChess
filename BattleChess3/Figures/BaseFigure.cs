@@ -1,4 +1,5 @@
 ﻿using BattleChess3.Game;
+using BattleChess3.Properties;
 
 namespace BattleChess3.Figures
 {
@@ -13,6 +14,7 @@ namespace BattleChess3.Figures
         public Position Position;
         public IFigure Figure;
         public int Hp = 100;
+        public string Highlighted = null;
 
         /// <summary>
         /// Constructor
@@ -58,7 +60,7 @@ namespace BattleChess3.Figures
         /// </summary>
         /// <param name="position"></param>
         /// <returns></returns>
-        public bool CanMove(Position position) => Play.GetFigureAtPosition(position) == null && Figure.CanMove(Position, position);
+        public bool CanMove(Position position) => Play.GetFigureAtPosition(position) == new BaseFigure(Resource.Neutral, position, TypesOfFigures.GetFigureFromString(Resource.Nothing)) && Figure.CanMove(Position, position);
 
         /// <summary>
         /// Checks if can attack enemy
