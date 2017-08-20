@@ -88,6 +88,15 @@ namespace BattleChess3.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Neutral.
+        /// </summary>
+        internal static string Neutral {
+            get {
+                return ResourceManager.GetString("Neutral", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ninja.
         /// </summary>
         internal static string Ninja {

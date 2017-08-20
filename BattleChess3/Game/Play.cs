@@ -11,6 +11,7 @@ namespace BattleChess3.Game
     {
         public static Player WhitePlayer = new Player(Resources.White);
         public static Player BlackPlayer = new Player(Resources.Black);
+        public static Player NeutralPlayer = new Player(Resources.Neutral);
         public static string WhooseTurn = Resources.White;
 
         public static BaseFigure[][] Board =
@@ -39,18 +40,27 @@ namespace BattleChess3.Game
                 var tile = lines[7-i].Split(' ');
                 for (var j = 0; j < 8; j++)
                 {
-                    if (tile[j] == "Nothing") continue;
+                    if (tile[j] == "Nothing")
+                    {
+                        continue;
+                    }
                     if (tile[j].Contains(Resources.White))
                     {
                         var figure = TypesOfFigures.GetFigureFromString(tile[j].Replace(Resources.White, ""));
                         Board[j][i] = new BaseFigure(Resources.White, new Position(j, i), figure);
                         WhitePlayer.CreateFigure(Board[j][i]);
                     }
-                    else
+                    else if (tile[j].Contains(Resources.Black))
                     {
                         var figure = TypesOfFigures.GetFigureFromString(tile[j].Replace(Resources.Black, ""));
                         Board[j][i] = new BaseFigure(Resources.Black, new Position(j, i), figure);
                         BlackPlayer.CreateFigure(Board[j][i]);
+                    }
+                    else
+                    {
+                        var figure = TypesOfFigures.GetFigureFromString(tile[j]);
+                        Board[j][i] = new BaseFigure(Resources.Neutral, new Position(j, i), figure);
+                        NeutralPlayer.CreateFigure(Board[j][i]);
                     }
                 }
             }
