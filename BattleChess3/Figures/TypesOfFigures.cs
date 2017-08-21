@@ -8,7 +8,10 @@ namespace BattleChess3.Figures
     /// </summary>
     public static class TypesOfFigures 
     {
-        static readonly IFigure[] Figures =
+        /// <summary>
+        /// Array of Figure types
+        /// </summary>
+        public static readonly IFigure[] FigureTypes =
         {
             new Ninja(),
             new Nothing()
@@ -19,6 +22,6 @@ namespace BattleChess3.Figures
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
-        public static IFigure GetFigureFromString(string text) => Figures.FirstOrDefault(figure => figure.UnitName == text);
+        public static IFigure GetFigureFromString(string text) => FigureTypes.FirstOrDefault(figure => figure.UnitName == text);
     }
 }

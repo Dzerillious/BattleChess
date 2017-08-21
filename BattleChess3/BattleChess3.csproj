@@ -63,6 +63,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Figures\AttackingTypes\SimpleMoveFigure.cs" />
+    <Compile Include="Figures\BackgroundPicturePaths.cs" />
     <Compile Include="Figures\BaseFigure.cs" />
     <Compile Include="Figures\FigureTypes\Nothing.cs" />
     <Compile Include="Figures\TypesOfFigures.cs" />
@@ -108,6 +109,7 @@
     <EmbeddedResource Include="Properties\Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

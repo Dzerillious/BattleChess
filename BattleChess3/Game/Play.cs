@@ -12,6 +12,8 @@ namespace BattleChess3.Game
         public static Player WhitePlayer = new Player(Resource.White);
         public static Player BlackPlayer = new Player(Resource.Black);
         public static string WhooseTurn = Resource.White;
+        public static Position SelectedPosition;
+        public static Position PlayedPosition;
 
         public static BaseFigure[][] Board =
         {
@@ -36,9 +38,6 @@ namespace BattleChess3.Game
             new BoardColumn(),
             new BoardColumn()
         };
-
-        public static Position SelectedPosition;
-        public static Position PlayedPosition;
 
         /// <summary>
         /// Loads map and creates figures
@@ -88,14 +87,22 @@ namespace BattleChess3.Game
                 MakeTurn();
             }
             Highlight();
-            SetBoard1D();
+            SetBindedBoard();
         }
 
-        public static void SetBoard1D()
+        /// <summary>
+        /// Set binded board
+        /// </summary>
+        public static void SetBindedBoard()
         {
-            for (var i = 0; i < 64; i++)
+            for (var i = 0; i < 8; i++)
             {
-                BoardColumns[i/ 8].ColumnFigures[(63 - i) % 8] = Board[i / 8][i % 8];
+                var newColumn = new BoardColumn();
+                for (var j = 0; j < 8; j++)
+                {
+                    newColumn.ColumnFigures[7-j] = Board[i][j];
+                }
+                BoardColumns[i].ColumnFigures = newColumn.ColumnFigures;
             }
         }
 
@@ -108,7 +115,7 @@ namespace BattleChess3.Game
             {
                 for (var i = 0; i < 64; i++)
                 {
-                    Board[i / 8][i % 8].Highlighted = null;
+                    Board[i / 8][i % 8].Highlighted = Resource.NotHighlighted;
                 }
             }
             else
@@ -117,11 +124,14 @@ namespace BattleChess3.Game
                 {
                     var position = new Position(i / 8, i % 8);
                     var figure = GetFigureAtPosition(position);
-                    figure.Highlighted = null;
-                    HighlightDangered(figure);
-                    HighlightCanGo(figure);
-                    HighlightSelected();
+                    figure.Highlighted = Resource.NotHighlighted;
+                    if (GetFigureAtPosition(SelectedPosition).Color == WhooseTurn)
+                    {
+                        HighlightDangered(figure);
+                        HighlightCanGo(figure);
+                    }
                 }
+                HighlightSelected();
             }
         }
 
@@ -133,7 +143,7 @@ namespace BattleChess3.Game
         {
             if (GetFigureAtPosition(SelectedPosition).CanAttack(figure.Position))
             {
-                figure.Highlighted = Resource.Danger;
+                figure.Highlighted = Resource.HighlightedDanger;
             }
         }
 
@@ -143,9 +153,9 @@ namespace BattleChess3.Game
         /// <param name="figure"></param>
         public static void HighlightCanGo(BaseFigure figure)
         {
-            if (GetFigureAtPosition(SelectedPosition).CanMove(figure.Position))
+            if (GetFigureAtPosition(SelectedPosition).CanMove(figure))
             {
-                figure.Highlighted = Resource.CanGo;
+                figure.Highlighted = Resource.HighlightedCanGo;
             }
         }
 
@@ -154,7 +164,7 @@ namespace BattleChess3.Game
         /// </summary>
         public static void HighlightSelected()
         {
-            GetFigureAtPosition(SelectedPosition).Highlighted = Resource.Selected;
+            GetFigureAtPosition(SelectedPosition).Highlighted = Resource.HighlightedSelected;
         }
 
         /// <summary>

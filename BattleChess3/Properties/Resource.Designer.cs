@@ -19,7 +19,7 @@ namespace BattleChess3.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resource {
@@ -70,29 +70,38 @@ namespace BattleChess3.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CanGo.
-        /// </summary>
-        internal static string CanGo {
-            get {
-                return ResourceManager.GetString("CanGo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Danger.
-        /// </summary>
-        internal static string Danger {
-            get {
-                return ResourceManager.GetString("Danger", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Foot.
         /// </summary>
         internal static string Foot {
             get {
                 return ResourceManager.GetString("Foot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chartreuse.
+        /// </summary>
+        internal static string HighlightedCanGo {
+            get {
+                return ResourceManager.GetString("HighlightedCanGo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OrangeRed.
+        /// </summary>
+        internal static string HighlightedDanger {
+            get {
+                return ResourceManager.GetString("HighlightedDanger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DeepSkyBlue.
+        /// </summary>
+        internal static string HighlightedSelected {
+            get {
+                return ResourceManager.GetString("HighlightedSelected", resourceCulture);
             }
         }
         
@@ -124,20 +133,20 @@ namespace BattleChess3.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to YellowGreen.
+        /// </summary>
+        internal static string NotHighlighted {
+            get {
+                return ResourceManager.GetString("NotHighlighted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nothing.
         /// </summary>
         internal static string Nothing {
             get {
                 return ResourceManager.GetString("Nothing", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Selected.
-        /// </summary>
-        internal static string Selected {
-            get {
-                return ResourceManager.GetString("Selected", resourceCulture);
             }
         }
         

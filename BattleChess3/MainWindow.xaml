@@ -13,7 +13,7 @@
             </TabItem>
             <TabItem Header="Game">
                 <ItemsControl x:Name="Column"
-                              ItemsSource="{Binding Source={x:Static game:Play.BoardColumns}}">
+                              ItemsSource="{Binding Source={x:Static game:Play.BoardColumns}, UpdateSourceTrigger=PropertyChanged}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Stretch"/>
@@ -30,7 +30,7 @@
                                 </ItemsControl.ItemsPanel>
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <Button Click="Button_Click" CommandParameter="{Binding}">
+                                        <Button Click="Button_Click" Background="{Binding Path=Highlighted}" CommandParameter="{Binding}">
                                             <Image Source="{Binding Path=PicturePath}" Width="100">
                                             </Image>
                                         </Button>

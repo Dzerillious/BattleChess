@@ -58,9 +58,19 @@ namespace BattleChess3.Figures
         string Description { get; }
 
         /// <summary>
-        /// PicturePath of unit
+        /// PictureBlackPath of unit
         /// </summary>
-        string PicturePath { get; }
+        string PictureBlackPath { get; }
+
+        /// <summary>
+        /// PictureWhitekPath of unit
+        /// </summary>
+        string PictureWhitePath { get; }
+
+        /// <summary>
+        /// PictureNeutralPath of unit
+        /// </summary>
+        string PictureNeutralPath { get; }
 
         /// <summary>
         /// Check if can move on position

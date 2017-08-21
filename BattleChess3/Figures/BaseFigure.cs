@@ -14,7 +14,7 @@ namespace BattleChess3.Figures
         public Position Position;
         public IFigure Figure;
         public int Hp = 100;
-        public string Highlighted = null;
+        public string Highlighted { get; set; }
         public bool Clicked = false;
         public string PicturePath { get; set; }
 
@@ -29,7 +29,19 @@ namespace BattleChess3.Figures
             Color = color;
             Position = position;
             Figure = figure;
-            PicturePath = "C:\\Users\\sery\\Documents\\Visual Studio 2017\\Projects\\1\\battle-chess-3.0\\BattleChess3\\Pictures\\" + Figure.PicturePath;
+            Highlighted = Resource.NotHighlighted;
+            if (Color == Resource.White)
+            {
+                PicturePath = "C:\\Users\\sery\\Documents\\Visual Studio 2017\\Projects\\1\\battle-chess-3.0\\BattleChess3\\Pictures\\" + Figure.PictureWhitePath;
+            }
+            else if (Color == Resource.Black)
+            {
+                PicturePath = "C:\\Users\\sery\\Documents\\Visual Studio 2017\\Projects\\1\\battle-chess-3.0\\BattleChess3\\Pictures\\" + Figure.PictureBlackPath;
+            }
+            else
+            {
+                PicturePath = "C:\\Users\\sery\\Documents\\Visual Studio 2017\\Projects\\1\\battle-chess-3.0\\BattleChess3\\Pictures\\" + Figure.PictureNeutralPath;
+            }
         }
 
         /// <summary>
@@ -39,7 +51,7 @@ namespace BattleChess3.Figures
         public bool TryPlay(Position position)
         {
             if (Play.WhooseTurn != Color) return false;
-            if (CanMove(position))
+            if (CanMove(Play.GetFigureAtPosition(position)))
             {
                 Play.MoveFigureToPosition(Position, position);
                 Position = position;
@@ -61,9 +73,9 @@ namespace BattleChess3.Figures
         /// <summary>
         /// Check if can move at position
         /// </summary>
-        /// <param name="position"></param>
+        /// <param name="figure"></param>
         /// <returns></returns>
-        public bool CanMove(Position position) => Play.GetFigureAtPosition(position) == new BaseFigure(Resource.Neutral, position, TypesOfFigures.GetFigureFromString(Resource.Nothing)) && Figure.CanMove(Position, position);
+        public bool CanMove(BaseFigure figure) => figure.Figure.UnitName == Resource.Nothing && Figure.CanMove(Position, figure.Position);
 
         /// <summary>
         /// Checks if can attack enemy
@@ -142,5 +154,7 @@ namespace BattleChess3.Figures
                 Play.BlackPlayer.KillFigure(this);
             }
         }
+
+        
     }
 }
