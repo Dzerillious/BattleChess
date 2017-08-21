@@ -69,6 +69,7 @@
     <Compile Include="Figures\IFigure.cs" />
     <Compile Include="Figures\FigureTypes\Ninja.cs" />
     <Compile Include="Figures\AttackingTypes\SimpleAttackFigure.cs" />
+    <Compile Include="Game\BoardColumn.cs" />
     <Compile Include="Game\Play.cs" />
     <Compile Include="Game\Player.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -78,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Position.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

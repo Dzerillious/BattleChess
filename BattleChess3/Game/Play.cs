@@ -25,6 +25,18 @@ namespace BattleChess3.Game
             new BaseFigure[8],
         };
 
+        public static BoardColumn[] BoardColumns =
+        {
+            new BoardColumn(),
+            new BoardColumn(),
+            new BoardColumn(),
+            new BoardColumn(),
+            new BoardColumn(),
+            new BoardColumn(),
+            new BoardColumn(),
+            new BoardColumn()
+        };
+
         public static Position SelectedPosition;
         public static Position PlayedPosition;
 
@@ -76,6 +88,15 @@ namespace BattleChess3.Game
                 MakeTurn();
             }
             Highlight();
+            SetBoard1D();
+        }
+
+        public static void SetBoard1D()
+        {
+            for (var i = 0; i < 64; i++)
+            {
+                BoardColumns[i/ 8].ColumnFigures[(63 - i) % 8] = Board[i / 8][i % 8];
+            }
         }
 
         /// <summary>

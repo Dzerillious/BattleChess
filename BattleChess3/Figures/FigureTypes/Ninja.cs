@@ -19,6 +19,8 @@ namespace BattleChess3.Figures.FigureTypes
                                      " and with his diagonal moves can he" +
                                      " easily suprise enemy.";
 
+        public string PicturePath => "Ninja.png";
+
         private readonly Position[] _avaibleMoves =
         {
             new Position(1, 1),

@@ -14,6 +14,7 @@ namespace BattleChess3.Figures.FigureTypes
         public bool MovingWhileAttacking => false;
         public bool LongRanged => false;
         public string Description => "";
+        public string PicturePath => "Nothing.png";
         public int Cost => 0;
         public Func<Position, Position, bool> CanMove => null;
         public Func<Position, Position, bool> CanAttack => null;

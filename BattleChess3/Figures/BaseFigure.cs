@@ -15,6 +15,8 @@ namespace BattleChess3.Figures
         public IFigure Figure;
         public int Hp = 100;
         public string Highlighted = null;
+        public bool Clicked = false;
+        public string PicturePath { get; set; }
 
         /// <summary>
         /// Constructor
@@ -27,6 +29,7 @@ namespace BattleChess3.Figures
             Color = color;
             Position = position;
             Figure = figure;
+            PicturePath = "C:\\Users\\sery\\Documents\\Visual Studio 2017\\Projects\\1\\battle-chess-3.0\\BattleChess3\\Pictures\\" + Figure.PicturePath;
         }
 
         /// <summary>

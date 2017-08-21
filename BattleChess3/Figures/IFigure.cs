@@ -56,7 +56,12 @@ namespace BattleChess3.Figures
         /// Description of unit
         /// </summary>
         string Description { get; }
-        
+
+        /// <summary>
+        /// PicturePath of unit
+        /// </summary>
+        string PicturePath { get; }
+
         /// <summary>
         /// Check if can move on position
         /// </summary>
