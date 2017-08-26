@@ -5,41 +5,58 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:game="clr-namespace:BattleChess3.Game"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="600" Width="800" MinHeight="480" MinWidth="640">
     <Grid>
         <TabControl>
             <TabItem Header="Main Menu">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
             <TabItem Header="Game">
-                <ItemsControl x:Name="Column"
-                              ItemsSource="{Binding Source={x:Static game:Play.BoardColumns}, UpdateSourceTrigger=PropertyChanged}">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Stretch"/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <ItemsControl x:Name="Tile"
-                                          ItemsSource="{Binding Path=ColumnFigures}">
-                                <ItemsControl.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Vertical" VerticalAlignment="Stretch"/>
-                                    </ItemsPanelTemplate>
-                                </ItemsControl.ItemsPanel>
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <Button Click="Button_Click" Background="{Binding Path=Highlighted}" CommandParameter="{Binding}">
-                                            <Image Source="{Binding Path=PicturePath}" Width="100">
-                                            </Image>
-                                        </Button>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
+                <DockPanel LastChildFill="True">
+                    <ItemsControl x:Name="Column"
+                                  ItemsSource="{Binding Source={x:Static game:Play.BoardColumns}, UpdateSourceTrigger=PropertyChanged}"
+                                  HorizontalAlignment="Stretch">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Rows="8"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <ItemsControl x:Name="Tile"
+                                              ItemsSource="{Binding Path=ColumnFigures}"
+                                              VerticalAlignment="Stretch">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Button Click="Button_Click" 
+                                                    CommandParameter="{Binding}"
+                                                    Background="{Binding Path=Highlighted}">
+                                                <Image Source="{Binding Path=PicturePath}"/>
+                                            </Button>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <StackPanel Orientation="Vertical" DataContext="{Binding Source={x:Static game:Play.Selected}}">
+                        <TextBox Text="{Binding Path=SelFigure.FigureType.UnitName}"/>
+                        <TextBox Text="{Binding Path=SelFigure.FigureType.UnitType}"/>
+                        <TextBox Text="{Binding Path=SelFigure.Hp}"/>
+                        <TextBox Text="{Binding Path=SelFigure.FigureType.Attack}"/>
+                        <TextBox Text="{Binding Path=SelFigure.FigureType.Bonus}"/>
+                        <TextBox Text="{Binding Path=SelFigure.FigureType.AntiBonus}"/>
+                        <TextBox Text="{Binding Path=SelFigure.FigureType.Cost}"/>
+                        <TextBox Text="{Binding Path=SelFigure.FigureType.LongRanged}"/>
+                        <TextBox Text="{Binding Path=SelFigure.FigureType.MovingWhileAttacking}"/>
+                        <TextBox Text="{Binding Path=SelFigure.FigureType.Description}"/>
+                    </StackPanel>
+                </DockPanel>
             </TabItem>
             <TabItem Header="Map Editor">
                 <Grid Background="#FFE5E5E5">

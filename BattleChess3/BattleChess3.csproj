@@ -54,16 +54,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Figures\AttackingTypes\SimpleMoveFigure.cs" />
-    <Compile Include="Figures\BackgroundPicturePaths.cs" />
     <Compile Include="Figures\BaseFigure.cs" />
     <Compile Include="Figures\FigureTypes\Nothing.cs" />
     <Compile Include="Figures\TypesOfFigures.cs" />
@@ -71,8 +66,10 @@
     <Compile Include="Figures\FigureTypes\Ninja.cs" />
     <Compile Include="Figures\AttackingTypes\SimpleAttackFigure.cs" />
     <Compile Include="Game\BoardColumn.cs" />
+    <Compile Include="Game\Highlight.cs" />
     <Compile Include="Game\Play.cs" />
     <Compile Include="Game\Player.cs" />
+    <Compile Include="Game\Selected.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -111,6 +108,12 @@
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -2,7 +2,6 @@
 using System.Windows.Controls;
 using BattleChess3.Figures;
 using BattleChess3.Game;
-using BattleChess3.Properties;
 
 namespace BattleChess3
 {
@@ -17,7 +16,7 @@ namespace BattleChess3
         public MainWindow()
         {
             InitializeComponent();
-            Play.LoadMap("C:\\Users\\sery\\Documents\\Visual Studio 2017\\Projects\\1\\battle-chess-3.0\\BattleChess3\\Maps\\ClassicMap.txt");
+            Play.LoadMap("C:\\Users\\danys\\OneDrive\\Documents\\battle-chess-3.0\\BattleChess3\\Maps\\ClassicMap.txt");
             Play.SetBindedBoard();
         }
 

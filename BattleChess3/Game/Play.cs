@@ -7,43 +7,30 @@ namespace BattleChess3.Game
     /// <summary>
     /// Class for game
     /// </summary>
-    public static class Play
+    public static partial class Play
     {
         public static Player WhitePlayer = new Player(Resource.White);
         public static Player BlackPlayer = new Player(Resource.Black);
         public static string WhooseTurn = Resource.White;
-        public static Position SelectedPosition;
+        public static Selected Selected = new Selected();
         public static Position PlayedPosition;
-
-        public static BaseFigure[][] Board =
-        {
-            new BaseFigure[8],
-            new BaseFigure[8],
-            new BaseFigure[8],
-            new BaseFigure[8],
-            new BaseFigure[8],
-            new BaseFigure[8],
-            new BaseFigure[8],
-            new BaseFigure[8],
-        };
-
-        public static BoardColumn[] BoardColumns =
-        {
-            new BoardColumn(),
-            new BoardColumn(),
-            new BoardColumn(),
-            new BoardColumn(),
-            new BoardColumn(),
-            new BoardColumn(),
-            new BoardColumn(),
-            new BoardColumn()
-        };
+        public static BaseFigure[][] Board = new BaseFigure[8][];
+        public static BoardColumn[] BoardColumns = new BoardColumn[8];
 
         /// <summary>
         /// Loads map and creates figures
         /// </summary>
         public static void LoadMap(string filePath)
         {
+            for (var i = 0; i < 8; i++)
+            {
+                BoardColumns[i] = new BoardColumn();
+                Board[i] = new BaseFigure[8];
+                for (var j = 0; j < 8; j++)
+                {
+                    Board[i][j] = new BaseFigure();
+                }
+            }
             var lines = File.ReadAllLines(filePath);
             for (var i = 0; i < 8; i++)
             {
@@ -77,16 +64,16 @@ namespace BattleChess3.Game
         /// <param name="position"></param>
         public static void ClickedAtPosition(Position position)
         {
-            if (SelectedPosition == null)
+            if (Selected.SelPosition == null)
             {
-                SelectedPosition = position;
+                Selected.SetSelected(position);
             }
             else
             {
                 PlayedPosition = position;
                 MakeTurn();
             }
-            Highlight();
+            HighlightTiles();
             SetBindedBoard();
         }
 
@@ -100,71 +87,10 @@ namespace BattleChess3.Game
                 var newColumn = new BoardColumn();
                 for (var j = 0; j < 8; j++)
                 {
-                    newColumn.ColumnFigures[7-j] = Board[i][j];
+                    newColumn.ColumnFigures[j] = Board[i][j];
                 }
                 BoardColumns[i].ColumnFigures = newColumn.ColumnFigures;
             }
-        }
-
-        /// <summary>
-        /// Recalculates Highlighting
-        /// </summary>
-        public static void Highlight()
-        {
-            if (SelectedPosition == null)
-            {
-                for (var i = 0; i < 64; i++)
-                {
-                    Board[i / 8][i % 8].Highlighted = Resource.NotHighlighted;
-                }
-            }
-            else
-            {
-                for (var i = 0; i < 64; i++)
-                {
-                    var position = new Position(i / 8, i % 8);
-                    var figure = GetFigureAtPosition(position);
-                    figure.Highlighted = Resource.NotHighlighted;
-                    if (GetFigureAtPosition(SelectedPosition).Color == WhooseTurn)
-                    {
-                        HighlightDangered(figure);
-                        HighlightCanGo(figure);
-                    }
-                }
-                HighlightSelected();
-            }
-        }
-
-        /// <summary>
-        /// Highlights if figure is in danger
-        /// </summary>
-        /// <param name="figure"></param>
-        public static void HighlightDangered(BaseFigure figure)
-        {
-            if (GetFigureAtPosition(SelectedPosition).CanAttack(figure.Position))
-            {
-                figure.Highlighted = Resource.HighlightedDanger;
-            }
-        }
-
-        /// <summary>
-        /// Highlights if can go to tile
-        /// </summary>
-        /// <param name="figure"></param>
-        public static void HighlightCanGo(BaseFigure figure)
-        {
-            if (GetFigureAtPosition(SelectedPosition).CanMove(figure))
-            {
-                figure.Highlighted = Resource.HighlightedCanGo;
-            }
-        }
-
-        /// <summary>
-        /// Highlights selected
-        /// </summary>
-        public static void HighlightSelected()
-        {
-            GetFigureAtPosition(SelectedPosition).Highlighted = Resource.HighlightedSelected;
         }
 
         /// <summary>
@@ -172,16 +98,16 @@ namespace BattleChess3.Game
         /// </summary>
         public static void MakeTurn()
         {
-            var figure = GetFigureAtPosition(SelectedPosition);
+            var figure = Selected.SelFigure;
             if (figure.TryPlay(PlayedPosition) == false)
             {
-                SelectedPosition = PlayedPosition;
+                Selected.SetSelected(PlayedPosition);
                 PlayedPosition = null;
             }
             else
             {
                 WhooseTurn = WhooseTurn == Resource.White ? Resource.Black : Resource.White;
-                SelectedPosition = null;
+                Selected = new Selected();
                 PlayedPosition = null;
             }
         }

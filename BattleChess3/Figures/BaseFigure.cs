@@ -1,4 +1,5 @@
-﻿using BattleChess3.Game;
+﻿using BattleChess3.Figures.FigureTypes;
+using BattleChess3.Game;
 using BattleChess3.Properties;
 
 namespace BattleChess3.Figures
@@ -8,39 +9,53 @@ namespace BattleChess3.Figures
     /// </summary>
     public class BaseFigure
     {
+        public Position Position { get; set; }
+        public IFigure FigureType { get; set; }
+        public int Hp { get; set; }
+        public bool Clicked = false;
+        public string Highlighted { get; set; }
+        public string PicturePath { get; set; }
         private const double Bonus = 2;
         private const double AntiBonus = 0.5;
         public string Color;
-        public Position Position;
-        public IFigure Figure;
-        public int Hp = 100;
-        public string Highlighted { get; set; }
-        public bool Clicked = false;
-        public string PicturePath { get; set; }
 
         /// <summary>
-        /// Constructor
+        /// Empty constructor
+        /// </summary>
+        public BaseFigure()
+        {
+            Hp = 100;
+            Color = Resource.Neutral;
+            Position = new Position();
+            FigureType = new Nothing();
+            Highlighted = Resource.NotHighlighted;
+            PicturePath = Resource.PicturesPath + FigureType.PictureNeutralPath;
+        }
+
+        /// <summary>
+        /// Constructor with params
         /// </summary>
         /// <param name="color"></param>
         /// <param name="position"></param>
-        /// <param name="figure"></param>
-        public BaseFigure(string color, Position position, IFigure figure)
+        /// <param name="figureType"></param>
+        public BaseFigure(string color, Position position, IFigure figureType)
         {
+            Hp = 100;
             Color = color;
             Position = position;
-            Figure = figure;
+            FigureType = figureType;
             Highlighted = Resource.NotHighlighted;
             if (Color == Resource.White)
             {
-                PicturePath = "C:\\Users\\sery\\Documents\\Visual Studio 2017\\Projects\\1\\battle-chess-3.0\\BattleChess3\\Pictures\\" + Figure.PictureWhitePath;
+                PicturePath = Resource.PicturesPath + FigureType.PictureWhitePath;
             }
             else if (Color == Resource.Black)
             {
-                PicturePath = "C:\\Users\\sery\\Documents\\Visual Studio 2017\\Projects\\1\\battle-chess-3.0\\BattleChess3\\Pictures\\" + Figure.PictureBlackPath;
+                PicturePath = Resource.PicturesPath + FigureType.PictureBlackPath;
             }
             else
             {
-                PicturePath = "C:\\Users\\sery\\Documents\\Visual Studio 2017\\Projects\\1\\battle-chess-3.0\\BattleChess3\\Pictures\\" + Figure.PictureNeutralPath;
+                PicturePath = Resource.PicturesPath + FigureType.PictureNeutralPath;
             }
         }
 
@@ -59,8 +74,8 @@ namespace BattleChess3.Figures
             }
             if (CanAttack(position))
             {
-                Attack(Play.GetFigureAtPosition(position));
-                if (Figure.MovingWhileAttacking)
+                TryAttack(Play.GetFigureAtPosition(position));
+                if (FigureType.MovingWhileAttacking)
                 {
                     Play.MoveFigureToPosition(Position, position);
                     Position = position;
@@ -75,7 +90,7 @@ namespace BattleChess3.Figures
         /// </summary>
         /// <param name="figure"></param>
         /// <returns></returns>
-        public bool CanMove(BaseFigure figure) => figure.Figure.UnitName == Resource.Nothing && Figure.CanMove(Position, figure.Position);
+        public bool CanMove(BaseFigure figure) => figure.FigureType.UnitName == Resource.Nothing && FigureType.CanMove(Position, figure.Position);
 
         /// <summary>
         /// Checks if can attack enemy
@@ -85,11 +100,11 @@ namespace BattleChess3.Figures
         public bool CanAttack(Position position)
         {
             var enemy = Play.GetFigureAtPosition(position);
-            if (Figure.CanAttack(Position, position) && enemy.Figure.Defence < Figure.Attack)
+            if (FigureType.CanAttack(Position, position) && enemy.FigureType.Defence < FigureType.Attack)
             {
-                if (Figure.MovingWhileAttacking && Figure.LongRanged)
+                if (FigureType.MovingWhileAttacking && FigureType.LongRanged)
                 {
-                    var remainingHp = enemy.AttackUnit(enemy);
+                    var remainingHp = enemy.RemainedHpOfAttacked(enemy);
                     return remainingHp <= 0;
                 }
                 return true;
@@ -98,12 +113,12 @@ namespace BattleChess3.Figures
         }
 
         /// <summary>
-        /// Atack at certain position and return if attacked
+        /// Tries to attack at certain position and return if attacked
         /// </summary>
-        public bool Attack(BaseFigure enemy)
+        public bool TryAttack(BaseFigure enemy)
         {
-            var remainingHp = enemy.AttackUnit(enemy);
-            if (Figure.MovingWhileAttacking && Figure.LongRanged)
+            var remainingHp = enemy.RemainedHpOfAttacked(enemy);
+            if (FigureType.MovingWhileAttacking && FigureType.LongRanged)
             {
                 if (remainingHp > 0) return false;
                 enemy.Die();
@@ -125,18 +140,18 @@ namespace BattleChess3.Figures
         /// Returnes remaining hp of attacked unit
         /// </summary>
         /// <param name="attackedUnit"></param>
-        public int AttackUnit(BaseFigure attackedUnit)
+        public int RemainedHpOfAttacked(BaseFigure attackedUnit)
         {
             double bonus = 1;
-            if (attackedUnit.Figure.UnitType == Figure.Bonus)
+            if (attackedUnit.FigureType.UnitType == FigureType.Bonus)
             {
                 bonus = Bonus;
             }
-            else if (attackedUnit.Figure.UnitType == Figure.AntiBonus)
+            else if (attackedUnit.FigureType.UnitType == FigureType.AntiBonus)
             {
                 bonus = AntiBonus;
             }
-            return attackedUnit.Hp - (int)(attackedUnit.Figure.Attack * bonus) - attackedUnit.Figure.Defence;
+            return attackedUnit.Hp - (int)(attackedUnit.FigureType.Attack * bonus) - attackedUnit.FigureType.Defence;
         }
 
         /// <summary>

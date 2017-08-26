@@ -150,4 +150,7 @@
   <data name="White" xml:space="preserve">
     <value>White</value>
   </data>
+  <data name="PicturesPath" xml:space="preserve">
+    <value>C:\\Users\\danys\\OneDrive\\Documents\\battle-chess-3.0\\BattleChess3\\Pictures\\</value>
+  </data>
 </root>

@@ -158,5 +158,14 @@ namespace BattleChess3.Properties {
                 return ResourceManager.GetString("White", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to White.
+        /// </summary>
+        internal static string PicturesPath {
+            get {
+                return ResourceManager.GetString("PicturesPath", resourceCulture);
+            }
+        }
     }
 }
