@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using BattleChess3.Figures;
 using BattleChess3.Game;
 
@@ -25,11 +26,19 @@ namespace BattleChess3
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void OnButtonClick(object sender, RoutedEventArgs e)
         {
             var button = (Button) sender;
             var figure = (BaseFigure) button.CommandParameter;
             Play.ClickedAtPosition(figure.Position);
+        }
+
+        private void OnMouseEnter(object sender, MouseEventArgs e)
+        {
+            var button = (Button) sender;
+            var figure = (BaseFigure) button.CommandParameter;
+            Play.MouseOn.SelFigure = figure;
+            Play.MouseOn.SelPosition = figure.Position;
         }
     }
 }

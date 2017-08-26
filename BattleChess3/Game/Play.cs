@@ -13,6 +13,7 @@ namespace BattleChess3.Game
         public static Player BlackPlayer = new Player(Resource.Black);
         public static string WhooseTurn = Resource.White;
         public static Selected Selected = new Selected();
+        public static Selected MouseOn = new Selected();
         public static Position PlayedPosition;
         public static BaseFigure[][] Board = new BaseFigure[8][];
         public static BoardColumn[] BoardColumns = new BoardColumn[8];

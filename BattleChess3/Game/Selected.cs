@@ -15,7 +15,7 @@ namespace BattleChess3.Game
         /// </summary>
         public Selected()
         {
-            SelFigure = null;
+            SelFigure = new BaseFigure();
             SelPosition = null;
         }
 
@@ -39,25 +39,25 @@ namespace BattleChess3.Game
             SelPosition = position;
         }
 
-        private Position _selPosition;
-
         /// <summary>
         /// Selected position
         /// </summary>
-        public Position SelPosition
+        public Position SelPosition { get; set; }
+
+        private BaseFigure _selFigure;
+        /// <summary>
+        /// Selected figure
+        /// </summary>
+        public BaseFigure SelFigure
         {
-            get => _selPosition;
+            get => _selFigure;
             set
             {
-                _selPosition = value;
+                _selFigure = value;
                 OnPropertyChanged();
             }
         }
 
-        /// <summary>
-        /// Selected figure
-        /// </summary>
-        public BaseFigure SelFigure { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

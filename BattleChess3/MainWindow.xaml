@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:game="clr-namespace:BattleChess3.Game"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800" MinHeight="480" MinWidth="640">
+        Title="MainWindow" Height="400" Width="800" MinHeight="480" MinWidth="640">
     <Grid>
         <TabControl>
             <TabItem Header="Main Menu">
@@ -33,7 +33,8 @@
                                     </ItemsControl.ItemsPanel>
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <Button Click="Button_Click" 
+                                            <Button Click="OnButtonClick"
+                                                    MouseEnter="OnMouseEnter"
                                                     CommandParameter="{Binding}"
                                                     Background="{Binding Path=Highlighted}">
                                                 <Image Source="{Binding Path=PicturePath}"/>
@@ -44,17 +45,47 @@
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
-                    <StackPanel Orientation="Vertical" DataContext="{Binding Source={x:Static game:Play.Selected}}">
-                        <TextBox Text="{Binding Path=SelFigure.FigureType.UnitName}"/>
-                        <TextBox Text="{Binding Path=SelFigure.FigureType.UnitType}"/>
-                        <TextBox Text="{Binding Path=SelFigure.Hp}"/>
-                        <TextBox Text="{Binding Path=SelFigure.FigureType.Attack}"/>
-                        <TextBox Text="{Binding Path=SelFigure.FigureType.Bonus}"/>
-                        <TextBox Text="{Binding Path=SelFigure.FigureType.AntiBonus}"/>
-                        <TextBox Text="{Binding Path=SelFigure.FigureType.Cost}"/>
-                        <TextBox Text="{Binding Path=SelFigure.FigureType.LongRanged}"/>
-                        <TextBox Text="{Binding Path=SelFigure.FigureType.MovingWhileAttacking}"/>
-                        <TextBox Text="{Binding Path=SelFigure.FigureType.Description}"/>
+                    
+                    <StackPanel Orientation="Vertical" DataContext="{Binding Source={x:Static game:Play.MouseOn}}">
+                        <StackPanel.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="FontSize" Value="13"></Setter>
+                                <Setter Property="FontWeight" Value="Heavy"></Setter>
+                                <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                            </Style>
+                        </StackPanel.Resources>
+                        <TextBlock Text="Name:"/>
+                        <TextBlock Text="Unit type: "/>
+                        <TextBlock Text="Hp: "/>
+                        <TextBlock Text="Attack: "/>
+                        <TextBlock Text="Defence: "/>
+                        <TextBlock Text="Bonus against: "/>
+                        <TextBlock Text="Antibonus against: "/>
+                        <TextBlock Text="Cost of unit: "/>
+                        <TextBlock Text="Long ranged: "/>
+                        <TextBlock Text="Moving while attacking: "/>
+                        <TextBlock Text="Description: "/>
+                    </StackPanel>
+                
+                    <StackPanel Orientation="Vertical" DataContext="{Binding Source={x:Static game:Play.MouseOn}}">
+                        <StackPanel.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="FontSize" Value="13"></Setter>
+                                <Setter Property="FontWeight" Value="Heavy"></Setter>
+                                <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                            </Style>
+                        </StackPanel.Resources>
+                        <TextBlock Text="{Binding Path=SelFigure.FigureType.UnitName, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock Text="{Binding Path=SelFigure.FigureType.UnitType, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock Text="{Binding Path=SelFigure.Hp, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock Text="{Binding Path=SelFigure.FigureType.Attack, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock Text="{Binding Path=SelFigure.FigureType.Defence, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock Text="{Binding Path=SelFigure.FigureType.Bonus, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock Text="{Binding Path=SelFigure.FigureType.AntiBonus, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock Text="{Binding Path=SelFigure.FigureType.Cost, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock Text="{Binding Path=SelFigure.FigureType.LongRanged, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock Text="{Binding Path=SelFigure.FigureType.MovingWhileAttacking, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock Text="{Binding Path=SelFigure.FigureType.Description, UpdateSourceTrigger=PropertyChanged}"/>
                     </StackPanel>
                 </DockPanel>
             </TabItem>

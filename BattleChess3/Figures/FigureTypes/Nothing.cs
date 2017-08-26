@@ -6,14 +6,14 @@ namespace BattleChess3.Figures.FigureTypes
     public class Nothing : IFigure
     {
         public string UnitName => Resource.Nothing;
-        public string UnitType => null;
-        public string Bonus => null;
-        public string AntiBonus => null;
+        public string UnitType => Resource.Neutral;
+        public string Bonus => Resource.Nothing;
+        public string AntiBonus => Resource.Nothing;
         public int Attack => 0;
         public int Defence => 1000;
         public bool MovingWhileAttacking => false;
         public bool LongRanged => false;
-        public string Description => "";
+        public string Description => "Empty tile, where you can go";
         public string PictureBlackPath => "";
         public string PictureWhitePath => "";
         public string PictureNeutralPath => "Nothing.png";

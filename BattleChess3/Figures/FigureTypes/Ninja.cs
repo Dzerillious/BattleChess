@@ -15,9 +15,7 @@ namespace BattleChess3.Figures.FigureTypes
         public bool MovingWhileAttacking => true;
         public bool LongRanged => false;
         public int Cost => 1;
-        public string Description => "Ninja is secret warior" +
-                                     " and with his diagonal moves can he" +
-                                     " easily suprise enemy.";
+        public string Description => "Ninja is secret warior and with his diagonal moves can he easily suprise enemy. He is one of cheap figures so he is best in front line.";
 
         public string PictureBlackPath => "NinjaBlack.png";
         public string PictureWhitePath => "NinjaWhite.png";
