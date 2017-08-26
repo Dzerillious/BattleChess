@@ -20,13 +20,26 @@ namespace BattleChess3.Figures
         public string Color;
 
         /// <summary>
-        /// Empty constructor
+        /// Create empty
         /// </summary>
         public BaseFigure()
         {
             Hp = 100;
             Color = Resource.Neutral;
             Position = new Position();
+            FigureType = new Nothing();
+            Highlighted = Resource.NotHighlighted;
+            PicturePath = Resource.PicturesPath + FigureType.PictureNeutralPath;
+        }
+        
+        /// <summary>
+        /// Create Nothing at position
+        /// </summary>
+        public BaseFigure(Position position)
+        {
+            Hp = 100;
+            Color = Resource.Neutral;
+            Position = position;
             FigureType = new Nothing();
             Highlighted = Resource.NotHighlighted;
             PicturePath = Resource.PicturesPath + FigureType.PictureNeutralPath;
@@ -66,16 +79,16 @@ namespace BattleChess3.Figures
         public bool TryPlay(Position position)
         {
             if (Play.WhooseTurn != Color) return false;
-            if (CanMove(Play.GetFigureAtPosition(position)))
+            var enemy = Play.GetFigureAtPosition(position);
+            if (CanMove(enemy))
             {
                 Play.MoveFigureToPosition(Position, position);
                 Position = position;
                 return true;
             }
-            if (CanAttack(position))
+            if (enemy.Color != Color && CanAttack(enemy))
             {
-                TryAttack(Play.GetFigureAtPosition(position));
-                if (FigureType.MovingWhileAttacking)
+                if (FigureType.MovingWhileAttacking && TryAttack(Play.GetFigureAtPosition(position)))
                 {
                     Play.MoveFigureToPosition(Position, position);
                     Position = position;
@@ -86,25 +99,24 @@ namespace BattleChess3.Figures
         }
 
         /// <summary>
-        /// Check if can move at position
+        /// Check if can move at position of figure
         /// </summary>
         /// <param name="figure"></param>
         /// <returns></returns>
-        public bool CanMove(BaseFigure figure) => figure.FigureType.UnitName == Resource.Nothing && FigureType.CanMove(Position, figure.Position);
+        public bool CanMove(BaseFigure figure) => figure.FigureType.UnitName == Resource.Nothing && FigureType.CanMove(this, figure);
 
         /// <summary>
         /// Checks if can attack enemy
         /// </summary>
-        /// <param name="position"></param>
+        /// <param name="enemy"></param>
         /// <returns></returns>
-        public bool CanAttack(Position position)
+        public bool CanAttack(BaseFigure enemy)
         {
-            var enemy = Play.GetFigureAtPosition(position);
-            if (FigureType.CanAttack(Position, position) && enemy.FigureType.Defence < FigureType.Attack)
+            if (FigureType.CanAttack(this, enemy) && enemy.FigureType.Defence < FigureType.Attack)
             {
                 if (FigureType.MovingWhileAttacking && FigureType.LongRanged)
                 {
-                    var remainingHp = enemy.RemainedHpOfAttacked(enemy);
+                    var remainingHp = enemy.RemainedHpOfAttacked(this);
                     return remainingHp <= 0;
                 }
                 return true;
@@ -117,41 +129,59 @@ namespace BattleChess3.Figures
         /// </summary>
         public bool TryAttack(BaseFigure enemy)
         {
-            var remainingHp = enemy.RemainedHpOfAttacked(enemy);
+            var remainingHp = enemy.RemainedHpOfAttacked(this);
             if (FigureType.MovingWhileAttacking && FigureType.LongRanged)
             {
                 if (remainingHp > 0) return false;
-                enemy.Die();
-                Play.MoveFigureToPosition(Position, enemy.Position);
+                AttackPattern(enemy.Position);
                 return true;
             }
-            if (remainingHp <= 0)
-            {
-                enemy.Die();
-            }
-            else
-            {
-                enemy.Hp = remainingHp;
-            }
+            AttackPattern(enemy.Position);
             return true;
+        }
+
+        /// <summary>
+        /// Attacks each figure of pattern
+        /// </summary>
+        /// <param name="attackedPosition"></param>
+        public void AttackPattern(Position attackedPosition)
+        {
+            foreach (var position in FigureType.AttackPattern)
+            {
+                AttackFigure(Play.GetFigureAtPosition(position.AddPositions(attackedPosition)));
+            }
+        }
+
+        /// <summary>
+        /// Attacks figure if Hp is lesser 0 figure dies
+        /// </summary>
+        /// <param name="attackedFigure"></param>
+        /// <returns></returns>
+        public void AttackFigure(BaseFigure attackedFigure)
+        {
+            attackedFigure.Hp = attackedFigure.RemainedHpOfAttacked(this);
+            if (attackedFigure.Hp <= 0)
+            {
+                attackedFigure.Die();
+            }
         }
 
         /// <summary>
         /// Returnes remaining hp of attacked unit
         /// </summary>
-        /// <param name="attackedUnit"></param>
-        public int RemainedHpOfAttacked(BaseFigure attackedUnit)
+        /// <param name="attackingUnit"></param>
+        public int RemainedHpOfAttacked(BaseFigure attackingUnit)
         {
             double bonus = 1;
-            if (attackedUnit.FigureType.UnitType == FigureType.Bonus)
+            if (FigureType.UnitType == attackingUnit.FigureType.Bonus)
             {
                 bonus = Bonus;
             }
-            else if (attackedUnit.FigureType.UnitType == FigureType.AntiBonus)
+            else if (FigureType.UnitType == attackingUnit.FigureType.AntiBonus)
             {
                 bonus = AntiBonus;
             }
-            return attackedUnit.Hp - (int)(attackedUnit.FigureType.Attack * bonus) - attackedUnit.FigureType.Defence;
+            return Hp - (int)(attackingUnit.FigureType.Attack * bonus) - FigureType.Defence;
         }
 
         /// <summary>

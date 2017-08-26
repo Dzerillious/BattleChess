@@ -127,7 +127,7 @@
     <value>Chartreuse</value>
   </data>
   <data name="HighlightedDanger" xml:space="preserve">
-    <value>OrangeRed</value>
+    <value>Tomato</value>
   </data>
   <data name="HighlightedSelected" xml:space="preserve">
     <value>DeepSkyBlue</value>
@@ -142,7 +142,7 @@
     <value>Ninja</value>
   </data>
   <data name="NotHighlighted" xml:space="preserve">
-    <value>YellowGreen</value>
+    <value>Khaki</value>
   </data>
   <data name="Nothing" xml:space="preserve">
     <value>Nothing</value>
@@ -153,4 +153,36 @@
   <data name="PicturesPath" xml:space="preserve">
     <value>C:\\Users\\danys\\OneDrive\\Documents\\battle-chess-3.0\\BattleChess3\\Pictures\\</value>
   </data>
+  <data name="Palm" xml:space="preserve">
+    <value>Palm</value>
+  </data>
+  <data name="Stone" xml:space="preserve">
+    <value>Stone</value>
+  </data>
+  <data name="ChessHorse" xml:space="preserve">
+    <value>ChessHorse</value>
+  </data>
+  <data name="ChessKing" xml:space="preserve">
+    <value>ChessKing</value>
+  </data>
+  <data name="ChessQueen" xml:space="preserve">
+    <value>ChessQueen</value>
+  </data>
+  <data name="ChessPawn" xml:space="preserve">
+    <value>ChessPawn</value>
+  </data>
+  <data name="ChessTower" xml:space="preserve">
+    <value>ChessTower</value>
+  </data>
+  <data name="ChessArcher" xml:space="preserve">
+    <value>ChessArcher</value>
+  </data>
+  <data name="Object" xml:space="preserve">
+    <value>Object</value>
+  </data>
+  <data name="Special" xml:space="preserve">
+    <value>Special</value>
+  </data>
+    
+    
 </root>

@@ -3,9 +3,9 @@ using BattleChess3.Properties;
 
 namespace BattleChess3.Figures.FigureTypes
 {
-    public class Nothing : IFigure
+    public class Stone : IFigure
     {
-        public string UnitName => Resource.Nothing;
+        public string UnitName => Resource.Stone;
         public string UnitType => Resource.Neutral;
         public string Bonus => Resource.Nothing;
         public string AntiBonus => Resource.Nothing;
@@ -13,10 +13,10 @@ namespace BattleChess3.Figures.FigureTypes
         public int Defence => 1000;
         public bool MovingWhileAttacking => false;
         public bool LongRanged => false;
-        public string Description => "Empty tile, where you can go";
+        public string Description => "Stone tile, where you cannot go";
         public string PictureBlackPath => "";
         public string PictureWhitePath => "";
-        public string PictureNeutralPath => "Nothing.png";
+        public string PictureNeutralPath => "Stone.png";
         public int Cost => 0;
         public Position[] AttackPattern => null;
         public Func<BaseFigure, BaseFigure, bool> CanMove => (figure, moveToFigure) => false;

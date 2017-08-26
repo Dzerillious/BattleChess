@@ -17,7 +17,7 @@ namespace BattleChess3
         public MainWindow()
         {
             InitializeComponent();
-            Play.LoadMap("C:\\Users\\danys\\OneDrive\\Documents\\battle-chess-3.0\\BattleChess3\\Maps\\ClassicMap.txt");
+            Play.LoadMap("C:\\Users\\danys\\OneDrive\\Documents\\battle-chess-3.0\\BattleChess3\\Maps\\ClassicChess.txt");
             Play.SetBindedBoard();
         }
 

@@ -14,7 +14,15 @@ namespace BattleChess3.Figures
         public static readonly IFigure[] FigureTypes =
         {
             new Ninja(),
-            new Nothing()
+            new ChessHorse(), 
+            new ChessKing(),
+            new ChessQueen(), 
+            new ChessArcher(), 
+            new ChessPawn(), 
+            new ChessTower(), 
+            new Nothing(),
+            new Palm(),
+            new Stone(), 
         };
 
         /// <summary>

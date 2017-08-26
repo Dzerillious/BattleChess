@@ -38,7 +38,11 @@ namespace BattleChess3.Game
                 var tile = lines[7 - i].Split(' ');
                 for (var j = 0; j < 8; j++)
                 {
-                    if (tile[j].Contains(Resource.White))
+                    if (tile[j] == "Nothing")
+                    {
+                        Board[j][i] = new BaseFigure(new Position(j, i));
+                    }
+                    else if (tile[j].Contains(Resource.White))
                     {
                         var figure = TypesOfFigures.GetFigureFromString(tile[j].Replace(Resource.White, ""));
                         Board[j][i] = new BaseFigure(Resource.White, new Position(j, i), figure);
@@ -142,7 +146,7 @@ namespace BattleChess3.Game
         public static void MoveFigureToPosition(Position position, Position newPosition)
         {
             var figure = GetFigureAtPosition(position);
-            SetFigureAtPosition(position, new BaseFigure(Resource.Neutral, position, TypesOfFigures.GetFigureFromString(Resource.Nothing)));
+            SetFigureAtPosition(position, new BaseFigure(position));
             SetFigureAtPosition(newPosition, figure);
         }
 
@@ -152,7 +156,7 @@ namespace BattleChess3.Game
         /// <param name="position"></param>
         public static void KillFigureAtPosition(Position position)
         {
-            SetFigureAtPosition(position, new BaseFigure(Resource.Neutral, position, TypesOfFigures.GetFigureFromString(Resource.Nothing)));
+            SetFigureAtPosition(position, new BaseFigure(position));
         }
     }
 }

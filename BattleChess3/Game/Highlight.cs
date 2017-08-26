@@ -43,7 +43,7 @@ namespace BattleChess3.Game
         /// <param name="figure"></param>
         public static void HighlightDangered(BaseFigure figure)
         {
-            if (Selected.SelFigure.CanAttack(figure.Position))
+            if (figure.Color != Selected.SelFigure.Color && Selected.SelFigure.CanAttack(figure))
             {
                 figure.Highlighted = Resource.HighlightedDanger;
             }

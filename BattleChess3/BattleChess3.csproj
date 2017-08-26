@@ -58,9 +58,21 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Figures\AttackingTypes\DirectionAttack.cs" />
+    <Compile Include="Figures\AttackingTypes\DirectionMove.cs" />
+    <Compile Include="Figures\AttackingTypes\SimpleFrontAttackFigure.cs" />
+    <Compile Include="Figures\AttackingTypes\SimpleFrontMoveFigure.cs" />
     <Compile Include="Figures\AttackingTypes\SimpleMoveFigure.cs" />
     <Compile Include="Figures\BaseFigure.cs" />
+    <Compile Include="Figures\FigureTypes\ChessArcher.cs" />
+    <Compile Include="Figures\FigureTypes\ChessHorse.cs" />
+    <Compile Include="Figures\FigureTypes\ChessKing.cs" />
+    <Compile Include="Figures\FigureTypes\ChessPawn.cs" />
+    <Compile Include="Figures\FigureTypes\ChessQueen.cs" />
+    <Compile Include="Figures\FigureTypes\ChessTower.cs" />
     <Compile Include="Figures\FigureTypes\Nothing.cs" />
+    <Compile Include="Figures\FigureTypes\Palm.cs" />
+    <Compile Include="Figures\FigureTypes\Stone.cs" />
     <Compile Include="Figures\TypesOfFigures.cs" />
     <Compile Include="Figures\IFigure.cs" />
     <Compile Include="Figures\FigureTypes\Ninja.cs" />
@@ -76,6 +88,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Maps\ClassicChess.txt" />
     <Compile Include="Position.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

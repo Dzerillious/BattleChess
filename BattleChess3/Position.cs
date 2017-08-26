@@ -43,17 +43,24 @@
         public bool CheckIfSame(int x, int y) => X == x && Y == y;
 
         /// <summary>
-        /// Check if positions are the same
+        /// Adds one position to another
         /// </summary>
         /// <param name="position"></param>
         /// <returns></returns>
         public Position AddPositions(Position position) => new Position(X+position.X, Y+position.Y);
 
         /// <summary>
-        /// Check if positions are the same
+        /// Substracts one position from another
         /// </summary>
         /// <param name="position"></param>
         /// <returns></returns>
         public Position SubstractPositions(Position position) => new Position(X - position.X, Y - position.Y);
+        
+        /// <summary>
+        /// Multiplies one position with koeficient
+        /// </summary>
+        /// <param name="koeficient"></param>
+        /// <returns></returns>
+        public Position MultiplePosition(int koeficient) => new Position(X * koeficient, Y * koeficient);
     }
 }

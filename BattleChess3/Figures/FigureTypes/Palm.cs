@@ -3,20 +3,20 @@ using BattleChess3.Properties;
 
 namespace BattleChess3.Figures.FigureTypes
 {
-    public class Nothing : IFigure
+    public class Palm : IFigure
     {
-        public string UnitName => Resource.Nothing;
+        public string UnitName => Resource.Palm;
         public string UnitType => Resource.Neutral;
         public string Bonus => Resource.Nothing;
         public string AntiBonus => Resource.Nothing;
         public int Attack => 0;
-        public int Defence => 1000;
+        public int Defence => -50;
         public bool MovingWhileAttacking => false;
         public bool LongRanged => false;
-        public string Description => "Empty tile, where you can go";
+        public string Description => "Palm tile, which you can easily destroy";
         public string PictureBlackPath => "";
         public string PictureWhitePath => "";
-        public string PictureNeutralPath => "Nothing.png";
+        public string PictureNeutralPath => "Palm.png";
         public int Cost => 0;
         public Position[] AttackPattern => null;
         public Func<BaseFigure, BaseFigure, bool> CanMove => (figure, moveToFigure) => false;

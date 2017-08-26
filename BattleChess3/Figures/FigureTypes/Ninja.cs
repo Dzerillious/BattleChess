@@ -4,7 +4,7 @@ using BattleChess3.Properties;
 
 namespace BattleChess3.Figures.FigureTypes
 {
-    public class Ninja : SimpleAttackFigure, IFigure
+    public class Ninja : SimpleFrontAttackFigure, IFigure
     {
         public string UnitName => Resource.Ninja;
         public string UnitType => Resource.Foot;
@@ -37,9 +37,14 @@ namespace BattleChess3.Figures.FigureTypes
             new Position(1, 0)
         };
 
-        public Func<Position, Position, bool> CanMove => (figurePosition, movedPosition) =>
-            CanMoveSimple(figurePosition, movedPosition, _avaibleMoves);
-        public Func<Position, Position, bool> CanAttack => (figurePosition, attackedPosition) =>
-            CanAttackSimple(figurePosition, attackedPosition, _avaibleAttacks);
+        public Position[] AttackPattern => new []
+        {
+            new Position(0, 0),
+        };
+
+        public Func<BaseFigure, BaseFigure, bool> CanMove => (figure, moveToFigure) =>
+            CanMoveSimple(figure, moveToFigure, _avaibleMoves);
+        public Func<BaseFigure, BaseFigure, bool> CanAttack => (figure, attackFigure) =>
+            CanAttackSimple(figure, attackFigure, _avaibleAttacks);
     }
 }

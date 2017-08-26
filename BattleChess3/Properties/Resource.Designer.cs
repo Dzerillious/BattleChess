@@ -167,5 +167,95 @@ namespace BattleChess3.Properties {
                 return ResourceManager.GetString("PicturesPath", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to White.
+        /// </summary>
+        internal static string Palm {
+            get {
+                return ResourceManager.GetString("Palm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to White.
+        /// </summary>
+        internal static string Stone {
+            get {
+                return ResourceManager.GetString("Stone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to White.
+        /// </summary>
+        internal static string ChessHorse {
+            get {
+                return ResourceManager.GetString("ChessHorse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to White.
+        /// </summary>
+        internal static string ChessKing {
+            get {
+                return ResourceManager.GetString("ChessKing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to White.
+        /// </summary>
+        internal static string ChessQueen {
+            get {
+                return ResourceManager.GetString("ChessQueen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to White.
+        /// </summary>
+        internal static string ChessPawn {
+            get {
+                return ResourceManager.GetString("ChessPawn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to White.
+        /// </summary>
+        internal static string ChessTower {
+            get {
+                return ResourceManager.GetString("ChessTower", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to White.
+        /// </summary>
+        internal static string ChessArcher {
+            get {
+                return ResourceManager.GetString("ChessArcher", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to White.
+        /// </summary>
+        internal static string Object {
+            get {
+                return ResourceManager.GetString("Object", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to White.
+        /// </summary>
+        internal static string Special {
+            get {
+                return ResourceManager.GetString("Special", resourceCulture);
+            }
+        }
     }
 }

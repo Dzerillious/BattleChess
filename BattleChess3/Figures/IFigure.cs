@@ -8,78 +8,83 @@ namespace BattleChess3.Figures
     public interface IFigure
     {
         /// <summary>
-        /// Name of unit
+        /// Gets Name of unit
         /// </summary>
         string UnitName { get; }
         
         /// <summary>
-        /// Type of unit
+        /// Gets Type of unit
         /// </summary>
         string UnitType { get; }
         
         /// <summary>
-        /// Bonus against type of unit
+        /// Gets Bonus against type of unit
         /// </summary>
         string Bonus { get; }
         
         /// <summary>
-        /// Antibonus against type of unit
+        /// Gets Antibonus against type of unit
         /// </summary>
         string AntiBonus { get; }
         
         /// <summary>
-        /// Attack
+        /// Gets Attack
         /// </summary>
         int Attack { get; }
         
         /// <summary>
-        /// Defence
+        /// Gets Defence
         /// </summary>
         int Defence { get; }
         
         /// <summary>
-        /// If move while attacking
+        /// Gets If move while attacking
         /// </summary>
         bool MovingWhileAttacking { get; }
         
         /// <summary>
-        /// If unit is long ranged
+        /// Gets If unit is long ranged
         /// </summary>
         bool LongRanged { get; }
         
         /// <summary>
-        /// Cost of unit
+        /// Gets Cost of unit
         /// </summary>
         int Cost { get; }
         
         /// <summary>
-        /// Description of unit
+        /// Gets Description of unit
         /// </summary>
         string Description { get; }
 
         /// <summary>
-        /// PictureBlackPath of unit
+        /// Gets PictureBlackPath of unit
         /// </summary>
         string PictureBlackPath { get; }
 
         /// <summary>
-        /// PictureWhitekPath of unit
+        /// Gets PictureWhitekPath of unit
         /// </summary>
         string PictureWhitePath { get; }
 
         /// <summary>
-        /// PictureNeutralPath of unit
+        /// Gets PictureNeutralPath of unit
         /// </summary>
         string PictureNeutralPath { get; }
 
         /// <summary>
+        /// Gets positions on which attack
+        /// </summary>
+        Position[] AttackPattern { get; }
+        
+        /// <summary>
         /// Check if can move on position
         /// </summary>
-        Func<Position, Position, bool> CanMove { get; }
+        Func<BaseFigure, BaseFigure, bool> CanMove { get; }
         
         /// <summary>
         /// Check if can attack on position
         /// </summary>
-        Func<Position, Position, bool> CanAttack { get; }
+        Func<BaseFigure, BaseFigure, bool> CanAttack { get; }
     }
 }
