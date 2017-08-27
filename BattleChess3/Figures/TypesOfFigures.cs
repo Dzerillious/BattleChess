@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using BattleChess3.Figures.FigureTypes;
+using BattleChess3.Figures.FigureTypes.ClassicChess;
 
 namespace BattleChess3.Figures
 {

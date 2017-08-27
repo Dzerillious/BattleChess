@@ -2,7 +2,7 @@
 using BattleChess3.Figures.AttackingTypes;
 using BattleChess3.Properties;
 
-namespace BattleChess3.Figures.FigureTypes
+namespace BattleChess3.Figures.FigureTypes.ClassicChess
 {
     public class ChessPawn : SimpleFrontAttackFigure, IFigure
     {
@@ -16,8 +16,8 @@ namespace BattleChess3.Figures.FigureTypes
         public int Cost => 1;
         public string Description => "Chess pawn is one of cheapest units of game, so he is good for front line attacks. Many of pawns in one big formation.";
 
-        public string PictureBlackPath => "ChessPawnBlack.png";
-        public string PictureWhitePath => "ChessPawnWhite.png";
+        public string PictureBlackPath => "ClassicChess\\ChessPawnBlack.png";
+        public string PictureWhitePath => "ClassicChess\\ChessPawnWhite.png";
         public string PictureNeutralPath => "";
 
         private readonly Position[] _avaibleFirstMoves =

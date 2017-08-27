@@ -9,10 +9,10 @@ namespace BattleChess3.Game
     /// </summary>
     public static partial class Play
     {
-        
-        
         private static readonly BaseFigure[][] Board = new BaseFigure[8][];
         public static BoardColumn[] BoardColumns = new BoardColumn[8];
+        public static bool[][] CanGoPattern = new bool[8][];
+        public static bool[][] CanAttackPattern = new bool[8][];
         public static Player WhitePlayer = new Player(Resource.White);
         public static Player BlackPlayer = new Player(Resource.Black);
         public static string WhooseTurn = Resource.White;

@@ -2,22 +2,22 @@
 using BattleChess3.Figures.AttackingTypes;
 using BattleChess3.Properties;
 
-namespace BattleChess3.Figures.FigureTypes
+namespace BattleChess3.Figures.FigureTypes.ClassicChess
 {
-    public class ChessTower : DirectionAttack, IFigure
+    public class ChessQueen : DirectionAttack, IFigure
     {
-        public string UnitName => Resource.ChessTower;
-        public string UnitType => Resource.Object;
+        public string UnitName => Resource.ChessQueen;
+        public string UnitType => Resource.Special;
         public string Bonus => Resource.Nothing;
         public string AntiBonus => Resource.Nothing;
         public int Attack => 100;
-        public int Defence => 0;
+        public int Defence => 9;
         public bool MovingWhileAttacking => true;
-        public int Cost => 5;
-        public string Description => "Chess tower is movable unit which can defend quite large area.";
+        public int Cost => 1;
+        public string Description => "Chess queen is very movable unit. She is best of chess game figures, so use it wisely and not get she killed.";
 
-        public string PictureBlackPath => "ChessTowerBlack.png";
-        public string PictureWhitePath => "ChessTowerWhite.png";
+        public string PictureBlackPath => "ClassicChess\\ChessQueenBlack.png";
+        public string PictureWhitePath => "ClassicChess\\ChessQueenWhite.png";
         public string PictureNeutralPath => "";
 
         private readonly Position[] _avaibleMoveDirections =
@@ -25,7 +25,11 @@ namespace BattleChess3.Figures.FigureTypes
             new Position(0, 1), 
             new Position(0, -1), 
             new Position(1, 0), 
-            new Position(-1, 0),
+            new Position(-1, 0), 
+            new Position(1, 1), 
+            new Position(-1, -1),
+            new Position(1, -1), 
+            new Position(-1, 1), 
         };
 
         private readonly Position[] _avaibleAttackDirections =
@@ -33,7 +37,11 @@ namespace BattleChess3.Figures.FigureTypes
             new Position(0, 1), 
             new Position(0, -1), 
             new Position(1, 0), 
-            new Position(-1, 0),
+            new Position(-1, 0), 
+            new Position(1, 1), 
+            new Position(-1, -1),
+            new Position(1, -1), 
+            new Position(-1, 1), 
         };
 
         public Position[] AttackPattern => new []

@@ -2,30 +2,26 @@
 using BattleChess3.Figures.AttackingTypes;
 using BattleChess3.Properties;
 
-namespace BattleChess3.Figures.FigureTypes
+namespace BattleChess3.Figures.FigureTypes.ClassicChess
 {
-    public class ChessQueen : DirectionAttack, IFigure
+    public class ChessBishop : DirectionAttack, IFigure
     {
-        public string UnitName => Resource.ChessQueen;
-        public string UnitType => Resource.Special;
+        public string UnitName => Resource.ChessBishop;
+        public string UnitType => Resource.Foot;
         public string Bonus => Resource.Nothing;
         public string AntiBonus => Resource.Nothing;
         public int Attack => 100;
-        public int Defence => 9;
+        public int Defence => 0;
         public bool MovingWhileAttacking => true;
-        public int Cost => 1;
-        public string Description => "Chess queen is very movable unit. She is best of chess game figures, so use it wisely and not get she killed.";
+        public int Cost => 3;
+        public string Description => "Chess bishop is quite movable unit and it can danger quite big area.";
 
-        public string PictureBlackPath => "ChessQueenBlack.png";
-        public string PictureWhitePath => "ChessQueenWhite.png";
+        public string PictureBlackPath => "ClassicChess\\ChessBishopBlack.png";
+        public string PictureWhitePath => "ClassicChess\\ChessBishopWhite.png";
         public string PictureNeutralPath => "";
 
         private readonly Position[] _avaibleMoveDirections =
         {
-            new Position(0, 1), 
-            new Position(0, -1), 
-            new Position(1, 0), 
-            new Position(-1, 0), 
             new Position(1, 1), 
             new Position(-1, -1),
             new Position(1, -1), 
@@ -34,10 +30,6 @@ namespace BattleChess3.Figures.FigureTypes
 
         private readonly Position[] _avaibleAttackDirections =
         {
-            new Position(0, 1), 
-            new Position(0, -1), 
-            new Position(1, 0), 
-            new Position(-1, 0), 
             new Position(1, 1), 
             new Position(-1, -1),
             new Position(1, -1), 
