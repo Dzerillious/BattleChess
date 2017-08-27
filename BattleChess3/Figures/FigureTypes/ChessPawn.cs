@@ -13,9 +13,8 @@ namespace BattleChess3.Figures.FigureTypes
         public int Attack => 100;
         public int Defence => 0;
         public bool MovingWhileAttacking => true;
-        public bool LongRanged => false;
         public int Cost => 1;
-        public string Description => "Chess pawn";
+        public string Description => "Chess pawn is one of cheapest units of game, so he is good for front line attacks. Many of pawns in one big formation.";
 
         public string PictureBlackPath => "ChessPawnBlack.png";
         public string PictureWhitePath => "ChessPawnWhite.png";

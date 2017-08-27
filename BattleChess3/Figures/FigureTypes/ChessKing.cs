@@ -13,9 +13,8 @@ namespace BattleChess3.Figures.FigureTypes
         public int Attack => 100;
         public int Defence => 0;
         public bool MovingWhileAttacking => true;
-        public bool LongRanged => false;
-        public int Cost => 1;
-        public string Description => "Chess king is quite weak unit and when he is killed, player with him loses.";
+        public int Cost => 0;
+        public string Description => "Chess king is quite weak unit and when he is killed, player with him loses. He is stronger than pawn, but you must care about him.";
 
         public string PictureBlackPath => "ChessKingBlack.png";
         public string PictureWhitePath => "ChessKingWhite.png";

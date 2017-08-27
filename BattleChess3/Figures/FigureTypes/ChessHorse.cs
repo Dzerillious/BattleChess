@@ -13,9 +13,8 @@ namespace BattleChess3.Figures.FigureTypes
         public int Attack => 100;
         public int Defence => 0;
         public bool MovingWhileAttacking => true;
-        public bool LongRanged => false;
-        public int Cost => 1;
-        public string Description => "Chess horse is very movable unit which can easily suprise enemy.";
+        public int Cost => 3;
+        public string Description => "Chess horse is quite movable unit which can easily suprise enemy, because his attacks are definet by many points, not directions.";
 
         public string PictureBlackPath => "ChessHorseBlack.png";
         public string PictureWhitePath => "ChessHorseWhite.png";

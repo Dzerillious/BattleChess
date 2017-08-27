@@ -62,7 +62,6 @@
                         <TextBlock Text="Bonus against: "/>
                         <TextBlock Text="Antibonus against: "/>
                         <TextBlock Text="Cost of unit: "/>
-                        <TextBlock Text="Long ranged: "/>
                         <TextBlock Text="Moving while attacking: "/>
                         <TextBlock Text="Description: "/>
                     </StackPanel>
@@ -83,7 +82,6 @@
                         <TextBlock Text="{Binding Path=SelFigure.FigureType.Bonus, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBlock Text="{Binding Path=SelFigure.FigureType.AntiBonus, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBlock Text="{Binding Path=SelFigure.FigureType.Cost, UpdateSourceTrigger=PropertyChanged}"/>
-                        <TextBlock Text="{Binding Path=SelFigure.FigureType.LongRanged, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBlock Text="{Binding Path=SelFigure.FigureType.MovingWhileAttacking, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBlock Text="{Binding Path=SelFigure.FigureType.Description, UpdateSourceTrigger=PropertyChanged}"/>
                     </StackPanel>

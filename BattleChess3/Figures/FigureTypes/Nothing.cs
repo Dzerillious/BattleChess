@@ -12,7 +12,6 @@ namespace BattleChess3.Figures.FigureTypes
         public int Attack => 0;
         public int Defence => 1000;
         public bool MovingWhileAttacking => false;
-        public bool LongRanged => false;
         public string Description => "Empty tile, where you can go";
         public string PictureBlackPath => "";
         public string PictureWhitePath => "";

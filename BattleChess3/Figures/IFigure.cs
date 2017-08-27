@@ -43,11 +43,6 @@ namespace BattleChess3.Figures
         bool MovingWhileAttacking { get; }
         
         /// <summary>
-        /// Gets If unit is long ranged
-        /// </summary>
-        bool LongRanged { get; }
-        
-        /// <summary>
         /// Gets Cost of unit
         /// </summary>
         int Cost { get; }

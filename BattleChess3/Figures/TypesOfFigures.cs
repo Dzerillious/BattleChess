@@ -17,7 +17,7 @@ namespace BattleChess3.Figures
             new ChessHorse(), 
             new ChessKing(),
             new ChessQueen(), 
-            new ChessArcher(), 
+            new ChessBishop(), 
             new ChessPawn(), 
             new ChessTower(), 
             new Nothing(),

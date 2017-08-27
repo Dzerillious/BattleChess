@@ -12,7 +12,6 @@ namespace BattleChess3.Figures.FigureTypes
         public int Attack => 0;
         public int Defence => -50;
         public bool MovingWhileAttacking => false;
-        public bool LongRanged => false;
         public string Description => "Palm tile, which you can easily destroy";
         public string PictureBlackPath => "";
         public string PictureWhitePath => "";

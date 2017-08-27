@@ -1,8 +1,0 @@
-﻿BlackChessTower BlackChessHorse BlackChessArcher BlackChessQueen BlackChessKing BlackChessArcher BlackChessHorse BlackChessTower 
-BlackChessPawn BlackChessPawn BlackChessPawn BlackChessPawn BlackChessPawn BlackChessPawn BlackChessPawn BlackChessPawn 
-Nothing Nothing Nothing Nothing Nothing Nothing Nothing Nothing 
-Nothing Nothing Nothing Nothing Nothing Nothing Nothing Nothing 
-Nothing Nothing Nothing Nothing Nothing Nothing Nothing Nothing 
-Nothing Nothing Nothing Nothing Nothing Nothing Nothing Nothing 
-WhiteChessPawn WhiteChessPawn WhiteChessPawn WhiteChessPawn WhiteChessPawn WhiteChessPawn WhiteChessPawn WhiteChessPawn 
-WhiteChessTower WhiteChessHorse WhiteChessArcher WhiteChessQueen WhiteChessKing WhiteChessArcher WhiteChessHorse WhiteChessTower 

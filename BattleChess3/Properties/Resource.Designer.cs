@@ -234,9 +234,9 @@ namespace BattleChess3.Properties {
         /// <summary>
         ///   Looks up a localized string similar to White.
         /// </summary>
-        internal static string ChessArcher {
+        internal static string ChessBishop {
             get {
-                return ResourceManager.GetString("ChessArcher", resourceCulture);
+                return ResourceManager.GetString("ChessBishop", resourceCulture);
             }
         }
         

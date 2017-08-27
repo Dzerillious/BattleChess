@@ -151,7 +151,7 @@
     <value>White</value>
   </data>
   <data name="PicturesPath" xml:space="preserve">
-    <value>C:\\Users\\danys\\OneDrive\\Documents\\battle-chess-3.0\\BattleChess3\\Pictures\\</value>
+    <value>\\Pictures\\</value>
   </data>
   <data name="Palm" xml:space="preserve">
     <value>Palm</value>
@@ -174,8 +174,8 @@
   <data name="ChessTower" xml:space="preserve">
     <value>ChessTower</value>
   </data>
-  <data name="ChessArcher" xml:space="preserve">
-    <value>ChessArcher</value>
+  <data name="ChessBishop" xml:space="preserve">
+    <value>ChessBishop</value>
   </data>
   <data name="Object" xml:space="preserve">
     <value>Object</value>

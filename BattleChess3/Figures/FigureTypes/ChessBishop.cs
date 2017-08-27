@@ -4,21 +4,20 @@ using BattleChess3.Properties;
 
 namespace BattleChess3.Figures.FigureTypes
 {
-    public class ChessArcher : DirectionAttack, IFigure
+    public class ChessBishop : DirectionAttack, IFigure
     {
-        public string UnitName => Resource.ChessArcher;
+        public string UnitName => Resource.ChessBishop;
         public string UnitType => Resource.Foot;
         public string Bonus => Resource.Nothing;
         public string AntiBonus => Resource.Nothing;
         public int Attack => 100;
         public int Defence => 0;
         public bool MovingWhileAttacking => true;
-        public bool LongRanged => true;
-        public int Cost => 1;
-        public string Description => "Chess archer";
+        public int Cost => 3;
+        public string Description => "Chess bishop is quite movable unit and it can danger quite big area.";
 
-        public string PictureBlackPath => "ChessArcherBlack.png";
-        public string PictureWhitePath => "ChessArcherWhite.png";
+        public string PictureBlackPath => "ChessBishopBlack.png";
+        public string PictureWhitePath => "ChessBishopWhite.png";
         public string PictureNeutralPath => "";
 
         private readonly Position[] _avaibleMoveDirections =

@@ -64,7 +64,7 @@
     <Compile Include="Figures\AttackingTypes\SimpleFrontMoveFigure.cs" />
     <Compile Include="Figures\AttackingTypes\SimpleMoveFigure.cs" />
     <Compile Include="Figures\BaseFigure.cs" />
-    <Compile Include="Figures\FigureTypes\ChessArcher.cs" />
+    <Compile Include="Figures\FigureTypes\ChessBishop.cs" />
     <Compile Include="Figures\FigureTypes\ChessHorse.cs" />
     <Compile Include="Figures\FigureTypes\ChessKing.cs" />
     <Compile Include="Figures\FigureTypes\ChessPawn.cs" />
@@ -88,7 +88,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Maps\ClassicChess.txt" />
     <Compile Include="Position.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -111,9 +110,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Maps\ClassicMap.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resource.resx">

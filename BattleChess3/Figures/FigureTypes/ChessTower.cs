@@ -13,9 +13,8 @@ namespace BattleChess3.Figures.FigureTypes
         public int Attack => 100;
         public int Defence => 0;
         public bool MovingWhileAttacking => true;
-        public bool LongRanged => true;
-        public int Cost => 1;
-        public string Description => "Chess queen";
+        public int Cost => 5;
+        public string Description => "Chess tower is movable unit which can defend quite large area.";
 
         public string PictureBlackPath => "ChessTowerBlack.png";
         public string PictureWhitePath => "ChessTowerWhite.png";

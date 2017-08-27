@@ -1,4 +1,5 @@
-﻿using BattleChess3.Figures.FigureTypes;
+﻿using System.IO;
+using BattleChess3.Figures.FigureTypes;
 using BattleChess3.Game;
 using BattleChess3.Properties;
 
@@ -29,7 +30,7 @@ namespace BattleChess3.Figures
             Position = new Position();
             FigureType = new Nothing();
             Highlighted = Resource.NotHighlighted;
-            PicturePath = Resource.PicturesPath + FigureType.PictureNeutralPath;
+            PicturePath = Directory.GetCurrentDirectory() + Resource.PicturesPath + FigureType.PictureNeutralPath;
         }
         
         /// <summary>
@@ -42,7 +43,7 @@ namespace BattleChess3.Figures
             Position = position;
             FigureType = new Nothing();
             Highlighted = Resource.NotHighlighted;
-            PicturePath = Resource.PicturesPath + FigureType.PictureNeutralPath;
+            PicturePath = Directory.GetCurrentDirectory() + Resource.PicturesPath + FigureType.PictureNeutralPath;
         }
 
         /// <summary>
@@ -60,15 +61,15 @@ namespace BattleChess3.Figures
             Highlighted = Resource.NotHighlighted;
             if (Color == Resource.White)
             {
-                PicturePath = Resource.PicturesPath + FigureType.PictureWhitePath;
+                PicturePath = Directory.GetCurrentDirectory() + Resource.PicturesPath + FigureType.PictureWhitePath;
             }
             else if (Color == Resource.Black)
             {
-                PicturePath = Resource.PicturesPath + FigureType.PictureBlackPath;
+                PicturePath = Directory.GetCurrentDirectory() + Resource.PicturesPath + FigureType.PictureBlackPath;
             }
             else
             {
-                PicturePath = Resource.PicturesPath + FigureType.PictureNeutralPath;
+                PicturePath = Directory.GetCurrentDirectory() + Resource.PicturesPath + FigureType.PictureNeutralPath;
             }
         }
 
@@ -114,7 +115,7 @@ namespace BattleChess3.Figures
         {
             if (FigureType.CanAttack(this, enemy) && enemy.FigureType.Defence < FigureType.Attack)
             {
-                if (FigureType.MovingWhileAttacking && FigureType.LongRanged)
+                if (FigureType.MovingWhileAttacking)
                 {
                     var remainingHp = enemy.RemainedHpOfAttacked(this);
                     return remainingHp <= 0;
@@ -130,7 +131,7 @@ namespace BattleChess3.Figures
         public bool TryAttack(BaseFigure enemy)
         {
             var remainingHp = enemy.RemainedHpOfAttacked(this);
-            if (FigureType.MovingWhileAttacking && FigureType.LongRanged)
+            if (FigureType.MovingWhileAttacking)
             {
                 if (remainingHp > 0) return false;
                 AttackPattern(enemy.Position);
