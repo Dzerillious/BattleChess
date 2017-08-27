@@ -78,6 +78,7 @@
     <Compile Include="Figures\FigureTypes\Ninja.cs" />
     <Compile Include="Figures\AttackingTypes\SimpleAttackFigure.cs" />
     <Compile Include="Game\BoardColumn.cs" />
+    <Compile Include="Game\BoardTools.cs" />
     <Compile Include="Game\Highlight.cs" />
     <Compile Include="Game\Play.cs" />
     <Compile Include="Game\Player.cs" />
