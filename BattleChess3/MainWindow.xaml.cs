@@ -40,5 +40,25 @@ namespace BattleChess3
             Play.MouseOn.SelFigure = figure;
             Play.MouseOn.SelPosition = figure.Position;
         }
+
+        private void LoadMapOnClick(object sender, RoutedEventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private void SaveMapOnClick(object sender, RoutedEventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private void OptionsOnClick(object sender, RoutedEventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private void QuitApplicationClick(object sender, RoutedEventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

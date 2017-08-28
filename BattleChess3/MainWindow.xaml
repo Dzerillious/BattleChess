@@ -6,93 +6,118 @@
         xmlns:game="clr-namespace:BattleChess3.Game"
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="800" MinHeight="480" MinWidth="640">
-    <Grid>
-        <TabControl>
-            <TabItem Header="Main Menu">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
-            <TabItem Header="Game">
-                <DockPanel LastChildFill="True">
-                    <ItemsControl x:Name="Column"
+    <TabControl>
+        <TabControl.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="FontSize" Value="13"></Setter>
+                <Setter Property="FontWeight" Value="Heavy"></Setter>
+                <Setter Property="TextWrapping" Value="Wrap"></Setter>
+            </Style>
+        </TabControl.Resources>
+        <TabItem Header="Main Menu">
+            <Grid>
+                <Grid.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="FontSize" Value="20"></Setter>
+                        <Setter Property="FontWeight" Value="Heavy"></Setter>
+                    </Style>
+                </Grid.Resources>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Row="0" Grid.Column="0" Content="New Game"/>
+                <Button Grid.Row="1" Grid.Column="0" Content="Save Game"/>
+                <Button Grid.Row="2" Grid.Column="0" Content="Options"/>
+                <Button Grid.Row="3" Grid.Column="0" Content="Quit"/>
+                <ItemsControl x:Name="Maps"
+                              ItemsSource="{Binding Source={x:Static game:Play.BoardColumns}}"
+                              Grid.Row="0" Grid.RowSpan="4"
+                              Grid.Column="1">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"
+                                        CanHorizontallyScroll="True">
+                            </StackPanel>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="a" Margin="10"></TextBlock>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Game" IsEnabled="False">
+            <DockPanel LastChildFill="True">
+                <ItemsControl x:Name="Column"
                                   ItemsSource="{Binding Source={x:Static game:Play.BoardColumns}, UpdateSourceTrigger=PropertyChanged}"
                                   HorizontalAlignment="Stretch">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <UniformGrid Rows="8"/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <ItemsControl x:Name="Tile"
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Rows="8"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <ItemsControl x:Name="Tile"
                                               ItemsSource="{Binding Path=ColumnFigures}"
                                               VerticalAlignment="Stretch">
-                                    <ItemsControl.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <StackPanel Orientation="Horizontal"/>
-                                        </ItemsPanelTemplate>
-                                    </ItemsControl.ItemsPanel>
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <Button Click="OnButtonClick"
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button Click="OnButtonClick"
                                                     MouseEnter="OnMouseEnter"
                                                     CommandParameter="{Binding}"
                                                     Background="{Binding Path=Highlighted}">
-                                                <Image Source="{Binding Path=PicturePath}"/>
-                                            </Button>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                    
-                    <StackPanel Orientation="Vertical" DataContext="{Binding Source={x:Static game:Play.MouseOn}}">
-                        <StackPanel.Resources>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="FontSize" Value="13"></Setter>
-                                <Setter Property="FontWeight" Value="Heavy"></Setter>
-                                <Setter Property="TextWrapping" Value="Wrap"></Setter>
-                            </Style>
-                        </StackPanel.Resources>
-                        <TextBlock Text="Name:"/>
-                        <TextBlock Text="Unit type: "/>
-                        <TextBlock Text="Hp: "/>
-                        <TextBlock Text="Attack: "/>
-                        <TextBlock Text="Defence: "/>
-                        <TextBlock Text="Bonus against: "/>
-                        <TextBlock Text="Antibonus against: "/>
-                        <TextBlock Text="Cost of unit: "/>
-                        <TextBlock Text="Moving while attacking: "/>
-                        <TextBlock Text="Description: "/>
-                    </StackPanel>
-                
-                    <StackPanel Orientation="Vertical" DataContext="{Binding Source={x:Static game:Play.MouseOn}}">
-                        <StackPanel.Resources>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="FontSize" Value="13"></Setter>
-                                <Setter Property="FontWeight" Value="Heavy"></Setter>
-                                <Setter Property="TextWrapping" Value="Wrap"></Setter>
-                            </Style>
-                        </StackPanel.Resources>
-                        <TextBlock Text="{Binding Path=SelFigure.FigureType.UnitName, UpdateSourceTrigger=PropertyChanged}"/>
-                        <TextBlock Text="{Binding Path=SelFigure.FigureType.UnitType, UpdateSourceTrigger=PropertyChanged}"/>
-                        <TextBlock Text="{Binding Path=SelFigure.Hp, UpdateSourceTrigger=PropertyChanged}"/>
-                        <TextBlock Text="{Binding Path=SelFigure.FigureType.Attack, UpdateSourceTrigger=PropertyChanged}"/>
-                        <TextBlock Text="{Binding Path=SelFigure.FigureType.Defence, UpdateSourceTrigger=PropertyChanged}"/>
-                        <TextBlock Text="{Binding Path=SelFigure.FigureType.Bonus, UpdateSourceTrigger=PropertyChanged}"/>
-                        <TextBlock Text="{Binding Path=SelFigure.FigureType.AntiBonus, UpdateSourceTrigger=PropertyChanged}"/>
-                        <TextBlock Text="{Binding Path=SelFigure.FigureType.Cost, UpdateSourceTrigger=PropertyChanged}"/>
-                        <TextBlock Text="{Binding Path=SelFigure.FigureType.MovingWhileAttacking, UpdateSourceTrigger=PropertyChanged}"/>
-                        <TextBlock Text="{Binding Path=SelFigure.FigureType.Description, UpdateSourceTrigger=PropertyChanged}"/>
-                    </StackPanel>
-                </DockPanel>
-            </TabItem>
-            <TabItem Header="Map Editor">
-                <Grid Background="#FFE5E5E5">
+                                            <Image Source="{Binding Path=PicturePath}"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
 
-                </Grid>
-            </TabItem>
-        </TabControl>
+                <StackPanel Orientation="Vertical" DataContext="{Binding Source={x:Static game:Play.MouseOn}}">
+                    <TextBlock Text="Name:"/>
+                    <TextBlock Text="Unit type: "/>
+                    <TextBlock Text="Hp: "/>
+                    <TextBlock Text="Attack: "/>
+                    <TextBlock Text="Defence: "/>
+                    <TextBlock Text="Bonus against: "/>
+                    <TextBlock Text="Antibonus against: "/>
+                    <TextBlock Text="Cost of unit: "/>
+                    <TextBlock Text="Moving while attacking: "/>
+                    <TextBlock Text="Description: "/>
+                </StackPanel>
 
-    </Grid>
+                <StackPanel Orientation="Vertical" DataContext="{Binding Source={x:Static game:Play.MouseOn}}">
+                    <TextBlock Text="{Binding Path=SelFigure.FigureType.UnitName, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Text="{Binding Path=SelFigure.FigureType.UnitType, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Text="{Binding Path=SelFigure.Hp, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Text="{Binding Path=SelFigure.FigureType.Attack, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Text="{Binding Path=SelFigure.FigureType.Defence, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Text="{Binding Path=SelFigure.FigureType.Bonus, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Text="{Binding Path=SelFigure.FigureType.AntiBonus, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Text="{Binding Path=SelFigure.FigureType.Cost, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Text="{Binding Path=SelFigure.FigureType.MovingWhileAttacking, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Text="{Binding Path=SelFigure.FigureType.Description, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+            </DockPanel>
+        </TabItem>
+        <TabItem Header="Map Editor">
+        </TabItem>
+    </TabControl>
 </Window>
