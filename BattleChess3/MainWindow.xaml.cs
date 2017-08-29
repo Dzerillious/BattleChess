@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.IO;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using BattleChess3.Figures;
@@ -17,8 +18,8 @@ namespace BattleChess3
         public MainWindow()
         {
             InitializeComponent();
-            Play.LoadMap("Maps\\ClassicChess.txt");
-            Play.SetBindedBoard();
+            Session.LoadMap(Directory.GetCurrentDirectory() + "\\Maps\\ClassicChess.txt");
+            Session.SetBindedBoard();
         }
 
         /// <summary>
@@ -30,15 +31,15 @@ namespace BattleChess3
         {
             var button = (Button) sender;
             var figure = (BaseFigure) button.CommandParameter;
-            Play.ClickedAtPosition(figure.Position);
+            Session.ClickedAtPosition(figure.Position);
         }
 
         private void OnMouseEnter(object sender, MouseEventArgs e)
         {
             var button = (Button) sender;
             var figure = (BaseFigure) button.CommandParameter;
-            Play.MouseOn.SelFigure = figure;
-            Play.MouseOn.SelPosition = figure.Position;
+            Session.MouseOn.SelFigure = figure;
+            Session.MouseOn.SelPosition = figure.Position;
         }
 
         private void LoadMapOnClick(object sender, RoutedEventArgs e)

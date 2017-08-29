@@ -89,7 +89,7 @@
     <Compile Include="Game\BoardColumn.cs" />
     <Compile Include="Game\BoardTools.cs" />
     <Compile Include="Game\Highlight.cs" />
-    <Compile Include="Game\Play.cs" />
+    <Compile Include="Game\Session.cs" />
     <Compile Include="Game\Player.cs" />
     <Compile Include="Game\Selected.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -98,6 +98,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Menu\Map.cs" />
+    <Compile Include="Menu\Maps.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -133,9 +135,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -5,7 +5,7 @@ namespace BattleChess3.Game
     /// <summary>
     /// Board tools for class Play
     /// </summary>
-    public partial class Play
+    public partial class Session
     {
         /// <summary>
         /// Returns BaseFigure at position

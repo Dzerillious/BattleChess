@@ -171,6 +171,24 @@ namespace BattleChess3.Properties {
         /// <summary>
         ///   Looks up a localized string similar to White.
         /// </summary>
+        internal static string MapsPath {
+            get {
+                return ResourceManager.GetString("MapsPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to White.
+        /// </summary>
+        internal static string MapsPreviewPath {
+            get {
+                return ResourceManager.GetString("MapsPreviewPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to White.
+        /// </summary>
         internal static string Palm {
             get {
                 return ResourceManager.GetString("Palm", resourceCulture);

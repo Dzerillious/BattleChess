@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:game="clr-namespace:BattleChess3.Game"
+        xmlns:game="clr-namespace:BattleChess3.Game" 
+        xmlns:menu="clr-namespace:BattleChess3.Menu"
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="800" MinHeight="480" MinWidth="640">
     <TabControl>
@@ -27,38 +28,40 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="300"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Button Grid.Row="0" Grid.Column="0" Content="New Game"/>
-                <Button Grid.Row="1" Grid.Column="0" Content="Save Game"/>
-                <Button Grid.Row="2" Grid.Column="0" Content="Options"/>
-                <Button Grid.Row="3" Grid.Column="0" Content="Quit"/>
-                <ItemsControl x:Name="Maps"
-                              ItemsSource="{Binding Source={x:Static game:Play.BoardColumns}}"
-                              Grid.Row="0" Grid.RowSpan="4"
+                <Button Grid.Row="1" Grid.Column="0" Content="Load Map"/>
+                <Button Grid.Row="2" Grid.Column="0" Content="Save Game"/>
+                <Button Grid.Row="3" Grid.Column="0" Content="Options"/>
+                <Button Grid.Row="4" Grid.Column="0" Content="Quit"/>
+                <ScrollViewer VerticalScrollBarVisibility="Auto"
+                              Grid.Row="0" Grid.RowSpan="5"
                               Grid.Column="1">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal"
-                                        CanHorizontallyScroll="True">
-                            </StackPanel>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="a" Margin="10"></TextBlock>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
+                    <ListBox ItemsSource="{Binding Source={x:Static menu:Maps.Map}}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal" IsItemsHost="True"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding Path=PreviewPath}" Width="400" Margin="10" />
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>   
+                </ScrollViewer>
+                
             </Grid>
         </TabItem>
-        <TabItem Header="Game" IsEnabled="False">
+        <TabItem Header="Game">
             <DockPanel LastChildFill="True">
                 <ItemsControl x:Name="Column"
-                                  ItemsSource="{Binding Source={x:Static game:Play.BoardColumns}, UpdateSourceTrigger=PropertyChanged}"
+                                  ItemsSource="{Binding Source={x:Static game:Session.BoardColumns}, UpdateSourceTrigger=PropertyChanged}"
                                   HorizontalAlignment="Stretch">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -90,7 +93,7 @@
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
 
-                <StackPanel Orientation="Vertical" DataContext="{Binding Source={x:Static game:Play.MouseOn}}">
+                <StackPanel Orientation="Vertical">
                     <TextBlock Text="Name:"/>
                     <TextBlock Text="Unit type: "/>
                     <TextBlock Text="Hp: "/>
@@ -103,7 +106,7 @@
                     <TextBlock Text="Description: "/>
                 </StackPanel>
 
-                <StackPanel Orientation="Vertical" DataContext="{Binding Source={x:Static game:Play.MouseOn}}">
+                <StackPanel Orientation="Vertical" DataContext="{Binding Source={x:Static game:Session.MouseOn}}">
                     <TextBlock Text="{Binding Path=SelFigure.FigureType.UnitName, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBlock Text="{Binding Path=SelFigure.FigureType.UnitType, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBlock Text="{Binding Path=SelFigure.Hp, UpdateSourceTrigger=PropertyChanged}"/>
@@ -118,6 +121,8 @@
             </DockPanel>
         </TabItem>
         <TabItem Header="Map Editor">
+        </TabItem>
+        <TabItem Header="Manual">
         </TabItem>
     </TabControl>
 </Window>

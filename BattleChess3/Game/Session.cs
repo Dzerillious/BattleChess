@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using BattleChess3.Figures;
+using BattleChess3.Menu;
 using BattleChess3.Properties;
 
 namespace BattleChess3.Game
@@ -7,7 +8,7 @@ namespace BattleChess3.Game
     /// <summary>
     /// Class for game
     /// </summary>
-    public static partial class Play
+    public static partial class Session
     {
         private static readonly BaseFigure[][] Board = new BaseFigure[8][];
         public static BoardColumn[] BoardColumns = new BoardColumn[8];
@@ -63,7 +64,7 @@ namespace BattleChess3.Game
         /// <summary>
         /// Loads map and creates figures
         /// </summary>
-        public static void LoadMap(string filePath)
+        public static void LoadMap(string mapName)
         {
             for (var i = 0; i < 8; i++)
             {
@@ -74,11 +75,21 @@ namespace BattleChess3.Game
                     Board[i][j] = new BaseFigure();
                 }
             }
-            var lines = File.ReadAllLines(filePath);
-            for (var i = 0; i < 8; i++)
+            foreach (var map in Maps.Map)
             {
-                var tile = lines[7 - i].Split(' ');
-                for (var j = 0; j < 8; j++)
+                if (map.Name == mapName)
+                {
+                    GetMap(map);
+                }
+            }
+        }
+
+        public static void GetMap(Map map)
+        {
+            for (var i = 0; i < map.Figure.Length; i++)
+            {
+                var tile = map.Figure[i];
+                for (var j = 0; j < tile.Length; j++)
                 {
                     var position = new Position(j, i);
                     BaseFigure newBaseFigure;

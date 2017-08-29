@@ -35,7 +35,7 @@ namespace BattleChess3.Game
         /// <param name="position"></param>
         public void SetSelected(Position position)
         {
-            SelFigure = Play.GetFigureAtPosition(position);
+            SelFigure = Session.GetFigureAtPosition(position);
             SelPosition = position;
         }
 

@@ -24,7 +24,7 @@ namespace BattleChess3.Figures.AttackingTypes
                     {
                         return true;
                     }
-                    if (Play.GetFigureAtPosition(moveToPosition).FigureType.UnitName != Resource.Nothing)
+                    if (Game.Session.GetFigureAtPosition(moveToPosition).FigureType.UnitName != Resource.Nothing)
                     {
                         break;
                     }

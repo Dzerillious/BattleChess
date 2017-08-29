@@ -153,6 +153,12 @@
   <data name="PicturesPath" xml:space="preserve">
     <value>\\Pictures\\</value>
   </data>
+  <data name="MapsPath" xml:space="preserve">
+    <value>\\Maps\\</value>
+  </data>
+  <data name="MapsPreviewPath" xml:space="preserve">
+    <value>\\MapsPreview\\</value>
+  </data>
   <data name="Palm" xml:space="preserve">
     <value>Palm</value>
   </data>

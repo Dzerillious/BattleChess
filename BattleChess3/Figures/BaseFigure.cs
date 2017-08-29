@@ -79,19 +79,19 @@ namespace BattleChess3.Figures
         /// <param name="position"></param>
         public bool TryPlay(Position position)
         {
-            if (Play.WhooseTurn != Color) return false;
-            var enemy = Play.GetFigureAtPosition(position);
+            if (Game.Session.WhooseTurn != Color) return false;
+            var enemy = Game.Session.GetFigureAtPosition(position);
             if (CanMove(enemy))
             {
-                Play.MoveFigureToPosition(Position, position);
+                Game.Session.MoveFigureToPosition(Position, position);
                 Position = position;
                 return true;
             }
             if (enemy.Color != Color && CanAttack(enemy))
             {
-                if (FigureType.MovingWhileAttacking && TryAttack(Play.GetFigureAtPosition(position)))
+                if (FigureType.MovingWhileAttacking && TryAttack(Game.Session.GetFigureAtPosition(position)))
                 {
-                    Play.MoveFigureToPosition(Position, position);
+                    Game.Session.MoveFigureToPosition(Position, position);
                     Position = position;
                 }
                 return true;
@@ -149,7 +149,7 @@ namespace BattleChess3.Figures
         {
             foreach (var position in FigureType.AttackPattern)
             {
-                AttackFigure(Play.GetFigureAtPosition(position.AddPositions(attackedPosition)));
+                AttackFigure(Game.Session.GetFigureAtPosition(position.AddPositions(attackedPosition)));
             }
         }
 
@@ -190,14 +190,14 @@ namespace BattleChess3.Figures
         /// </summary>
         public void Die()
         {
-            Play.KillFigureAtPosition(Position);
-            if (Play.WhitePlayer.Color == Color)
+            Game.Session.KillFigureAtPosition(Position);
+            if (Game.Session.WhitePlayer.Color == Color)
             {
-                Play.WhitePlayer.KillFigure(this);
+                Game.Session.WhitePlayer.KillFigure(this);
             }
             else
             {
-                Play.BlackPlayer.KillFigure(this);
+                Game.Session.BlackPlayer.KillFigure(this);
             }
         }
 
