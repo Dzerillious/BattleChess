@@ -4,9 +4,15 @@ using BattleChess3.Properties;
 
 namespace BattleChess3.Menu
 {
+    /// <summary>
+    /// Static class for maps holder
+    /// </summary>
     public static class Maps
     {
         private static Map[] _map;
+        /// <summary>
+        /// Array of Maps in dictionary
+        /// </summary>
         public static Map[] Map
         {
             get
@@ -20,6 +26,9 @@ namespace BattleChess3.Menu
             set => _map = value;
         }
 
+        /// <summary>
+        /// Gets all maps from dictionary
+        /// </summary>
         public static void GetMaps()
         {
             var filePaths = Directory.GetFiles(Directory.GetCurrentDirectory() + "\\Maps");

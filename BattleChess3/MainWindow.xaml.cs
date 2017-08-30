@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using BattleChess3.Figures;
 using BattleChess3.Game;
+using BattleChess3.Menu;
 
 namespace BattleChess3
 {
@@ -18,15 +19,49 @@ namespace BattleChess3
         public MainWindow()
         {
             InitializeComponent();
-            Session.LoadMap(Directory.GetCurrentDirectory() + "\\Maps\\ClassicChess.txt");
-            Session.SetBindedBoard();
         }
 
         /// <summary>
-        /// Called when button is clicked
+        /// Called when new game is clicked
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        private void OnNewGameClick(object sender, RoutedEventArgs e)
+        {
+            if (Session.SelectedMap.Figure != null)
+            {
+                GameTab.IsEnabled = true;
+                Session.LoadMap();
+                Session.SetBindedBoard();
+                GameTab.IsSelected = true;
+            }
+        }
+        
+        private void OnDeleteMapClicked(object sender, RoutedEventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private void OnOptionsClick(object sender, RoutedEventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private void OnQuitApplicationClick(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        /// <summary>
+        /// Called when selected map is changed
+        /// </summary>
+        private void OnSelectedMapChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var listBox = (ListBox) sender;
+            Session.SelectedMap = (Map)listBox.SelectedItem;
+        }
+        
+        /// <summary>
+        /// Called when chess tile button is clicked
+        /// </summary>
         private void OnButtonClick(object sender, RoutedEventArgs e)
         {
             var button = (Button) sender;
@@ -34,6 +69,9 @@ namespace BattleChess3
             Session.ClickedAtPosition(figure.Position);
         }
 
+        /// <summary>
+        /// Called when mouse enters chess tile
+        /// </summary>
         private void OnMouseEnter(object sender, MouseEventArgs e)
         {
             var button = (Button) sender;
@@ -42,22 +80,12 @@ namespace BattleChess3
             Session.MouseOn.SelPosition = figure.Position;
         }
 
-        private void LoadMapOnClick(object sender, RoutedEventArgs e)
+        private void OnSaveMapClick(object sender, RoutedEventArgs e)
         {
             throw new System.NotImplementedException();
         }
-
-        private void SaveMapOnClick(object sender, RoutedEventArgs e)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        private void OptionsOnClick(object sender, RoutedEventArgs e)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        private void QuitApplicationClick(object sender, RoutedEventArgs e)
+        
+        private void OnManualClick(object sender, RoutedEventArgs e)
         {
             throw new System.NotImplementedException();
         }

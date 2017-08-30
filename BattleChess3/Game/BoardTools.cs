@@ -3,7 +3,7 @@
 namespace BattleChess3.Game
 {
     /// <summary>
-    /// Board tools for class Play
+    /// Board tools for class Session
     /// </summary>
     public partial class Session
     {

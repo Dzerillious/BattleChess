@@ -17,7 +17,7 @@ namespace BattleChess3.Figures.AttackingTypes
         {
             foreach (var direction in directions)
             {
-                for (var i = 1; i < 7; i++)
+                for (var i = 1; i < 8; i++)
                 {
                     var moveToPosition = movingFigure.Position.AddPositions(direction.MultiplePosition(i));
                     if (moveToPosition.CheckIfInBoard() == false) break;

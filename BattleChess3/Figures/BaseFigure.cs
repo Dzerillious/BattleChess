@@ -29,7 +29,7 @@ namespace BattleChess3.Figures
             Color = Resource.Neutral;
             Position = new Position();
             FigureType = new Nothing();
-            Highlighted = Resource.NotHighlighted;
+            Highlighted = StaticResources.NotHighlighted;
             PicturePath = Directory.GetCurrentDirectory() + Resource.PicturesPath + FigureType.PictureNeutralPath;
         }
         
@@ -42,7 +42,7 @@ namespace BattleChess3.Figures
             Color = Resource.Neutral;
             Position = position;
             FigureType = new Nothing();
-            Highlighted = Resource.NotHighlighted;
+            Highlighted = StaticResources.NotHighlighted;
             PicturePath = Directory.GetCurrentDirectory() + Resource.PicturesPath + FigureType.PictureNeutralPath;
         }
 
@@ -58,7 +58,7 @@ namespace BattleChess3.Figures
             Color = color;
             Position = position;
             FigureType = figureType;
-            Highlighted = Resource.NotHighlighted;
+            Highlighted = StaticResources.NotHighlighted;
             if (Color == Resource.White)
             {
                 PicturePath = Directory.GetCurrentDirectory() + Resource.PicturesPath + FigureType.PictureWhitePath;
@@ -79,19 +79,19 @@ namespace BattleChess3.Figures
         /// <param name="position"></param>
         public bool TryPlay(Position position)
         {
-            if (Game.Session.WhooseTurn != Color) return false;
-            var enemy = Game.Session.GetFigureAtPosition(position);
+            if (Session.WhooseTurn != Color) return false;
+            var enemy = Session.GetFigureAtPosition(position);
             if (CanMove(enemy))
             {
-                Game.Session.MoveFigureToPosition(Position, position);
+                Session.MoveFigureToPosition(Position, position);
                 Position = position;
                 return true;
             }
             if (enemy.Color != Color && CanAttack(enemy))
             {
-                if (FigureType.MovingWhileAttacking && TryAttack(Game.Session.GetFigureAtPosition(position)))
+                if (FigureType.MovingWhileAttacking && TryAttack(Session.GetFigureAtPosition(position)))
                 {
-                    Game.Session.MoveFigureToPosition(Position, position);
+                    Session.MoveFigureToPosition(Position, position);
                     Position = position;
                 }
                 return true;
@@ -149,7 +149,7 @@ namespace BattleChess3.Figures
         {
             foreach (var position in FigureType.AttackPattern)
             {
-                AttackFigure(Game.Session.GetFigureAtPosition(position.AddPositions(attackedPosition)));
+                AttackFigure(Session.GetFigureAtPosition(position.AddPositions(attackedPosition)));
             }
         }
 
@@ -190,14 +190,14 @@ namespace BattleChess3.Figures
         /// </summary>
         public void Die()
         {
-            Game.Session.KillFigureAtPosition(Position);
-            if (Game.Session.WhitePlayer.Color == Color)
+            Session.KillFigureAtPosition(Position);
+            if (Session.WhitePlayer.Color == Color)
             {
-                Game.Session.WhitePlayer.KillFigure(this);
+                Session.WhitePlayer.KillFigure(this);
             }
             else
             {
-                Game.Session.BlackPlayer.KillFigure(this);
+                Session.BlackPlayer.KillFigure(this);
             }
         }
 

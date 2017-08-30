@@ -4,7 +4,7 @@ using BattleChess3.Properties;
 namespace BattleChess3.Game
 {
     /// <summary>
-    /// Partial class of Play for highlighting tiles
+    /// Partial class of Session for highlighting tiles
     /// </summary>
     public static partial class Session
     {
@@ -17,7 +17,7 @@ namespace BattleChess3.Game
             {
                 for (var i = 0; i < 64; i++)
                 {
-                    Board[i / 8][i % 8].Highlighted = Resource.NotHighlighted;
+                    Board[i / 8][i % 8].Highlighted = StaticResources.NotHighlighted;
                 }
             }
             else
@@ -26,7 +26,7 @@ namespace BattleChess3.Game
                 {
                     var position = new Position(i / 8, i % 8);
                     var figure = GetFigureAtPosition(position);
-                    figure.Highlighted = Resource.NotHighlighted;
+                    figure.Highlighted = StaticResources.NotHighlighted;
                     if (Selected.SelFigure.Color == WhooseTurn)
                     {
                         HighlightDangered(figure);
@@ -45,7 +45,7 @@ namespace BattleChess3.Game
         {
             if (figure.Color != Selected.SelFigure.Color && Selected.SelFigure.CanAttack(figure))
             {
-                figure.Highlighted = Resource.HighlightedDanger;
+                figure.Highlighted = StaticResources.Dangered;
             }
         }
 
@@ -57,7 +57,7 @@ namespace BattleChess3.Game
         {
             if (Selected.SelFigure.CanMove(figure))
             {
-                figure.Highlighted = Resource.HighlightedCanGo;
+                figure.Highlighted = StaticResources.CanGo;
             }
         }
 
@@ -66,7 +66,7 @@ namespace BattleChess3.Game
         /// </summary>
         public static void HighlightSelected()
         {
-            Selected.SelFigure.Highlighted = Resource.HighlightedSelected;
+            Selected.SelFigure.Highlighted = StaticResources.Selected;
         }
     }
 }

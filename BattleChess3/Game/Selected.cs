@@ -10,6 +10,23 @@ namespace BattleChess3.Game
     /// </summary>
     public class Selected : INotifyPropertyChanged
     {
+        
+        public Position SelPosition { get; set; }
+        
+        private BaseFigure _selFigure;
+        /// <summary>
+        /// Selected figure
+        /// </summary>
+        public BaseFigure SelFigure
+        {
+            get => _selFigure;
+            set
+            {
+                _selFigure = value;
+                OnPropertyChanged();
+            }
+        }
+        
         /// <summary>
         /// Constructor
         /// </summary>
@@ -39,28 +56,8 @@ namespace BattleChess3.Game
             SelPosition = position;
         }
 
-        /// <summary>
-        /// Selected position
-        /// </summary>
-        public Position SelPosition { get; set; }
-
-        private BaseFigure _selFigure;
-        /// <summary>
-        /// Selected figure
-        /// </summary>
-        public BaseFigure SelFigure
-        {
-            get => _selFigure;
-            set
-            {
-                _selFigure = value;
-                OnPropertyChanged();
-            }
-        }
-
 
         public event PropertyChangedEventHandler PropertyChanged;
-
         /// <summary>
         /// On ColumnFigures changed
         /// </summary>

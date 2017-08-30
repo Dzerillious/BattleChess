@@ -1,128 +1,202 @@
-﻿<Window x:Class="BattleChess3.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:game="clr-namespace:BattleChess3.Game" 
-        xmlns:menu="clr-namespace:BattleChess3.Menu"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="800" MinHeight="480" MinWidth="640">
-    <TabControl>
-        <TabControl.Resources>
-            <Style TargetType="TextBlock">
-                <Setter Property="FontSize" Value="13"></Setter>
-                <Setter Property="FontWeight" Value="Heavy"></Setter>
-                <Setter Property="TextWrapping" Value="Wrap"></Setter>
-            </Style>
-        </TabControl.Resources>
-        <TabItem Header="Main Menu">
-            <Grid>
-                <Grid.Resources>
-                    <Style TargetType="Button">
-                        <Setter Property="FontSize" Value="20"></Setter>
-                        <Setter Property="FontWeight" Value="Heavy"></Setter>
-                    </Style>
-                </Grid.Resources>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="300"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Button Grid.Row="0" Grid.Column="0" Content="New Game"/>
-                <Button Grid.Row="1" Grid.Column="0" Content="Load Map"/>
-                <Button Grid.Row="2" Grid.Column="0" Content="Save Game"/>
-                <Button Grid.Row="3" Grid.Column="0" Content="Options"/>
-                <Button Grid.Row="4" Grid.Column="0" Content="Quit"/>
-                <ScrollViewer VerticalScrollBarVisibility="Auto"
-                              Grid.Row="0" Grid.RowSpan="5"
-                              Grid.Column="1">
-                    <ListBox ItemsSource="{Binding Source={x:Static menu:Maps.Map}}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                        <ListBox.ItemsPanel>
+﻿    <Window x:Class="BattleChess3.MainWindow"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:game="clr-namespace:BattleChess3.Game" 
+            xmlns:menu="clr-namespace:BattleChess3.Menu" 
+            xmlns:properties="clr-namespace:BattleChess3.Properties"
+            mc:Ignorable="d"
+            Title="MainWindow" Height="400" Width="800" MinHeight="480" MinWidth="640">
+        <TabControl>
+            <TabControl.Background>
+                <ImageBrush ImageSource="{Binding Source={x:Static properties:StaticResources.Background}}"/>
+            </TabControl.Background>
+            <TabControl.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="FontSize" Value="13"/>
+                    <Setter Property="FontWeight" Value="Heavy"/>
+                    <Setter Property="TextWrapping" Value="Wrap"/>
+                    <Setter Property="Margin" Value="5"/>
+                </Style>
+                <Style TargetType="Button" x:Key="ButtonStyle">
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="FontSize" Value="30"/>
+                    <Setter Property="FontWeight" Value="Heavy"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="{Binding Source={x:Static properties:StaticResources.Selected}}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TabControl.Resources>
+            <TabItem Header="Menu">
+                <Grid>
+                    <Grid.Resources>
+                        <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="{Binding Source={x:Static properties:StaticResources.BorderPic}}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Row="0" Grid.Column="0" Content="New Game" Click="OnNewGameClick"/>
+                    <Button Grid.Row="1" Grid.Column="0" Content="Delete Map" Click="OnDeleteMapClicked"/>
+                    <Button Grid.Row="2" Grid.Column="0" Content="Options" Click="OnOptionsClick"/>
+                    <Button Grid.Row="3" Grid.Column="0" Content="Quit" Click="OnQuitApplicationClick"/>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                                  Grid.Row="0" Grid.RowSpan="4"
+                                  Grid.Column="1">
+                        <ListBox ItemsSource="{Binding Source={x:Static menu:Maps.Map}}" 
+                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                 SelectionChanged="OnSelectedMapChanged"
+                                 Background="Transparent">
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel Orientation="Horizontal" IsItemsHost="True"/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Background="Black" Margin="10">
+                                        <Image Source="{Binding Path=PreviewPath}"
+                                               Width="300" Margin="10"
+                                               DataContext="{Binding}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>   
+                    </ScrollViewer>
+                    
+                </Grid>
+            </TabItem>
+            <TabItem Header="Game" Name="GameTab" IsEnabled="False">
+                <DockPanel LastChildFill="True">
+                    <ItemsControl x:Name="Column"
+                                      ItemsSource="{Binding Source={x:Static game:Session.BoardColumns}, UpdateSourceTrigger=PropertyChanged}"
+                                      HorizontalAlignment="Stretch">
+                        <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <WrapPanel Orientation="Horizontal" IsItemsHost="True"/>
+                                <UniformGrid Rows="8"/>
                             </ItemsPanelTemplate>
-                        </ListBox.ItemsPanel>
-                        <ListBox.ItemTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Image Source="{Binding Path=PreviewPath}" Width="400" Margin="10" />
+                                <ItemsControl x:Name="Tile"
+                                                  ItemsSource="{Binding Path=ColumnFigures}"
+                                                  VerticalAlignment="Stretch">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <DataTemplate.Resources>
+                                                <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
+                                                    <Setter Property="Background">
+                                                        <Setter.Value>
+                                                            <ImageBrush ImageSource="{Binding Path=Highlighted}"/>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                            </DataTemplate.Resources>
+                                            <Button Click="OnButtonClick"
+                                                        MouseEnter="OnMouseEnter"
+                                                        CommandParameter="{Binding}">
+                                                <Image Source="{Binding Path=PicturePath}"/>
+                                            </Button>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
                             </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>   
-                </ScrollViewer>
-                
-            </Grid>
-        </TabItem>
-        <TabItem Header="Game">
-            <DockPanel LastChildFill="True">
-                <ItemsControl x:Name="Column"
-                                  ItemsSource="{Binding Source={x:Static game:Session.BoardColumns}, UpdateSourceTrigger=PropertyChanged}"
-                                  HorizontalAlignment="Stretch">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <UniformGrid Rows="8"/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <ItemsControl x:Name="Tile"
-                                              ItemsSource="{Binding Path=ColumnFigures}"
-                                              VerticalAlignment="Stretch">
-                                <ItemsControl.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Horizontal"/>
-                                    </ItemsPanelTemplate>
-                                </ItemsControl.ItemsPanel>
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <Button Click="OnButtonClick"
-                                                    MouseEnter="OnMouseEnter"
-                                                    CommandParameter="{Binding}"
-                                                    Background="{Binding Path=Highlighted}">
-                                            <Image Source="{Binding Path=PicturePath}"/>
-                                        </Button>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Text="Name:"/>
-                    <TextBlock Text="Unit type: "/>
-                    <TextBlock Text="Hp: "/>
-                    <TextBlock Text="Attack: "/>
-                    <TextBlock Text="Defence: "/>
-                    <TextBlock Text="Bonus against: "/>
-                    <TextBlock Text="Antibonus against: "/>
-                    <TextBlock Text="Cost of unit: "/>
-                    <TextBlock Text="Moving while attacking: "/>
-                    <TextBlock Text="Description: "/>
-                </StackPanel>
-
-                <StackPanel Orientation="Vertical" DataContext="{Binding Source={x:Static game:Session.MouseOn}}">
-                    <TextBlock Text="{Binding Path=SelFigure.FigureType.UnitName, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBlock Text="{Binding Path=SelFigure.FigureType.UnitType, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBlock Text="{Binding Path=SelFigure.Hp, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBlock Text="{Binding Path=SelFigure.FigureType.Attack, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBlock Text="{Binding Path=SelFigure.FigureType.Defence, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBlock Text="{Binding Path=SelFigure.FigureType.Bonus, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBlock Text="{Binding Path=SelFigure.FigureType.AntiBonus, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBlock Text="{Binding Path=SelFigure.FigureType.Cost, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBlock Text="{Binding Path=SelFigure.FigureType.MovingWhileAttacking, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBlock Text="{Binding Path=SelFigure.FigureType.Description, UpdateSourceTrigger=PropertyChanged}"/>
-                </StackPanel>
-            </DockPanel>
-        </TabItem>
-        <TabItem Header="Map Editor">
-        </TabItem>
-        <TabItem Header="Manual">
-        </TabItem>
-    </TabControl>
-</Window>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    
+                    <Grid>
+                        <Grid.Resources>
+                            <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="{Binding Source={x:Static properties:StaticResources.BorderPic}}"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Grid.Resources>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="350"/>
+                            <RowDefinition Height="*" MinHeight="50"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" MinWidth="150"/>
+                            <ColumnDefinition Width="*" MinWidth="150"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Content="Save Game" 
+                                Click="OnSaveMapClick"
+                                Grid.Column="1" Grid.Row="1"/>
+                        <Button Content="Manual" 
+                                Click="OnManualClick" 
+                                Grid.Column="0" Grid.Row="1"/>
+                        <StackPanel Grid.Column="0" Grid.Row="0"
+                                    Orientation="Vertical">
+                            <TextBlock Text="Name:"/>
+                            <TextBlock Text="Unit type: "/>
+                            <TextBlock Text="Hp: "/>
+                            <TextBlock Text="Attack: "/>
+                            <TextBlock Text="Defence: "/>
+                            <TextBlock Text="Bonus against: "/>
+                            <TextBlock Text="Antibonus against: "/>
+                            <TextBlock Text="Cost of unit: "/>
+                            <TextBlock Text="Moving while attacking: "/>
+                            <TextBlock Text="Description: "/>
+                        </StackPanel>
+    
+                        <StackPanel Grid.Column="1" Grid.Row="0"
+                                    Orientation="Vertical" 
+                                    DataContext="{Binding Source={x:Static game:Session.MouseOn}}">
+                            <TextBlock Text="{Binding Path=SelFigure.FigureType.UnitName, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Text="{Binding Path=SelFigure.FigureType.UnitType, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Text="{Binding Path=SelFigure.Hp, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Text="{Binding Path=SelFigure.FigureType.Attack, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Text="{Binding Path=SelFigure.FigureType.Defence, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Text="{Binding Path=SelFigure.FigureType.Bonus, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Text="{Binding Path=SelFigure.FigureType.AntiBonus, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Text="{Binding Path=SelFigure.FigureType.Cost, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Text="{Binding Path=SelFigure.FigureType.MovingWhileAttacking, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Text="{Binding Path=SelFigure.FigureType.Description, UpdateSourceTrigger=PropertyChanged}"/>
+                        </StackPanel>
+                    </Grid>
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="Options" Name="Options">
+            </TabItem>
+            <TabItem Header="Map Editor" Name="MapEditor">
+            </TabItem>
+            <TabItem Header="Manual" Name="Manual">
+            </TabItem>
+        </TabControl>
+    </Window>

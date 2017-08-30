@@ -79,33 +79,6 @@ namespace BattleChess3.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Chartreuse.
-        /// </summary>
-        internal static string HighlightedCanGo {
-            get {
-                return ResourceManager.GetString("HighlightedCanGo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to OrangeRed.
-        /// </summary>
-        internal static string HighlightedDanger {
-            get {
-                return ResourceManager.GetString("HighlightedDanger", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to DeepSkyBlue.
-        /// </summary>
-        internal static string HighlightedSelected {
-            get {
-                return ResourceManager.GetString("HighlightedSelected", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Mout.
         /// </summary>
         internal static string Mount {
@@ -129,15 +102,6 @@ namespace BattleChess3.Properties {
         internal static string Ninja {
             get {
                 return ResourceManager.GetString("Ninja", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to YellowGreen.
-        /// </summary>
-        internal static string NotHighlighted {
-            get {
-                return ResourceManager.GetString("NotHighlighted", resourceCulture);
             }
         }
         

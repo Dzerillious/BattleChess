@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Linq;
 using BattleChess3.Figures;
 using BattleChess3.Menu;
 using BattleChess3.Properties;
@@ -6,7 +7,7 @@ using BattleChess3.Properties;
 namespace BattleChess3.Game
 {
     /// <summary>
-    /// Class for game
+    /// Class for session of game
     /// </summary>
     public static partial class Session
     {
@@ -19,6 +20,7 @@ namespace BattleChess3.Game
         public static string WhooseTurn = Resource.White;
         public static Selected Selected = new Selected();
         public static Selected MouseOn = new Selected();
+        public static Map SelectedMap = new Map();
         private static Position _playedPosition;
 
         
@@ -62,33 +64,33 @@ namespace BattleChess3.Game
         }
 
         /// <summary>
-        /// Loads map and creates figures
+        /// If map isnt loaded creates empty map. Calls GetMap
         /// </summary>
-        public static void LoadMap(string mapName)
+        public static void LoadMap()
         {
-            for (var i = 0; i < 8; i++)
+            if (Board.Any(tile => tile == null))
             {
-                BoardColumns[i] = new BoardColumn();
-                Board[i] = new BaseFigure[8];
-                for (var j = 0; j < 8; j++)
+                for (var i = 0; i < 8; i++)
                 {
-                    Board[i][j] = new BaseFigure();
+                    BoardColumns[i] = new BoardColumn();
+                    Board[i] = new BaseFigure[8];
+                    for (var j = 0; j < 8; j++)
+                    {
+                        Board[i][j] = new BaseFigure();
+                    }
                 }
             }
-            foreach (var map in Maps.Map)
-            {
-                if (map.Name == mapName)
-                {
-                    GetMap(map);
-                }
-            }
+            GetMap();
         }
 
-        public static void GetMap(Map map)
+        /// <summary>
+        /// Gets Map and sets figures
+        /// </summary>
+        public static void GetMap()
         {
-            for (var i = 0; i < map.Figure.Length; i++)
+            for (var i = 0; i < SelectedMap.Figure.Length; i++)
             {
-                var tile = map.Figure[i];
+                var tile = SelectedMap.Figure[i];
                 for (var j = 0; j < tile.Length; j++)
                 {
                     var position = new Position(j, i);

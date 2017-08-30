@@ -96,6 +96,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Properties\StaticResources.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Menu\Map.cs" />
