@@ -12,100 +12,14 @@
             <ImageBrush ImageSource="{Binding Source={x:Static properties:StaticResources.Background}}"/>
         </Window.Background>
         <Window.Resources>
-            <Style TargetType="{x:Type Window}"> 
-                <Setter Property="FontFamily" Value="Algerian" />             
-            </Style> 
-            <Style TargetType="TextBlock">
-                <Setter Property="FontSize" Value="25"/>
-                <Setter Property="FontWeight" Value="Heavy"/>
-                <Setter Property="TextWrapping" Value="Wrap"/>
-                <Setter Property="Margin" Value="2"/>
-            </Style>
-            <Style TargetType="Button" x:Key="ButtonStyle">
-                <Setter Property="BorderThickness" Value="0"/>
-                <Setter Property="FontSize" Value="50"/>
-                <Setter Property="FontWeight" Value="Heavy"/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border Background="{TemplateBinding Background}">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Border>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-                <Style.Triggers>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background">
-                            <Setter.Value>
-                                <ImageBrush ImageSource="{Binding Source={x:Static properties:StaticResources.Selected}}"/>
-                            </Setter.Value>
-                        </Setter>
-                    </Trigger>
-                </Style.Triggers>
-            </Style>
-            <Style TargetType="TabItem">
-                <Setter Property="FontSize" Value="20"></Setter>
-                <Setter Property="Height" Value="40"></Setter>
-                <Setter Property="Width" Value="100"></Setter>
-                <Setter Property="BorderThickness" Value="0"></Setter>
-                <Setter Property="Background">
-                    <Setter.Value>
-                        <ImageBrush ImageSource="{Binding Source={x:Static properties:StaticResources.BorderPic2}}"/>
-                    </Setter.Value>
-                </Setter>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type TabItem}">
-                            <Border Background="{TemplateBinding Background}" Padding="20,8">
-                                <TextBlock Text="{TemplateBinding Header}"
-                                           HorizontalAlignment="Stretch"
-                                           VerticalAlignment="Stretch">
-                                </TextBlock>
-                            </Border>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-                <Style.Triggers>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background">
-                            <Setter.Value>
-                                <ImageBrush ImageSource="{Binding Source={x:Static properties:StaticResources.MouseOver}}"/>
-                            </Setter.Value>
-                        </Setter>
-                    </Trigger>
-                    <Trigger Property="IsSelected" Value="True">
-                        <Setter Property="Background">
-                            <Setter.Value>
-                                <ImageBrush ImageSource="{Binding Source={x:Static properties:StaticResources.Selected2}}"/>
-                            </Setter.Value>
-                        </Setter>
-                    </Trigger>
-                    <Trigger Property="IsEnabled" Value="False">
-                        <Setter Property="Background">
-                            <Setter.Value>
-                                <ImageBrush ImageSource="{Binding Source={x:Static properties:StaticResources.Disabled}}"/>
-                            </Setter.Value>
-                        </Setter>
-                    </Trigger>
-                </Style.Triggers>
-            </Style>
+            <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle}"/>
+            <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}"/>
+            <Style TargetType="TabItem" BasedOn="{StaticResource TabItemStyle}"/>
+            <Style TargetType="TabControl" BasedOn="{StaticResource TabControlStyle}"/>
         </Window.Resources>
-        <TabControl FontWeight="Heavy"
-                    Background="Transparent"
-                    BorderThickness="5"
-                    BorderBrush="Black">
+        <TabControl>
             <TabItem Header="Menu">
                 <Grid>
-                    <Grid.Resources>
-                        <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
-                            <Setter Property="Background">
-                                <Setter.Value>
-                                    <ImageBrush ImageSource="{Binding Source={x:Static properties:StaticResources.BorderPic}}"/>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </Grid.Resources>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
@@ -190,16 +104,9 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                     
-                    <Grid>
-                        <Grid.Resources>
-                            <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
-                                <Setter Property="Background">
-                                    <Setter.Value>
-                                        <ImageBrush ImageSource="{Binding Source={x:Static properties:StaticResources.BorderPic}}"/>
-                                    </Setter.Value>
-                                </Setter>
-                            </Style>
-                        </Grid.Resources>
+                    <Border BorderThickness="10,0,0,0"
+                        BorderBrush="Black">
+                        <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="320"/>
                             <RowDefinition Height="*" MinHeight="50"/>
@@ -243,6 +150,8 @@
                                 Click="OnManualClick" 
                                 Grid.Column="0" Grid.Row="1"/>
                     </Grid>
+                    </Border>
+                    
                 </DockPanel>
             </TabItem>
             <TabItem Header="Options" Name="OptionsTab">
