@@ -1,11 +1,18 @@
-﻿using System.Windows;
+﻿using System;
+using System.IO;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using BattleChess3.Figures;
 using BattleChess3.Game;
 using BattleChess3.Menu;
+using BattleChess3.Properties;
+using Button = System.Windows.Controls.Button;
+using FontFamily = System.Windows.Media.FontFamily;
+using ListBox = System.Windows.Controls.ListBox;
+using MouseEventArgs = System.Windows.Input.MouseEventArgs;
 
 namespace BattleChess3
 {
@@ -43,11 +50,6 @@ namespace BattleChess3
                 Session.SetBindedBoard();
                 GameTab.IsSelected = true;
             }
-        }
-        
-        private void OnDeleteMapClicked(object sender, RoutedEventArgs e)
-        {
-            throw new System.NotImplementedException();
         }
 
         private void OnOptionsClick(object sender, RoutedEventArgs e)
@@ -92,9 +94,56 @@ namespace BattleChess3
 
         private void OnSaveMapClick(object sender, RoutedEventArgs e)
         {
-            throw new System.NotImplementedException();
+            var rnd = new Random();
+            var randomName = rnd.Next(0, int.MaxValue).ToString();
+            SaveToPng(BoardControl, $"MapsPreviews\\{randomName}.png");
+            var boardStrings = new string[10];
+            for (var i = 0; i < 8; i++)
+            {
+                boardStrings[i] = "";
+                for (var j = 0; j < 8; j++)
+                {
+                    var figure = Session.BoardColumns[j].ColumnFigures[7-i];
+                    if (figure.Color == Resource.Neutral)
+                    {
+                        boardStrings[i] += Resource.Nothing + " ";
+                    }
+                    else
+                    {
+                        boardStrings[i] += figure.Color + figure.FigureType.UnitName + " ";
+                    }
+                }
+            }
+            boardStrings[8] = Directory.GetCurrentDirectory() + $"\\MapsPreviews\\{randomName}.png";
+            boardStrings[9] = Session.WhooseTurn;
+            using (var outputFile = new StreamWriter(Directory.GetCurrentDirectory() + $"\\Maps\\{randomName}.txt"))
+            {
+                foreach (var line in boardStrings)
+                {
+                    outputFile.WriteLine(line);
+                }
+            }
         }
         
+        private void SaveToPng(FrameworkElement visual, string fileName)
+        {
+            var encoder = new PngBitmapEncoder();
+            SaveUsingEncoder(visual, fileName, encoder);
+        }
+        
+        private void SaveUsingEncoder(FrameworkElement visual, string fileName, BitmapEncoder encoder)
+        {
+            var bitmap = new RenderTargetBitmap((int)visual.ActualWidth, (int)visual.ActualHeight, 96, 96, PixelFormats.Pbgra32);
+            bitmap.Render(visual);
+            var frame = BitmapFrame.Create(bitmap);
+            encoder.Frames.Add(frame);
+
+            using (var stream = File.Create(fileName))
+            {
+                encoder.Save(stream);
+            }
+        }
+
         private void OnManualClick(object sender, RoutedEventArgs e)
         {
             ManualTab.IsSelected = true;

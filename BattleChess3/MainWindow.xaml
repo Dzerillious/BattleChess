@@ -5,7 +5,7 @@
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             xmlns:game="clr-namespace:BattleChess3.Game" 
             xmlns:menu="clr-namespace:BattleChess3.Menu" 
-            xmlns:properties="clr-namespace:BattleChess3.Properties"
+            xmlns:properties="clr-namespace:BattleChess3.Properties" 
             mc:Ignorable="d"
             Title="MainWindow" Height="480" Width="800" MinHeight="480" MinWidth="640">
         <Window.Background>
@@ -31,13 +31,13 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Button Grid.Row="0" Grid.Column="0" Content="New Game" Click="OnNewGameClick"/>
-                    <Button Grid.Row="1" Grid.Column="0" Content="Delete Map" Click="OnDeleteMapClicked"/>
+                    <Button Grid.Row="1" Grid.Column="0" Content="Manual" Click="OnManualClick"/>
                     <Button Grid.Row="2" Grid.Column="0" Content="Options" Click="OnOptionsClick"/>
                     <Button Grid.Row="3" Grid.Column="0" Content="Quit" Click="OnQuitApplicationClick"/>
                     <ScrollViewer VerticalScrollBarVisibility="Auto"
                                   Grid.Row="0" Grid.RowSpan="4"
                                   Grid.Column="1">
-                        <ListBox ItemsSource="{Binding Source={x:Static menu:Maps.Map}}" 
+                        <ListBox ItemsSource="{x:Static menu:Maps.Map}" 
                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                  SelectionChanged="OnSelectedMapChanged"
                                  BorderThickness="0"
@@ -49,11 +49,9 @@
                             </ListBox.ItemsPanel>
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid Background="Black" Margin="10">
-                                        <Image Source="{Binding Path=PreviewPath}"
-                                               Width="300" Margin="10"
-                                               DataContext="{Binding}"/>
-                                    </Grid>
+                                    <Image Source="{Binding Path=PreviewPath}"
+                                           Width="500" Margin="10"
+                                           DataContext="{Binding}"/>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>   
@@ -63,7 +61,8 @@
             </TabItem>
             <TabItem Header="Game" Name="GameTab" IsEnabled="False">
                 <DockPanel LastChildFill="True">
-                    <ItemsControl x:Name="Column"
+                    <Border Name="BoardControl">
+                        <ItemsControl
                                       ItemsSource="{Binding Source={x:Static game:Session.BoardColumns}, UpdateSourceTrigger=PropertyChanged}"
                                       HorizontalAlignment="Stretch">
                         <ItemsControl.ItemsPanel>
@@ -73,8 +72,7 @@
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <ItemsControl x:Name="Tile"
-                                                  ItemsSource="{Binding Path=ColumnFigures}"
+                                <ItemsControl ItemsSource="{Binding Path=ColumnFigures}"
                                                   VerticalAlignment="Stretch">
                                     <ItemsControl.ItemsPanel>
                                         <ItemsPanelTemplate>
@@ -103,7 +101,7 @@
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
-                    
+                    </Border>
                     <Border BorderThickness="10,0,0,0"
                         BorderBrush="Black">
                         <Grid>
@@ -156,7 +154,7 @@
             </TabItem>
             <TabItem Header="Options" Name="OptionsTab">
             </TabItem>
-            <TabItem Header="Map Editor" Name="MapEditor">
+            <TabItem Header="Editor" Name="MapEditor">
             </TabItem>
             <TabItem Header="Manual" Name="ManualTab">
             </TabItem>

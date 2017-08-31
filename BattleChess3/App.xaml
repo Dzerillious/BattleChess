@@ -18,7 +18,7 @@
             <Setter Property="BorderBrush" Value="Black"/>
             <Setter Property="Padding" Value="0"/>
         </Style>
-        <Style TargetType="Button" x:Key="ButtonStyle">
+        <Style x:Key="ButtonStyle" TargetType="Button">
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="FontSize" Value="50"/>
             <Setter Property="FontWeight" Value="Heavy"/>
@@ -38,6 +38,7 @@
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="Blue"/>
                     <Setter Property="Background">
                         <Setter.Value>
                             <ImageBrush ImageSource="{Binding Source={x:Static properties:StaticResources.Selected}}"/>
@@ -46,11 +47,11 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-        <Style TargetType="TabItem" x:Key="TabItemStyle">
-                <Setter Property="FontSize" Value="20"></Setter>
-                <Setter Property="Height" Value="40"></Setter>
-                <Setter Property="Width" Value="150"></Setter>
-                <Setter Property="BorderThickness" Value="0"></Setter>
+        <Style x:Key="TabItemStyle" TargetType="TabItem">
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="Height" Value="40"/>
+                <Setter Property="Width" Value="150"/>
+                <Setter Property="BorderThickness" Value="0"/>
                 <Setter Property="Background">
                     <Setter.Value>
                         <ImageBrush ImageSource="{Binding Source={x:Static properties:StaticResources.BorderPic2}}"/>
@@ -70,6 +71,7 @@
                 </Setter>
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Foreground" Value="Blue"/>
                         <Setter Property="Background">
                             <Setter.Value>
                                 <ImageBrush ImageSource="{Binding Source={x:Static properties:StaticResources.MouseOver}}"/>
@@ -77,6 +79,7 @@
                         </Setter>
                     </Trigger>
                     <Trigger Property="IsSelected" Value="True">
+                        <Setter Property="Foreground" Value="Black"/>
                         <Setter Property="Background">
                             <Setter.Value>
                                 <ImageBrush ImageSource="{Binding Source={x:Static properties:StaticResources.Selected2}}"/>

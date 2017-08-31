@@ -1,6 +1,10 @@
-﻿using System.IO;
+﻿using System;
+using System.ComponentModel;
+using System.IO;
 using System.Linq;
-using BattleChess3.Properties;
+using System.Runtime.CompilerServices;
+using System.Windows.Markup;
+using BattleChess3.Annotations;
 
 namespace BattleChess3.Menu
 {
@@ -19,38 +23,29 @@ namespace BattleChess3.Menu
             {
                 if (_map == null)
                 {
-                    GetMaps();
-                }
-                return _map;
-            }
-            set => _map = value;
-        }
-
-        /// <summary>
-        /// Gets all maps from dictionary
-        /// </summary>
-        public static void GetMaps()
-        {
-            var filePaths = Directory.GetFiles(Directory.GetCurrentDirectory() + "\\Maps");
-            Map = new Map[filePaths.Count()];
-            for (var index = 0; index < filePaths.Length; index++)
-            {
-                var tiles = new string[8][];
-                for (var i = 0; i < 8; i++)
-                {
-                    tiles[i] = new string[8];
-                }
-                var filePath = filePaths[index];
-                var lines = File.ReadAllLines(filePath);
-                for (var i = 0; i < 8; i++)
-                {
-                    var tile = lines[7 - i].Split(' ');
-                    for (var j = 0; j < 8; j++)
+                    var filePaths = Directory.GetFiles(Directory.GetCurrentDirectory() + "\\Maps");
+                    _map = new Map[filePaths.Count()];
+                    for (var index = 0; index < filePaths.Length; index++)
                     {
-                        tiles[i][j] = tile[j];
+                        var tiles = new string[8][];
+                        for (var i = 0; i < 8; i++)
+                        {
+                            tiles[i] = new string[8];
+                        }
+                        var filePath = filePaths[index];
+                        var lines = File.ReadAllLines(filePath);
+                        for (var i = 0; i < 8; i++)
+                        {
+                            var tile = lines[7 - i].Split(' ');
+                            for (var j = 0; j < 8; j++)
+                            {
+                                tiles[i][j] = tile[j];
+                            }
+                        }
+                        _map[index] = new Map(filePath, lines[8], lines[9], tiles);
                     }
                 }
-                Map[index] = new Map(filePath, lines[8], tiles);
+                return _map;
             }
         }
     }

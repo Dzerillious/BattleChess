@@ -68,7 +68,7 @@ namespace BattleChess3.Game
         /// </summary>
         public static void LoadMap()
         {
-            if (Board.Any(tile => tile == null))
+            if (Board.Any(column => column == null))
             {
                 for (var i = 0; i < 8; i++)
                 {
@@ -80,6 +80,16 @@ namespace BattleChess3.Game
                     }
                 }
             }
+            else
+            {
+                foreach (var column in Board)
+                {
+                    foreach (var tile in column)
+                    {
+                        tile.Die();
+                    }
+                }
+            }
             GetMap();
         }
 
@@ -88,6 +98,7 @@ namespace BattleChess3.Game
         /// </summary>
         public static void GetMap()
         {
+            WhooseTurn = SelectedMap.StartingPlayer;
             for (var i = 0; i < SelectedMap.Figure.Length; i++)
             {
                 var tile = SelectedMap.Figure[i];

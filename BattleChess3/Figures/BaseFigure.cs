@@ -200,7 +200,5 @@ namespace BattleChess3.Figures
                 Session.BlackPlayer.KillFigure(this);
             }
         }
-
-        
     }
 }
