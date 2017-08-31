@@ -11,9 +11,9 @@ namespace BattleChess3.Figures.FigureTypes.ClassicChess
         public string Bonus => Resource.Nothing;
         public string AntiBonus => Resource.Nothing;
         public int Attack => 100;
-        public int Defence => 9;
+        public int Defence => 0;
         public bool MovingWhileAttacking => true;
-        public int Cost => 1;
+        public int Cost => 9;
         public string Description => "Chess queen is very movable unit. She is best of chess game figures, so use it wisely and not get she killed.";
 
         public string PictureBlackPath => "ClassicChess\\ChessQueenBlack.png";

@@ -1,7 +1,8 @@
-﻿using System.IO;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Media;
 using BattleChess3.Figures;
 using BattleChess3.Game;
 using BattleChess3.Menu;
@@ -19,6 +20,15 @@ namespace BattleChess3
         public MainWindow()
         {
             InitializeComponent();
+            TextElement.FontFamilyProperty.OverrideMetadata(
+                typeof(TextElement),
+                new FrameworkPropertyMetadata(
+                    new FontFamily("Edwardian Script ITC")));
+
+            TextBlock.FontFamilyProperty.OverrideMetadata(
+                typeof(TextBlock),
+                new FrameworkPropertyMetadata(
+                    new FontFamily("Edwardian Script ITC")));
         }
 
         /// <summary>
@@ -42,7 +52,7 @@ namespace BattleChess3
 
         private void OnOptionsClick(object sender, RoutedEventArgs e)
         {
-            throw new System.NotImplementedException();
+            OptionsTab.IsSelected = true;
         }
 
         private void OnQuitApplicationClick(object sender, RoutedEventArgs e)
@@ -87,7 +97,7 @@ namespace BattleChess3
         
         private void OnManualClick(object sender, RoutedEventArgs e)
         {
-            throw new System.NotImplementedException();
+            ManualTab.IsSelected = true;
         }
     }
 }

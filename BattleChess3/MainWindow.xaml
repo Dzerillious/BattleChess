@@ -7,42 +7,94 @@
             xmlns:menu="clr-namespace:BattleChess3.Menu" 
             xmlns:properties="clr-namespace:BattleChess3.Properties"
             mc:Ignorable="d"
-            Title="MainWindow" Height="400" Width="800" MinHeight="480" MinWidth="640">
-        <TabControl>
-            <TabControl.Background>
-                <ImageBrush ImageSource="{Binding Source={x:Static properties:StaticResources.Background}}"/>
-            </TabControl.Background>
-            <TabControl.Resources>
-                <Style TargetType="TextBlock">
-                    <Setter Property="FontSize" Value="13"/>
-                    <Setter Property="FontWeight" Value="Heavy"/>
-                    <Setter Property="TextWrapping" Value="Wrap"/>
-                    <Setter Property="Margin" Value="5"/>
-                </Style>
-                <Style TargetType="Button" x:Key="ButtonStyle">
-                    <Setter Property="BorderThickness" Value="0"/>
-                    <Setter Property="FontSize" Value="30"/>
-                    <Setter Property="FontWeight" Value="Heavy"/>
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type Button}">
-                                <Border Background="{TemplateBinding Background}">
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background">
-                                <Setter.Value>
-                                    <ImageBrush ImageSource="{Binding Source={x:Static properties:StaticResources.Selected}}"/>
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </TabControl.Resources>
+            Title="MainWindow" Height="480" Width="800" MinHeight="480" MinWidth="640">
+        <Window.Background>
+            <ImageBrush ImageSource="{Binding Source={x:Static properties:StaticResources.Background}}"/>
+        </Window.Background>
+        <Window.Resources>
+            <Style TargetType="{x:Type Window}"> 
+                <Setter Property="FontFamily" Value="Algerian" />             
+            </Style> 
+            <Style TargetType="TextBlock">
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="FontWeight" Value="Heavy"/>
+                <Setter Property="TextWrapping" Value="Wrap"/>
+                <Setter Property="Margin" Value="2"/>
+            </Style>
+            <Style TargetType="Button" x:Key="ButtonStyle">
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="FontSize" Value="50"/>
+                <Setter Property="FontWeight" Value="Heavy"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <ImageBrush ImageSource="{Binding Source={x:Static properties:StaticResources.Selected}}"/>
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style TargetType="TabItem">
+                <Setter Property="FontSize" Value="20"></Setter>
+                <Setter Property="Height" Value="40"></Setter>
+                <Setter Property="Width" Value="100"></Setter>
+                <Setter Property="BorderThickness" Value="0"></Setter>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="{Binding Source={x:Static properties:StaticResources.BorderPic2}}"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TabItem}">
+                            <Border Background="{TemplateBinding Background}" Padding="20,8">
+                                <TextBlock Text="{TemplateBinding Header}"
+                                           HorizontalAlignment="Stretch"
+                                           VerticalAlignment="Stretch">
+                                </TextBlock>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <ImageBrush ImageSource="{Binding Source={x:Static properties:StaticResources.MouseOver}}"/>
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
+                    <Trigger Property="IsSelected" Value="True">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <ImageBrush ImageSource="{Binding Source={x:Static properties:StaticResources.Selected2}}"/>
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
+                    <Trigger Property="IsEnabled" Value="False">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <ImageBrush ImageSource="{Binding Source={x:Static properties:StaticResources.Disabled}}"/>
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Window.Resources>
+        <TabControl FontWeight="Heavy"
+                    Background="Transparent"
+                    BorderThickness="5"
+                    BorderBrush="Black">
             <TabItem Header="Menu">
                 <Grid>
                     <Grid.Resources>
@@ -74,6 +126,7 @@
                         <ListBox ItemsSource="{Binding Source={x:Static menu:Maps.Map}}" 
                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                  SelectionChanged="OnSelectedMapChanged"
+                                 BorderThickness="0"
                                  Background="Transparent">
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
@@ -148,19 +201,14 @@
                             </Style>
                         </Grid.Resources>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="350"/>
+                            <RowDefinition Height="320"/>
                             <RowDefinition Height="*" MinHeight="50"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" MinWidth="150"/>
                             <ColumnDefinition Width="*" MinWidth="150"/>
                         </Grid.ColumnDefinitions>
-                        <Button Content="Save Game" 
-                                Click="OnSaveMapClick"
-                                Grid.Column="1" Grid.Row="1"/>
-                        <Button Content="Manual" 
-                                Click="OnManualClick" 
-                                Grid.Column="0" Grid.Row="1"/>
+                        
                         <StackPanel Grid.Column="0" Grid.Row="0"
                                     Orientation="Vertical">
                             <TextBlock Text="Name:"/>
@@ -172,11 +220,10 @@
                             <TextBlock Text="Antibonus against: "/>
                             <TextBlock Text="Cost of unit: "/>
                             <TextBlock Text="Moving while attacking: "/>
-                            <TextBlock Text="Description: "/>
                         </StackPanel>
     
                         <StackPanel Grid.Column="1" Grid.Row="0"
-                                    Orientation="Vertical" 
+                                    Orientation="Vertical"
                                     DataContext="{Binding Source={x:Static game:Session.MouseOn}}">
                             <TextBlock Text="{Binding Path=SelFigure.FigureType.UnitName, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBlock Text="{Binding Path=SelFigure.FigureType.UnitType, UpdateSourceTrigger=PropertyChanged}"/>
@@ -187,16 +234,22 @@
                             <TextBlock Text="{Binding Path=SelFigure.FigureType.AntiBonus, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBlock Text="{Binding Path=SelFigure.FigureType.Cost, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBlock Text="{Binding Path=SelFigure.FigureType.MovingWhileAttacking, UpdateSourceTrigger=PropertyChanged}"/>
-                            <TextBlock Text="{Binding Path=SelFigure.FigureType.Description, UpdateSourceTrigger=PropertyChanged}"/>
                         </StackPanel>
+                        
+                        <Button Content="Save Game" 
+                                Click="OnSaveMapClick"
+                                Grid.Column="1" Grid.Row="1"/>
+                        <Button Content="Manual" 
+                                Click="OnManualClick" 
+                                Grid.Column="0" Grid.Row="1"/>
                     </Grid>
                 </DockPanel>
             </TabItem>
-            <TabItem Header="Options" Name="Options">
+            <TabItem Header="Options" Name="OptionsTab">
             </TabItem>
             <TabItem Header="Map Editor" Name="MapEditor">
             </TabItem>
-            <TabItem Header="Manual" Name="Manual">
+            <TabItem Header="Manual" Name="ManualTab">
             </TabItem>
         </TabControl>
     </Window>
