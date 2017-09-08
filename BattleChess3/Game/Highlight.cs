@@ -26,7 +26,7 @@ namespace BattleChess3.Game
                 {
                     var position = new Position(i / 8, i % 8);
                     var figure = GetFigureAtPosition(position);
-                    figure.Highlighted = StaticResources.NotHighlighted;
+                    figure.Highlighted = SelectedStyle.ApplicationStyle.ChessTile;
                     if (Selected.SelFigure.Color == WhooseTurn)
                     {
                         HighlightDangered(figure);
@@ -34,6 +34,7 @@ namespace BattleChess3.Game
                     }
                 }
                 HighlightSelected();
+                HighlightMouseOn();
             }
         }
 
@@ -45,7 +46,7 @@ namespace BattleChess3.Game
         {
             if (figure.Color != Selected.SelFigure.Color && Selected.SelFigure.CanAttack(figure))
             {
-                figure.Highlighted = StaticResources.Dangered;
+                figure.Highlighted = SelectedStyle.ApplicationStyle.DangeredChessTile;
             }
         }
 
@@ -57,7 +58,7 @@ namespace BattleChess3.Game
         {
             if (Selected.SelFigure.CanMove(figure))
             {
-                figure.Highlighted = StaticResources.CanGo;
+                figure.Highlighted = SelectedStyle.ApplicationStyle.CanGoChessTile;
             }
         }
 
@@ -66,7 +67,15 @@ namespace BattleChess3.Game
         /// </summary>
         public static void HighlightSelected()
         {
-            Selected.SelFigure.Highlighted = StaticResources.Selected;
+            Selected.SelFigure.Highlighted = SelectedStyle.ApplicationStyle.SelectedChessTile;
+        }
+        
+        /// <summary>
+        /// Highlights mouseon
+        /// </summary>
+        public static void HighlightMouseOn()
+        {
+            MouseOn.SelFigure.Highlighted = SelectedStyle.ApplicationStyle.SelectedChessTile;
         }
     }
 }

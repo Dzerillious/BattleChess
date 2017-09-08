@@ -90,10 +90,16 @@
     <Compile Include="Figures\AttackingTypes\SimpleAttackFigure.cs" />
     <Compile Include="Game\BoardColumn.cs" />
     <Compile Include="Game\BoardTools.cs" />
+    <Compile Include="Game\GameStyles.cs" />
     <Compile Include="Game\Highlight.cs" />
     <Compile Include="Game\Session.cs" />
     <Compile Include="Game\Player.cs" />
     <Compile Include="Game\Selected.cs" />
+    <Compile Include="Game\Styles\IStyle.cs" />
+    <Compile Include="Game\Styles\PaperStyle.cs" />
+    <Compile Include="Game\Styles\SelectedStyle.cs" />
+    <Compile Include="Game\Styles\RoughPaperStyle.cs" />
+    <Compile Include="Game\Styles\SciFiStyle.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

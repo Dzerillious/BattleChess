@@ -5,8 +5,10 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using BattleChess3.Figures;
 using BattleChess3.Game;
+using BattleChess3.Game.Styles;
 using BattleChess3.Menu;
 using BattleChess3.Properties;
 using Button = System.Windows.Controls.Button;
@@ -106,7 +108,7 @@ namespace BattleChess3
                     var figure = Session.BoardColumns[j].ColumnFigures[7-i];
                     if (figure.Color == Resource.Neutral)
                     {
-                        boardStrings[i] += Resource.Nothing + " ";
+                        boardStrings[i] += figure.FigureType.UnitName + " ";
                     }
                     else
                     {
@@ -147,6 +149,18 @@ namespace BattleChess3
         private void OnManualClick(object sender, RoutedEventArgs e)
         {
             ManualTab.IsSelected = true;
+        }
+
+        private void OnSelectedStyleChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var listBox = (ListBox) sender;
+            Session.SelectedStyle.ApplicationStyle = (IStyle) listBox.SelectedItem;
+            InitializeComponent();
+        }
+
+        private void DeleteMap(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

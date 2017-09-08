@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Linq;
 using BattleChess3.Figures;
+using BattleChess3.Game.Styles;
 using BattleChess3.Menu;
 using BattleChess3.Properties;
 
@@ -21,6 +22,7 @@ namespace BattleChess3.Game
         public static Selected Selected = new Selected();
         public static Selected MouseOn = new Selected();
         public static Map SelectedMap = new Map();
+        public static SelectedStyle SelectedStyle = new SelectedStyle();
         private static Position _playedPosition;
 
         
