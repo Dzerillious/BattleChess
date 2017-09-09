@@ -16,11 +16,6 @@ namespace BattleChess3.Game
             new RoughPaperStyle(), 
         });
 
-        /// <summary>
-        /// Gets style from name of style
-        /// </summary>
-        /// <param name="text"></param>
-        /// <returns></returns>
         public static IStyle GetStyleFromString(string text) => Styles.FirstOrDefault(style => style.Name == text);
     }
 }

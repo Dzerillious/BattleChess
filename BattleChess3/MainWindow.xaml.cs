@@ -98,6 +98,35 @@ namespace BattleChess3
         {
             var rnd = new Random();
             var randomName = rnd.Next(0, int.MaxValue).ToString();
+            SaveMap(randomName);
+            SetMapToMapsHolder(randomName);
+        }
+
+        private void SetMapToMapsHolder(string randomName)
+        {
+            var emptyMap = Maps.FindFirstEmptyMap();
+            emptyMap.Name = Directory.GetCurrentDirectory() + $"\\Maps\\{randomName}.txt";
+            emptyMap.StartingPlayer = Session.WhooseTurn;
+            var tiles = new string[8][];
+            for (var i = 0; i < 8; i++)
+            {
+                tiles[i] = new string[8];
+            }
+            var lines = File.ReadAllLines(emptyMap.Name);
+            for (var i = 0; i < 8; i++)
+            {
+                var tile = lines[7 - i].Split(' ');
+                for (var j = 0; j < 8; j++)
+                {
+                    tiles[i][j] = tile[j];
+                }
+            }
+            emptyMap.Figure = tiles;
+            emptyMap.PreviewPath = Directory.GetCurrentDirectory() + $"\\MapsPreviews\\{randomName}.png";
+        }
+
+        private void SaveMap(string randomName)
+        {
             SaveToPng(BoardControl, $"MapsPreviews\\{randomName}.png");
             var boardStrings = new string[10];
             for (var i = 0; i < 8; i++)
@@ -124,6 +153,7 @@ namespace BattleChess3
                 {
                     outputFile.WriteLine(line);
                 }
+                outputFile.Close();
             }
         }
         
@@ -139,7 +169,6 @@ namespace BattleChess3
             bitmap.Render(visual);
             var frame = BitmapFrame.Create(bitmap);
             encoder.Frames.Add(frame);
-
             using (var stream = File.Create(fileName))
             {
                 encoder.Save(stream);
@@ -160,7 +189,8 @@ namespace BattleChess3
 
         private void DeleteMap(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            File.Delete(Session.SelectedMap.Name);
+            Session.SelectedMap.Dispose();
         }
     }
 }

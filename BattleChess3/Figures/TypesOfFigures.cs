@@ -25,12 +25,7 @@ namespace BattleChess3.Figures
             new Palm(),
             new Stone(), 
         };
-
-        /// <summary>
-        /// Gets figure type from name of type
-        /// </summary>
-        /// <param name="text"></param>
-        /// <returns></returns>
+        
         public static IFigure GetFigureFromString(string text) => FigureTypes.FirstOrDefault(figure => figure.UnitName == text);
     }
 }

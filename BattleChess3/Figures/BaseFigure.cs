@@ -46,12 +46,6 @@ namespace BattleChess3.Figures
             PicturePath = Directory.GetCurrentDirectory() + Resource.PicturesPath + FigureType.PictureNeutralPath;
         }
 
-        /// <summary>
-        /// Constructor with params
-        /// </summary>
-        /// <param name="color"></param>
-        /// <param name="position"></param>
-        /// <param name="figureType"></param>
         public BaseFigure(string color, Position position, IFigure figureType)
         {
             Hp = 100;
@@ -117,7 +111,7 @@ namespace BattleChess3.Figures
             {
                 if (FigureType.MovingWhileAttacking)
                 {
-                    var remainingHp = enemy.RemainedHpOfAttacked(this);
+                    var remainingHp = enemy.RemainingHpOfAttacked(this);
                     return remainingHp <= 0;
                 }
                 return true;
@@ -130,7 +124,7 @@ namespace BattleChess3.Figures
         /// </summary>
         public bool TryAttack(BaseFigure enemy)
         {
-            var remainingHp = enemy.RemainedHpOfAttacked(this);
+            var remainingHp = enemy.RemainingHpOfAttacked(this);
             if (FigureType.MovingWhileAttacking)
             {
                 if (remainingHp > 0) return false;
@@ -160,7 +154,7 @@ namespace BattleChess3.Figures
         /// <returns></returns>
         public void AttackFigure(BaseFigure attackedFigure)
         {
-            attackedFigure.Hp = attackedFigure.RemainedHpOfAttacked(this);
+            attackedFigure.Hp = attackedFigure.RemainingHpOfAttacked(this);
             if (attackedFigure.Hp <= 0)
             {
                 attackedFigure.Die();
@@ -171,7 +165,7 @@ namespace BattleChess3.Figures
         /// Returnes remaining hp of attacked unit
         /// </summary>
         /// <param name="attackingUnit"></param>
-        public int RemainedHpOfAttacked(BaseFigure attackingUnit)
+        public int RemainingHpOfAttacked(BaseFigure attackingUnit)
         {
             double bonus = 1;
             if (FigureType.UnitType == attackingUnit.FigureType.Bonus)

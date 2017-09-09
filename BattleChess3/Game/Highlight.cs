@@ -38,10 +38,6 @@ namespace BattleChess3.Game
             }
         }
 
-        /// <summary>
-        /// Highlights if figure is in danger
-        /// </summary>
-        /// <param name="figure"></param>
         public static void HighlightDangered(BaseFigure figure)
         {
             if (figure.Color != Selected.SelFigure.Color && Selected.SelFigure.CanAttack(figure))
@@ -50,10 +46,6 @@ namespace BattleChess3.Game
             }
         }
 
-        /// <summary>
-        /// Highlights if can go to tile
-        /// </summary>
-        /// <param name="figure"></param>
         public static void HighlightCanGo(BaseFigure figure)
         {
             if (Selected.SelFigure.CanMove(figure))
@@ -62,17 +54,11 @@ namespace BattleChess3.Game
             }
         }
 
-        /// <summary>
-        /// Highlights selected
-        /// </summary>
         public static void HighlightSelected()
         {
             Selected.SelFigure.Highlighted = SelectedStyle.ApplicationStyle.SelectedChessTile;
         }
-        
-        /// <summary>
-        /// Highlights mouseon
-        /// </summary>
+
         public static void HighlightMouseOn()
         {
             MouseOn.SelFigure.Highlighted = SelectedStyle.ApplicationStyle.SelectedChessTile;

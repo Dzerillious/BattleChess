@@ -10,18 +10,8 @@ namespace BattleChess3.Game
     /// </summary>
     public class BoardColumn : INotifyPropertyChanged
     {
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        public BoardColumn()
-        {
-            ColumnFigures = new BaseFigure[8];
-        }
-
         private BaseFigure[] _columnFigures;
-        /// <summary>
-        /// Column of figures
-        /// </summary>
+        
         public BaseFigure[] ColumnFigures
         {
             get => _columnFigures;
@@ -31,7 +21,12 @@ namespace BattleChess3.Game
                 OnPropertyChanged();
             }
         }
-
+        
+        public BoardColumn()
+        {
+            ColumnFigures = new BaseFigure[8];
+        }
+        
         public event PropertyChangedEventHandler PropertyChanged;
         /// <summary>
         /// On ColumnFigures changed
