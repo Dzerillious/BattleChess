@@ -1,21 +1,34 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
 using BattleChess3.Game.Styles;
 
 namespace BattleChess3.Game
 {
     public static class GameStyles
     {
-        private static IStyle[] _styles;
+        private static Style[] _styles;
+
         /// <summary>
         /// Array of Styles of application
         /// </summary>
-        public static IStyle[] Styles => _styles ?? (_styles = new IStyle[]
+        public static Style[] Styles
         {
-            new PaperStyle(),
-            new SciFiStyle(), 
-            new RoughPaperStyle(), 
-        });
+            get
+            {
+                if (_styles == null)
+                {
+                    var filePaths = Directory.GetDirectories(Directory.GetCurrentDirectory() + "\\Pictures\\Styles");
+                    var styles = new Style[filePaths.Length];
+                    for (var i = 0; i < filePaths.Length && i < 100; i++)
+                    {
+                        styles[i] = new Style(filePaths[i]);
+                    }
+                    _styles = styles;
+                }
+                return _styles;
+            }
+        }
 
-        public static IStyle GetStyleFromString(string text) => Styles.FirstOrDefault(style => style.Name == text);
+        public static Style GetStyleFromString(string text) => Styles.FirstOrDefault(style => style.Name == text);
     }
 }

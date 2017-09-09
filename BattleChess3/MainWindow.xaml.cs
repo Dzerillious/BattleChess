@@ -8,7 +8,6 @@ using System.Windows.Media.Imaging;
 using BattleChess3.Figures;
 using BattleChess3.Game;
 using BattleChess3.Game.Styles;
-using BattleChess3.Menu;
 using BattleChess3.Properties;
 using Button = System.Windows.Controls.Button;
 using FontFamily = System.Windows.Media.FontFamily;
@@ -103,7 +102,7 @@ namespace BattleChess3
 
         private void SetMapToMapsHolder(string randomName)
         {
-            var emptyMap = Maps.FindFirstEmptyMap();
+            var emptyMap = MapsHolder.FindFirstEmptyMap();
             emptyMap.Name = Directory.GetCurrentDirectory() + $"\\Maps\\{randomName}.txt";
             emptyMap.StartingPlayer = Session.WhooseTurn;
             var tiles = new string[8][];
@@ -182,7 +181,7 @@ namespace BattleChess3
         private void OnSelectedStyleChanged(object sender, SelectionChangedEventArgs e)
         {
             var listBox = (ListBox) sender;
-            Session.SelectedStyle.ApplicationStyle = (IStyle) listBox.SelectedItem;
+            Session.SelectedStyle.ApplicationStyle = (Game.Styles.Style) listBox.SelectedItem;
             InitializeComponent();
         }
 

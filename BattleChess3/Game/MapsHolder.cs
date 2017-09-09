@@ -1,34 +1,34 @@
 ﻿using System.IO;
 using System.Linq;
 
-namespace BattleChess3.Menu
+namespace BattleChess3.Game
 {
     /// <summary>
     /// Class for maps holder
     /// </summary>
-    public static class Maps
+    public static class MapsHolder
     {
-        private static readonly Map[] _mapsHolder = new Map[100];
+        private static readonly Map[] _maps = new Map[100];
         /// <summary>
         /// Array of Maps in dictionary
         /// </summary>
-        public static Map[] MapsHolder
+        public static Map[] Maps
         {
             get
             {
                 for (var i = 0; i < 100; i++)
                 {
-                    if (_mapsHolder[i] == null)
+                    if (_maps[i] == null)
                     {
-                        _mapsHolder[i] = new Map();
+                        _maps[i] = new Map();
                     }
                 }
                 var filePaths = Directory.GetFiles(Directory.GetCurrentDirectory() + "\\Maps");
                 for (var i = 0; i < filePaths.Length && i < 100; i++)
                 {
-                    _mapsHolder[i] = GetMapFromPath(filePaths[i]);
+                    _maps[i] = GetMapFromPath(filePaths[i]);
                 }
-                return _mapsHolder;
+                return _maps;
             }
         }
 
@@ -51,6 +51,6 @@ namespace BattleChess3.Menu
             return new Map(path, lines[8], lines[9], tiles);
         }
         
-        public static Map FindFirstEmptyMap() => MapsHolder.FirstOrDefault(map => map.Name == null);
+        public static Map FindFirstEmptyMap() => Maps.FirstOrDefault(map => map.Name == null);
     }
 }
