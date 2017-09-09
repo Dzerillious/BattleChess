@@ -108,7 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Menu\Map.cs" />
-    <Compile Include="Menu\Maps.cs" />
+    <Compile Include="Menu\MapsHolder.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

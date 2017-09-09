@@ -5,7 +5,6 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using BattleChess3.Figures;
 using BattleChess3.Game;
 using BattleChess3.Game.Styles;
@@ -189,8 +188,11 @@ namespace BattleChess3
 
         private void DeleteMap(object sender, RoutedEventArgs e)
         {
-            File.Delete(Session.SelectedMap.Name);
-            Session.SelectedMap.Dispose();
+            if (Session.SelectedMap.Name != null)
+            {
+                File.Delete(Session.SelectedMap.Name);
+                Session.SelectedMap.Dispose();
+            }
         }
     }
 }
