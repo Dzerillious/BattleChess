@@ -1,4 +1,4 @@
-﻿using BattleChess3.Figures;
+﻿using BattleChess3.GameData.Figures;
 
 namespace BattleChess3.Game
 {

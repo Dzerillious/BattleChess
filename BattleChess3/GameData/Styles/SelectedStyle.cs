@@ -1,35 +1,29 @@
 ﻿using System.ComponentModel;
+using System.IO;
 using System.Runtime.CompilerServices;
 using BattleChess3.Annotations;
-using BattleChess3.GameData.Figures;
 
-namespace BattleChess3.Game
+namespace BattleChess3.GameData.Styles
 {
-    /// <summary>
-    /// One column of board
-    /// </summary>
-    public class BoardColumn : INotifyPropertyChanged
+    public class SelectedStyle : INotifyPropertyChanged
     {
-        private BaseFigure[] _columnFigures;
-        
-        public BaseFigure[] ColumnFigures
+        private Style _applicationStyle;
+        /// <summary>
+        /// Property for Application Style
+        /// </summary>
+        public Style ApplicationStyle
         {
-            get => _columnFigures;
+            get => _applicationStyle ?? (_applicationStyle = new Style(Directory.GetCurrentDirectory() + "\\Pictures\\Styles\\PaperStyle"));
             set
             {
-                _columnFigures = value;
+                _applicationStyle = value;
                 OnPropertyChanged();
             }
         }
         
-        public BoardColumn()
-        {
-            ColumnFigures = new BaseFigure[8];
-        }
-        
         public event PropertyChangedEventHandler PropertyChanged;
         /// <summary>
-        /// On ColumnFigures changed
+        /// On SelectedStyle changed
         /// </summary>
         /// <param name="propertyName"></param>
         [NotifyPropertyChangedInvocator]

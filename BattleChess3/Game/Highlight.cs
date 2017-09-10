@@ -1,4 +1,4 @@
-﻿using BattleChess3.Figures;
+﻿using BattleChess3.GameData.Figures;
 using BattleChess3.Properties;
 
 namespace BattleChess3.Game
@@ -13,7 +13,7 @@ namespace BattleChess3.Game
         /// </summary>
         public static void HighlightTiles()
         {
-            if (Selected.SelPosition == null)
+            if (SelectedFigure.SelPosition == null)
             {
                 for (var i = 0; i < 64; i++)
                 {
@@ -27,7 +27,7 @@ namespace BattleChess3.Game
                     var position = new Position(i / 8, i % 8);
                     var figure = GetFigureAtPosition(position);
                     figure.Highlighted = SelectedStyle.ApplicationStyle.ChessTile;
-                    if (Selected.SelFigure.Color == WhooseTurn)
+                    if (SelectedFigure.SelFigure.Color == WhooseTurn)
                     {
                         HighlightDangered(figure);
                         HighlightCanGo(figure);
@@ -40,7 +40,7 @@ namespace BattleChess3.Game
 
         public static void HighlightDangered(BaseFigure figure)
         {
-            if (figure.Color != Selected.SelFigure.Color && Selected.SelFigure.CanAttack(figure))
+            if (figure.Color != SelectedFigure.SelFigure.Color && SelectedFigure.SelFigure.CanAttack(figure))
             {
                 figure.Highlighted = SelectedStyle.ApplicationStyle.DangeredChessTile;
             }
@@ -48,7 +48,7 @@ namespace BattleChess3.Game
 
         public static void HighlightCanGo(BaseFigure figure)
         {
-            if (Selected.SelFigure.CanMove(figure))
+            if (SelectedFigure.SelFigure.CanMove(figure))
             {
                 figure.Highlighted = SelectedStyle.ApplicationStyle.CanGoChessTile;
             }
@@ -56,7 +56,7 @@ namespace BattleChess3.Game
 
         public static void HighlightSelected()
         {
-            Selected.SelFigure.Highlighted = SelectedStyle.ApplicationStyle.SelectedChessTile;
+            SelectedFigure.SelFigure.Highlighted = SelectedStyle.ApplicationStyle.SelectedChessTile;
         }
 
         public static void HighlightMouseOn()

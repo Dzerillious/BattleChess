@@ -5,14 +5,15 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using BattleChess3.Figures;
 using BattleChess3.Game;
-using BattleChess3.Game.Styles;
+using BattleChess3.GameData;
+using BattleChess3.GameData.Figures;
 using BattleChess3.Properties;
 using Button = System.Windows.Controls.Button;
 using FontFamily = System.Windows.Media.FontFamily;
 using ListBox = System.Windows.Controls.ListBox;
 using MouseEventArgs = System.Windows.Input.MouseEventArgs;
+using Style = BattleChess3.GameData.Styles.Style;
 
 namespace BattleChess3
 {
@@ -181,7 +182,7 @@ namespace BattleChess3
         private void OnSelectedStyleChanged(object sender, SelectionChangedEventArgs e)
         {
             var listBox = (ListBox) sender;
-            Session.SelectedStyle.ApplicationStyle = (Game.Styles.Style) listBox.SelectedItem;
+            Session.SelectedStyle.ApplicationStyle = (Style) listBox.SelectedItem;
             InitializeComponent();
         }
 

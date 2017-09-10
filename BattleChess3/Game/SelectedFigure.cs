@@ -6,30 +6,45 @@ using BattleChess3.GameData.Figures;
 namespace BattleChess3.Game
 {
     /// <summary>
-    /// One column of board
+    /// Selected position data
     /// </summary>
-    public class BoardColumn : INotifyPropertyChanged
+    public class SelectedFigure : INotifyPropertyChanged
     {
-        private BaseFigure[] _columnFigures;
+        private BaseFigure _selFigure;
         
-        public BaseFigure[] ColumnFigures
+        public Position SelPosition { get; set; }
+        public BaseFigure SelFigure
         {
-            get => _columnFigures;
+            get => _selFigure;
             set
             {
-                _columnFigures = value;
+                _selFigure = value;
                 OnPropertyChanged();
             }
         }
         
-        public BoardColumn()
+        public SelectedFigure()
         {
-            ColumnFigures = new BaseFigure[8];
+            SelFigure = new BaseFigure();
+            SelPosition = null;
         }
-        
+
+        public void SetSelected(BaseFigure figure)
+        {
+            SelFigure = figure;
+            SelPosition = figure.Position;
+        }
+
+        public void SetSelected(Position position)
+        {
+            SelFigure = Session.GetFigureAtPosition(position);
+            SelPosition = position;
+        }
+
+
         public event PropertyChangedEventHandler PropertyChanged;
         /// <summary>
-        /// On ColumnFigures changed
+        /// On SelectedFigure changed
         /// </summary>
         /// <param name="propertyName"></param>
         [NotifyPropertyChangedInvocator]
