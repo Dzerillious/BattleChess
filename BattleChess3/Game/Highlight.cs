@@ -1,4 +1,5 @@
-﻿using BattleChess3.GameData.Figures;
+﻿using System.IO;
+using BattleChess3.GameData.Figures;
 using BattleChess3.Properties;
 
 namespace BattleChess3.Game
@@ -17,7 +18,7 @@ namespace BattleChess3.Game
             {
                 for (var i = 0; i < 64; i++)
                 {
-                    Board[i / 8][i % 8].Highlighted = StaticResources.NotHighlighted;
+                    Board[i / 8][i % 8].Highlighted = Directory.GetCurrentDirectory() + "Pictures\\Nothing.png";
                 }
             }
             else

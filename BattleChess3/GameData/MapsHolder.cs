@@ -49,7 +49,7 @@ namespace BattleChess3.GameData
                     tiles[i][j] = tile[j];
                 }
             }
-            return new Map(path, lines[8], lines[9], tiles);
+            return new Map(path, Path.Combine(Directory.GetCurrentDirectory(), lines[8]), lines[9], tiles);
         }
         
         public static Map FindFirstEmptyMap() => Maps.FirstOrDefault(map => map.Name == null);

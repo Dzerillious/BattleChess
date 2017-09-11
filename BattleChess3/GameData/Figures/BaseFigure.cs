@@ -29,7 +29,7 @@ namespace BattleChess3.GameData.Figures
             Color = Resource.Neutral;
             Position = new Position();
             FigureType = new Nothing();
-            Highlighted = StaticResources.NotHighlighted;
+            Highlighted = Directory.GetCurrentDirectory() + "Pictures\\Nothing.png";
             PicturePath = FigureType.PictureNeutralPath;
         }
         
@@ -42,7 +42,7 @@ namespace BattleChess3.GameData.Figures
             Color = Resource.Neutral;
             Position = position;
             FigureType = new Nothing();
-            Highlighted = StaticResources.NotHighlighted;
+            Highlighted = Directory.GetCurrentDirectory() + "Pictures\\Nothing.png";
             PicturePath = FigureType.PictureNeutralPath;
         }
 
@@ -52,7 +52,7 @@ namespace BattleChess3.GameData.Figures
             Color = color;
             Position = position;
             FigureType = figureType;
-            Highlighted = StaticResources.NotHighlighted;
+            Highlighted = Directory.GetCurrentDirectory() + "Pictures\\Nothing.png";
             if (Color == Resource.White)
             {
                 PicturePath = FigureType.PictureWhitePath;

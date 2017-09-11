@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -95,10 +96,13 @@ namespace BattleChess3
 
         private void OnSaveMapClick(object sender, RoutedEventArgs e)
         {
-            var rnd = new Random();
-            var randomName = rnd.Next(0, int.MaxValue).ToString();
-            SaveMap(randomName);
-            SetMapToMapsHolder(randomName);
+            if (Session.Board.All(column => column != null))
+            {
+                var rnd = new Random();
+                var randomName = rnd.Next(0, int.MaxValue).ToString();
+                SaveMap(randomName);
+                SetMapToMapsHolder(randomName);
+            }
         }
 
         private void SetMapToMapsHolder(string randomName)
@@ -144,7 +148,7 @@ namespace BattleChess3
                     }
                 }
             }
-            boardStrings[8] = Directory.GetCurrentDirectory() + $"\\MapsPreviews\\{randomName}.png";
+            boardStrings[8] = $"MapsPreviews\\{randomName}.png";
             boardStrings[9] = Session.WhooseTurn;
             using (var outputFile = new StreamWriter(Directory.GetCurrentDirectory() + $"\\Maps\\{randomName}.txt"))
             {
