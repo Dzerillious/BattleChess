@@ -1,8 +1,9 @@
 ﻿using System.Linq;
+using BattleChess3.GameData.Figures;
 using BattleChess3.GameData.Figures.FigureTypes;
 using BattleChess3.GameData.Figures.FigureTypes.ClassicChess;
 
-namespace BattleChess3.GameData.Figures
+namespace BattleChess3.GameData
 {
     /// <summary>
     /// Has field of all types of figures and works with it

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using BattleChess3.Properties;
 
 namespace BattleChess3.GameData.Figures.FigureTypes
@@ -15,7 +16,7 @@ namespace BattleChess3.GameData.Figures.FigureTypes
         public string Description => "Stone tile, where you cannot go";
         public string PictureBlackPath => "";
         public string PictureWhitePath => "";
-        public string PictureNeutralPath => "Stone.png";
+        public string PictureNeutralPath => Directory.GetCurrentDirectory() + "\\Pictures\\Stone.png";
         public int Cost => 0;
         public Position[] AttackPattern => null;
         public Func<BaseFigure, BaseFigure, bool> CanMove => (figure, moveToFigure) => false;

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using BattleChess3.GameData.Figures.AttackingTypes;
 using BattleChess3.Properties;
 
@@ -16,8 +17,8 @@ namespace BattleChess3.GameData.Figures.FigureTypes
         public int Cost => 1;
         public string Description => "Ninja is secret warior and with his diagonal moves can he easily suprise enemy. He is one of cheap figures so he is best in front line.";
 
-        public string PictureBlackPath => "NinjaBlack.png";
-        public string PictureWhitePath => "NinjaWhite.png";
+        public string PictureBlackPath => Directory.GetCurrentDirectory() + "\\Pictures\\NinjaBlack.png";
+        public string PictureWhitePath => Directory.GetCurrentDirectory() + "\\Pictures\\NinjaWhite.png";
         public string PictureNeutralPath => "";
 
         private readonly Position[] _avaibleMoves =

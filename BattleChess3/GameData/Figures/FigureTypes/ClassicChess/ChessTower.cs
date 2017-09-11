@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using BattleChess3.GameData.Figures.AttackingTypes;
 using BattleChess3.Properties;
 
@@ -16,8 +17,8 @@ namespace BattleChess3.GameData.Figures.FigureTypes.ClassicChess
         public int Cost => 5;
         public string Description => "Chess tower is movable unit which can defend quite large area.";
 
-        public string PictureBlackPath => "ClassicChess\\ChessTowerBlack.png";
-        public string PictureWhitePath => "ClassicChess\\ChessTowerWhite.png";
+        public string PictureBlackPath => Directory.GetCurrentDirectory() + "\\Pictures\\ClassicChess\\ChessTowerBlack.png";
+        public string PictureWhitePath => Directory.GetCurrentDirectory() + "\\Pictures\\ClassicChess\\ChessTowerWhite.png";
         public string PictureNeutralPath => "";
 
         private readonly Position[] _avaibleMoveDirections =

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using BattleChess3.GameData.Figures.AttackingTypes;
 using BattleChess3.Properties;
 
@@ -16,8 +17,8 @@ namespace BattleChess3.GameData.Figures.FigureTypes.ClassicChess
         public int Cost => 3;
         public string Description => "Chess horse is quite movable unit which can easily suprise enemy, because his attacks are definet by many points, not directions.";
 
-        public string PictureBlackPath => "ClassicChess\\ChessHorseBlack.png";
-        public string PictureWhitePath => "ClassicChess\\ChessHorseWhite.png";
+        public string PictureBlackPath => Directory.GetCurrentDirectory() + "\\Pictures\\ClassicChess\\ChessHorseBlack.png";
+        public string PictureWhitePath => Directory.GetCurrentDirectory() + "\\Pictures\\ClassicChess\\ChessHorseWhite.png";
         public string PictureNeutralPath => "";
 
         private readonly Position[] _avaibleMoves =

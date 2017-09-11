@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using BattleChess3.GameData.Figures.AttackingTypes;
 using BattleChess3.Properties;
 
@@ -16,8 +17,8 @@ namespace BattleChess3.GameData.Figures.FigureTypes.ClassicChess
         public int Cost => 1;
         public string Description => "Chess pawn is one of cheapest units of game, so he is good for front line attacks. Many of pawns in one big formation.";
 
-        public string PictureBlackPath => "ClassicChess\\ChessPawnBlack.png";
-        public string PictureWhitePath => "ClassicChess\\ChessPawnWhite.png";
+        public string PictureBlackPath => Directory.GetCurrentDirectory() + "\\Pictures\\ClassicChess\\ChessPawnBlack.png";
+        public string PictureWhitePath => Directory.GetCurrentDirectory() + "\\Pictures\\ClassicChess\\ChessPawnWhite.png";
         public string PictureNeutralPath => "";
 
         private readonly Position[] _avaibleFirstMoves =

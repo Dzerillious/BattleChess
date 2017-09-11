@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using BattleChess3.GameData.Figures.AttackingTypes;
 using BattleChess3.Properties;
 
@@ -16,8 +17,8 @@ namespace BattleChess3.GameData.Figures.FigureTypes.ClassicChess
         public int Cost => 0;
         public string Description => "Chess king is quite weak unit and when he is killed, player with him loses. He is stronger than pawn, but you must care about him.";
 
-        public string PictureBlackPath => "ClassicChess\\ChessKingBlack.png";
-        public string PictureWhitePath => "ClassicChess\\ChessKingWhite.png";
+        public string PictureBlackPath => Directory.GetCurrentDirectory() + "\\Pictures\\ClassicChess\\ChessKingBlack.png";
+        public string PictureWhitePath => Directory.GetCurrentDirectory() + "\\Pictures\\ClassicChess\\ChessKingWhite.png";
         public string PictureNeutralPath => "";
 
         private readonly Position[] _avaibleMoves =

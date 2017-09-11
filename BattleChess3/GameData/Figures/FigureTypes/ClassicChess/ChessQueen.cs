@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using BattleChess3.GameData.Figures.AttackingTypes;
 using BattleChess3.Properties;
 
@@ -16,8 +17,8 @@ namespace BattleChess3.GameData.Figures.FigureTypes.ClassicChess
         public int Cost => 9;
         public string Description => "Chess queen is very movable unit. She is best of chess game figures, so use it wisely and not get she killed.";
 
-        public string PictureBlackPath => "ClassicChess\\ChessQueenBlack.png";
-        public string PictureWhitePath => "ClassicChess\\ChessQueenWhite.png";
+        public string PictureBlackPath => Directory.GetCurrentDirectory() + "\\Pictures\\ClassicChess\\ChessQueenBlack.png";
+        public string PictureWhitePath => Directory.GetCurrentDirectory() + "\\Pictures\\ClassicChess\\ChessQueenWhite.png";
         public string PictureNeutralPath => "";
 
         private readonly Position[] _avaibleMoveDirections =

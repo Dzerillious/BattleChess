@@ -87,11 +87,12 @@
     <Compile Include="GameData\Figures\FigureTypes\Palm.cs" />
     <Compile Include="GameData\Figures\FigureTypes\Stone.cs" />
     <Compile Include="GameData\Figures\IFigure.cs" />
-    <Compile Include="GameData\Figures\TypesOfFigures.cs" />
     <Compile Include="GameData\GameStyles.cs" />
+    <Compile Include="GameData\ManualTexts.cs" />
     <Compile Include="GameData\MapsHolder.cs" />
     <Compile Include="GameData\Styles\SelectedStyle.cs" />
     <Compile Include="GameData\Styles\Style.cs" />
+    <Compile Include="GameData\TypesOfFigures.cs" />
     <Compile Include="Game\BoardColumn.cs" />
     <Compile Include="Game\BoardTools.cs" />
     <Compile Include="Game\Highlight.cs" />
@@ -99,6 +100,7 @@
     <Compile Include="Game\Session.cs" />
     <Compile Include="Game\Player.cs" />
     <Compile Include="Game\SelectedFigure.cs" />
+    <Compile Include="IsEmptyStringConverter.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
