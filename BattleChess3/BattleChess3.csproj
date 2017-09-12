@@ -74,12 +74,10 @@
     <Compile Include="GameData\Figures\FigureTypes\ClassicChess\ChessQueen.cs" />
     <Compile Include="GameData\Figures\FigureTypes\ClassicChess\ChessTower.cs" />
     <Compile Include="GameData\Figures\FigureTypes\LordOfTheRings\LOTRArcher.cs" />
-    <Compile Include="GameData\Figures\FigureTypes\LordOfTheRings\LOTRCatapult.cs" />
-    <Compile Include="GameData\Figures\FigureTypes\LordOfTheRings\LOTRDwarf.cs" />
-    <Compile Include="GameData\Figures\FigureTypes\LordOfTheRings\LOTRElf.cs" />
-    <Compile Include="GameData\Figures\FigureTypes\LordOfTheRings\LOTRKing.cs" />
-    <Compile Include="GameData\Figures\FigureTypes\LordOfTheRings\LOTRQueen.cs" />
-    <Compile Include="GameData\Figures\FigureTypes\LordOfTheRings\LOTRRider.cs" />
+    <Compile Include="GameData\Figures\FigureTypes\LordOfTheRings\LOTRMinorWizzard.cs" />
+    <Compile Include="GameData\Figures\FigureTypes\LordOfTheRings\LOTRLeader.cs" />
+    <Compile Include="GameData\Figures\FigureTypes\LordOfTheRings\LOTRRingBearer.cs" />
+    <Compile Include="GameData\Figures\FigureTypes\LordOfTheRings\LOTRWarrior.cs" />
     <Compile Include="GameData\Figures\FigureTypes\LordOfTheRings\LOTRSoldier.cs" />
     <Compile Include="GameData\Figures\FigureTypes\LordOfTheRings\LOTRWizzard.cs" />
     <Compile Include="GameData\Figures\FigureTypes\Ninja.cs" />

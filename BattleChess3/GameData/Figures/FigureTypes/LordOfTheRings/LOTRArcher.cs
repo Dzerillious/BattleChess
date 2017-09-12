@@ -7,8 +7,8 @@ namespace BattleChess3.GameData.Figures.FigureTypes.LordOfTheRings
 {
     public class LOTRArcher : SimpleAttackFigure, IFigure
     {
-        public string UnitName => Resource.ChessHorse;
-        public string UnitType => Resource.Mount;
+        public string UnitName => "LOTRArcher";
+        public string UnitType => Resource.Special;
         public string Bonus => Resource.Nothing;
         public string AntiBonus => Resource.Nothing;
         public int Attack => 100;
@@ -19,8 +19,8 @@ namespace BattleChess3.GameData.Figures.FigureTypes.LordOfTheRings
         public string Description =>
             "Chess horse is quite movable unit which can easily suprise enemy, because his attacks are definet by many points, not directions.";
 
-        public string PictureBlackPath => Directory.GetCurrentDirectory() + "\\Pictures\\ClassicChess\\ChessHorseBlack.png";
-        public string PictureWhitePath => Directory.GetCurrentDirectory() + "\\Pictures\\ClassicChess\\ChessHorseWhite.png";
+        public string PictureBlackPath => Directory.GetCurrentDirectory() + "\\Pictures\\LOTR\\Lurtz.png";
+        public string PictureWhitePath => Directory.GetCurrentDirectory() + "\\Pictures\\LOTR\\Kili.png";
         public string PictureNeutralPath => "";
 
         private readonly Position[] _avaibleMoves =

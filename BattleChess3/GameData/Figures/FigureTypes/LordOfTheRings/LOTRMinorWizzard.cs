@@ -5,9 +5,9 @@ using BattleChess3.Properties;
 
 namespace BattleChess3.GameData.Figures.FigureTypes.LordOfTheRings
 {
-    public class LOTRKing : SimpleAttackFigure, IFigure
+    public class LOTRMinorWizzard : SimpleAttackFigure, IFigure
     {
-        public string UnitName => Resource.ChessHorse;
+        public string UnitName => "LOTRMinorWizzard";
         public string UnitType => Resource.Mount;
         public string Bonus => Resource.Nothing;
         public string AntiBonus => Resource.Nothing;
@@ -19,8 +19,8 @@ namespace BattleChess3.GameData.Figures.FigureTypes.LordOfTheRings
         public string Description =>
             "Chess horse is quite movable unit which can easily suprise enemy, because his attacks are definet by many points, not directions.";
 
-        public string PictureBlackPath => Directory.GetCurrentDirectory() + "\\Pictures\\ClassicChess\\ChessHorseBlack.png";
-        public string PictureWhitePath => Directory.GetCurrentDirectory() + "\\Pictures\\ClassicChess\\ChessHorseWhite.png";
+        public string PictureBlackPath => Directory.GetCurrentDirectory() + "\\Pictures\\LOTR\\Saruman.png";
+        public string PictureWhitePath => Directory.GetCurrentDirectory() + "\\Pictures\\LOTR\\Radagast.png";
         public string PictureNeutralPath => "";
 
         private readonly Position[] _avaibleMoves =
