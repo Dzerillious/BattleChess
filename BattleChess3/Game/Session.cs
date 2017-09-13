@@ -1,8 +1,7 @@
-﻿using System.IO;
-using System.Linq;
-using BattleChess3.Figures;
-using BattleChess3.Game.Styles;
-using BattleChess3.Menu;
+﻿using System.Linq;
+using BattleChess3.GameData;
+using BattleChess3.GameData.Figures;
+using BattleChess3.GameData.Styles;
 using BattleChess3.Properties;
 
 namespace BattleChess3.Game
@@ -12,15 +11,15 @@ namespace BattleChess3.Game
     /// </summary>
     public static partial class Session
     {
-        private static readonly BaseFigure[][] Board = new BaseFigure[8][];
+        public static readonly BaseFigure[][] Board = new BaseFigure[8][];
         public static BoardColumn[] BoardColumns = new BoardColumn[8];
         public static bool[][] CanGoPattern = new bool[8][];
         public static bool[][] CanAttackPattern = new bool[8][];
         public static Player WhitePlayer = new Player(Resource.White);
         public static Player BlackPlayer = new Player(Resource.Black);
         public static string WhooseTurn = Resource.White;
-        public static Selected Selected = new Selected();
-        public static Selected MouseOn = new Selected();
+        public static SelectedFigure Selected = new SelectedFigure();
+        public static SelectedFigure MouseOn = new SelectedFigure();
         public static Map SelectedMap = new Map();
         public static SelectedStyle SelectedStyle = new SelectedStyle();
         private static Position _playedPosition;
@@ -60,7 +59,7 @@ namespace BattleChess3.Game
             else
             {
                 WhooseTurn = WhooseTurn == Resource.White ? Resource.Black : Resource.White;
-                Selected = new Selected();
+                Selected = new SelectedFigure();
                 _playedPosition = null;
             }
         }

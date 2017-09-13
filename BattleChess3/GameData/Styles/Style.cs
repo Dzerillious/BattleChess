@@ -18,7 +18,7 @@
             CanGoChessTile = directory + "\\ChessTileCanGo.png";
             DangeredChessTile = directory + "\\ChessTileDangered.png";
             SelectedChessTile = directory + "\\ChessTileSelected.png";
-            DefaultButton = directory + "\\DefaultButton.png";;
+            DefaultButton = directory + "\\DefaultButton.png";
             DefaultButtonMouseOn = directory + "\\DefaultButtonMouseOn.png";
             TextBox = directory + "\\TextBox.png";
         }

@@ -3,8 +3,8 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-            xmlns:game="clr-namespace:BattleChess3.Game" 
-            xmlns:menu="clr-namespace:BattleChess3.Menu"
+            xmlns:game="clr-namespace:BattleChess3.Game"
+            xmlns:gameData="clr-namespace:BattleChess3.GameData"
             mc:Ignorable="d"
             DataContext="{Binding Source={x:Static game:Session.SelectedStyle}, UpdateSourceTrigger=PropertyChanged}"
             Title="MainWindow" Height="480" Width="800" MinHeight="480" MinWidth="640">
@@ -12,8 +12,7 @@
             <ImageBrush ImageSource="{Binding Path=ApplicationStyle.ApplicationBackground, UpdateSourceTrigger=PropertyChanged}"/>
         </Window.Background>
         <Window.Resources>
-            <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle}">
-                </Style>
+            <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle}"/>
             <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}"/>
             <Style TargetType="TabItem" BasedOn="{StaticResource TabItemStyle}"/>
             <Style TargetType="TabControl" BasedOn="{StaticResource TabControlStyle}"/>
@@ -38,7 +37,7 @@
                     <ScrollViewer VerticalScrollBarVisibility="Auto"
                                   Grid.Row="0" Grid.RowSpan="4"
                                   Grid.Column="1">
-                        <ListBox ItemsSource="{x:Static menu:Maps.Map}" 
+                        <ListBox ItemsSource="{x:Static gameData:MapsHolder.Maps}" 
                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                  SelectionChanged="OnSelectedMapChanged"
                                  BorderThickness="0"
@@ -61,8 +60,7 @@
             <TabItem Header="Game" Name="GameTab" IsEnabled="False">
                 <DockPanel LastChildFill="True">
                     <Border Name="BoardControl">
-                        <ItemsControl
-                                      ItemsSource="{Binding Source={x:Static game:Session.BoardColumns}, UpdateSourceTrigger=PropertyChanged}"
+                        <ItemsControl ItemsSource="{Binding Source={x:Static game:Session.BoardColumns}, UpdateSourceTrigger=PropertyChanged}"
                                       HorizontalAlignment="Stretch">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -161,7 +159,7 @@
                 </DockPanel>
             </TabItem>
             <TabItem Header="Options" Name="OptionsTab">
-                <ListBox ItemsSource="{x:Static game:GameStyles.Styles}" 
+                <ListBox ItemsSource="{x:Static gameData:GameStyles.Styles}" 
                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                          SelectionChanged="OnSelectedStyleChanged"
                          BorderThickness="0"
