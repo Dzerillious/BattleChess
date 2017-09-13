@@ -64,36 +64,6 @@ namespace BattleChess3
             Close();
         }
 
-        /// <summary>
-        /// Called when selected map is changed
-        /// </summary>
-        private void OnSelectedMapChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var listBox = (ListBox) sender;
-            Session.SelectedMap = (Map)listBox.SelectedItem;
-        }
-        
-        /// <summary>
-        /// Called when chess tile button is clicked
-        /// </summary>
-        private void OnButtonClick(object sender, RoutedEventArgs e)
-        {
-            var button = (Button) sender;
-            var figure = (BaseFigure) button.CommandParameter;
-            Session.ClickedAtPosition(figure.Position);
-        }
-
-        /// <summary>
-        /// Called when mouse enters chess tile
-        /// </summary>
-        private void OnMouseEnter(object sender, MouseEventArgs e)
-        {
-            var button = (Button) sender;
-            var figure = (BaseFigure) button.CommandParameter;
-            Session.MouseOn.SelFigure = figure;
-            Session.MouseOn.SelPosition = figure.Position;
-        }
-
         private void OnSaveMapClick(object sender, RoutedEventArgs e)
         {
             if (Session.Board.All(column => column != null))
@@ -175,18 +145,6 @@ namespace BattleChess3
             {
                 encoder.Save(stream);
             }
-        }
-
-        private void OnManualClick(object sender, RoutedEventArgs e)
-        {
-            ManualTab.IsSelected = true;
-        }
-
-        private void OnSelectedStyleChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var listBox = (ListBox) sender;
-            Session.SelectedStyle.ApplicationStyle = (Style) listBox.SelectedItem;
-            InitializeComponent();
         }
 
         private void DeleteMap(object sender, RoutedEventArgs e)
