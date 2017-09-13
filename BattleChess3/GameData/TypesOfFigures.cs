@@ -35,6 +35,9 @@ namespace BattleChess3.GameData
             new Stone(), 
         };
         
+        /// <summary>
+        /// Gets first figure which name is given string
+        /// </summary>
         public static IFigure GetFigureFromString(string text) => FigureTypes.FirstOrDefault(figure => figure.UnitName == text);
     }
 }

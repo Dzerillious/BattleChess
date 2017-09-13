@@ -156,7 +156,6 @@ namespace BattleChess3
                 {
                     outputFile.WriteLine(line);
                 }
-                outputFile.Close();
             }
         }
         

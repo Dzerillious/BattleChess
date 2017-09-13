@@ -22,11 +22,11 @@ namespace BattleChess3.Game
             }
         }
         
-        public BoardColumn()
-        {
-            ColumnFigures = new BaseFigure[8];
-        }
-        
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public BoardColumn() => ColumnFigures = new BaseFigure[8];
+
         public event PropertyChangedEventHandler PropertyChanged;
         /// <summary>
         /// On ColumnFigures changed

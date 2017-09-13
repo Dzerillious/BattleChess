@@ -21,7 +21,7 @@ namespace BattleChess3.GameData.Figures
         public string Color;
 
         /// <summary>
-        /// Create empty
+        /// Constructor of empty figure
         /// </summary>
         public BaseFigure()
         {
@@ -34,7 +34,7 @@ namespace BattleChess3.GameData.Figures
         }
         
         /// <summary>
-        /// Create Nothing at position
+        /// Constructor of nothing at position
         /// </summary>
         public BaseFigure(Position position)
         {
@@ -46,6 +46,9 @@ namespace BattleChess3.GameData.Figures
             PicturePath = FigureType.PictureNeutralPath;
         }
 
+        /// <summary>
+        /// Constructor of baseFigure
+        /// </summary>
         public BaseFigure(string color, Position position, IFigure figureType)
         {
             Hp = 100;

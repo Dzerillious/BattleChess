@@ -29,6 +29,9 @@ namespace BattleChess3.GameData
             }
         }
 
+        /// <summary>
+        /// Finds first style which name is given string
+        /// </summary>
         public static Style GetStyleFromString(string text) => Styles.FirstOrDefault(style => style.Name == text);
     }
 }

@@ -11,13 +11,17 @@ namespace BattleChess3.Game
         public string Color;
         public List<BaseFigure> Figures = new List<BaseFigure>();
 
+        /// <summary>
+        /// Creates new player
+        /// </summary>
+        /// <param name="color"></param>
         public Player(string color)
         {
             Color = color;
         }
 
         /// <summary>
-        /// Creates figure at certain position
+        /// Creates figure for player at certain position
         /// </summary>
         /// <param name="figure">Created figure</param>
         public void CreateFigure(BaseFigure figure)

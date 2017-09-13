@@ -13,6 +13,9 @@ namespace BattleChess3.Game
         private BaseFigure _selFigure;
         
         public Position SelPosition { get; set; }
+        /// <summary>
+        /// Selected figure
+        /// </summary>
         public BaseFigure SelFigure
         {
             get => _selFigure;
@@ -23,24 +26,32 @@ namespace BattleChess3.Game
             }
         }
         
+        /// <summary>
+        /// Empty selected figure
+        /// </summary>
         public SelectedFigure()
         {
             SelFigure = new BaseFigure();
             SelPosition = null;
         }
 
+        /// <summary>
+        /// Set selected to figure
+        /// </summary>
         public void SetSelected(BaseFigure figure)
         {
             SelFigure = figure;
             SelPosition = figure.Position;
         }
 
+        /// <summary>
+        /// Set selected to position
+        /// </summary>
         public void SetSelected(Position position)
         {
             SelFigure = Session.GetFigureAtPosition(position);
             SelPosition = position;
         }
-
 
         public event PropertyChangedEventHandler PropertyChanged;
         /// <summary>

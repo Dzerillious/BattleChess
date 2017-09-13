@@ -13,8 +13,11 @@ namespace BattleChess3.Game
         private string _previewPath;
         
         public string Name { get; set; }
+
         public string StartingPlayer { get; set; }
+
         public string[][] Figure { get; set; }
+
         public string PreviewPath{
             get => _previewPath;
             set
@@ -24,6 +27,9 @@ namespace BattleChess3.Game
             }
         }
 
+        /// <summary>
+        /// Creates empty map
+        /// </summary>
         public Map()
         {
             Name = null;
@@ -32,6 +38,9 @@ namespace BattleChess3.Game
             PreviewPath = null;
         }
 
+        /// <summary>
+        /// Creates new map from params
+        /// </summary>
         public Map(string name, string previewPath, string startingPlayer, string[][] figure)
         {
             Name = name;
@@ -51,6 +60,9 @@ namespace BattleChess3.Game
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        /// <summary>
+        /// Empties Map
+        /// </summary>
         public void Dispose()
         {
             PreviewPath = null;
