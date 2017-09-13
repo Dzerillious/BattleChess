@@ -17,13 +17,6 @@ namespace BattleChess3.GameData
         public static readonly IFigure[] FigureTypes =
         {
             new Ninja(),
-            new LOTRArcher(), 
-            new LOTRLeader(), 
-            new LOTRMinorWizzard(), 
-            new LOTRSoldier(), 
-            new LOTRWarrior(), 
-            new LOTRWizzard(), 
-            new LOTRRingBearer(), 
             new ChessHorse(), 
             new ChessKing(),
             new ChessQueen(), 

@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:BattleChess3.Views" 
              xmlns:gameData="clr-namespace:BattleChess3.GameData"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
@@ -20,7 +19,7 @@
         <ListBox.ItemTemplate>
             <DataTemplate>
                 <Image Source="{Binding Path=Preview}"
-                       Width="800" Margin="10" />
+                       MaxWidth="800" Margin="10"/>
             </DataTemplate>
         </ListBox.ItemTemplate>
     </ListBox>

@@ -98,13 +98,13 @@
     <Compile Include="Game\Session.cs" />
     <Compile Include="Game\Player.cs" />
     <Compile Include="Game\SelectedFigure.cs" />
-    <Compile Include="IsEmptyStringConverter.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Properties\StaticResources.cs" />
     <Compile Include="Views\GameBoardView.xaml.cs" />
+    <Compile Include="Views\ManualView.xaml.cs" />
     <Compile Include="Views\MapHolderView.xaml.cs" />
     <Compile Include="Views\OptionsView.xaml.cs" />
     <Compile Include="Views\UnitInfoView.xaml.cs" />
@@ -146,6 +146,7 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\GameBoardView.xaml" />
+    <Page Include="Views\ManualView.xaml" />
     <Page Include="Views\MapHolderView.xaml" />
     <Page Include="Views\OptionsView.xaml" />
     <Page Include="Views\UnitInfoView.xaml" />

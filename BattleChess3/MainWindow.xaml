@@ -4,8 +4,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:game="clr-namespace:BattleChess3.Game"
-        xmlns:gameData="clr-namespace:BattleChess3.GameData" 
+        xmlns:game="clr-namespace:BattleChess3.Game" 
         xmlns:views="clr-namespace:BattleChess3.Views"
         mc:Ignorable="d"
         DataContext="{Binding Source={x:Static game:Session.SelectedStyle}, UpdateSourceTrigger=PropertyChanged}"
@@ -51,7 +50,6 @@
                         BorderBrush="Black">
                     <views:UnitInfoView/>
                 </Border>
-
             </DockPanel>
         </TabItem>
         <TabItem Header="Options" Name="OptionsTab">
@@ -59,6 +57,8 @@
         </TabItem>
         <TabItem Header="Editor" Name="MapEditor">
         </TabItem>
-        <TabItem Header="Manual" Name="ManualTab" />
+        <TabItem Header="Manual" Name="ManualTab">
+            <views:ManualView/>
+        </TabItem>
     </TabControl>
 </Window>
