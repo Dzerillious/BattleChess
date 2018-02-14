@@ -8,11 +8,27 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>BattleChess3</RootNamespace>
     <AssemblyName>BattleChess3</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,6 +48,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>BattleChess3.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -60,37 +79,38 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GameData\Figures\AttackingTypes\DirectionAttack.cs" />
-    <Compile Include="GameData\Figures\AttackingTypes\DirectionMove.cs" />
-    <Compile Include="GameData\Figures\AttackingTypes\SimpleAttackFigure.cs" />
-    <Compile Include="GameData\Figures\AttackingTypes\SimpleFrontAttackFigure.cs" />
-    <Compile Include="GameData\Figures\AttackingTypes\SimpleFrontMoveFigure.cs" />
-    <Compile Include="GameData\Figures\AttackingTypes\SimpleMoveFigure.cs" />
-    <Compile Include="GameData\Figures\BaseFigure.cs" />
-    <Compile Include="GameData\Figures\FigureTypes\ClassicChess\ChessBishop.cs" />
-    <Compile Include="GameData\Figures\FigureTypes\ClassicChess\ChessHorse.cs" />
-    <Compile Include="GameData\Figures\FigureTypes\ClassicChess\ChessKing.cs" />
-    <Compile Include="GameData\Figures\FigureTypes\ClassicChess\ChessPawn.cs" />
-    <Compile Include="GameData\Figures\FigureTypes\ClassicChess\ChessQueen.cs" />
-    <Compile Include="GameData\Figures\FigureTypes\ClassicChess\ChessTower.cs" />
-    <Compile Include="GameData\Figures\FigureTypes\LordOfTheRings\LOTRArcher.cs" />
-    <Compile Include="GameData\Figures\FigureTypes\LordOfTheRings\LOTRMinorWizzard.cs" />
-    <Compile Include="GameData\Figures\FigureTypes\LordOfTheRings\LOTRLeader.cs" />
-    <Compile Include="GameData\Figures\FigureTypes\LordOfTheRings\LOTRRingBearer.cs" />
-    <Compile Include="GameData\Figures\FigureTypes\LordOfTheRings\LOTRWarrior.cs" />
-    <Compile Include="GameData\Figures\FigureTypes\LordOfTheRings\LOTRSoldier.cs" />
-    <Compile Include="GameData\Figures\FigureTypes\LordOfTheRings\LOTRWizzard.cs" />
-    <Compile Include="GameData\Figures\FigureTypes\Ninja.cs" />
-    <Compile Include="GameData\Figures\FigureTypes\Nothing.cs" />
-    <Compile Include="GameData\Figures\FigureTypes\Palm.cs" />
-    <Compile Include="GameData\Figures\FigureTypes\Stone.cs" />
-    <Compile Include="GameData\Figures\IFigure.cs" />
-    <Compile Include="GameData\GameStyles.cs" />
-    <Compile Include="GameData\ManualTexts.cs" />
-    <Compile Include="GameData\MapsHolder.cs" />
-    <Compile Include="GameData\Styles\SelectedStyle.cs" />
-    <Compile Include="GameData\Styles\Style.cs" />
-    <Compile Include="GameData\TypesOfFigures.cs" />
+    <Compile Include="Controller\MainWindowController.cs" />
+    <Compile Include="Model\Figures\AttackingTypes\DirectionAttack.cs" />
+    <Compile Include="Model\Figures\AttackingTypes\DirectionMove.cs" />
+    <Compile Include="Model\Figures\AttackingTypes\SimpleAttackFigure.cs" />
+    <Compile Include="Model\Figures\AttackingTypes\SimpleFrontAttackFigure.cs" />
+    <Compile Include="Model\Figures\AttackingTypes\SimpleFrontMoveFigure.cs" />
+    <Compile Include="Model\Figures\AttackingTypes\SimpleMoveFigure.cs" />
+    <Compile Include="Model\Figures\BaseFigure.cs" />
+    <Compile Include="Model\Figures\FigureTypes\ClassicChess\ChessBishop.cs" />
+    <Compile Include="Model\Figures\FigureTypes\ClassicChess\ChessHorse.cs" />
+    <Compile Include="Model\Figures\FigureTypes\ClassicChess\ChessKing.cs" />
+    <Compile Include="Model\Figures\FigureTypes\ClassicChess\ChessPawn.cs" />
+    <Compile Include="Model\Figures\FigureTypes\ClassicChess\ChessQueen.cs" />
+    <Compile Include="Model\Figures\FigureTypes\ClassicChess\ChessTower.cs" />
+    <Compile Include="Model\Figures\FigureTypes\LordOfTheRings\LOTRArcher.cs" />
+    <Compile Include="Model\Figures\FigureTypes\LordOfTheRings\LOTRMinorWizzard.cs" />
+    <Compile Include="Model\Figures\FigureTypes\LordOfTheRings\LOTRLeader.cs" />
+    <Compile Include="Model\Figures\FigureTypes\LordOfTheRings\LOTRRingBearer.cs" />
+    <Compile Include="Model\Figures\FigureTypes\LordOfTheRings\LOTRWarrior.cs" />
+    <Compile Include="Model\Figures\FigureTypes\LordOfTheRings\LOTRSoldier.cs" />
+    <Compile Include="Model\Figures\FigureTypes\LordOfTheRings\LOTRWizzard.cs" />
+    <Compile Include="Model\Figures\FigureTypes\Ninja.cs" />
+    <Compile Include="Model\Figures\FigureTypes\Nothing.cs" />
+    <Compile Include="Model\Figures\FigureTypes\Palm.cs" />
+    <Compile Include="Model\Figures\FigureTypes\Stone.cs" />
+    <Compile Include="Model\Figures\IFigure.cs" />
+    <Compile Include="Model\GameStyles.cs" />
+    <Compile Include="Model\ManualTexts.cs" />
+    <Compile Include="Model\MapsHolder.cs" />
+    <Compile Include="Model\Styles\SelectedStyle.cs" />
+    <Compile Include="Model\Styles\Style.cs" />
+    <Compile Include="Model\TypesOfFigures.cs" />
     <Compile Include="Game\BoardColumn.cs" />
     <Compile Include="Game\BoardTools.cs" />
     <Compile Include="Game\Highlight.cs" />
@@ -98,16 +118,12 @@
     <Compile Include="Game\Session.cs" />
     <Compile Include="Game\Player.cs" />
     <Compile Include="Game\SelectedFigure.cs" />
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Properties\StaticResources.cs" />
-    <Compile Include="Views\GameBoardView.xaml.cs" />
-    <Compile Include="Views\ManualView.xaml.cs" />
-    <Compile Include="Views\MapHolderView.xaml.cs" />
-    <Compile Include="Views\OptionsView.xaml.cs" />
-    <Compile Include="Views\UnitInfoView.xaml.cs" />
+    <Compile Include="Controller\GameBoardController.cs" />
+    <Compile Include="Controller\ManualController.cs" />
+    <Compile Include="Controller\MapHolderController.cs" />
+    <Compile Include="Controller\OptionsController.cs" />
+    <Compile Include="Controller\UnitInfoController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Position.cs" />
@@ -141,15 +157,37 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\GameBoardView.xaml" />
-    <Page Include="Views\ManualView.xaml" />
-    <Page Include="Views\MapHolderView.xaml" />
-    <Page Include="Views\OptionsView.xaml" />
-    <Page Include="Views\UnitInfoView.xaml" />
+    <Page Include="Views\GameBoardView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ManualView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MapHolderView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\OptionsView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UnitInfoView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -5,7 +5,7 @@ namespace BattleChess3.Game
     /// <summary>
     /// Board tools for class Session
     /// </summary>
-    public partial class Session
+    public static partial class Session
     {
         public static BaseFigure GetFigureAtPosition(Position position)
         {
@@ -29,6 +29,9 @@ namespace BattleChess3.Game
             SetFigureAtPosition(position, new BaseFigure(position));
         }
 
+        /// <summary>
+        /// Sets binded board for view to show game board
+        /// </summary>
         public static void SetBindedBoard()
         {
             for (var i = 0; i < 8; i++)

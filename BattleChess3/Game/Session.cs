@@ -27,7 +27,7 @@ namespace BattleChess3.Game
         
 
         /// <summary>
-        /// Sets Selected and Played positions and Makes turns
+        /// Sets Selected and Played positions and Plays turn if already selected turns
         /// </summary>
         /// <param name="position"></param>
         public static void ClickedAtPosition(Position position)
@@ -39,7 +39,7 @@ namespace BattleChess3.Game
             else
             {
                 _playedPosition = position;
-                MakeTurn();
+                PlayTurn();
             }
             HighlightTiles();
             SetBindedBoard();
@@ -48,7 +48,7 @@ namespace BattleChess3.Game
         /// <summary>
         /// Plays turn
         /// </summary>
-        public static void MakeTurn()
+        public static void PlayTurn()
         {
             var figure = Selected.SelFigure;
             if (figure.TryPlay(_playedPosition) == false)
@@ -65,7 +65,8 @@ namespace BattleChess3.Game
         }
 
         /// <summary>
-        /// If map isnt loaded creates empty map. Calls GetMap
+        /// If map isnt loaded creates empty map. 
+        /// Calls GetMap
         /// </summary>
         public static void LoadMap()
         {
@@ -95,7 +96,8 @@ namespace BattleChess3.Game
         }
 
         /// <summary>
-        /// Gets Map and sets figures
+        /// Gets Map from selected map and sets figures
+        /// Saves data to session
         /// </summary>
         public static void GetMap()
         {

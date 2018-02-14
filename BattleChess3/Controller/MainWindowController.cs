@@ -8,15 +8,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using BattleChess3.Game;
 using BattleChess3.GameData;
-using BattleChess3.GameData.Figures;
 using BattleChess3.Properties;
-using Button = System.Windows.Controls.Button;
 using FontFamily = System.Windows.Media.FontFamily;
-using ListBox = System.Windows.Controls.ListBox;
-using MouseEventArgs = System.Windows.Input.MouseEventArgs;
-using Style = BattleChess3.GameData.Styles.Style;
 
-namespace BattleChess3
+namespace BattleChess3.Controller
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -75,7 +70,11 @@ namespace BattleChess3
             }
         }
 
-        private void SetMapToMapsHolder(string randomName)
+        /// <summary>
+        /// Saves map to MapsHolder. It can be immediately played and it is actualized in view
+        /// </summary>
+        /// <param name="randomName">Previously generated randomName</param>
+        private static void SetMapToMapsHolder(string randomName)
         {
             var emptyMap = MapsHolder.FindFirstEmptyMap();
             emptyMap.Name = Directory.GetCurrentDirectory() + $"\\Maps\\{randomName}.txt";
@@ -98,6 +97,10 @@ namespace BattleChess3
             emptyMap.PreviewPath = Directory.GetCurrentDirectory() + $"\\MapsPreviews\\{randomName}.png";
         }
 
+        /// <summary>
+        /// Saves map for future map loading with picture preview
+        /// </summary>
+        /// <param name="randomName">Previously generated randomName</param>
         private void SaveMap(string randomName)
         {
             SaveToPng(BoardControl, $"MapsPreviews\\{randomName}.png");
@@ -107,7 +110,7 @@ namespace BattleChess3
                 boardStrings[i] = "";
                 for (var j = 0; j < 8; j++)
                 {
-                    var figure = Session.BoardColumns[j].ColumnFigures[7-i];
+                    var figure = Session.BoardColumns[j].ColumnFigures[7 - i];
                     if (figure.Color == Resource.Neutral)
                     {
                         boardStrings[i] += figure.FigureType.UnitName + " ";
@@ -128,13 +131,13 @@ namespace BattleChess3
                 }
             }
         }
-        
+
         private void SaveToPng(FrameworkElement visual, string fileName)
         {
             var encoder = new PngBitmapEncoder();
             SaveUsingEncoder(visual, fileName, encoder);
         }
-        
+
         private void SaveUsingEncoder(FrameworkElement visual, string fileName, BitmapEncoder encoder)
         {
             var bitmap = new RenderTargetBitmap((int)visual.ActualWidth, (int)visual.ActualHeight, 96, 96, PixelFormats.Pbgra32);

@@ -55,7 +55,7 @@ namespace BattleChess3.Game
 
         public event PropertyChangedEventHandler PropertyChanged;
         /// <summary>
-        /// On SelectedFigure changed
+        /// On SelectedFigure changed raise event
         /// </summary>
         /// <param name="propertyName"></param>
         [NotifyPropertyChangedInvocator]

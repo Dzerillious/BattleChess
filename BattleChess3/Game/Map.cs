@@ -11,7 +11,7 @@ namespace BattleChess3.Game
     public class Map : INotifyPropertyChanged, IDisposable
     {
         private string _previewPath;
-        
+
         public string Name { get; set; }
 
         public string StartingPlayer { get; set; }
@@ -60,6 +60,7 @@ namespace BattleChess3.Game
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// Empties Map
         /// </summary>

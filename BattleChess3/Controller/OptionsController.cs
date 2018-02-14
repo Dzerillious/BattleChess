@@ -2,11 +2,11 @@
 using BattleChess3.Game;
 using BattleChess3.GameData.Styles;
 
-namespace BattleChess3.Views
+namespace BattleChess3.Controller
 {
-    public partial class OptionsView : UserControl
+    public partial class OptionsController
     {
-        public OptionsView()
+        public OptionsController()
         {
             InitializeComponent();
         }

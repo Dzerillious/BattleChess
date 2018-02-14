@@ -4,11 +4,11 @@ using System.Windows.Input;
 using BattleChess3.Game;
 using BattleChess3.GameData.Figures;
 
-namespace BattleChess3.Views
+namespace BattleChess3.Controller
 {
-    public partial class GameBoardView : UserControl
+    public partial class GameBoardController
     {
-        public GameBoardView()
+        public GameBoardController()
         {
             InitializeComponent();
         }

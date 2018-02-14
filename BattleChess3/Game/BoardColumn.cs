@@ -23,13 +23,13 @@ namespace BattleChess3.Game
         }
         
         /// <summary>
-        /// Constructor
+        /// Constructor for empty Board column
         /// </summary>
         public BoardColumn() => ColumnFigures = new BaseFigure[8];
 
         public event PropertyChangedEventHandler PropertyChanged;
         /// <summary>
-        /// On ColumnFigures changed
+        /// On ColumnFigures changed notify to change view
         /// </summary>
         /// <param name="propertyName"></param>
         [NotifyPropertyChangedInvocator]

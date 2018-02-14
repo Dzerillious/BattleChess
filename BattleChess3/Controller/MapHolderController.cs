@@ -1,11 +1,11 @@
 ﻿using System.Windows.Controls;
 using BattleChess3.Game;
 
-namespace BattleChess3.Views
+namespace BattleChess3.Controller
 {
-    public partial class MapHolderView : UserControl
+    public partial class MapHolderController
     {
-        public MapHolderView()
+        public MapHolderController()
         {
             InitializeComponent();
         }

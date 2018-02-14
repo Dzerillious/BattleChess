@@ -1,0 +1,10 @@
+BlackChessTower BlackChessHorse BlackChessBishop BlackChessQueen BlackChessKing BlackChessBishop BlackChessHorse BlackChessTower
+BlackChessPawn BlackChessPawn BlackChessPawn BlackChessPawn BlackChessPawn BlackChessPawn BlackChessPawn BlackChessPawn
+Nothing Nothing Nothing Nothing Nothing Nothing Nothing Nothing
+Nothing Nothing Nothing Nothing Nothing Nothing Nothing Nothing
+Nothing Nothing Nothing Nothing Nothing Nothing Nothing Nothing
+Nothing Nothing Nothing Nothing Nothing Nothing Nothing Nothing
+WhiteChessPawn WhiteChessPawn WhiteChessPawn WhiteChessPawn WhiteChessPawn WhiteChessPawn WhiteChessPawn WhiteChessPawn
+WhiteChessTower WhiteChessHorse WhiteChessBishop WhiteChessQueen WhiteChessKing WhiteChessBishop WhiteChessHorse WhiteChessTower
+MapsPreviews\2035755413.png
+White
