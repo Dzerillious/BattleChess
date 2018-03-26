@@ -1,16 +1,14 @@
 ﻿using BattleChess3.GameData.Figures;
+using System.Linq;
 
 namespace BattleChess3.Game
 {
-    /// <summary>
-    /// Board tools for class Session
-    /// </summary>
     public static partial class Session
     {
-        public static BaseFigure GetFigureAtPosition(Position position)
-        {
-            return Board[position.X][position.Y];
-        }
+        public static BoardColumn[] BoardColumns = new BoardColumn[8];
+        public static readonly BaseFigure[][] Board = new BaseFigure[8][];
+
+        public static BaseFigure GetFigureAtPosition(Position position) => Board[position.X][position.Y];
 
         public static void SetFigureAtPosition(Position position, BaseFigure figure)
         {
@@ -43,6 +41,37 @@ namespace BattleChess3.Game
                 }
                 BoardColumns[i].ColumnFigures = newColumn.ColumnFigures;
             }
+        }
+
+        /// <summary>
+        /// If map isnt loaded creates empty map.
+        /// Calls GetMap
+        /// </summary>
+        public static void LoadMap()
+        {
+            if (Board.Any(column => column == null))
+            {
+                for (var i = 0; i < 8; i++)
+                {
+                    BoardColumns[i] = new BoardColumn();
+                    Board[i] = new BaseFigure[8];
+                    for (var j = 0; j < 8; j++)
+                    {
+                        Board[i][j] = new BaseFigure();
+                    }
+                }
+            }
+            else
+            {
+                foreach (var column in Board)
+                {
+                    foreach (var tile in column)
+                    {
+                        tile.Die();
+                    }
+                }
+            }
+            GetMap();
         }
     }
 }

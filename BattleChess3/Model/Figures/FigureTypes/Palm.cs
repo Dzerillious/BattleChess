@@ -1,6 +1,6 @@
-﻿using System;
+﻿using BattleChess3.Properties;
+using System;
 using System.IO;
-using BattleChess3.Properties;
 
 namespace BattleChess3.GameData.Figures.FigureTypes
 {

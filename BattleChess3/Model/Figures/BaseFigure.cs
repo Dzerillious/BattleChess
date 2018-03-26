@@ -1,7 +1,7 @@
-﻿using System.IO;
-using BattleChess3.Game;
+﻿using BattleChess3.Game;
 using BattleChess3.GameData.Figures.FigureTypes;
 using BattleChess3.Properties;
+using System.IO;
 
 namespace BattleChess3.GameData.Figures
 {
@@ -32,7 +32,7 @@ namespace BattleChess3.GameData.Figures
             Highlighted = Directory.GetCurrentDirectory() + "Pictures\\Nothing.png";
             PicturePath = FigureType.PictureNeutralPath;
         }
-        
+
         /// <summary>
         /// Constructor of nothing at position
         /// </summary>

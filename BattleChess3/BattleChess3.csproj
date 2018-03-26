@@ -14,6 +14,7 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -26,7 +27,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -105,19 +105,19 @@
     <Compile Include="Model\Figures\FigureTypes\Palm.cs" />
     <Compile Include="Model\Figures\FigureTypes\Stone.cs" />
     <Compile Include="Model\Figures\IFigure.cs" />
-    <Compile Include="Model\GameStyles.cs" />
+    <Compile Include="ViewModel\GameStyles.cs" />
     <Compile Include="Model\ManualTexts.cs" />
-    <Compile Include="Model\MapsHolder.cs" />
-    <Compile Include="Model\Styles\SelectedStyle.cs" />
-    <Compile Include="Model\Styles\Style.cs" />
+    <Compile Include="ViewModel\MapsHolder.cs" />
+    <Compile Include="ViewModel\Styles\SelectedStyle.cs" />
+    <Compile Include="ViewModel\Styles\Style.cs" />
     <Compile Include="Model\TypesOfFigures.cs" />
-    <Compile Include="Game\BoardColumn.cs" />
-    <Compile Include="Game\BoardTools.cs" />
-    <Compile Include="Game\Highlight.cs" />
-    <Compile Include="Game\Map.cs" />
-    <Compile Include="Game\Session.cs" />
-    <Compile Include="Game\Player.cs" />
-    <Compile Include="Game\SelectedFigure.cs" />
+    <Compile Include="ViewModel\BoardColumn.cs" />
+    <Compile Include="ViewModel\BoardTools.cs" />
+    <Compile Include="ViewModel\Highlight.cs" />
+    <Compile Include="ViewModel\Map.cs" />
+    <Compile Include="ViewModel\Session.cs" />
+    <Compile Include="ViewModel\Player.cs" />
+    <Compile Include="ViewModel\SelectedFigure.cs" />
     <Compile Include="Properties\StaticResources.cs" />
     <Compile Include="Controller\GameBoardController.cs" />
     <Compile Include="Controller\ManualController.cs" />
@@ -141,6 +141,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

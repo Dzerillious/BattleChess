@@ -62,7 +62,6 @@
                                 </StackPanel>
                             </Grid>
                         </Viewbox>
-
                     </Border>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>

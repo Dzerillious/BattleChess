@@ -1,7 +1,7 @@
-﻿using System;
-using System.IO;
-using BattleChess3.GameData.Figures.AttackingTypes;
+﻿using BattleChess3.GameData.Figures.AttackingTypes;
 using BattleChess3.Properties;
+using System;
+using System.IO;
 
 namespace BattleChess3.GameData.Figures.FigureTypes.LordOfTheRings
 {
@@ -53,9 +53,9 @@ namespace BattleChess3.GameData.Figures.FigureTypes.LordOfTheRings
         };
 
         public Func<BaseFigure, BaseFigure, bool> CanMove => (figure, moveToFigure) =>
-            CanMoveSimple(figure, moveToFigure, _avaibleMoves);
+             CanMoveSimple(figure, moveToFigure, _avaibleMoves);
 
         public Func<BaseFigure, BaseFigure, bool> CanAttack => (figure, attackFigure) =>
-            CanAttackSimple(figure, attackFigure, _avaibleAttacks);
+             CanAttackSimple(figure, attackFigure, _avaibleAttacks);
     }
 }

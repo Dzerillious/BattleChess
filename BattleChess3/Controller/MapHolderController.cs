@@ -1,5 +1,5 @@
-﻿using System.Windows.Controls;
-using BattleChess3.Game;
+﻿using BattleChess3.Game;
+using System.Windows.Controls;
 
 namespace BattleChess3.Controller
 {
@@ -9,13 +9,13 @@ namespace BattleChess3.Controller
         {
             InitializeComponent();
         }
-        
+
         /// <summary>
         /// Called when selected map is changed
         /// </summary>
         private void OnSelectedMapChanged(object sender, SelectionChangedEventArgs e)
         {
-            var listBox = (ListBox) sender;
+            var listBox = (ListBox)sender;
             Session.SelectedMap = (Map)listBox.SelectedItem;
         }
     }

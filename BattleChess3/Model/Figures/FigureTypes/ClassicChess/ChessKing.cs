@@ -1,7 +1,7 @@
-﻿using System;
-using System.IO;
-using BattleChess3.GameData.Figures.AttackingTypes;
+﻿using BattleChess3.GameData.Figures.AttackingTypes;
 using BattleChess3.Properties;
+using System;
+using System.IO;
 
 namespace BattleChess3.GameData.Figures.FigureTypes.ClassicChess
 {
@@ -23,36 +23,37 @@ namespace BattleChess3.GameData.Figures.FigureTypes.ClassicChess
 
         private readonly Position[] _avaibleMoves =
         {
-            new Position(0, 1), 
-            new Position(0, -1), 
-            new Position(1, 0), 
-            new Position(-1, 0), 
-            new Position(1, 1), 
+            new Position(0, 1),
+            new Position(0, -1),
+            new Position(1, 0),
+            new Position(-1, 0),
+            new Position(1, 1),
             new Position(-1, -1),
-            new Position(1, -1), 
-            new Position(-1, 1), 
+            new Position(1, -1),
+            new Position(-1, 1),
         };
 
         private readonly Position[] _avaibleAttacks =
         {
-            new Position(0, 1), 
-            new Position(0, -1), 
-            new Position(1, 0), 
-            new Position(-1, 0), 
-            new Position(1, 1), 
+            new Position(0, 1),
+            new Position(0, -1),
+            new Position(1, 0),
+            new Position(-1, 0),
+            new Position(1, 1),
             new Position(-1, -1),
-            new Position(1, -1), 
-            new Position(-1, 1), 
+            new Position(1, -1),
+            new Position(-1, 1),
         };
 
-        public Position[] AttackPattern => new []
+        public Position[] AttackPattern => new[]
         {
             new Position(0, 0),
         };
 
         public Func<BaseFigure, BaseFigure, bool> CanMove => (figure, moveToFigure) =>
-            CanMoveSimple(figure, moveToFigure, _avaibleMoves);
+             CanMoveSimple(figure, moveToFigure, _avaibleMoves);
+
         public Func<BaseFigure, BaseFigure, bool> CanAttack => (figure, attackFigure) =>
-            CanAttackSimple(figure, attackFigure, _avaibleAttacks);
+             CanAttackSimple(figure, attackFigure, _avaibleAttacks);
     }
 }

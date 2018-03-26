@@ -1,16 +1,10 @@
-﻿using System.IO;
-using BattleChess3.GameData.Figures;
+﻿using BattleChess3.GameData.Figures;
+using System.IO;
 
 namespace BattleChess3.Game
 {
-    /// <summary>
-    /// Partial class of Session for highlighting tiles
-    /// </summary>
     public static partial class Session
     {
-        /// <summary>
-        /// Recalculates Highlighting and sets figure properties Highlight
-        /// </summary>
         public static void HighlightTiles()
         {
             if (Selected.SelPosition == null)

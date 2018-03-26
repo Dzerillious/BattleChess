@@ -1,5 +1,5 @@
-﻿using System;
-using BattleChess3.Properties;
+﻿using BattleChess3.Properties;
+using System;
 
 namespace BattleChess3.GameData.Figures.AttackingTypes
 {

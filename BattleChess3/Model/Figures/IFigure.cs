@@ -11,42 +11,42 @@ namespace BattleChess3.GameData.Figures
         /// Gets Name of unit
         /// </summary>
         string UnitName { get; }
-        
+
         /// <summary>
         /// Gets Type of unit
         /// </summary>
         string UnitType { get; }
-        
+
         /// <summary>
         /// Gets Bonus against type of unit
         /// </summary>
         string Bonus { get; }
-        
+
         /// <summary>
         /// Gets Antibonus against type of unit
         /// </summary>
         string AntiBonus { get; }
-        
+
         /// <summary>
         /// Gets Attack
         /// </summary>
         int Attack { get; }
-        
+
         /// <summary>
         /// Gets Defence
         /// </summary>
         int Defence { get; }
-        
+
         /// <summary>
         /// Gets If move while attacking
         /// </summary>
         bool MovingWhileAttacking { get; }
-        
+
         /// <summary>
         /// Gets Cost of unit
         /// </summary>
         int Cost { get; }
-        
+
         /// <summary>
         /// Gets Description of unit
         /// </summary>
@@ -71,12 +71,12 @@ namespace BattleChess3.GameData.Figures
         /// Gets positions on which attack
         /// </summary>
         Position[] AttackPattern { get; }
-        
+
         /// <summary>
         /// Check if can move on position
         /// </summary>
         Func<BaseFigure, BaseFigure, bool> CanMove { get; }
-        
+
         /// <summary>
         /// Check if can attack on position
         /// </summary>

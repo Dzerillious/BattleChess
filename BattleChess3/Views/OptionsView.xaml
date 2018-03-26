@@ -19,7 +19,7 @@
         <ListBox.ItemTemplate>
             <DataTemplate>
                 <Image Source="{Binding Path=Preview}"
-                       MaxWidth="800" Margin="10"/>
+                       MaxWidth="800" Margin="10" />
             </DataTemplate>
         </ListBox.ItemTemplate>
     </ListBox>

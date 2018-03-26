@@ -1,7 +1,7 @@
-﻿using System;
-using System.IO;
-using BattleChess3.GameData.Figures.AttackingTypes;
+﻿using BattleChess3.GameData.Figures.AttackingTypes;
 using BattleChess3.Properties;
+using System;
+using System.IO;
 
 namespace BattleChess3.GameData.Figures.FigureTypes.ClassicChess
 {
@@ -23,28 +23,29 @@ namespace BattleChess3.GameData.Figures.FigureTypes.ClassicChess
 
         private readonly Position[] _avaibleMoveDirections =
         {
-            new Position(0, 1), 
-            new Position(0, -1), 
-            new Position(1, 0), 
+            new Position(0, 1),
+            new Position(0, -1),
+            new Position(1, 0),
             new Position(-1, 0),
         };
 
         private readonly Position[] _avaibleAttackDirections =
         {
-            new Position(0, 1), 
-            new Position(0, -1), 
-            new Position(1, 0), 
+            new Position(0, 1),
+            new Position(0, -1),
+            new Position(1, 0),
             new Position(-1, 0),
         };
 
-        public Position[] AttackPattern => new []
+        public Position[] AttackPattern => new[]
         {
             new Position(0, 0),
         };
 
         public Func<BaseFigure, BaseFigure, bool> CanMove => (figure, moveToFigure) =>
-            CanMoveDirection(figure, moveToFigure, _avaibleMoveDirections);
+             CanMoveDirection(figure, moveToFigure, _avaibleMoveDirections);
+
         public Func<BaseFigure, BaseFigure, bool> CanAttack => (figure, attackFigure) =>
-            CanAttackDirection(figure, attackFigure, _avaibleAttackDirections);
+             CanAttackDirection(figure, attackFigure, _avaibleAttackDirections);
     }
 }

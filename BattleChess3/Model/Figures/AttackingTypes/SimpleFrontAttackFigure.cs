@@ -1,6 +1,6 @@
-﻿using System;
+﻿using BattleChess3.Properties;
+using System;
 using System.Linq;
-using BattleChess3.Properties;
 
 namespace BattleChess3.GameData.Figures.AttackingTypes
 {

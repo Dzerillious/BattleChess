@@ -5,7 +5,10 @@
         public int X { get; set; }
         public int Y { get; set; }
 
-        public Position() {}
+        public Position()
+        {
+        }
+
         public Position(int x, int y)
         {
             X = x;
@@ -30,13 +33,13 @@
         /// <summary>
         /// Adds one position to another
         /// </summary>
-        public Position AddPositions(Position position) => new Position(X+position.X, Y+position.Y);
+        public Position AddPositions(Position position) => new Position(X + position.X, Y + position.Y);
 
         /// <summary>
         /// Substracts one position from another
         /// </summary>
         public Position SubstractPositions(Position position) => new Position(X - position.X, Y - position.Y);
-        
+
         /// <summary>
         /// Multiplies one position with koeficient
         /// </summary>

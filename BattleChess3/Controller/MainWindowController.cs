@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BattleChess3.Game;
+using BattleChess3.GameData;
+using BattleChess3.Properties;
+using System;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -6,9 +9,6 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using BattleChess3.Game;
-using BattleChess3.GameData;
-using BattleChess3.Properties;
 using FontFamily = System.Windows.Media.FontFamily;
 
 namespace BattleChess3.Controller
@@ -18,6 +18,8 @@ namespace BattleChess3.Controller
     /// </summary>
     public partial class MainWindow
     {
+        public static MapsHolder MapsHolder = new MapsHolder();
+
         /// <summary>
         /// Main window
         /// </summary>
@@ -44,7 +46,6 @@ namespace BattleChess3.Controller
             {
                 GameTab.IsEnabled = true;
                 Session.LoadMap();
-                Session.SetBindedBoard();
                 GameTab.IsSelected = true;
             }
         }
@@ -76,15 +77,14 @@ namespace BattleChess3.Controller
         /// <param name="randomName">Previously generated randomName</param>
         private static void SetMapToMapsHolder(string randomName)
         {
-            var emptyMap = MapsHolder.FindFirstEmptyMap();
-            emptyMap.Name = Directory.GetCurrentDirectory() + $"\\Maps\\{randomName}.txt";
-            emptyMap.StartingPlayer = Session.WhooseTurn;
+            var newMap = new Map();
+            newMap.Name = Directory.GetCurrentDirectory() + $"\\Maps\\{randomName}.txt";
             var tiles = new string[8][];
             for (var i = 0; i < 8; i++)
             {
                 tiles[i] = new string[8];
             }
-            var lines = File.ReadAllLines(emptyMap.Name);
+            var lines = File.ReadAllLines(newMap.Name);
             for (var i = 0; i < 8; i++)
             {
                 var tile = lines[7 - i].Split(' ');
@@ -93,8 +93,11 @@ namespace BattleChess3.Controller
                     tiles[i][j] = tile[j];
                 }
             }
-            emptyMap.Figure = tiles;
-            emptyMap.PreviewPath = Directory.GetCurrentDirectory() + $"\\MapsPreviews\\{randomName}.png";
+            newMap.Figure = tiles;
+            MapsHolder.AddMap(newMap);
+            newMap.StartingPlayer = Session.WhooseTurn;
+            newMap.PreviewPath = Directory.GetCurrentDirectory() + $"\\MapsPreviews\\{randomName}.png";
+            MapsHolder.Maps.FindAll(x => x.Name == newMap.Name).FirstOrDefault().StartingPlayer = newMap.StartingPlayer;
         }
 
         /// <summary>
@@ -154,6 +157,7 @@ namespace BattleChess3.Controller
         {
             if (Session.SelectedMap.Name != null)
             {
+                MapsHolder.RemoveMap(Session.SelectedMap);
                 File.Delete(Session.SelectedMap.Name);
                 Session.SelectedMap.Dispose();
             }

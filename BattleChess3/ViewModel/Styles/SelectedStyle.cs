@@ -1,13 +1,14 @@
-﻿using System.ComponentModel;
+﻿using BattleChess3.Annotations;
+using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
-using BattleChess3.Annotations;
 
 namespace BattleChess3.GameData.Styles
 {
     public class SelectedStyle : INotifyPropertyChanged
     {
         private Style _applicationStyle;
+
         /// <summary>
         /// Property for Application Style
         /// </summary>
@@ -20,8 +21,9 @@ namespace BattleChess3.GameData.Styles
                 OnPropertyChanged();
             }
         }
-        
+
         public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// On SelectedStyle changed
         /// </summary>
