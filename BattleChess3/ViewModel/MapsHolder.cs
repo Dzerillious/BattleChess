@@ -1,12 +1,11 @@
 ﻿using BattleChess3.Annotations;
-using BattleChess3.Game;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
-namespace BattleChess3.GameData
+namespace BattleChess3.ViewModel
 {
     public class MapsHolder : INotifyPropertyChanged
     {

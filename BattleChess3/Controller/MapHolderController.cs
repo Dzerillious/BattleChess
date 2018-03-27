@@ -1,4 +1,4 @@
-﻿using BattleChess3.Game;
+﻿using BattleChess3.ViewModel;
 using System.Windows.Controls;
 
 namespace BattleChess3.Controller

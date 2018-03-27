@@ -1,9 +1,9 @@
-﻿using BattleChess3.GameData.Figures.AttackingTypes;
+﻿using BattleChess3.Model.Figures.AttackingTypes;
 using BattleChess3.Properties;
 using System;
 using System.IO;
 
-namespace BattleChess3.GameData.Figures.FigureTypes
+namespace BattleChess3.Model.Figures.FigureTypes
 {
     public class Ninja : SimpleFrontAttackFigure, IFigure
     {
@@ -15,7 +15,7 @@ namespace BattleChess3.GameData.Figures.FigureTypes
         public int Defence => 0;
         public bool MovingWhileAttacking => true;
         public int Cost => 1;
-        public string Description => "Ninja is secret warior and with his diagonal moves can he easily suprise enemy. He is one of cheap figures so he is best in front line.";
+        public string Description => "Ninja is secret warrior and with his diagonal moves can he easily surprise enemy. He is one of cheap figures so he is best in front line.";
 
         public string PictureBlackPath => Directory.GetCurrentDirectory() + "\\Pictures\\NinjaBlack.png";
         public string PictureWhitePath => Directory.GetCurrentDirectory() + "\\Pictures\\NinjaWhite.png";
@@ -43,9 +43,9 @@ namespace BattleChess3.GameData.Figures.FigureTypes
         };
 
         public Func<BaseFigure, BaseFigure, bool> CanMove => (figure, moveToFigure) =>
-             CanMoveSimple(figure, moveToFigure, _avaibleMoves);
+              CanMoveSimple(figure, moveToFigure, _avaibleMoves);
 
         public Func<BaseFigure, BaseFigure, bool> CanAttack => (figure, attackFigure) =>
-             CanAttackSimple(figure, attackFigure, _avaibleAttacks);
+              CanAttackSimple(figure, attackFigure, _avaibleAttacks);
     }
 }

@@ -1,5 +1,5 @@
-﻿using BattleChess3.Game;
-using BattleChess3.GameData.Figures;
+﻿using BattleChess3.Model.Figures;
+using BattleChess3.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;

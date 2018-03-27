@@ -2,7 +2,7 @@
 using System;
 using System.Linq;
 
-namespace BattleChess3.GameData.Figures.AttackingTypes
+namespace BattleChess3.Model.Figures.AttackingTypes
 {
     /// <summary>
     /// Class of simple front move of figure
@@ -14,11 +14,11 @@ namespace BattleChess3.GameData.Figures.AttackingTypes
         /// </summary>
         public Func<BaseFigure, BaseFigure, Position[], bool> CanMoveSimple => (movingFigure, moveToFigure, avaibleMoves) =>
         {
-            if (movingFigure.Color == Resource.White && movingFigure.Position.Y < moveToFigure.Position.Y)
+            if (movingFigure.Color == Resource.White && movingFigure.Position.Y > moveToFigure.Position.Y)
             {
                 return false;
             }
-            else if (movingFigure.Color == Resource.Black && movingFigure.Position.Y > moveToFigure.Position.Y)
+            else if (movingFigure.Color == Resource.Black && movingFigure.Position.Y < moveToFigure.Position.Y)
             {
                 return false;
             }

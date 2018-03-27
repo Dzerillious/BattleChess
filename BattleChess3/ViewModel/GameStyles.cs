@@ -1,9 +1,9 @@
-﻿using BattleChess3.GameData.Styles;
+﻿using BattleChess3.ViewModel.Styles;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace BattleChess3.GameData
+namespace BattleChess3.ViewModel
 {
     public static class GameStyles
     {
@@ -13,13 +13,13 @@ namespace BattleChess3.GameData
         {
             get
             {
-                if (styles == null)
+                if (styles.Count == 0)
                 {
                     var filePaths = Directory.GetDirectories(Directory.GetCurrentDirectory() + "\\Pictures\\Styles");
                     var newStyles = new List<Style>();
                     foreach (var path in filePaths)
                     {
-                        styles.Add(new Style(path));
+                        newStyles.Add(new Style(path));
                     }
                     styles = newStyles;
                 }

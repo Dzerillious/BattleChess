@@ -1,7 +1,7 @@
 ﻿<Application x:Class="BattleChess3.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:game="clr-namespace:BattleChess3.Game"
+             xmlns:game="clr-namespace:BattleChess3.ViewModel"
              StartupUri="./Views/MainWindow.xaml">
     <Application.Resources>
         <Style x:Key="TextBlockStyle" TargetType="TextBlock">

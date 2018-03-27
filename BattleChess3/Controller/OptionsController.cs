@@ -1,5 +1,5 @@
-﻿using BattleChess3.Game;
-using BattleChess3.GameData.Styles;
+﻿using BattleChess3.ViewModel;
+using BattleChess3.ViewModel.Styles;
 using System.Windows.Controls;
 
 namespace BattleChess3.Controller

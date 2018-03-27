@@ -1,7 +1,7 @@
-﻿using BattleChess3.GameData.Figures;
+﻿using BattleChess3.Model.Figures;
 using System.IO;
 
-namespace BattleChess3.Game
+namespace BattleChess3.ViewModel
 {
     public static partial class Session
     {

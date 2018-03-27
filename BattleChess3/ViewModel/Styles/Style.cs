@@ -1,4 +1,4 @@
-﻿namespace BattleChess3.GameData.Styles
+﻿namespace BattleChess3.ViewModel.Styles
 {
     /// <summary>
     /// Interface for style of application

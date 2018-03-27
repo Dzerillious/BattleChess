@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
 
-namespace BattleChess3.GameData.Styles
+namespace BattleChess3.ViewModel.Styles
 {
     public class SelectedStyle : INotifyPropertyChanged
     {

@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 
-namespace BattleChess3.GameData.Figures.FigureTypes
+namespace BattleChess3.Model.Figures.FigureTypes
 {
     public class Nothing : IFigure
     {

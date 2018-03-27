@@ -1,9 +1,9 @@
-﻿using BattleChess3.GameData.Figures.AttackingTypes;
+﻿using BattleChess3.Model.Figures.AttackingTypes;
 using BattleChess3.Properties;
 using System;
 using System.IO;
 
-namespace BattleChess3.GameData.Figures.FigureTypes.ClassicChess
+namespace BattleChess3.Model.Figures.FigureTypes.ClassicChess
 {
     public class ChessPawn : SimpleFrontAttackFigure, IFigure
     {
@@ -61,6 +61,6 @@ namespace BattleChess3.GameData.Figures.FigureTypes.ClassicChess
         };
 
         public Func<BaseFigure, BaseFigure, bool> CanAttack => (figure, attackFigure) =>
-             CanAttackSimple(figure, attackFigure, _avaibleAttacks);
+              CanAttackSimple(figure, attackFigure, _avaibleAttacks);
     }
 }

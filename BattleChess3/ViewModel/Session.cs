@@ -1,9 +1,9 @@
-﻿using BattleChess3.GameData;
-using BattleChess3.GameData.Figures;
-using BattleChess3.GameData.Styles;
+﻿using BattleChess3.Model;
+using BattleChess3.Model.Figures;
 using BattleChess3.Properties;
+using BattleChess3.ViewModel.Styles;
 
-namespace BattleChess3.Game
+namespace BattleChess3.ViewModel
 {
     /// <summary>
     /// Class for session of game
@@ -32,8 +32,8 @@ namespace BattleChess3.Game
                 _playedPosition = position;
                 PlayTurn();
             }
-            HighlightTiles();
             SetBindedBoard();
+            HighlightTiles();
         }
 
         public static void PlayTurn()

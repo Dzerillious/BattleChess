@@ -1,4 +1,4 @@
-﻿namespace BattleChess3.GameData
+﻿namespace BattleChess3.Model
 {
     public static class ManualTexts
     {

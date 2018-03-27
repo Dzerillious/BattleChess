@@ -1,9 +1,9 @@
 ﻿using BattleChess3.Annotations;
-using BattleChess3.GameData.Figures;
+using BattleChess3.Model.Figures;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace BattleChess3.Game
+namespace BattleChess3.ViewModel
 {
     /// <summary>
     /// One column of board

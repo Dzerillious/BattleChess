@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BattleChess3.GameData.Figures.BaseFigure" Collapsed="true">
+    <Position X="5.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAIAAAAAAgIAAAgACAAgEIACAAAAQCgAAAQCA=</HashCode>
+      <FileName>Model\Figures\BaseFigure.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleChess3.GameData.Figures.FigureTypes.Stone" Collapsed="true">
+    <Position X="1" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAACAAAAQgAAAAMAAAABAAAoAABYAAAAACAgAAACA=</HashCode>
+      <FileName>Model\Figures\FigureTypes\Stone.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Object" Collapsed="true">
+    <Position X="20.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BattleChess3.GameData.Figures.AttackingTypes.DirectionAttack" Collapsed="true">
+    <Position X="37" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Figures\AttackingTypes\DirectionAttack.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleChess3.GameData.Figures.FigureTypes.ClassicChess.ChessBishop" Collapsed="true">
+    <Position X="34.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAACAAAAQgAAAAMQAAABAAQoAABYAAAAACAgAAACA=</HashCode>
+      <FileName>Model\Figures\FigureTypes\ClassicChess\ChessBishop.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BattleChess3.GameData.Figures.FigureTypes.ClassicChess.ChessQueen" Collapsed="true">
+    <Position X="37" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAACAAAAQgAAAAMQAAABAAQoAABYAAAAACAgAAACA=</HashCode>
+      <FileName>Model\Figures\FigureTypes\ClassicChess\ChessQueen.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BattleChess3.GameData.Figures.FigureTypes.ClassicChess.ChessTower" Collapsed="true">
+    <Position X="39.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAACAAAAQgAAAAMQAAABAAQoAABYAAAAACAgAAACA=</HashCode>
+      <FileName>Model\Figures\FigureTypes\ClassicChess\ChessTower.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BattleChess3.GameData.Figures.AttackingTypes.DirectionMove" Collapsed="true">
+    <Position X="37" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Figures\AttackingTypes\DirectionMove.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleChess3.GameData.Figures.AttackingTypes.SimpleAttackFigure" Collapsed="true">
+    <Position X="21.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Figures\AttackingTypes\SimpleAttackFigure.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleChess3.GameData.Figures.AttackingTypes.SimpleMoveFigure" Collapsed="true">
+    <Position X="21.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Figures\AttackingTypes\SimpleMoveFigure.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleChess3.GameData.Figures.FigureTypes.ClassicChess.ChessHorse" Collapsed="true">
+    <Position X="12.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAACAAAAQiAAAAMAAAABAAAoAABYAAAAACAgAACCA=</HashCode>
+      <FileName>Model\Figures\FigureTypes\ClassicChess\ChessHorse.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BattleChess3.GameData.Figures.FigureTypes.ClassicChess.ChessKing" Collapsed="true">
+    <Position X="14.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAACAAAAQiAAAAMAAAABAAAoAABYAAAAACAgAACCA=</HashCode>
+      <FileName>Model\Figures\FigureTypes\ClassicChess\ChessKing.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BattleChess3.GameData.Figures.FigureTypes.LordOfTheRings.LOTRArcher" Collapsed="true">
+    <Position X="16.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAACAAAAQiAAAAMAAAABAAAoAABYAAAAACAgAACCA=</HashCode>
+      <FileName>Model\Figures\FigureTypes\LordOfTheRings\LOTRArcher.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BattleChess3.GameData.Figures.FigureTypes.LordOfTheRings.LOTRLeader" Collapsed="true">
+    <Position X="19" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAACAAAAQiAAAAMAAAABAAAoAABYAAAAACAgAACCA=</HashCode>
+      <FileName>Model\Figures\FigureTypes\LordOfTheRings\LOTRLeader.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BattleChess3.GameData.Figures.FigureTypes.LordOfTheRings.LOTRMinorWizzard" Collapsed="true">
+    <Position X="21.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAACAAAAQiAAAAMAAAABAAAoAABYAAAAACAgAACCA=</HashCode>
+      <FileName>Model\Figures\FigureTypes\LordOfTheRings\LOTRMinorWizzard.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BattleChess3.GameData.Figures.FigureTypes.LordOfTheRings.LOTRRingBearer" Collapsed="true">
+    <Position X="23.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAACAAAAQiAAAAMAAAABAAAoAABYAAAAACAgAACCA=</HashCode>
+      <FileName>Model\Figures\FigureTypes\LordOfTheRings\LOTRRingBearer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BattleChess3.GameData.Figures.FigureTypes.LordOfTheRings.LOTRSoldier" Collapsed="true">
+    <Position X="25.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAACAAAAQiAAAAMAAAABAAAoAABYAAAAACAgAACCA=</HashCode>
+      <FileName>Model\Figures\FigureTypes\LordOfTheRings\LOTRSoldier.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BattleChess3.GameData.Figures.FigureTypes.LordOfTheRings.LOTRWarrior" Collapsed="true">
+    <Position X="28" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAACAAAAQiAAAAMAAAABAAAoAABYAAAAACAgAACCA=</HashCode>
+      <FileName>Model\Figures\FigureTypes\LordOfTheRings\LOTRWarrior.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BattleChess3.GameData.Figures.FigureTypes.LordOfTheRings.LOTRWizzard" Collapsed="true">
+    <Position X="30.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAACAAAAQiAAAAMAAAABAAAoAABYAAAAACAgAACCA=</HashCode>
+      <FileName>Model\Figures\FigureTypes\LordOfTheRings\LOTRWizzard.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BattleChess3.GameData.Figures.AttackingTypes.SimpleFrontMoveFigure" Collapsed="true">
+    <Position X="9" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Figures\AttackingTypes\SimpleFrontMoveFigure.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleChess3.GameData.Figures.AttackingTypes.SimpleFrontAttackFigure" Collapsed="true">
+    <Position X="9" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Figures\AttackingTypes\SimpleFrontAttackFigure.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleChess3.GameData.Figures.FigureTypes.ClassicChess.ChessPawn" Collapsed="true">
+    <Position X="7.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAACAAAAQiBAAAMAAAABAAAoAABYAAAAACAgAACCA=</HashCode>
+      <FileName>Model\Figures\FigureTypes\ClassicChess\ChessPawn.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BattleChess3.GameData.Figures.FigureTypes.Ninja" Collapsed="true">
+    <Position X="10" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAACAAAAQiAAAAMAAAABAAAoAABYAAAAACAgAACCA=</HashCode>
+      <FileName>Model\Figures\FigureTypes\Ninja.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BattleChess3.GameData.Figures.FigureTypes.Palm" Collapsed="true">
+    <Position X="3.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAACAAAAQgAAAAMAAAABAAAoAABYAAAAACAgAAACA=</HashCode>
+      <FileName>Model\Figures\FigureTypes\Palm.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BattleChess3.GameData.Figures.FigureTypes.Nothing" Collapsed="true">
+    <Position X="32.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAACAAAAQgAAAAMAAAABAAAoAABYAAAAACAgAAACA=</HashCode>
+      <FileName>Model\Figures\FigureTypes\Nothing.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="BattleChess3.GameData.Figures.IFigure" Collapsed="true">
+    <Position X="41.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAACAAAAQgAAAAMAAAABAAAoAABYAAAAACAgAAACA=</HashCode>
+      <FileName>Model\Figures\IFigure.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

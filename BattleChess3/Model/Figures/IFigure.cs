@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BattleChess3.GameData.Figures
+namespace BattleChess3.Model.Figures
 {
     /// <summary>
     /// Interface for figures types
@@ -23,7 +23,7 @@ namespace BattleChess3.GameData.Figures
         string Bonus { get; }
 
         /// <summary>
-        /// Gets Antibonus against type of unit
+        /// Gets Anti bonus against type of unit
         /// </summary>
         string AntiBonus { get; }
 

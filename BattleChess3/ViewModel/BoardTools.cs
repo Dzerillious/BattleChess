@@ -1,7 +1,7 @@
-﻿using BattleChess3.GameData.Figures;
+﻿using BattleChess3.Model.Figures;
 using System.Linq;
 
-namespace BattleChess3.Game
+namespace BattleChess3.ViewModel
 {
     public static partial class Session
     {
@@ -44,7 +44,7 @@ namespace BattleChess3.Game
         }
 
         /// <summary>
-        /// If map isnt loaded creates empty map.
+        /// If map isn' t loaded creates empty map.
         /// Calls GetMap
         /// </summary>
         public static void LoadMap()
@@ -57,7 +57,8 @@ namespace BattleChess3.Game
                     Board[i] = new BaseFigure[8];
                     for (var j = 0; j < 8; j++)
                     {
-                        Board[i][j] = new BaseFigure();
+                        Board[i][j] = new BaseFigure(new Position(i, j));
+                        BoardColumns[i].ColumnFigures[j] = new BaseFigure(new Position(i, j));
                     }
                 }
             }

@@ -1,7 +1,7 @@
-﻿using BattleChess3.GameData.Figures;
+﻿using BattleChess3.Model.Figures;
 using System.Collections.Generic;
 
-namespace BattleChess3.Game
+namespace BattleChess3.ViewModel
 {
     public class Player
     {

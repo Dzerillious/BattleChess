@@ -1,7 +1,8 @@
 ﻿using BattleChess3.Properties;
+using BattleChess3.ViewModel;
 using System;
 
-namespace BattleChess3.GameData.Figures.AttackingTypes
+namespace BattleChess3.Model.Figures.AttackingTypes
 {
     /// <summary>
     /// Class of simple move of figure
@@ -23,7 +24,7 @@ namespace BattleChess3.GameData.Figures.AttackingTypes
                     {
                         return true;
                     }
-                    if (Game.Session.GetFigureAtPosition(moveToPosition).FigureType.UnitName != Resource.Nothing)
+                    if (Session.GetFigureAtPosition(moveToPosition).FigureType.UnitName != Resource.Nothing)
                     {
                         break;
                     }

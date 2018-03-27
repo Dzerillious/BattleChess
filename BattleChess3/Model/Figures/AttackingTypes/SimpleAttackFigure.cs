@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace BattleChess3.GameData.Figures.AttackingTypes
+namespace BattleChess3.Model.Figures.AttackingTypes
 {
     /// <summary>
     /// Class of simple attack of figure

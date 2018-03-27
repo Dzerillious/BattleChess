@@ -1,6 +1,5 @@
-﻿using BattleChess3.Game;
-using BattleChess3.GameData;
-using BattleChess3.Properties;
+﻿using BattleChess3.Properties;
+using BattleChess3.ViewModel;
 using System;
 using System.IO;
 using System.Linq;
@@ -46,6 +45,7 @@ namespace BattleChess3.Controller
             {
                 GameTab.IsEnabled = true;
                 Session.LoadMap();
+                Session.SetBindedBoard();
                 GameTab.IsSelected = true;
             }
         }

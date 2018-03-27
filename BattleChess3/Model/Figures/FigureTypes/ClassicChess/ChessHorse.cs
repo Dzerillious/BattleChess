@@ -1,9 +1,9 @@
-﻿using BattleChess3.GameData.Figures.AttackingTypes;
+﻿using BattleChess3.Model.Figures.AttackingTypes;
 using BattleChess3.Properties;
 using System;
 using System.IO;
 
-namespace BattleChess3.GameData.Figures.FigureTypes.ClassicChess
+namespace BattleChess3.Model.Figures.FigureTypes.ClassicChess
 {
     public class ChessHorse : SimpleAttackFigure, IFigure
     {
@@ -15,7 +15,7 @@ namespace BattleChess3.GameData.Figures.FigureTypes.ClassicChess
         public int Defence => 0;
         public bool MovingWhileAttacking => true;
         public int Cost => 3;
-        public string Description => "Chess horse is quite movable unit which can easily suprise enemy, because his attacks are definet by many points, not directions.";
+        public string Description => "Chess horse is quite movable unit which can easily surprise enemy, because his attacks are defined by many points, not directions.";
 
         public string PictureBlackPath => Directory.GetCurrentDirectory() + "\\Pictures\\ClassicChess\\ChessHorseBlack.png";
         public string PictureWhitePath => Directory.GetCurrentDirectory() + "\\Pictures\\ClassicChess\\ChessHorseWhite.png";
@@ -51,9 +51,9 @@ namespace BattleChess3.GameData.Figures.FigureTypes.ClassicChess
         };
 
         public Func<BaseFigure, BaseFigure, bool> CanMove => (figure, moveToFigure) =>
-             CanMoveSimple(figure, moveToFigure, _avaibleMoves);
+              CanMoveSimple(figure, moveToFigure, _avaibleMoves);
 
         public Func<BaseFigure, BaseFigure, bool> CanAttack => (figure, attackFigure) =>
-             CanAttackSimple(figure, attackFigure, _avaibleAttacks);
+              CanAttackSimple(figure, attackFigure, _avaibleAttacks);
     }
 }

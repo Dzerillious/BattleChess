@@ -1,9 +1,9 @@
-﻿using BattleChess3.GameData.Figures.AttackingTypes;
+﻿using BattleChess3.Model.Figures.AttackingTypes;
 using BattleChess3.Properties;
 using System;
 using System.IO;
 
-namespace BattleChess3.GameData.Figures.FigureTypes.ClassicChess
+namespace BattleChess3.Model.Figures.FigureTypes.ClassicChess
 {
     public class ChessBishop : DirectionAttack, IFigure
     {
@@ -43,9 +43,9 @@ namespace BattleChess3.GameData.Figures.FigureTypes.ClassicChess
         };
 
         public Func<BaseFigure, BaseFigure, bool> CanMove => (figure, moveToFigure) =>
-             CanMoveDirection(figure, moveToFigure, _avaibleMoveDirections);
+              CanMoveDirection(figure, moveToFigure, _avaibleMoveDirections);
 
         public Func<BaseFigure, BaseFigure, bool> CanAttack => (figure, attackFigure) =>
-             CanAttackDirection(figure, attackFigure, _avaibleAttackDirections);
+              CanAttackDirection(figure, attackFigure, _avaibleAttackDirections);
     }
 }

@@ -1,9 +1,9 @@
-﻿using BattleChess3.Game;
-using BattleChess3.GameData.Figures.FigureTypes;
+﻿using BattleChess3.Model.Figures.FigureTypes;
 using BattleChess3.Properties;
+using BattleChess3.ViewModel;
 using System.IO;
 
-namespace BattleChess3.GameData.Figures
+namespace BattleChess3.Model.Figures
 {
     /// <summary>
     /// Class for each figure
