@@ -43,9 +43,9 @@ namespace BattleChess3.Model.Figures.FigureTypes
         };
 
         public Func<BaseFigure, BaseFigure, bool> CanMove => (figure, moveToFigure) =>
-              CanMoveSimple(figure, moveToFigure, _avaibleMoves);
+               CanMoveSimple(figure, moveToFigure, _avaibleMoves);
 
         public Func<BaseFigure, BaseFigure, bool> CanAttack => (figure, attackFigure) =>
-              CanAttackSimple(figure, attackFigure, _avaibleAttacks);
+               CanAttackSimple(figure, attackFigure, _avaibleAttacks);
     }
 }

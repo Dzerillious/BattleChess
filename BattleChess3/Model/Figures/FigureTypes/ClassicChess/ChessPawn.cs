@@ -61,6 +61,6 @@ namespace BattleChess3.Model.Figures.FigureTypes.ClassicChess
         };
 
         public Func<BaseFigure, BaseFigure, bool> CanAttack => (figure, attackFigure) =>
-              CanAttackSimple(figure, attackFigure, _avaibleAttacks);
+               CanAttackSimple(figure, attackFigure, _avaibleAttacks);
     }
 }
