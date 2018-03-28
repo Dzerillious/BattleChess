@@ -1,0 +1,61 @@
+﻿<Window x:Class="BattleChess3.Api.Controller.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:game="clr-namespace:BattleChess3.Api.Game"
+        xmlns:controllers="clr-namespace:BattleChess3.Api.Controller"
+        mc:Ignorable="d"
+        DataContext="{Binding Source={x:Static game:Session.SelectedStyle}, UpdateSourceTrigger=PropertyChanged}"
+        Title="MainWindow" Height="480" Width="800" MinHeight="480" MinWidth="640">
+    <Window.Background>
+        <ImageBrush
+            ImageSource="{Binding Path=ApplicationStyle.ApplicationBackground, UpdateSourceTrigger=PropertyChanged}" />
+    </Window.Background>
+    <Window.Resources>
+        <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle}" />
+        <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}" />
+        <Style TargetType="TabItem" BasedOn="{StaticResource TabItemStyle}" />
+        <Style TargetType="TabControl" BasedOn="{StaticResource TabControlStyle}" />
+    </Window.Resources>
+    <TabControl Name="ApplicationControl">
+        <TabItem Header="Menu">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Row="0" Grid.Column="0" Content="New Game" Click="OnNewGameClick" />
+                <Button Grid.Row="1" Grid.Column="0" Content="Save Game" Click="OnSaveMapClick" />
+                <Button Grid.Row="2" Grid.Column="0" Content="Delete Game" Click="DeleteMap" />
+                <Button Grid.Row="3" Grid.Column="0" Content="Options" Click="OnOptionsClick" />
+                <Button Grid.Row="4" Grid.Column="0" Content="Quit" Click="OnQuitApplicationClick" />
+                <controllers:MapHolderController DataContext="ApplicationControl" Grid.Row="0" Grid.RowSpan="5" Grid.Column="1" />
+            </Grid>
+        </TabItem>
+        <TabItem Header="Game" Name="GameTab" IsEnabled="False">
+            <DockPanel LastChildFill="True">
+                <Border Name="BoardControl">
+                    <controllers:GameBoardController />
+                </Border>
+                <Border BorderThickness="10,0,0,0"
+                        BorderBrush="Black">
+                    <controllers:UnitInfoController />
+                </Border>
+            </DockPanel>
+        </TabItem>
+        <TabItem Header="Options" Name="OptionsTab">
+            <controllers:OptionsController />
+        </TabItem>
+        <TabItem Header="Manual" Name="ManualTab">
+            <controllers:ManualController />
+        </TabItem>
+    </TabControl>
+</Window>

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4663DA29-AA05-4134-800D-1974BE8DB559}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BattleChess3.Model</RootNamespace>
+    <AssemblyName>BattleChess3.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Figures\AttackingTypes\DirectionAttack.cs" />
+    <Compile Include="Figures\AttackingTypes\DirectionMove.cs" />
+    <Compile Include="Figures\AttackingTypes\SimpleAttackFigure.cs" />
+    <Compile Include="Figures\AttackingTypes\SimpleFrontAttackFigure.cs" />
+    <Compile Include="Figures\AttackingTypes\SimpleFrontMoveFigure.cs" />
+    <Compile Include="Figures\AttackingTypes\SimpleMoveFigure.cs" />
+    <Compile Include="Figures\BaseFigure.cs" />
+    <Compile Include="Figures\FigureTypes\ClassicChess\ChessBishop.cs" />
+    <Compile Include="Figures\FigureTypes\ClassicChess\ChessHorse.cs" />
+    <Compile Include="Figures\FigureTypes\ClassicChess\ChessKing.cs" />
+    <Compile Include="Figures\FigureTypes\ClassicChess\ChessPawn.cs" />
+    <Compile Include="Figures\FigureTypes\ClassicChess\ChessQueen.cs" />
+    <Compile Include="Figures\FigureTypes\ClassicChess\ChessTower.cs" />
+    <Compile Include="Figures\FigureTypes\LordOfTheRings\LOTRArcher.cs" />
+    <Compile Include="Figures\FigureTypes\LordOfTheRings\LOTRLeader.cs" />
+    <Compile Include="Figures\FigureTypes\LordOfTheRings\LOTRMinorWizzard.cs" />
+    <Compile Include="Figures\FigureTypes\LordOfTheRings\LOTRRingBearer.cs" />
+    <Compile Include="Figures\FigureTypes\LordOfTheRings\LOTRSoldier.cs" />
+    <Compile Include="Figures\FigureTypes\LordOfTheRings\LOTRWarrior.cs" />
+    <Compile Include="Figures\FigureTypes\LordOfTheRings\LOTRWizzard.cs" />
+    <Compile Include="Figures\FigureTypes\Ninja.cs" />
+    <Compile Include="Figures\FigureTypes\Nothing.cs" />
+    <Compile Include="Figures\FigureTypes\Palm.cs" />
+    <Compile Include="Figures\FigureTypes\Stone.cs" />
+    <Compile Include="Figures\IFigure.cs" />
+    <Compile Include="ManualTexts.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Style.cs" />
+    <Compile Include="TypesOfFigures.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FiguresModel.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BattleChess3.Shared\BattleChess3.Shared.csproj">
+      <Project>{4f503f20-176f-4c63-9604-6ed9d0c46652}</Project>
+      <Name>BattleChess3.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

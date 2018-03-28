@@ -1,9 +1,13 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3", "BattleChess3\BattleChess3.csproj", "{1845CA98-545A-4771-A08D-5AC85A4CE57D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.Api", "BattleChess3.Api\BattleChess3.Api.csproj", "{1845CA98-545A-4771-A08D-5AC85A4CE57D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.Model", "BattleChess3.Model\BattleChess3.Model.csproj", "{4663DA29-AA05-4134-800D-1974BE8DB559}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.Shared", "BattleChess3.Shared\BattleChess3.Shared.csproj", "{4F503F20-176F-4C63-9604-6ED9D0C46652}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +19,19 @@ Global
 		{1845CA98-545A-4771-A08D-5AC85A4CE57D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1845CA98-545A-4771-A08D-5AC85A4CE57D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1845CA98-545A-4771-A08D-5AC85A4CE57D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4663DA29-AA05-4134-800D-1974BE8DB559}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4663DA29-AA05-4134-800D-1974BE8DB559}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4663DA29-AA05-4134-800D-1974BE8DB559}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4663DA29-AA05-4134-800D-1974BE8DB559}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F503F20-176F-4C63-9604-6ED9D0C46652}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F503F20-176F-4C63-9604-6ED9D0C46652}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F503F20-176F-4C63-9604-6ED9D0C46652}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F503F20-176F-4C63-9604-6ED9D0C46652}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0A17059C-17CB-4FA9-BE6E-9BA95510BEFE}
 	EndGlobalSection
 EndGlobal
