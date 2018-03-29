@@ -18,7 +18,7 @@
         <Style TargetType="TabItem" BasedOn="{StaticResource TabItemStyle}" />
         <Style TargetType="TabControl" BasedOn="{StaticResource TabControlStyle}" />
     </Window.Resources>
-    <TabControl Name="ApplicationControl">
+    <TabControl Name="ApplicationControl" SelectionChanged="OnSelectionChanged">
         <TabItem Header="Menu">
             <Grid>
                 <Grid.RowDefinitions>
@@ -34,7 +34,7 @@
                 </Grid.ColumnDefinitions>
                 <Button Grid.Row="0" Grid.Column="0" Content="New Game" Click="OnNewGameClick" />
                 <Button Grid.Row="1" Grid.Column="0" Content="Save Game" Click="OnSaveMapClick" />
-                <Button Grid.Row="2" Grid.Column="0" Content="Delete Game" Click="DeleteMap" />
+                <Button Grid.Row="2" Grid.Column="0" Content="Delete Game" Click="OnDeleteMapClick" />
                 <Button Grid.Row="3" Grid.Column="0" Content="Options" Click="OnOptionsClick" />
                 <Button Grid.Row="4" Grid.Column="0" Content="Quit" Click="OnQuitApplicationClick" />
                 <controllers:MapHolderController DataContext="ApplicationControl" Grid.Row="0" Grid.RowSpan="5" Grid.Column="1" />

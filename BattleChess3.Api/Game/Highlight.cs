@@ -35,7 +35,7 @@ namespace BattleChess3.Api.Game
 
         public static void HighlightDangered(BaseFigure figure)
         {
-            if (figure.Color != Selected.SelFigure.Color && Selected.SelFigure.CanAttack(figure))
+            if (figure.Color != Selected.SelFigure.Color && Selected.SelFigure.CanAttack(figure, GetFigureAtPosition))
             {
                 figure.Highlighted = SelectedStyle.ApplicationStyle.DangeredChessTile;
             }
@@ -43,7 +43,7 @@ namespace BattleChess3.Api.Game
 
         public static void HighlightCanGo(BaseFigure figure)
         {
-            if (Selected.SelFigure.CanMove(figure))
+            if (Selected.SelFigure.CanMove(figure, GetFigureAtPosition))
             {
                 figure.Highlighted = SelectedStyle.ApplicationStyle.CanGoChessTile;
             }

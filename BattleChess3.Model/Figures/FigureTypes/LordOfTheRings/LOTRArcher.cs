@@ -53,10 +53,10 @@ namespace BattleChess3.Model.Figures.FigureTypes.LordOfTheRings
             new Position(0, 0),
         };
 
-        public Func<BaseFigure, BaseFigure, bool> CanMove => (figure, moveToFigure) =>
+        public Func<BaseFigure, BaseFigure, Func<Position, BaseFigure>, bool> CanMove => (figure, moveToFigure, x) =>
                 CanMoveSimple(figure, moveToFigure, _avaibleMoves);
 
-        public Func<BaseFigure, BaseFigure, bool> CanAttack => (figure, attackFigure) =>
+        public Func<BaseFigure, BaseFigure, Func<Position, BaseFigure>, bool> CanAttack => (figure, attackFigure, x) =>
                 CanAttackSimple(figure, attackFigure, _avaibleAttacks);
     }
 }

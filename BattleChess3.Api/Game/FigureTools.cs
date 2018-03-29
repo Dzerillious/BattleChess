@@ -25,13 +25,13 @@ namespace BattleChess3.Api.Game
         {
             if (Session.WhooseTurn != me.Color) return false;
             var enemy = Session.GetFigureAtPosition(position);
-            if (me.CanMove(enemy))
+            if (me.CanMove(enemy, GetFigureAtPosition))
             {
                 Session.MoveFigureToPosition(me.Position, position);
                 me.Position = position;
                 return true;
             }
-            if (enemy.Color != me.Color && me.CanAttack(enemy))
+            if (enemy.Color != me.Color && me.CanAttack(enemy, GetFigureAtPosition))
             {
                 if (me.FigureType.MovingWhileAttacking && TryAttack(me, Session.GetFigureAtPosition(position)))
                 {

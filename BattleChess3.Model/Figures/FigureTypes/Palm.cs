@@ -20,7 +20,7 @@ namespace BattleChess3.Model.Figures.FigureTypes
         public string PictureNeutralPath => Directory.GetCurrentDirectory() + "\\Pictures\\Palm.png";
         public int Cost => 0;
         public Position[] AttackPattern => null;
-        public Func<BaseFigure, BaseFigure, bool> CanMove => (figure, moveToFigure) => false;
-        public Func<BaseFigure, BaseFigure, bool> CanAttack => (figure, attackFigure) => false;
+        public Func<BaseFigure, BaseFigure, Func<Position, BaseFigure>, bool> CanMove => (figure, moveToFigure, x) => false;
+        public Func<BaseFigure, BaseFigure, Func<Position, BaseFigure>, bool> CanAttack => (figure, attackFigure, x) => false;
     }
 }

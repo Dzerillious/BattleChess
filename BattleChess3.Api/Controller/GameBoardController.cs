@@ -18,6 +18,8 @@ namespace BattleChess3.Api.Controller
         /// </summary>
         private void OnButtonClick(object sender, RoutedEventArgs e)
         {
+            System.Media.SoundPlayer snd = new System.Media.SoundPlayer("Sounds/BoardSound.wav");
+            snd.Play();
             var button = (Button)sender;
             var figure = (BaseFigure)button.CommandParameter;
             Session.ClickedAtPosition(figure.Position);

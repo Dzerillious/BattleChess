@@ -43,6 +43,7 @@ namespace BattleChess3.Api.Controller
         /// </summary>
         private void OnNewGameClick(object sender, RoutedEventArgs e)
         {
+            PlayButtonSound();
             if (Session.SelectedMap.Figure != null)
             {
                 GameTab.IsEnabled = true;
@@ -54,16 +55,37 @@ namespace BattleChess3.Api.Controller
 
         private void OnOptionsClick(object sender, RoutedEventArgs e)
         {
+            PlayButtonSound();
             OptionsTab.IsSelected = true;
+        }
+
+        private void OnDeleteMapClick(object sender, RoutedEventArgs e)
+        {
+            PlayButtonSound();
+            if (Session.SelectedMap.Name != null)
+            {
+                File.Delete(Session.SelectedMap.Name);
+            }
+            MapsHolder.Maps = MapsHolder.GetMaps();
         }
 
         private void OnQuitApplicationClick(object sender, RoutedEventArgs e)
         {
+            PlayButtonSound();
             Close();
+        }
+
+        private bool _played = false;
+        private void OnSelectionChanged(object sender, RoutedEventArgs e)
+        {
+            if(_played)
+                PlayButtonSound();
+            _played = true;
         }
 
         private void OnSaveMapClick(object sender, RoutedEventArgs e)
         {
+            PlayButtonSound();
             if (Session.Board.All(column => column != null))
             {
                 var rnd = new Random();
@@ -138,6 +160,12 @@ namespace BattleChess3.Api.Controller
             MapsHolder.Maps = MapsHolder.GetMaps();
         }
 
+        public void PlayButtonSound()
+        {
+            System.Media.SoundPlayer snd = new System.Media.SoundPlayer("Sounds/ButtonSound.wav");
+            snd.Play();
+        }
+
         private void SaveToPng(FrameworkElement visual, string fileName)
         {
             var encoder = new PngBitmapEncoder();
@@ -154,15 +182,6 @@ namespace BattleChess3.Api.Controller
             {
                 encoder.Save(stream);
             }
-        }
-
-        private void DeleteMap(object sender, RoutedEventArgs e)
-        {
-            if (Session.SelectedMap.Name != null)
-            {
-                File.Delete(Session.SelectedMap.Name);
-            }
-            MapsHolder.Maps = MapsHolder.GetMaps();
         }
     }
 }

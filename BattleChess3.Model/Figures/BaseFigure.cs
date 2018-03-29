@@ -1,6 +1,7 @@
 ﻿using BattleChess3.Model.Figures.FigureTypes;
 using BattleChess3.Shared;
 using BattleChess3.Shared.Properties;
+using System;
 using System.IO;
 
 namespace BattleChess3.Model.Figures
@@ -75,16 +76,17 @@ namespace BattleChess3.Model.Figures
         /// </summary>
         /// <param name="figure"></param>
         /// <returns></returns>
-        public bool CanMove(BaseFigure figure) => figure.FigureType.UnitName == Resource.Nothing && FigureType.CanMove(this, figure);
+        public bool CanMove(BaseFigure figure, Func<Position, BaseFigure> getFigureAtPosition) 
+            => figure.FigureType.UnitName == Resource.Nothing && FigureType.CanMove(this, figure, getFigureAtPosition);
 
         /// <summary>
         /// Checks if can attack enemy
         /// </summary>
         /// <param name="enemy"></param>
         /// <returns></returns>
-        public bool CanAttack(BaseFigure enemy)
+        public bool CanAttack(BaseFigure enemy, Func<Position, BaseFigure> getFigureAtPosition)
         {
-            if (FigureType.CanAttack(this, enemy) && enemy.FigureType.Defence < FigureType.Attack)
+            if (FigureType.CanAttack(this, enemy, getFigureAtPosition) && enemy.FigureType.Defence < FigureType.Attack)
             {
                 if (FigureType.MovingWhileAttacking)
                 {

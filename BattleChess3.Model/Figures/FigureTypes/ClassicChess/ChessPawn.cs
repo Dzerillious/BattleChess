@@ -49,7 +49,7 @@ namespace BattleChess3.Model.Figures.FigureTypes.ClassicChess
             new Position(0, 0),
         };
 
-        public Func<BaseFigure, BaseFigure, bool> CanMove => (figure, moveToFigure) =>
+        public Func<BaseFigure, BaseFigure, Func<Position, BaseFigure>, bool> CanMove => (figure, moveToFigure, x) =>
         {
             if (figure.Position.Y == 1 || figure.Position.Y == 6)
             {
@@ -61,7 +61,7 @@ namespace BattleChess3.Model.Figures.FigureTypes.ClassicChess
             }
         };
 
-        public Func<BaseFigure, BaseFigure, bool> CanAttack => (figure, attackFigure) =>
+        public Func<BaseFigure, BaseFigure, Func<Position, BaseFigure>, bool> CanAttack => (figure, attackFigure, x) =>
                 CanAttackSimple(figure, attackFigure, _avaibleAttacks);
     }
 }

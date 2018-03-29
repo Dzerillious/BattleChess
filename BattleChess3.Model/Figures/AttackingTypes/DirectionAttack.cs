@@ -1,4 +1,5 @@
 ﻿using BattleChess3.Shared;
+using BattleChess3.Shared.Properties;
 using System;
 
 namespace BattleChess3.Model.Figures.AttackingTypes
@@ -11,7 +12,7 @@ namespace BattleChess3.Model.Figures.AttackingTypes
         /// <summary>
         /// Checks if position is one of possible moving positions
         /// </summary>
-        public Func<BaseFigure, BaseFigure, Position[], bool> CanAttackDirection => (movingFigure, moveToFigure, directions) =>
+        public Func<BaseFigure, BaseFigure, Position[], Func<Position, BaseFigure>, bool> CanAttackDirection => (movingFigure, moveToFigure, directions, getFigureAtPosition) =>
         {
             foreach (var direction in directions)
             {
@@ -23,10 +24,10 @@ namespace BattleChess3.Model.Figures.AttackingTypes
                     {
                         return true;
                     }
-                    /*if (Session.GetFigureAtPosition(moveToPosition).FigureType.UnitName != Resource.Nothing)
+                    if (getFigureAtPosition(moveToPosition).FigureType.UnitName != Resource.Nothing)
                     {
                         break;
-                    }*/
+                    }
                 }
             }
             return false;
