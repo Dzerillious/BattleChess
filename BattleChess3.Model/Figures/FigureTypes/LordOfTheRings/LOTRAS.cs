@@ -4,23 +4,24 @@ using BattleChess3.Shared.Properties;
 using System;
 using System.IO;
 
-namespace BattleChess3.Model.Figures.FigureTypes.ClassicChess
+namespace BattleChess3.Model.Figures.FigureTypes.LordOfTheRings
 {
-    public class ChessKing : SimpleAttackFigure, IFigure
+    public class LOTRAS : SimpleAttackFigure, IFigure
     {
-        public string ShownName => "King";
-        public string UnitName => Resource.ChessKing;
-        public string UnitType => Resource.Special;
+        public string ShownName => "Aragorn/Sauron";
+        public string UnitName => Resource.LOTRAS;
+        public string UnitType => Resource.Foot;
         public string Bonus => Resource.Nothing;
         public string AntiBonus => Resource.Nothing;
         public int Attack => 100;
         public int Defence => 0;
         public bool MovingWhileAttacking => true;
         public int Cost => 0;
-        public string Description => "Chess king is quite weak unit and when he is killed, player with him loses. He is stronger than pawn, but you must care about him.";
+        public string Description => "\nAragorn\n\nAragorn II, the son of Arathorn II and Gilraen, also known as Elessar and Strider, was the 16th Chieftain of the Dúnedain of the North; later crowned King Elessar Telcontar (March 1, 2931 - FO 120 or SR 1541), the 26th King of Arnor, and the 35th King of Gondor and first High King of Gondor and Arnor since the short reign of Isildur. He was a great warrior, and as Isildur's heir he bore the shards of Narsil, reforged and renamed Andúril, in the War of the Ring.\n" +
+            "\nSauron\n\nSauron (or Þauron (Thauron); Quenya; IPA: [ˈsaʊron] or Vanyarin; IPA: [ˈθaʊron] - \"The Abhorred\"), the eponymous Lord of the Rings, was a fallen Maia, the creator of the One Ring, and the most trusted lieutenant of his master Melkor (Morgoth, the first Dark Lord). After Melkor's defeat in the First Age, Sauron became the second Dark Lord and strove to conquer Arda by creating the Rings of Power. In the Second Age, he was defeated in the War of the Last Alliance by the last line of defense: Elves and Men under kings Gil-galad and Elendil. ";
 
-        public string PictureBlackPath => Directory.GetCurrentDirectory() + "\\Pictures\\ClassicChess\\ChessKingBlack.png";
-        public string PictureWhitePath => Directory.GetCurrentDirectory() + "\\Pictures\\ClassicChess\\ChessKingWhite.png";
+        public string PictureBlackPath => Directory.GetCurrentDirectory() + "\\Pictures\\LordOfTheRings\\Sauron.png";
+        public string PictureWhitePath => Directory.GetCurrentDirectory() + "\\Pictures\\LordOfTheRings\\Aragorn.png";
         public string PictureNeutralPath => "";
 
         private readonly Position[] _avaibleMoves =

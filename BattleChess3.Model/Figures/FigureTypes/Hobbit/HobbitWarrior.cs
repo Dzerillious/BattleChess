@@ -4,11 +4,12 @@ using BattleChess3.Shared.Properties;
 using System;
 using System.IO;
 
-namespace BattleChess3.Model.Figures.FigureTypes.LordOfTheRings
+namespace BattleChess3.Model.Figures.FigureTypes.Hobbit
 {
-    public class LOTRRingBearer : SimpleAttackFigure, IFigure
+    public class HobbitWarrior : SimpleAttackFigure, IFigure
     {
-        public string UnitName => "LOTRRingbearer";
+        public string ShownName => "Warrior";
+        public string UnitName => Resource.HobbitWarrior;
         public string UnitType => Resource.Foot;
         public string Bonus => Resource.Nothing;
         public string AntiBonus => Resource.Nothing;
@@ -16,12 +17,10 @@ namespace BattleChess3.Model.Figures.FigureTypes.LordOfTheRings
         public int Defence => 0;
         public bool MovingWhileAttacking => true;
         public int Cost => 3;
+        public string Description => "";
 
-        public string Description =>
-            "Chess horse is quite movable unit which can easily suprise enemy, because his attacks are definet by many points, not directions.";
-
-        public string PictureBlackPath => Directory.GetCurrentDirectory() + "\\Pictures\\LOTR\\Gollum.png";
-        public string PictureWhitePath => Directory.GetCurrentDirectory() + "\\Pictures\\LOTR\\Bilbo.png";
+        public string PictureBlackPath => Directory.GetCurrentDirectory() + "\\Pictures\\Hobbit\\Gothmog.png";
+        public string PictureWhitePath => Directory.GetCurrentDirectory() + "\\Pictures\\Hobbit\\Nori.png";
         public string PictureNeutralPath => "";
 
         private readonly Position[] _avaibleMoves =

@@ -7,6 +7,7 @@ namespace BattleChess3.Model.Figures.FigureTypes
 {
     public class Stone : IFigure
     {
+        public string ShownName => "Stone";
         public string UnitName => Resource.Stone;
         public string UnitType => Resource.Neutral;
         public string Bonus => Resource.Nothing;

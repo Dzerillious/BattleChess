@@ -4,23 +4,24 @@ using BattleChess3.Shared.Properties;
 using System;
 using System.IO;
 
-namespace BattleChess3.Model.Figures.FigureTypes.ClassicChess
+namespace BattleChess3.Model.Figures.FigureTypes.LordOfTheRings
 {
-    public class ChessTower : DirectionAttack, IFigure
+    public class LOTRGN : DirectionAttack, IFigure
     {
-        public string ShownName => "Tower";
-        public string UnitName => Resource.ChessTower;
-        public string UnitType => Resource.Object;
+        public string ShownName => "Gimli/Nazgul";
+        public string UnitName => Resource.LOTRGN;
+        public string UnitType => Resource.Foot;
         public string Bonus => Resource.Nothing;
         public string AntiBonus => Resource.Nothing;
         public int Attack => 100;
         public int Defence => 0;
         public bool MovingWhileAttacking => true;
         public int Cost => 5;
-        public string Description => "Chess tower is movable unit which can defend quite large area.";
+        public string Description => "\nGimli\n\nGimli, son of Glóin, was a well-respected dwarf warrior in Middle-earth during the Great Years. He was a member of the Fellowship of the Ring, and was the only one of the dwarves to readily fight alongside elves in the war against Sauron at the end of the Third Age. After the defeat of Sauron, he was given lordship of the Glittering Caves at Helm's Deep.\n" +
+            "\nNazgûl\n\nThe Nazgûl (also known as Ringwraiths, The Nine, The Fallen Kings, Black Riders, Nunbolg, or Ulairi in Quenya) were the dreaded ring-servants of the Dark Lord Sauron in Middle-earth throughout the Second and Third ages, and in the later years of the Third Age, they dwelt in Minas Morgul and Dol Guldur.";
 
-        public string PictureBlackPath => Directory.GetCurrentDirectory() + "\\Pictures\\ClassicChess\\ChessTowerBlack.png";
-        public string PictureWhitePath => Directory.GetCurrentDirectory() + "\\Pictures\\ClassicChess\\ChessTowerWhite.png";
+        public string PictureBlackPath => Directory.GetCurrentDirectory() + "\\Pictures\\LordOfTheRings\\Nazgul.png";
+        public string PictureWhitePath => Directory.GetCurrentDirectory() + "\\Pictures\\LordOfTheRings\\Gimli.png";
         public string PictureNeutralPath => "";
 
         private readonly Position[] _avaibleMoveDirections =

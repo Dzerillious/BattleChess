@@ -30,12 +30,12 @@ namespace BattleChess3.Api.Controller
             TextElement.FontFamilyProperty.OverrideMetadata(
                 typeof(TextElement),
                 new FrameworkPropertyMetadata(
-                    new FontFamily("Edwardian Script ITC")));
+                    new FontFamily("Britannic Bold")));
 
             TextBlock.FontFamilyProperty.OverrideMetadata(
                 typeof(TextBlock),
                 new FrameworkPropertyMetadata(
-                    new FontFamily("Edwardian Script ITC")));
+                    new FontFamily("Britannic Bold")));
         }
 
         /// <summary>

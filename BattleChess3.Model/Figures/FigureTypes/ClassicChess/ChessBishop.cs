@@ -8,6 +8,7 @@ namespace BattleChess3.Model.Figures.FigureTypes.ClassicChess
 {
     public class ChessBishop : DirectionAttack, IFigure
     {
+        public string ShownName => "Bishop";
         public string UnitName => Resource.ChessBishop;
         public string UnitType => Resource.Foot;
         public string Bonus => Resource.Nothing;

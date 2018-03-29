@@ -7,6 +7,7 @@ namespace BattleChess3.Model.Figures.FigureTypes
 {
     public class Palm : IFigure
     {
+        public string ShownName => "Palm";
         public string UnitName => Resource.Palm;
         public string UnitType => Resource.Neutral;
         public string Bonus => Resource.Nothing;

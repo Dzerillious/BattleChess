@@ -7,6 +7,7 @@ namespace BattleChess3.Model.Figures.FigureTypes
 {
     public class Nothing : IFigure
     {
+        public string ShownName => "Empty tile";
         public string UnitName => Resource.Nothing;
         public string UnitType => Resource.Neutral;
         public string Bonus => Resource.Nothing;

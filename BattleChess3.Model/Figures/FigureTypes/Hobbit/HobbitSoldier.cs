@@ -4,12 +4,12 @@ using BattleChess3.Shared.Properties;
 using System;
 using System.IO;
 
-namespace BattleChess3.Model.Figures.FigureTypes.ClassicChess
+namespace BattleChess3.Model.Figures.FigureTypes.Hobbit
 {
-    public class ChessPawn : SimpleFrontAttackFigure, IFigure
+    public class HobbitSoldier : SimpleFrontAttackFigure, IFigure
     {
-        public string ShownName => "Pawn";
-        public string UnitName => Resource.ChessPawn;
+        public string ShownName => "Soldier";
+        public string UnitName => Resource.HobbitSoldier;
         public string UnitType => Resource.Foot;
         public string Bonus => Resource.Nothing;
         public string AntiBonus => Resource.Nothing;
@@ -17,10 +17,10 @@ namespace BattleChess3.Model.Figures.FigureTypes.ClassicChess
         public int Defence => 0;
         public bool MovingWhileAttacking => true;
         public int Cost => 1;
-        public string Description => "Chess pawn is one of cheapest units of game, so he is good for front line attacks. Many of pawns in one big formation.";
+        public string Description => "";
 
-        public string PictureBlackPath => Directory.GetCurrentDirectory() + "\\Pictures\\ClassicChess\\ChessPawnBlack.png";
-        public string PictureWhitePath => Directory.GetCurrentDirectory() + "\\Pictures\\ClassicChess\\ChessPawnWhite.png";
+        public string PictureBlackPath => Directory.GetCurrentDirectory() + "\\Pictures\\Hobbit\\Spider.png";
+        public string PictureWhitePath => Directory.GetCurrentDirectory() + "\\Pictures\\Hobbit\\Beregond.png";
         public string PictureNeutralPath => "";
 
         private readonly Position[] _avaibleFirstMoves =

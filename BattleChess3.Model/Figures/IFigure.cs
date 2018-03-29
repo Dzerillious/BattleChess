@@ -9,6 +9,11 @@ namespace BattleChess3.Model.Figures
     public interface IFigure
     {
         /// <summary>
+        /// Name shown in menus and helps
+        /// </summary>
+        string ShownName { get; }
+
+        /// <summary>
         /// Gets Name of unit
         /// </summary>
         string UnitName { get; }

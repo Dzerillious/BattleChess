@@ -8,6 +8,7 @@ namespace BattleChess3.Model.Figures.FigureTypes.ClassicChess
 {
     public class ChessHorse : SimpleAttackFigure, IFigure
     {
+        public string ShownName => "Horse";
         public string UnitName => Resource.ChessHorse;
         public string UnitType => Resource.Mount;
         public string Bonus => Resource.Nothing;

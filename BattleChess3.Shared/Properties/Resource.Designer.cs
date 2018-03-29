@@ -133,6 +133,150 @@ namespace BattleChess3.Shared.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to HobbitHelper.
+        /// </summary>
+        public static string HobbitHelper {
+            get {
+                return ResourceManager.GetString("HobbitHelper", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HobbitLeader.
+        /// </summary>
+        public static string HobbitLeader {
+            get {
+                return ResourceManager.GetString("HobbitLeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HobbitMinorWizzard.
+        /// </summary>
+        public static string HobbitMinorWizzard {
+            get {
+                return ResourceManager.GetString("HobbitMinorWizzard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HobbitRingBearer.
+        /// </summary>
+        public static string HobbitRingBearer {
+            get {
+                return ResourceManager.GetString("HobbitRingBearer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HobbitSoldier.
+        /// </summary>
+        public static string HobbitSoldier {
+            get {
+                return ResourceManager.GetString("HobbitSoldier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HobbitWarrior.
+        /// </summary>
+        public static string HobbitWarrior {
+            get {
+                return ResourceManager.GetString("HobbitWarrior", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HobbitWizzard.
+        /// </summary>
+        public static string HobbitWizzard {
+            get {
+                return ResourceManager.GetString("HobbitWizzard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LOTRAS.
+        /// </summary>
+        public static string LOTRAS {
+            get {
+                return ResourceManager.GetString("LOTRAS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LOTRFG.
+        /// </summary>
+        public static string LOTRFG {
+            get {
+                return ResourceManager.GetString("LOTRFG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LOTRGN.
+        /// </summary>
+        public static string LOTRGN {
+            get {
+                return ResourceManager.GetString("LOTRGN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LOTRGW.
+        /// </summary>
+        public static string LOTRGW {
+            get {
+                return ResourceManager.GetString("LOTRGW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LOTRLN.
+        /// </summary>
+        public static string LOTRLN {
+            get {
+                return ResourceManager.GetString("LOTRLN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LOTRMT.
+        /// </summary>
+        public static string LOTRMT {
+            get {
+                return ResourceManager.GetString("LOTRMT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LOTRPT.
+        /// </summary>
+        public static string LOTRPT {
+            get {
+                return ResourceManager.GetString("LOTRPT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LOTRSO.
+        /// </summary>
+        public static string LOTRSO {
+            get {
+                return ResourceManager.GetString("LOTRSO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LOTRSS.
+        /// </summary>
+        public static string LOTRSS {
+            get {
+                return ResourceManager.GetString("LOTRSS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mout.
         /// </summary>
         public static string Mount {
@@ -183,6 +327,87 @@ namespace BattleChess3.Shared.Properties {
         public static string Palm {
             get {
                 return ResourceManager.GetString("Palm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SilmarillionAG.
+        /// </summary>
+        public static string SilmarillionAG {
+            get {
+                return ResourceManager.GetString("SilmarillionAG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SilmarillionEO.
+        /// </summary>
+        public static string SilmarillionEO {
+            get {
+                return ResourceManager.GetString("SilmarillionEO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SilmarillionIU.
+        /// </summary>
+        public static string SilmarillionIU {
+            get {
+                return ResourceManager.GetString("SilmarillionIU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SilmarillionMM.
+        /// </summary>
+        public static string SilmarillionMM {
+            get {
+                return ResourceManager.GetString("SilmarillionMM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SilmarillionNB.
+        /// </summary>
+        public static string SilmarillionNB {
+            get {
+                return ResourceManager.GetString("SilmarillionNB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SilmarillionNC.
+        /// </summary>
+        public static string SilmarillionNC {
+            get {
+                return ResourceManager.GetString("SilmarillionNC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SilmarillionUA.
+        /// </summary>
+        public static string SilmarillionUA {
+            get {
+                return ResourceManager.GetString("SilmarillionUA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SilmarillionVS.
+        /// </summary>
+        public static string SilmarillionVS {
+            get {
+                return ResourceManager.GetString("SilmarillionVS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SilmarillionYG.
+        /// </summary>
+        public static string SilmarillionYG {
+            get {
+                return ResourceManager.GetString("SilmarillionYG", resourceCulture);
             }
         }
         

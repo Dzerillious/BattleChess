@@ -33,7 +33,7 @@
                         Orientation="Vertical"
                         DataContext="{Binding Source={x:Static game:Session.MouseOn}}">
                 <TextBlock
-                    Text="{Binding Path=SelFigure.FigureType.UnitName, UpdateSourceTrigger=PropertyChanged}" />
+                    Text="{Binding Path=SelFigure.FigureType.ShownName, UpdateSourceTrigger=PropertyChanged}" />
                 <TextBlock
                     Text="{Binding Path=SelFigure.FigureType.UnitType, UpdateSourceTrigger=PropertyChanged}" />
                 <TextBlock Text="{Binding Path=SelFigure.Hp, UpdateSourceTrigger=PropertyChanged}" />

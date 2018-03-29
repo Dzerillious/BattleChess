@@ -123,7 +123,7 @@
   <data name="Foot" xml:space="preserve">
     <value>Foot</value>
   </data>
-   <data name="Mount" xml:space="preserve">
+  <data name="Mount" xml:space="preserve">
     <value>Mout</value>
   </data>
   <data name="Neutral" xml:space="preserve">
@@ -168,6 +168,79 @@
   <data name="Special" xml:space="preserve">
     <value>Special</value>
   </data>
-    
-    
+  <data name="HobbitHelper" xml:space="preserve">
+    <value>HobbitHelper</value>
+  </data>
+  <data name="HobbitLeader" xml:space="preserve">
+    <value>HobbitLeader</value>
+  </data>
+  <data name="HobbitMinorWizzard" xml:space="preserve">
+    <value>HobbitMinorWizzard</value>
+  </data>
+  <data name="HobbitRingBearer" xml:space="preserve">
+    <value>HobbitRingBearer</value>
+  </data>
+  <data name="HobbitSoldier" xml:space="preserve">
+    <value>HobbitSoldier</value>
+  </data>
+  <data name="HobbitWarrior" xml:space="preserve">
+    <value>HobbitWarrior</value>
+  </data>
+  <data name="HobbitWizzard" xml:space="preserve">
+    <value>HobbitWizzard</value>
+  </data>
+  <data name="LOTRAS" xml:space="preserve">
+    <value>LOTRAS</value>
+  </data>
+  <data name="LOTRFG" xml:space="preserve">
+    <value>LOTRFG</value>
+  </data>
+  <data name="LOTRGN" xml:space="preserve">
+    <value>LOTRGN</value>
+  </data>
+  <data name="LOTRGW" xml:space="preserve">
+    <value>LOTRGW</value>
+  </data>
+  <data name="LOTRLN" xml:space="preserve">
+    <value>LOTRLN</value>
+  </data>
+  <data name="LOTRMT" xml:space="preserve">
+    <value>LOTRMT</value>
+  </data>
+  <data name="LOTRPT" xml:space="preserve">
+    <value>LOTRPT</value>
+  </data>
+  <data name="LOTRSO" xml:space="preserve">
+    <value>LOTRSO</value>
+  </data>
+  <data name="LOTRSS" xml:space="preserve">
+    <value>LOTRSS</value>
+  </data>
+  <data name="SilmarillionAG" xml:space="preserve">
+    <value>SilmarillionAG</value>
+  </data>
+  <data name="SilmarillionEO" xml:space="preserve">
+    <value>SilmarillionEO</value>
+  </data>
+  <data name="SilmarillionIU" xml:space="preserve">
+    <value>SilmarillionIU</value>
+  </data>
+  <data name="SilmarillionMM" xml:space="preserve">
+    <value>SilmarillionMM</value>
+  </data>
+  <data name="SilmarillionNB" xml:space="preserve">
+    <value>SilmarillionNB</value>
+  </data>
+  <data name="SilmarillionNC" xml:space="preserve">
+    <value>SilmarillionNC</value>
+  </data>
+  <data name="SilmarillionUA" xml:space="preserve">
+    <value>SilmarillionUA</value>
+  </data>
+  <data name="SilmarillionVS" xml:space="preserve">
+    <value>SilmarillionVS</value>
+  </data>
+  <data name="SilmarillionYG" xml:space="preserve">
+    <value>SilmarillionYG</value>
+  </data>
 </root>

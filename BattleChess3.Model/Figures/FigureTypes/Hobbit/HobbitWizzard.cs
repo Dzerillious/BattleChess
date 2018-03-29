@@ -4,23 +4,23 @@ using BattleChess3.Shared.Properties;
 using System;
 using System.IO;
 
-namespace BattleChess3.Model.Figures.FigureTypes.ClassicChess
+namespace BattleChess3.Model.Figures.FigureTypes.Hobbit
 {
-    public class ChessTower : DirectionAttack, IFigure
+    public class HobbitWizzard : DirectionAttack, IFigure
     {
-        public string ShownName => "Tower";
-        public string UnitName => Resource.ChessTower;
-        public string UnitType => Resource.Object;
+        public string ShownName => "Wizzard";
+        public string UnitName => Resource.HobbitWizzard;
+        public string UnitType => Resource.Foot;
         public string Bonus => Resource.Nothing;
         public string AntiBonus => Resource.Nothing;
         public int Attack => 100;
         public int Defence => 0;
         public bool MovingWhileAttacking => true;
         public int Cost => 5;
-        public string Description => "Chess tower is movable unit which can defend quite large area.";
+        public string Description => "";
 
-        public string PictureBlackPath => Directory.GetCurrentDirectory() + "\\Pictures\\ClassicChess\\ChessTowerBlack.png";
-        public string PictureWhitePath => Directory.GetCurrentDirectory() + "\\Pictures\\ClassicChess\\ChessTowerWhite.png";
+        public string PictureBlackPath => Directory.GetCurrentDirectory() + "\\Pictures\\Hobbit\\WitchKing.png";
+        public string PictureWhitePath => Directory.GetCurrentDirectory() + "\\Pictures\\Hobbit\\Gandalf.png";
         public string PictureNeutralPath => "";
 
         private readonly Position[] _avaibleMoveDirections =
