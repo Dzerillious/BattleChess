@@ -26,6 +26,7 @@ namespace BattleChess3.Api.Controller
         public MainWindow()
         {
             InitializeComponent();
+            MapsHolder.Maps = MapsHolder.GetMaps();
             TextElement.FontFamilyProperty.OverrideMetadata(
                 typeof(TextElement),
                 new FrameworkPropertyMetadata(
@@ -98,7 +99,7 @@ namespace BattleChess3.Api.Controller
             newMap.StartingPlayer = Session.WhooseTurn;
             newMap.PreviewPath = Directory.GetCurrentDirectory() + $"\\MapsPreviews\\{randomName}.png";
             MapsHolder.Maps.FindAll(x => x.Name == newMap.Name).FirstOrDefault().StartingPlayer = newMap.StartingPlayer;
-            MapsHolder.AddMap(newMap);
+            MapsHolder.Maps = MapsHolder.GetMaps();
         }
 
         /// <summary>
@@ -134,6 +135,7 @@ namespace BattleChess3.Api.Controller
                     outputFile.WriteLine(line);
                 }
             }
+            MapsHolder.Maps = MapsHolder.GetMaps();
         }
 
         private void SaveToPng(FrameworkElement visual, string fileName)
@@ -158,10 +160,9 @@ namespace BattleChess3.Api.Controller
         {
             if (Session.SelectedMap.Name != null)
             {
-                MapsHolder.RemoveMap(Session.SelectedMap);
                 File.Delete(Session.SelectedMap.Name);
-                Session.SelectedMap.Dispose();
             }
+            MapsHolder.Maps = MapsHolder.GetMaps();
         }
     }
 }

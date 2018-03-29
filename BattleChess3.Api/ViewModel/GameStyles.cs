@@ -7,13 +7,13 @@ namespace BattleChess3.Api.ViewModel
 {
     public static class GameStyles
     {
-        private static List<Style> styles = new List<Style>();
+        private static List<Style> _styles = new List<Style>();
 
         public static List<Style> Styles
         {
             get
             {
-                if (styles.Count == 0)
+                if (_styles.Count == 0)
                 {
                     var filePaths = Directory.GetDirectories(Directory.GetCurrentDirectory() + "\\Pictures\\Styles");
                     var newStyles = new List<Style>();
@@ -21,9 +21,9 @@ namespace BattleChess3.Api.ViewModel
                     {
                         newStyles.Add(new Style(path));
                     }
-                    styles = newStyles;
+                    _styles = newStyles;
                 }
-                return styles;
+                return _styles;
             }
         }
 

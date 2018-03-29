@@ -9,31 +9,26 @@ namespace BattleChess3.Api.ViewModel
 {
     public class MapsHolder : INotifyPropertyChanged
     {
-        private readonly List<Map> maps = new List<Map>();
-
+        private List<Map> _maps = new List<Map>();
         public List<Map> Maps
         {
-            get
+            get => _maps;
+            set
             {
-                var filePaths = Directory.GetFiles(Directory.GetCurrentDirectory() + "\\Maps");
-                foreach (var path in filePaths)
-                {
-                    maps.Add(GetMapFromPath(path));
-                }
-                return maps;
+                _maps = value;
+                OnPropertyChanged();
             }
         }
 
-        public void AddMap(Map map)
+        public List<Map> GetMaps()
         {
-            Maps.Add(map);
-            OnPropertyChanged();
-        }
-
-        public void RemoveMap(Map map)
-        {
-            Maps.RemoveAll(x => x == map);
-            OnPropertyChanged();
+            var maps = new List<Map>();
+            var filePaths = Directory.GetFiles(Directory.GetCurrentDirectory() + "\\Maps");
+            foreach (var path in filePaths)
+            {
+                maps.Add(GetMapFromPath(path));
+            }
+            return maps;
         }
 
         private Map GetMapFromPath(string path)
@@ -54,8 +49,6 @@ namespace BattleChess3.Api.ViewModel
             }
             return new Map(path, Path.Combine(Directory.GetCurrentDirectory(), lines[8]), lines[9], tiles);
         }
-
-        public Map FindFirstEmptyMap() => Maps.FirstOrDefault(map => map.Name == null);
 
         public event PropertyChangedEventHandler PropertyChanged;
 

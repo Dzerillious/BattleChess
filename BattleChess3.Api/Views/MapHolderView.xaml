@@ -7,8 +7,8 @@
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <ScrollViewer VerticalScrollBarVisibility="Auto" DataContext="{x:Static controller:MainWindow.MapsHolder}">
-            <ListBox ItemsSource="{Binding Maps, UpdateSourceTrigger=PropertyChanged}"
+        <ScrollViewer VerticalScrollBarVisibility="Auto" DataContext="{Binding Source={x:Static controller:MainWindow.MapsHolder}, UpdateSourceTrigger=PropertyChanged}">
+            <ListBox ItemsSource="{Binding Maps}"
                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                      SelectionChanged="OnSelectedMapChanged"
                      BorderThickness="0"
@@ -20,7 +20,7 @@
                 </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Image Source="{Binding Path=PreviewPath}"
+                        <Image Source="{Binding Path=PreviewPath, UpdateSourceTrigger=PropertyChanged}"
                                Width="500" Margin="10" />
                     </DataTemplate>
                 </ListBox.ItemTemplate>
