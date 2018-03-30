@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
 using System.Runtime.CompilerServices;
 
 namespace BattleChess3.Api.ViewModel
@@ -10,6 +9,7 @@ namespace BattleChess3.Api.ViewModel
     public class MapsHolder : INotifyPropertyChanged
     {
         private List<Map> _maps = new List<Map>();
+
         public List<Map> Maps
         {
             get => _maps;

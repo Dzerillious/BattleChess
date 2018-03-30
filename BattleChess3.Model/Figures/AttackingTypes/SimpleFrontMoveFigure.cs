@@ -1,5 +1,4 @@
-﻿using BattleChess3.Shared;
-using BattleChess3.Shared.Properties;
+﻿using BattleChess3.Model.Properties;
 using System;
 using System.Linq;
 

@@ -1,7 +1,6 @@
 ﻿using BattleChess3.Api.Annotations;
 using BattleChess3.Api.Game;
 using BattleChess3.Model.Figures;
-using BattleChess3.Shared;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 

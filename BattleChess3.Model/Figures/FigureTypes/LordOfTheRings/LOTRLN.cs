@@ -1,6 +1,5 @@
 ﻿using BattleChess3.Model.Figures.AttackingTypes;
-using BattleChess3.Shared;
-using BattleChess3.Shared.Properties;
+using BattleChess3.Model.Properties;
 using System;
 using System.IO;
 
@@ -9,7 +8,7 @@ namespace BattleChess3.Model.Figures.FigureTypes.LordOfTheRings
     public class LOTRLN : DirectionAttack, IFigure
     {
         public string ShownName => "Legolas/Nazgul";
-        public string UnitName => Resource.LOTRLN;
+        public string UnitName => "LOTRLN";
         public string UnitType => Resource.Foot;
         public string Bonus => Resource.Nothing;
         public string AntiBonus => Resource.Nothing;
@@ -17,6 +16,7 @@ namespace BattleChess3.Model.Figures.FigureTypes.LordOfTheRings
         public int Defence => 0;
         public bool MovingWhileAttacking => true;
         public int Cost => 5;
+
         public string Description => "\nLegolas\n\nLegolas was a Sindarin elf who was part of the Fellowship of the Ring in the Third Age. As he was the son of the Elvenking Thranduil of Mirkwood, Legolas was Prince of the Woodland Realm (Mirkwood), a messenger, and a master bowman. With his keen eyesight, sensitive hearing, and excellent bowmanship, Legolas was a valuable resource to the other members of the Fellowship. He was well-known for becoming friends with the dwarf Gimli, despite their long-held differences. It is not known whether Legolas was Thranduil's only son, or whether he was his heir. His age is unknown as well.\n" +
             "\nNazgûl\n\nThe Nazgûl (also known as Ringwraiths, The Nine, The Fallen Kings, Black Riders, Nunbolg, or Ulairi in Quenya) were the dreaded ring-servants of the Dark Lord Sauron in Middle-earth throughout the Second and Third ages, and in the later years of the Third Age, they dwelt in Minas Morgul and Dol Guldur.";
 
@@ -46,9 +46,9 @@ namespace BattleChess3.Model.Figures.FigureTypes.LordOfTheRings
         };
 
         public Func<BaseFigure, BaseFigure, Func<Position, BaseFigure>, bool> CanMove => (figure, moveToFigure, getFigureAtPosition) =>
-                CanMoveDirection(figure, moveToFigure, _avaibleMoveDirections, getFigureAtPosition);
+                 CanMoveDirection(figure, moveToFigure, _avaibleMoveDirections, getFigureAtPosition);
 
         public Func<BaseFigure, BaseFigure, Func<Position, BaseFigure>, bool> CanAttack => (figure, attackFigure, getFigureAtPosition) =>
-                CanAttackDirection(figure, attackFigure, _avaibleAttackDirections, getFigureAtPosition);
+                 CanAttackDirection(figure, attackFigure, _avaibleAttackDirections, getFigureAtPosition);
     }
 }

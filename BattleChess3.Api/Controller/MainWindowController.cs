@@ -1,6 +1,6 @@
 ﻿using BattleChess3.Api.Game;
 using BattleChess3.Api.ViewModel;
-using BattleChess3.Shared.Properties;
+using BattleChess3.Model.Properties;
 using System;
 using System.IO;
 using System.Linq;
@@ -76,9 +76,10 @@ namespace BattleChess3.Api.Controller
         }
 
         private bool _played = false;
+
         private void OnSelectionChanged(object sender, RoutedEventArgs e)
         {
-            if(_played)
+            if (_played)
                 PlayButtonSound();
             _played = true;
         }

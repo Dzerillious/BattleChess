@@ -8,6 +8,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <ListBox ItemsSource="{Binding Source={x:Static viewModel:GameStyles.Styles}}"
              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+             ScrollViewer.VerticalScrollBarVisibility="Hidden"
              SelectionChanged="OnSelectedStyleChanged"
              BorderThickness="0"
              Background="{Binding Path=ApplicationStyle.DefaultObject}">

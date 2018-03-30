@@ -1,6 +1,5 @@
-﻿using BattleChess3.Model.Figures.FigureTypes;
-using BattleChess3.Shared;
-using BattleChess3.Shared.Properties;
+﻿using BattleChess3.Model.Figures.FigureTypes.Default;
+using BattleChess3.Model.Properties;
 using System;
 using System.IO;
 
@@ -76,7 +75,7 @@ namespace BattleChess3.Model.Figures
         /// </summary>
         /// <param name="figure"></param>
         /// <returns></returns>
-        public bool CanMove(BaseFigure figure, Func<Position, BaseFigure> getFigureAtPosition) 
+        public bool CanMove(BaseFigure figure, Func<Position, BaseFigure> getFigureAtPosition)
             => figure.FigureType.UnitName == Resource.Nothing && FigureType.CanMove(this, figure, getFigureAtPosition);
 
         /// <summary>

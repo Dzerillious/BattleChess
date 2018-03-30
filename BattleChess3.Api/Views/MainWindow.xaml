@@ -7,7 +7,7 @@
         xmlns:controllers="clr-namespace:BattleChess3.Api.Controller"
         mc:Ignorable="d"
         DataContext="{Binding Source={x:Static game:Session.SelectedStyle}, UpdateSourceTrigger=PropertyChanged}"
-        Title="MainWindow" Height="480" Width="800" MinHeight="480" MinWidth="640">
+        Title="MainWindow" Height="620" Width="860" MinHeight="480" MinWidth="640">
     <Window.Background>
         <ImageBrush
             ImageSource="{Binding Path=ApplicationStyle.ApplicationBackground, UpdateSourceTrigger=PropertyChanged}" />

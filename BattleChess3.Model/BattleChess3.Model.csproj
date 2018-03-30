@@ -53,6 +53,9 @@
     <Compile Include="Figures\FigureTypes\ClassicChess\ChessPawn.cs" />
     <Compile Include="Figures\FigureTypes\ClassicChess\ChessQueen.cs" />
     <Compile Include="Figures\FigureTypes\ClassicChess\ChessTower.cs" />
+    <Compile Include="Figures\FigureTypes\ClassicChess\ClassicChessGroup.cs" />
+    <Compile Include="Figures\FigureTypes\Default\DefaultGroup.cs" />
+    <Compile Include="Figures\FigureTypes\Hobbit\HobbitGroup.cs" />
     <Compile Include="Figures\FigureTypes\Hobbit\HobbitHelper.cs" />
     <Compile Include="Figures\FigureTypes\Hobbit\HobbitLeader.cs" />
     <Compile Include="Figures\FigureTypes\Hobbit\HobbitMinorWizzard.cs" />
@@ -60,6 +63,8 @@
     <Compile Include="Figures\FigureTypes\Hobbit\HobbitSoldier.cs" />
     <Compile Include="Figures\FigureTypes\Hobbit\HobbitWarrior.cs" />
     <Compile Include="Figures\FigureTypes\Hobbit\HobbitWizzard.cs" />
+    <Compile Include="Figures\FigureTypes\LordOfTheRings\LOTRGroup.cs" />
+    <Compile Include="Figures\FigureTypes\Silmarillion\SilmarillionGroup.cs" />
     <Compile Include="Figures\FigureTypes\Silmarillion\SilmarillionMM.cs" />
     <Compile Include="Figures\FigureTypes\Silmarillion\SilmarillionEO.cs" />
     <Compile Include="Figures\FigureTypes\Silmarillion\SilmarillionNB.cs" />
@@ -78,13 +83,20 @@
     <Compile Include="Figures\FigureTypes\LordOfTheRings\LOTRSO.cs" />
     <Compile Include="Figures\FigureTypes\LordOfTheRings\LOTRFG.cs" />
     <Compile Include="Figures\FigureTypes\LordOfTheRings\LOTRSS.cs" />
-    <Compile Include="Figures\FigureTypes\Ninja.cs" />
-    <Compile Include="Figures\FigureTypes\Nothing.cs" />
-    <Compile Include="Figures\FigureTypes\Palm.cs" />
-    <Compile Include="Figures\FigureTypes\Stone.cs" />
+    <Compile Include="Figures\FigureTypes\Default\Ninja.cs" />
+    <Compile Include="Figures\FigureTypes\Default\Nothing.cs" />
+    <Compile Include="Figures\FigureTypes\Default\Palm.cs" />
+    <Compile Include="Figures\FigureTypes\Default\Stone.cs" />
     <Compile Include="Figures\IFigure.cs" />
+    <Compile Include="Figures\IFIgureGroup.cs" />
     <Compile Include="ManualTexts.cs" />
+    <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resource.Designer.cs">
+      <DependentUpon>Resource.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Style.cs" />
     <Compile Include="TypesOfFigures.cs" />
   </ItemGroup>
@@ -92,10 +104,11 @@
     <None Include="FiguresModel.cd" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BattleChess3.Shared\BattleChess3.Shared.csproj">
-      <Project>{4f503f20-176f-4c63-9604-6ed9d0c46652}</Project>
-      <Name>BattleChess3.Shared</Name>
-    </ProjectReference>
+    <EmbeddedResource Include="Properties\Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

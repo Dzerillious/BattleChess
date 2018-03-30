@@ -1,5 +1,5 @@
 ﻿using BattleChess3.Model.Figures;
-using BattleChess3.Model.Figures.FigureTypes;
+using BattleChess3.Model.Figures.FigureTypes.Default;
 using BattleChess3.Model.Figures.FigureTypes.ClassicChess;
 using BattleChess3.Model.Figures.FigureTypes.LordOfTheRings;
 using BattleChess3.Model.Figures.FigureTypes.Hobbit;
@@ -13,51 +13,25 @@ namespace BattleChess3.Model
     /// </summary>
     public static class TypesOfFigures
     {
-        /// <summary>
-        /// Array of Figure types
-        /// </summary>
-        public static readonly IFigure[] FigureTypes =
+        public static readonly IFIgureGroup LOTRGroup = new LOTRGroup();
+        public static readonly IFIgureGroup SilmarillionGroup = new SilmarillionGroup();
+        public static readonly IFIgureGroup HobbitGroup = new HobbitGroup();
+        public static readonly IFIgureGroup ClassicChessGroup = new ClassicChessGroup();
+        public static readonly IFIgureGroup DefaultGroup = new DefaultGroup();
+
+        public static readonly IFIgureGroup[] FigureGroups =
         {
-            new LOTRAS(),
-            new LOTRFG(),
-            new LOTRGN(),
-            new LOTRGW(),
-            new LOTRLN(),
-            new LOTRMT(),
-            new LOTRPT(),
-            new LOTRSO(),
-            new LOTRSS(),
-            new SilmarillionAG(),
-            new SilmarillionEO(),
-            new SilmarillionIU(),
-            new SilmarillionMM(),
-            new SilmarillionNB(),
-            new SilmarillionNC(),
-            new SilmarillionUA(),
-            new SilmarillionVS(),
-            new SilmarillionYG(),
-            new HobbitHelper(),
-            new HobbitLeader(),
-            new HobbitMinorWizzard(),
-            new HobbitRingBearer(),
-            new HobbitSoldier(),
-            new HobbitWarrior(),
-            new HobbitWizzard(),
-            new Ninja(),
-            new ChessHorse(),
-            new ChessKing(),
-            new ChessQueen(),
-            new ChessBishop(),
-            new ChessPawn(),
-            new ChessTower(),
-            new Nothing(),
-            new Palm(),
-            new Stone(),
+            new LOTRGroup(),
+            new SilmarillionGroup(),
+            new HobbitGroup(),
+            new ClassicChessGroup(),
+            new DefaultGroup(),
         };
 
         /// <summary>
         /// Gets first figure which name is given string
         /// </summary>
-        public static IFigure GetFigureFromString(string text) => FigureTypes.FirstOrDefault(figure => figure.UnitName == text);
+        public static IFigure GetFigureFromString(string text) => FigureGroups.FirstOrDefault(group => group.GroupFigures.FirstOrDefault(figure => figure.UnitName == text) != null)
+            .GroupFigures.FirstOrDefault(figure => figure.UnitName == text);
     }
 }

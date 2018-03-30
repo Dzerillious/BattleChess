@@ -1,6 +1,5 @@
 ﻿using BattleChess3.Model.Figures.AttackingTypes;
-using BattleChess3.Shared;
-using BattleChess3.Shared.Properties;
+using BattleChess3.Model.Properties;
 using System;
 using System.IO;
 
@@ -9,7 +8,7 @@ namespace BattleChess3.Model.Figures.FigureTypes.Silmarillion
     public class SilmarillionYG : DirectionAttack, IFigure
     {
         public string ShownName => "Yavanna/Glaurung";
-        public string UnitName => Resource.SilmarillionYG;
+        public string UnitName => "SilmarillionYG";
         public string UnitType => Resource.Foot;
         public string Bonus => Resource.Nothing;
         public string AntiBonus => Resource.Nothing;
@@ -17,7 +16,8 @@ namespace BattleChess3.Model.Figures.FigureTypes.Silmarillion
         public int Defence => 0;
         public bool MovingWhileAttacking => true;
         public int Cost => 3;
-        public string Description => "\nYavanna\n\nYavanna (Quenya; IPA: [jaˈvanna] - \"Giver of Fruits\") was of the Ainur and Valar, and one of the Aratar who was responsible for the growth of all the fruits and growing things of Arda. She was also called Kementári (Quenya; IPA: \"Queen of the Earth\"), Ivon (Sindarin; IPA: \"Giver of Fruits\"). She resided in the Pastures of Yavanna, in the south of Valinor. She is the wife of Aulë, older sister of Vána,[2] and kin to Melian." +
+
+        public string Description => "\nYavanna\n\nYavanna (Quenya; IPA: [jaˈvanna] - \"Giver of Fruits\") was of the Ainur and Valar, and one of the Aratar who was responsible for the growth of all the fruits and growing things of Arda. She was also called Kementári (Quenya; IPA: \"Queen of the Earth\"), Ivon (Sindarin; IPA: \"Giver of Fruits\"). She resided in the Pastures of Yavanna, in the south of Valinor. She is the wife of Aulë, older sister of Vána, and kin to Melian." +
             "\nGlaurung\n\nGlaurung was the first terrestrial, fire-breathing Dragon in Middle-earth. He is known as the Father of Dragons.";
 
         public string PictureBlackPath => Directory.GetCurrentDirectory() + "\\Pictures\\Silmarillion\\Glaurung.png";
@@ -46,9 +46,9 @@ namespace BattleChess3.Model.Figures.FigureTypes.Silmarillion
         };
 
         public Func<BaseFigure, BaseFigure, Func<Position, BaseFigure>, bool> CanMove => (figure, moveToFigure, getFigureAtPosition) =>
-                CanMoveDirection(figure, moveToFigure, _avaibleMoveDirections, getFigureAtPosition);
+                 CanMoveDirection(figure, moveToFigure, _avaibleMoveDirections, getFigureAtPosition);
 
         public Func<BaseFigure, BaseFigure, Func<Position, BaseFigure>, bool> CanAttack => (figure, attackFigure, getFigureAtPosition) =>
-                CanAttackDirection(figure, attackFigure, _avaibleAttackDirections, getFigureAtPosition);
+                 CanAttackDirection(figure, attackFigure, _avaibleAttackDirections, getFigureAtPosition);
     }
 }

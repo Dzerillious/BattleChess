@@ -1,6 +1,5 @@
 ﻿using BattleChess3.Model.Figures.AttackingTypes;
-using BattleChess3.Shared;
-using BattleChess3.Shared.Properties;
+using BattleChess3.Model.Properties;
 using System;
 using System.IO;
 
@@ -9,7 +8,7 @@ namespace BattleChess3.Model.Figures.FigureTypes.Hobbit
     public class HobbitSoldier : SimpleFrontAttackFigure, IFigure
     {
         public string ShownName => "Soldier";
-        public string UnitName => Resource.HobbitSoldier;
+        public string UnitName => "HobbitSoldier";
         public string UnitType => Resource.Foot;
         public string Bonus => Resource.Nothing;
         public string AntiBonus => Resource.Nothing;
@@ -17,7 +16,8 @@ namespace BattleChess3.Model.Figures.FigureTypes.Hobbit
         public int Defence => 0;
         public bool MovingWhileAttacking => true;
         public int Cost => 1;
-        public string Description => "";
+        public string Description => "\nSteward of Gondor\n\nThe Stewards of Gondor were firstly the chief high councillors to the Kings of Gondor and then the rulers of Gondor, until the return of the rightful ruler King Aragorn II Elessar.\n" +
+            "\nThe Great Spiders\n\nThe Great Spiders, also known as the Children of Ungoliant, were a race of oversized and sentient arachnids that lived in Middle-earth, particularly in dark and perilous places affected by the power of the Shadow.";
 
         public string PictureBlackPath => Directory.GetCurrentDirectory() + "\\Pictures\\Hobbit\\Spider.png";
         public string PictureWhitePath => Directory.GetCurrentDirectory() + "\\Pictures\\Hobbit\\Beregond.png";
@@ -63,6 +63,6 @@ namespace BattleChess3.Model.Figures.FigureTypes.Hobbit
         };
 
         public Func<BaseFigure, BaseFigure, Func<Position, BaseFigure>, bool> CanAttack => (figure, attackFigure, x) =>
-                CanAttackSimple(figure, attackFigure, _avaibleAttacks);
+                 CanAttackSimple(figure, attackFigure, _avaibleAttacks);
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace BattleChess3.Shared
+﻿namespace BattleChess3
 {
     public class Position
     {

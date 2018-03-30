@@ -1,6 +1,5 @@
 ﻿using BattleChess3.Model.Figures.AttackingTypes;
-using BattleChess3.Shared;
-using BattleChess3.Shared.Properties;
+using BattleChess3.Model.Properties;
 using System;
 using System.IO;
 
@@ -9,7 +8,7 @@ namespace BattleChess3.Model.Figures.FigureTypes.LordOfTheRings
     public class LOTRMT : DirectionAttack, IFigure
     {
         public string ShownName => "Merry/Troll";
-        public string UnitName => Resource.LOTRMT;
+        public string UnitName => "LOTRMT";
         public string UnitType => Resource.Foot;
         public string Bonus => Resource.Nothing;
         public string AntiBonus => Resource.Nothing;
@@ -17,6 +16,7 @@ namespace BattleChess3.Model.Figures.FigureTypes.LordOfTheRings
         public int Defence => 0;
         public bool MovingWhileAttacking => true;
         public int Cost => 3;
+
         public string Description => "\nMeriadoc Brandybuck\n\n Meriadoc \"Merry\" Brandybuck (later known as Meriadoc \"Merry\" Brandybuck I, due to his grandson's birth) was a Hobbit and one of Frodo's cousins and closest friends. He loved boats and ponies and had a great interest in the maps of Middle-earth. He was also one of the nine companions in The Fellowship of the Ring.\n" +
             "\nTrolls\n\nTrolls were a very large and monstrous (ranging from between 10-18 feet tall), and for the most part unintelligent (references are made about more cunning trolls), humanoid race inhabiting Middle-earth.";
 
@@ -46,9 +46,9 @@ namespace BattleChess3.Model.Figures.FigureTypes.LordOfTheRings
         };
 
         public Func<BaseFigure, BaseFigure, Func<Position, BaseFigure>, bool> CanMove => (figure, moveToFigure, getFigureAtPosition) =>
-                CanMoveDirection(figure, moveToFigure, _avaibleMoveDirections, getFigureAtPosition);
+                 CanMoveDirection(figure, moveToFigure, _avaibleMoveDirections, getFigureAtPosition);
 
         public Func<BaseFigure, BaseFigure, Func<Position, BaseFigure>, bool> CanAttack => (figure, attackFigure, getFigureAtPosition) =>
-                CanAttackDirection(figure, attackFigure, _avaibleAttackDirections, getFigureAtPosition);
+                 CanAttackDirection(figure, attackFigure, _avaibleAttackDirections, getFigureAtPosition);
     }
 }

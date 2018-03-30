@@ -1,10 +1,9 @@
 ﻿using BattleChess3.Model.Figures.AttackingTypes;
-using BattleChess3.Shared;
-using BattleChess3.Shared.Properties;
+using BattleChess3.Model.Properties;
 using System;
 using System.IO;
 
-namespace BattleChess3.Model.Figures.FigureTypes
+namespace BattleChess3.Model.Figures.FigureTypes.Default
 {
     public class Ninja : SimpleFrontAttackFigure, IFigure
     {
@@ -45,9 +44,9 @@ namespace BattleChess3.Model.Figures.FigureTypes
         };
 
         public Func<BaseFigure, BaseFigure, Func<Position, BaseFigure>, bool> CanMove => (figure, moveToFigure, x) =>
-                CanMoveSimple(figure, moveToFigure, _avaibleMoves);
+                 CanMoveSimple(figure, moveToFigure, _avaibleMoves);
 
         public Func<BaseFigure, BaseFigure, Func<Position, BaseFigure>, bool> CanAttack => (figure, attackFigure, x) =>
-                CanAttackSimple(figure, attackFigure, _avaibleAttacks);
+                 CanAttackSimple(figure, attackFigure, _avaibleAttacks);
     }
 }

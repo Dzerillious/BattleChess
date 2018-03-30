@@ -1,9 +1,8 @@
-﻿using BattleChess3.Shared;
-using BattleChess3.Shared.Properties;
+﻿using BattleChess3.Model.Properties;
 using System;
 using System.IO;
 
-namespace BattleChess3.Model.Figures.FigureTypes
+namespace BattleChess3.Model.Figures.FigureTypes.Default
 {
     public class Palm : IFigure
     {
@@ -15,7 +14,7 @@ namespace BattleChess3.Model.Figures.FigureTypes
         public int Attack => 0;
         public int Defence => -50;
         public bool MovingWhileAttacking => false;
-        public string Description => "Palm tile, which you can easily destroy";
+        public string Description => "Palm tile, which you can easily destroy. It cannot move and belongs to no one";
         public string PictureBlackPath => "";
         public string PictureWhitePath => "";
         public string PictureNeutralPath => Directory.GetCurrentDirectory() + "\\Pictures\\Palm.png";

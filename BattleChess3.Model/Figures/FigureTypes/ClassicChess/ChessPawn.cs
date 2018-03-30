@@ -1,6 +1,5 @@
 ﻿using BattleChess3.Model.Figures.AttackingTypes;
-using BattleChess3.Shared;
-using BattleChess3.Shared.Properties;
+using BattleChess3.Model.Properties;
 using System;
 using System.IO;
 
@@ -9,7 +8,7 @@ namespace BattleChess3.Model.Figures.FigureTypes.ClassicChess
     public class ChessPawn : SimpleFrontAttackFigure, IFigure
     {
         public string ShownName => "Pawn";
-        public string UnitName => Resource.ChessPawn;
+        public string UnitName => "ChessPawn";
         public string UnitType => Resource.Foot;
         public string Bonus => Resource.Nothing;
         public string AntiBonus => Resource.Nothing;
@@ -17,7 +16,7 @@ namespace BattleChess3.Model.Figures.FigureTypes.ClassicChess
         public int Defence => 0;
         public bool MovingWhileAttacking => true;
         public int Cost => 1;
-        public string Description => "Chess pawn is one of cheapest units of game, so he is good for front line attacks. Many of pawns in one big formation.";
+        public string Description => "\nPawn\n\nThe pawn (♙,♟) is the most numerous piece in the game of chess, and in most circumstances, also the weakest. It historically represents infantry, or more particularly, armed peasants or pikemen. Each player begins a game with eight pawns, one on each square of the rank immediately in front of the other pieces. (The white pawns start on a2, b2, c2, ..., h2; the black pawns start on a7, b7, c7, ..., h7.). Individual pawns are referred to by the file on which they stand.For example, one speaks of \"White's f-pawn\" or \"Black's b-pawn\", or less commonly (using descriptive notation), \"White's king bishop pawn\" or \"Black's queen knight pawn\". It is also common to refer to a rook pawn, meaning any pawn on the a- or h-files, a knight pawn(on the b- or g-files), a bishop pawn(on the c- or f-file), a queen pawn(on the d-file), a king pawn(on the e-file), and a central pawn(on the d- or e-files).";
 
         public string PictureBlackPath => Directory.GetCurrentDirectory() + "\\Pictures\\ClassicChess\\ChessPawnBlack.png";
         public string PictureWhitePath => Directory.GetCurrentDirectory() + "\\Pictures\\ClassicChess\\ChessPawnWhite.png";
@@ -63,6 +62,6 @@ namespace BattleChess3.Model.Figures.FigureTypes.ClassicChess
         };
 
         public Func<BaseFigure, BaseFigure, Func<Position, BaseFigure>, bool> CanAttack => (figure, attackFigure, x) =>
-                CanAttackSimple(figure, attackFigure, _avaibleAttacks);
+                 CanAttackSimple(figure, attackFigure, _avaibleAttacks);
     }
 }

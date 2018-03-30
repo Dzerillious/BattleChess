@@ -1,7 +1,6 @@
 ﻿using BattleChess3.Api.ViewModel;
 using BattleChess3.Model.Figures;
-using BattleChess3.Shared;
-using BattleChess3.Shared.Properties;
+using BattleChess3.Model.Properties;
 using System.Linq;
 
 namespace BattleChess3.Api.Game

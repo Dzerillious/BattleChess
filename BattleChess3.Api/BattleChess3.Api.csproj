@@ -149,18 +149,12 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\BattleChess3.Model\BattleChess3.Model.csproj">
       <Project>{4663da29-aa05-4134-800d-1974be8db559}</Project>
       <Name>BattleChess3.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BattleChess3.Shared\BattleChess3.Shared.csproj">
-      <Project>{4f503f20-176f-4c63-9604-6ed9d0c46652}</Project>
-      <Name>BattleChess3.Shared</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="WMPLib\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

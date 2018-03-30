@@ -1,6 +1,5 @@
 ﻿using BattleChess3.Model.Figures.AttackingTypes;
-using BattleChess3.Shared;
-using BattleChess3.Shared.Properties;
+using BattleChess3.Model.Properties;
 using System;
 using System.IO;
 
@@ -8,8 +7,8 @@ namespace BattleChess3.Model.Figures.FigureTypes.ClassicChess
 {
     public class ChessHorse : SimpleAttackFigure, IFigure
     {
-        public string ShownName => "Horse";
-        public string UnitName => Resource.ChessHorse;
+        public string ShownName => "Knight";
+        public string UnitName => "ChessHorse";
         public string UnitType => Resource.Mount;
         public string Bonus => Resource.Nothing;
         public string AntiBonus => Resource.Nothing;
@@ -17,7 +16,7 @@ namespace BattleChess3.Model.Figures.FigureTypes.ClassicChess
         public int Defence => 0;
         public bool MovingWhileAttacking => true;
         public int Cost => 3;
-        public string Description => "Chess horse is quite movable unit which can easily surprise enemy, because his attacks are defined by many points, not directions.";
+        public string Description => "\nKnight\n\nThe knight (♘ ♞ /naɪt/) is a piece in the game of chess, representing a knight (armored cavalry). It is normally represented by a horse's head and neck. Each player starts with two knights, which begin on the row closest to the player, between the rooks and bishops.";
 
         public string PictureBlackPath => Directory.GetCurrentDirectory() + "\\Pictures\\ClassicChess\\ChessHorseBlack.png";
         public string PictureWhitePath => Directory.GetCurrentDirectory() + "\\Pictures\\ClassicChess\\ChessHorseWhite.png";
@@ -53,9 +52,9 @@ namespace BattleChess3.Model.Figures.FigureTypes.ClassicChess
         };
 
         public Func<BaseFigure, BaseFigure, Func<Position, BaseFigure>, bool> CanMove => (figure, moveToFigure, x) =>
-                CanMoveSimple(figure, moveToFigure, _avaibleMoves);
+                 CanMoveSimple(figure, moveToFigure, _avaibleMoves);
 
         public Func<BaseFigure, BaseFigure, Func<Position, BaseFigure>, bool> CanAttack => (figure, attackFigure, x) =>
-                CanAttackSimple(figure, attackFigure, _avaibleAttacks);
+                 CanAttackSimple(figure, attackFigure, _avaibleAttacks);
     }
 }

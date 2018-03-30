@@ -1,5 +1,4 @@
-﻿using BattleChess3.Shared;
-using System;
+﻿using System;
 
 namespace BattleChess3.Model.Figures
 {

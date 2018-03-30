@@ -8,7 +8,7 @@
             <Setter Property="Background">
                 <Setter.Value>
                     <ImageBrush
-                        ImageSource="{Binding Path=ApplicationStyle.DefaultObject, UpdateSourceTrigger=PropertyChanged}" />
+                        ImageSource="{Binding Path=ApplicationStyle.DefaultObject}" />
                 </Setter.Value>
             </Setter>
             <Setter Property="Foreground" Value="Black" />
@@ -21,7 +21,7 @@
             <Setter Property="Background">
                 <Setter.Value>
                     <ImageBrush
-                        ImageSource="{Binding Path=ApplicationStyle.DefaultObject, UpdateSourceTrigger=PropertyChanged}" />
+                        ImageSource="{Binding Path=ApplicationStyle.DefaultObject}" />
                 </Setter.Value>
             </Setter>
             <Setter Property="FontWeight" Value="Heavy" />
@@ -38,7 +38,7 @@
             <Setter Property="Background">
                 <Setter.Value>
                     <ImageBrush
-                        ImageSource="{Binding Path=ApplicationStyle.DefaultButton, UpdateSourceTrigger=PropertyChanged}" />
+                        ImageSource="{Binding Path=ApplicationStyle.DefaultButton}" />
                 </Setter.Value>
             </Setter>
             <Setter Property="Template">
@@ -56,7 +56,7 @@
                     <Setter Property="Background">
                         <Setter.Value>
                             <ImageBrush
-                                ImageSource="{Binding Path=ApplicationStyle.DefaultButtonMouseOn, Source={x:Static game:Session.SelectedStyle}, UpdateSourceTrigger=PropertyChanged}" />
+                                ImageSource="{Binding Path=ApplicationStyle.DefaultButtonMouseOn, Source={x:Static game:Session.SelectedStyle}}" />
                         </Setter.Value>
                     </Setter>
                 </Trigger>
@@ -68,7 +68,7 @@
             <Setter Property="Background">
                 <Setter.Value>
                     <ImageBrush
-                        ImageSource="{Binding Path=ApplicationStyle.ChessTile, UpdateSourceTrigger=PropertyChanged}" />
+                        ImageSource="{Binding Path=ApplicationStyle.ChessTile}" />
                 </Setter.Value>
             </Setter>
             <Setter Property="Template">
@@ -85,7 +85,7 @@
                     <Setter Property="Background">
                         <Setter.Value>
                             <ImageBrush
-                                ImageSource="{Binding Path=ApplicationStyle.SelectedChessTile, Source={x:Static game:Session.SelectedStyle}, UpdateSourceTrigger=PropertyChanged}" />
+                                ImageSource="{Binding Path=ApplicationStyle.SelectedChessTile, Source={x:Static game:Session.SelectedStyle}}" />
                         </Setter.Value>
                     </Setter>
                 </Trigger>
@@ -101,7 +101,7 @@
             <Setter Property="Background">
                 <Setter.Value>
                     <ImageBrush
-                        ImageSource="{Binding Path=ApplicationStyle.TabItem, UpdateSourceTrigger=PropertyChanged}" />
+                        ImageSource="{Binding Path=ApplicationStyle.TabItem}" />
                 </Setter.Value>
             </Setter>
             <Setter Property="Template">
@@ -121,7 +121,7 @@
                     <Setter Property="Background">
                         <Setter.Value>
                             <ImageBrush
-                                ImageSource="{Binding Path=ApplicationStyle.TabItem, UpdateSourceTrigger=PropertyChanged}" />
+                                ImageSource="{Binding Path=ApplicationStyle.TabItem}" />
                         </Setter.Value>
                     </Setter>
                 </Trigger>
@@ -130,7 +130,7 @@
                     <Setter Property="Background">
                         <Setter.Value>
                             <ImageBrush
-                                ImageSource="{Binding Path=ApplicationStyle.TabItemMouseOn, UpdateSourceTrigger=PropertyChanged}" />
+                                ImageSource="{Binding Path=ApplicationStyle.TabItemMouseOn}" />
                         </Setter.Value>
                     </Setter>
                 </Trigger>
@@ -139,7 +139,7 @@
                     <Setter Property="Background">
                         <Setter.Value>
                             <ImageBrush
-                                ImageSource="{Binding Path=ApplicationStyle.TabItemMouseOn, UpdateSourceTrigger=PropertyChanged}" />
+                                ImageSource="{Binding Path=ApplicationStyle.TabItemMouseOn}" />
                         </Setter.Value>
                     </Setter>
                 </Trigger>
@@ -148,7 +148,7 @@
                     <Setter Property="Background">
                         <Setter.Value>
                             <ImageBrush
-                                ImageSource="{Binding Path=ApplicationStyle.TabItemDisabled, UpdateSourceTrigger=PropertyChanged}" />
+                                ImageSource="{Binding Path=ApplicationStyle.TabItemDisabled}" />
                         </Setter.Value>
                     </Setter>
                 </Trigger>

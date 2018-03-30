@@ -1,5 +1,4 @@
 ﻿using BattleChess3.Model.Figures;
-using BattleChess3.Shared;
 using System.IO;
 
 namespace BattleChess3.Api.Game

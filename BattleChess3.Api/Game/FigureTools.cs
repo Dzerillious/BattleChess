@@ -1,7 +1,6 @@
 ﻿using BattleChess3.Model;
 using BattleChess3.Model.Figures;
-using BattleChess3.Shared;
-using BattleChess3.Shared.Properties;
+using BattleChess3.Model.Properties;
 
 namespace BattleChess3.Api.Game
 {
@@ -17,7 +16,7 @@ namespace BattleChess3.Api.Game
             player?.CreateFigure(newBaseFigure);
             SetFigureAtPosition(position, newBaseFigure);
         }
-        
+
         /// <summary>
         /// Tries to play the position if it is your turn
         /// </summary>
