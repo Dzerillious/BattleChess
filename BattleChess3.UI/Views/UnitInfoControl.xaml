@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="BattleChess3.UI.Views.UnitInfoControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:game="clr-namespace:BattleChess3.UI.Game"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Background>
+        <ImageBrush ImageSource="{Binding Path=ApplicationStyle.TextBox}" />
+    </UserControl.Background>
+    <Viewbox>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" MinWidth="150" />
+                <ColumnDefinition Width="*" MinWidth="150" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0"
+                        Orientation="Vertical">
+                <TextBlock Text="Name:" />
+                <TextBlock Text="Unit type: " />
+                <TextBlock Text="Hp: " />
+                <TextBlock Text="Attack: " />
+                <TextBlock Text="Defence: " />
+                <TextBlock Text="Bonus against: " />
+                <TextBlock Text="Antibonus against: " />
+                <TextBlock Text="Cost of unit: " />
+                <TextBlock Text="Moving while attacking: " />
+            </StackPanel>
+
+            <StackPanel Grid.Column="1"
+                        Orientation="Vertical"
+                        DataContext="{Binding Source={x:Static game:Session.MouseOn}}">
+                <TextBlock
+                    Text="{Binding Path=SelFigure.FigureType.ShownName, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock
+                    Text="{Binding Path=SelFigure.FigureType.UnitType, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock Text="{Binding Path=SelFigure.Hp, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock
+                    Text="{Binding Path=SelFigure.FigureType.Attack, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock
+                    Text="{Binding Path=SelFigure.FigureType.Defence, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock
+                    Text="{Binding Path=SelFigure.FigureType.Bonus, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock
+                    Text="{Binding Path=SelFigure.FigureType.AntiBonus, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock
+                    Text="{Binding Path=SelFigure.FigureType.Cost, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock
+                    Text="{Binding Path=SelFigure.FigureType.MovingWhileAttacking, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+        </Grid>
+    </Viewbox>
+</UserControl>

@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <UseWPF>true</UseWPF>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\BattleChess3.Core\BattleChess3.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="Resources/Maps/**">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Resources/MapsPreviews/**">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Resources/Pictures/**">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Resources/Pictures/**">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Resources/Sounds/**">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MvvmLight" Version="5.4.1.1" />
+      <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Resources\Resource.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+        <SubType>Designer</SubType>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Resources\Resource.Designer.cs">
+        <DependentUpon>Resource.resx</DependentUpon>
+        <AutoGen>True</AutoGen>
+        <DesignTime>True</DesignTime>
+      </Compile>
+    </ItemGroup>
+
+</Project>
