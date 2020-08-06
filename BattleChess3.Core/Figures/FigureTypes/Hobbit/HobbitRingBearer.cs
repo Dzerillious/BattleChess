@@ -51,10 +51,10 @@ namespace BattleChess3.Core.Figures.FigureTypes.Hobbit
             new Position(0, 0),
         };
 
-        public Func<BaseFigure, BaseFigure, Func<Position, BaseFigure>, bool> CanMove => (figure, moveToFigure, getFigureAtPosition) =>
+        public Func<Figure, Figure, Func<Position, Figure>, bool> CanMove => (figure, moveToFigure, getFigureAtPosition) =>
                  CanMoveDirection(figure, moveToFigure, _avaibleMoveDirections, getFigureAtPosition);
 
-        public Func<BaseFigure, BaseFigure, Func<Position, BaseFigure>, bool> CanAttack => (figure, attackFigure, getFigureAtPosition) =>
+        public Func<Figure, Figure, Func<Position, Figure>, bool> CanAttack => (figure, attackFigure, getFigureAtPosition) =>
                  CanAttackDirection(figure, attackFigure, _avaibleAttackDirections, getFigureAtPosition);
     }
 }

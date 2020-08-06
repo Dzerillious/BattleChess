@@ -11,9 +11,9 @@ namespace BattleChess3.Core.Figures.AttackingTypes
         /// <summary>
         /// Checks if position is one of possible attacking positions
         /// </summary>
-        public Func<BaseFigure, BaseFigure, Position[], bool> CanAttackSimple => (figure, attackFigure, avaibleAttacks) =>
+        public Func<Figure, Figure, Position[], bool> CanAttackSimple => (figure, attackFigure, avaibleAttacks) =>
         {
-            return avaibleAttacks.Any(avaibleAttack => avaibleAttack == attackFigure.Position.SubstractPositions(figure.Position));
+            return avaibleAttacks.Any(avaibleAttack => avaibleAttack == attackFigure.Position.SubtractPositions(figure.Position));
         };
     }
 }

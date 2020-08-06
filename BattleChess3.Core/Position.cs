@@ -23,14 +23,14 @@
         public Position AddPositions(Position position) => new Position(X + position.X, Y + position.Y);
 
         /// <summary>
-        /// Substracts one position from another
+        /// Subtracts one position from another
         /// </summary>
-        public Position SubstractPositions(Position position) => new Position(X - position.X, Y - position.Y);
+        public Position SubtractPositions(Position position) => new Position(X - position.X, Y - position.Y);
 
         /// <summary>
-        /// Multiplies one position with koeficient
+        /// Multiplies one position with coefficient
         /// </summary>
-        public Position MultiplePosition(int koeficient) => new Position(X * koeficient, Y * koeficient);
+        public Position MultiplePosition(int coefficient) => new Position(X * coefficient, Y * coefficient);
 
         public override bool Equals(object obj)
         {

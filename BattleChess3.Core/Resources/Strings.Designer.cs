@@ -59,5 +59,24 @@ namespace BattleChess3.Core.Resources {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Battle 3.0 created by Daniel Šerý. 2017-2020.
+        /// </summary>
+        internal static string About {
+            get {
+                return ResourceManager.GetString("About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Battle 3.0 is turn based strategy. Two players are trying to kill second players figures. 
+        ///            Each unit has it&apos;s own attributes (moving and attacking pattern), attack, defense, etc. You must know them and use them wisely..
+        /// </summary>
+        internal static string Gameplay {
+            get {
+                return ResourceManager.GetString("Gameplay", resourceCulture);
+            }
+        }
     }
 }

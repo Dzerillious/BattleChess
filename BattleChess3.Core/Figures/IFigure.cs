@@ -81,11 +81,11 @@ namespace BattleChess3.Core.Figures
         /// <summary>
         /// Check if can move on position
         /// </summary>
-        Func<BaseFigure, BaseFigure, Func<Position, BaseFigure>, bool> CanMove { get; }
+        Func<Figure, Figure, Func<Position, Figure>, bool> CanMove { get; }
 
         /// <summary>
         /// Check if can attack on position
         /// </summary>
-        Func<BaseFigure, BaseFigure, Func<Position, BaseFigure>, bool> CanAttack { get; }
+        Func<Figure, Figure, Func<Position, Figure>, bool> CanAttack { get; }
     }
 }

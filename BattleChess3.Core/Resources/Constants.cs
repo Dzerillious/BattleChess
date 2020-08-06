@@ -2,6 +2,5 @@
 {
     public static class Constants
     {
-        public const int NeutralPlayer = 0;
     }
 }

@@ -11,6 +11,8 @@
     <AssemblyName>BattleChess3.Core</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <LangVersion>default</LangVersion>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -46,7 +48,7 @@
     <Compile Include="Figures\AttackingTypes\SimpleFrontAttackFigure.cs" />
     <Compile Include="Figures\AttackingTypes\SimpleFrontMoveFigure.cs" />
     <Compile Include="Figures\AttackingTypes\SimpleMoveFigure.cs" />
-    <Compile Include="Figures\BaseFigure.cs" />
+    <Compile Include="Figures\Figure.cs" />
     <Compile Include="Figures\FigureTypes\ClassicChess\ChessBishop.cs" />
     <Compile Include="Figures\FigureTypes\ClassicChess\ChessHorse.cs" />
     <Compile Include="Figures\FigureTypes\ClassicChess\ChessKing.cs" />
@@ -90,7 +92,7 @@
     <Compile Include="Figures\FigureTypes\Default\Stone.cs" />
     <Compile Include="Figures\IFigure.cs" />
     <Compile Include="Figures\IFIgureGroup.cs" />
-    <Compile Include="ManualTexts.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Constants.cs" />

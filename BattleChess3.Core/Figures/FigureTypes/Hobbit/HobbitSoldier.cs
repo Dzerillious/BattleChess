@@ -49,7 +49,7 @@ namespace BattleChess3.Core.Figures.FigureTypes.Hobbit
             new Position(0, 0),
         };
 
-        public Func<BaseFigure, BaseFigure, Func<Position, BaseFigure>, bool> CanMove => (figure, moveToFigure, x) =>
+        public Func<Figure, Figure, Func<Position, Figure>, bool> CanMove => (figure, moveToFigure, x) =>
         {
             if (figure.Position.Y == 1 || figure.Position.Y == 6)
             {
@@ -61,7 +61,7 @@ namespace BattleChess3.Core.Figures.FigureTypes.Hobbit
             }
         };
 
-        public Func<BaseFigure, BaseFigure, Func<Position, BaseFigure>, bool> CanAttack => (figure, attackFigure, x) =>
+        public Func<Figure, Figure, Func<Position, Figure>, bool> CanAttack => (figure, attackFigure, x) =>
                  CanAttackSimple(figure, attackFigure, _avaibleAttacks);
     }
 }

@@ -4,6 +4,7 @@
         <OutputType>WinExe</OutputType>
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <UseWPF>true</UseWPF>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
@@ -48,10 +49,6 @@
         <AutoGen>True</AutoGen>
         <DesignTime>True</DesignTime>
       </Compile>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Services" />
     </ItemGroup>
 
 </Project>

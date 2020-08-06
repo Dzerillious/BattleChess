@@ -52,10 +52,10 @@ namespace BattleChess3.Core.Figures.FigureTypes.Silmarillion
             new Position(0, 0),
         };
 
-        public Func<BaseFigure, BaseFigure, Func<Position, BaseFigure>, bool> CanMove => (figure, moveToFigure, x) =>
+        public Func<Figure, Figure, Func<Position, Figure>, bool> CanMove => (figure, moveToFigure, x) =>
                  CanMoveSimple(figure, moveToFigure, _avaibleMoves);
 
-        public Func<BaseFigure, BaseFigure, Func<Position, BaseFigure>, bool> CanAttack => (figure, attackFigure, x) =>
+        public Func<Figure, Figure, Func<Position, Figure>, bool> CanAttack => (figure, attackFigure, x) =>
                  CanAttackSimple(figure, attackFigure, _avaibleAttacks);
     }
 }

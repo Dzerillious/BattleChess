@@ -1,4 +1,6 @@
-﻿namespace BattleChess3.UI.ViewModel
+﻿using BattleChess3.Core;
+
+namespace BattleChess3.UI.ViewModel
 {
     /// <summary>
     /// Class for each map
@@ -6,22 +8,22 @@
     public class Map
     {
         public string Name { get; set; }
-        public int StartingPlayer { get; set; }
+        public Player StartingPlayer { get; set; }
         public string[][] Figure { get; set; }
         public string PreviewPath { get; set; }
 
         public Map()
         {
-            Name = null;
-            StartingPlayer = 1;
-            Figure = null;
-            PreviewPath = null;
+            Name = "";
+            StartingPlayer = new Player(1);
+            Figure = new string[0][];
+            PreviewPath = "";
         }
 
-        public Map(string name, string previewPath, int startingPlayer, string[][] figure)
+        public Map(string name, string previewPath, int startingId, string[][] figure)
         {
             Name = name;
-            StartingPlayer = startingPlayer;
+            StartingPlayer = new Player(startingId);
             Figure = figure;
             PreviewPath = previewPath;
         }

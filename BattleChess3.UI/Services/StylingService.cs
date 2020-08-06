@@ -1,10 +1,10 @@
 ﻿using System.IO;
 using BattleChess3.Core;
-using GalaSoft.MvvmLight;
+using BattleChess3.UI.ViewModel;
 
-namespace BattleChess3.UI.ViewModel
+namespace BattleChess3.UI.Services
 {
-    public class SelectedStyle : ViewModelBase
+    public class StylingService
     {
         private Style _applicationStyle;
         public Style ApplicationStyle

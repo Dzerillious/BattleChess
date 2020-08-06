@@ -21,7 +21,7 @@ namespace BattleChess3.Core.Figures.FigureTypes.ClassicChess
         public string PictureWhitePath => Directory.GetCurrentDirectory() + "\\Pictures\\ClassicChess\\ChessBishopWhite.png";
         public string PictureNeutralPath => "";
 
-        private readonly Position[] _avaibleMoveDirections =
+        private readonly Position[] _availableMoveDirections =
         {
             new Position(1, 1),
             new Position(-1, -1),
@@ -29,7 +29,7 @@ namespace BattleChess3.Core.Figures.FigureTypes.ClassicChess
             new Position(-1, 1),
         };
 
-        private readonly Position[] _avaibleAttackDirections =
+        private readonly Position[] _availableAttackDirections =
         {
             new Position(1, 1),
             new Position(-1, -1),
@@ -42,10 +42,10 @@ namespace BattleChess3.Core.Figures.FigureTypes.ClassicChess
             new Position(0, 0),
         };
 
-        public Func<BaseFigure, BaseFigure, Func<Position, BaseFigure>, bool> CanMove => (figure, moveToFigure, getFigureAtPosition) =>
-                 CanMoveDirection(figure, moveToFigure, _avaibleMoveDirections, getFigureAtPosition);
+        public Func<Figure, Figure, Func<Position, Figure>, bool> CanMove => (figure, moveToFigure, getFigureAtPosition) =>
+                 CanMoveDirection(figure, moveToFigure, _availableMoveDirections, getFigureAtPosition);
 
-        public Func<BaseFigure, BaseFigure, Func<Position, BaseFigure>, bool> CanAttack => (figure, attackFigure, getFigureAtPosition) =>
-                 CanAttackDirection(figure, attackFigure, _avaibleAttackDirections, getFigureAtPosition);
+        public Func<Figure, Figure, Func<Position, Figure>, bool> CanAttack => (figure, attackFigure, getFigureAtPosition) =>
+                 CanAttackDirection(figure, attackFigure, _availableAttackDirections, getFigureAtPosition);
     }
 }

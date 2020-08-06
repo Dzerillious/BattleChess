@@ -64,4 +64,11 @@
             PublicKeyToken=b77a5c561934e089
         </value>
     </resheader>
+    <data name="Gameplay" xml:space="preserve">
+        <value>Battle 3.0 is turn based strategy. Two players are trying to kill second players figures. 
+            Each unit has it's own attributes (moving and attacking pattern), attack, defense, etc. You must know them and use them wisely.</value>
+    </data>
+    <data name="About" xml:space="preserve">
+        <value>Battle 3.0 created by Daniel Šerý. 2017-2020</value>
+    </data>
 </root>

@@ -21,7 +21,7 @@ namespace BattleChess3.UI.Views
             System.Media.SoundPlayer snd = new System.Media.SoundPlayer("Sounds/BoardSound.wav");
             snd.Play();
             var button = (Button)sender;
-            var figure = (BaseFigure)button.CommandParameter;
+            var figure = (Figure)button.CommandParameter;
             Session.ClickedAtPosition(figure.Position);
         }
 
@@ -31,7 +31,7 @@ namespace BattleChess3.UI.Views
         private void OnMouseEnter(object sender, MouseEventArgs e)
         {
             var button = (Button)sender;
-            var figure = (BaseFigure)button.CommandParameter;
+            var figure = (Figure)button.CommandParameter;
             Session.MouseOn.Figure = figure;
             Session.MouseOn.Position = figure.Position;
         }

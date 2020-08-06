@@ -10,7 +10,7 @@ namespace BattleChess3.Core.Figures.AttackingTypes
         /// <summary>
         /// Checks if position is one of possible moving positions
         /// </summary>
-        public Func<BaseFigure, BaseFigure, Position[], Func<Position, BaseFigure>, bool> CanAttackDirection => (movingFigure, moveToFigure, directions, getFigureAtPosition) =>
+        public Func<Figure, Figure, Position[], Func<Position, Figure>, bool> CanAttackDirection => (movingFigure, moveToFigure, directions, getFigureAtPosition) =>
         {
             foreach (var direction in directions)
             {
