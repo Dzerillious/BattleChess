@@ -38,13 +38,13 @@ namespace BattleChess3.UI.Game
             if (TryPlay(figure, _playedPosition) == false)
             {
                 Selected.SetSelected(_playedPosition);
-                _playedPosition = null;
+                _playedPosition = Position.Invalid;
             }
             else
             {
                 WhooseTurn = WhooseTurn == 1 ? 2 : 1;
                 Selected = new SelectedFigure();
-                _playedPosition = null;
+                _playedPosition = Position.Invalid;
             }
         }
     }

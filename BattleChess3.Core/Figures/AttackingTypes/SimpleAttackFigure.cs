@@ -13,7 +13,7 @@ namespace BattleChess3.Core.Figures.AttackingTypes
         /// </summary>
         public Func<BaseFigure, BaseFigure, Position[], bool> CanAttackSimple => (figure, attackFigure, avaibleAttacks) =>
         {
-            return avaibleAttacks.Any(avaibleAttack => avaibleAttack.CheckIfSame(attackFigure.Position.SubstractPositions(figure.Position)));
+            return avaibleAttacks.Any(avaibleAttack => avaibleAttack == attackFigure.Position.SubstractPositions(figure.Position));
         };
     }
 }

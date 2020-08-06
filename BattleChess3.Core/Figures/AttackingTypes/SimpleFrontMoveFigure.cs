@@ -21,7 +21,7 @@ namespace BattleChess3.Core.Figures.AttackingTypes
             {
                 return false;
             }
-            return avaibleMoves.Any(avaibleMove => avaibleMove.CheckIfSame(moveToFigure.Position.SubstractPositions(movingFigure.Position)));
+            return avaibleMoves.Any(avaibleMove => avaibleMove == moveToFigure.Position.SubstractPositions(movingFigure.Position));
         };
     }
 }

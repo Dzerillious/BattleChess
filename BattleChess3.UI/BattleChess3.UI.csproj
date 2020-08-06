@@ -29,6 +29,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="CommonServiceLocator" Version="2.0.5" />
       <PackageReference Include="MvvmLight" Version="5.4.1.1" />
       <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
     </ItemGroup>

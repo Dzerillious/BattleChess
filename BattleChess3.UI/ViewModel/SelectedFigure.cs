@@ -19,7 +19,7 @@ namespace BattleChess3.UI.ViewModel
         public SelectedFigure()
         {
             SelFigure = new BaseFigure();
-            SelPosition = null;
+            SelPosition = Position.Invalid;
         }
 
         public void SetSelected(BaseFigure figure)

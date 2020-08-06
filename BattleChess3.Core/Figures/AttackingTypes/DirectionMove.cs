@@ -18,7 +18,7 @@ namespace BattleChess3.Core.Figures.AttackingTypes
                 {
                     var moveToPosition = movingFigure.Position.AddPositions(direction.MultiplePosition(i));
                     if (moveToPosition.CheckIfInBoard() == false) break;
-                    if (moveToPosition.CheckIfSame(moveToFigure.Position))
+                    if (moveToPosition == moveToFigure.Position)
                     {
                         return true;
                     }

@@ -23,7 +23,7 @@ namespace BattleChess3.Core.Figures.AttackingTypes
                     return false;
                 }
                 return avaibleAttacks.Any(avaibleAttack =>
-                    avaibleAttack.CheckIfSame(attackedFigure.Position.SubstractPositions(attackingFigure.Position)));
+                    avaibleAttack == attackedFigure.Position.SubstractPositions(attackingFigure.Position));
             };
     }
 }
