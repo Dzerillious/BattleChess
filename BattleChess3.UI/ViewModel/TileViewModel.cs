@@ -1,103 +1,59 @@
-﻿using System.Windows.Documents;
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using BattleChess3.Core;
+using BattleChess3.Core.Figures;
+using BattleChess3.UI.Annotations;
+using BattleChess3.UI.Services;
+using CommonServiceLocator;
+using GalaSoft.MvvmLight.Command;
 
 namespace BattleChess3.UI.ViewModel
 {
-    public class TileViewModel
+    public class TileViewModel : Tile, INotifyPropertyChanged
     {
+        private readonly GameService _gameService = ServiceLocator.Current.GetInstance<GameService>();
+        
         public bool IsHovered { get; set; }
         public bool IsSelected { get; set; }
         public bool IsDangered { get; set; }
-        public Figure Figure { get; set; }
-    
-        /// <summary>
-        /// Tries to play the position if it is your turn
-        /// </summary>
-        public static bool TryPlay(Figure me, Position position)
+        
+        private Position _position = Position.Invalid;
+        public override Position Position
         {
-            if (WhooseTurn != me.Owner) return false;
-            var enemy = GetFigureAtPosition(position);
-            if (me.CanMove(enemy, GetFigureAtPosition))
+            get => _position;
+            set
             {
-                MoveFigureToPosition(me.Position, position);
-                me.Position = position;
-                return true;
+                _position = value;
+                OnPropertyChanged();
             }
-            if (enemy.PlayerNumber != me.Owner && me.CanAttack(enemy, GetFigureAtPosition))
-            {
-                if (me.FigureType.MovingWhileAttacking && TryAttack(me, GetFigureAtPosition(position)))
-                {
-                    MoveFigureToPosition(me.Position, position);
-                    me.Position = position;
-                }
-                return true;
-            }
-            return false;
-        }
-
-        /// <summary>
-        /// Tries to attack at certain position and return if attacked
-        /// </summary>
-        public static bool TryAttack(Figure me, Figure enemy)
-        {
-            var remainingHp = enemy.RemainingHpOfAttacked(me);
-            if (me.FigureType.MovingWhileAttacking)
-            {
-                if (remainingHp > 0) return false;
-                AttackPattern(enemy.Position, me);
-                return true;
-            }
-            AttackPattern(enemy.Position, me);
-            return true;
-        }
-
-        /// <summary>
-        /// Attacks each figure of pattern
-        /// </summary>
-        public static void AttackPattern(Position attackedPosition, Figure me)
-        {
-            foreach (var position in me.FigureType.AttackPattern)
-                AttackFigure(me, GetFigureAtPosition(position.AddPositions(attackedPosition)));
-        }
-
-        /// <summary>
-        /// Attacks figure if Hp is lesser 0 figure dies
-        /// </summary>
-        public static void AttackFigure(Figure attacking, Figure attacked)
-        {
-            attacked.Hp = attacked.RemainingHpOfAttacked(attacking);
-            if (attacked.Hp <= 0) KillFigure(attacked);
         }
         
-        public static void ClickedAtPosition(Position position)
+        private Figure _figure = Figure.Empty;
+        public override Figure Figure
         {
-            if (SelectedTile.Position == Position.Invalid)
+            get => _figure;
+            set
             {
-                SelectedTile.SetSelected(position);
+                _figure = value;
+                OnPropertyChanged();
             }
-            else
-            {
-                _playedPosition = position;
-                PlayTurn();
-            }
-            SetBindedBoard();
-            HighlightTiles();
+        }
+        
+        public RelayCommand ClickedCommand { get; private set; }
+
+        public TileViewModel()
+        {
+            ClickedCommand = new RelayCommand(OnClicked);
+            ServiceLocator.Current.GetInstance<BoardService>().Board[_position] = this;
         }
 
-        public static void PlayTurn()
+        private void OnClicked() => _gameService.ClickedAtTile(this);
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            var figure = SelectedTile.Figure;
-            if (TryPlay(figure, _playedPosition) == false)
-            {
-                SelectedTile.SetSelected(_playedPosition);
-                _playedPosition = Position.Invalid;
-            }
-            else
-            {
-                WhooseTurn = WhooseTurn == 1 ? 2 : 1;
-                SelectedTile = new SelectedTile();
-                _playedPosition = Position.Invalid;
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

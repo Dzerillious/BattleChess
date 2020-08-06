@@ -91,7 +91,7 @@
                                         <TextBlock Text="{Binding Path=Bonus}" />
                                         <TextBlock Text="{Binding Path=AntiBonus}" />
                                         <TextBlock Text="{Binding Path=Cost}" />
-                                        <TextBlock Text="{Binding Path=MovingWhileAttacking}" />
+                                        <TextBlock Text="{Binding Path=MovingAttack}" />
                                     </StackPanel>
 
                                     <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"

@@ -1,59 +1,23 @@
-﻿using BattleChess3.Core.Figures.AttackingTypes;
-using System;
-using System.IO;
+﻿using System;
 
 namespace BattleChess3.Core.Figures.FigureTypes.ClassicChess
 {
-    public class ChessQueen : DirectionAttack, IFigure
+    public class ChessQueen : IFigure
     {
         public string ShownName => "Queen";
         public string UnitName => "ChessQueen";
+        public string GroupName => "Chess";
         public FigureType UnitType => FigureType.Special;
         public FigureType Bonus => FigureType.Nothing;
         public FigureType AntiBonus => FigureType.Nothing;
         public int Attack => 100;
         public int Defence => 0;
-        public bool MovingWhileAttacking => true;
+        public bool MovingAttack => true;
         public int Cost => 9;
         public string Description => "\nQueen\n\nThe queen (♕,♛) is the most powerful piece in the game of chess, able to move any number of squares vertically, horizontally or diagonally. Each player starts the game with one queen, placed in the middle of the first rank next to the king. Because the queen is the strongest piece, a pawn is promoted to a queen in the vast majority of cases. In the game shatranj, the ancestor of chess that included only male figures, the closest thing to the queen was the “vizier”, a weak piece only able to move or capture one step diagonally and not at all in any other direction.The modern chess queen gained power in the 15th century.";
 
-        public string PictureBlackPath => Directory.GetCurrentDirectory() + "\\Pictures\\ClassicChess\\ChessQueenBlack.png";
-        public string PictureWhitePath => Directory.GetCurrentDirectory() + "\\Pictures\\ClassicChess\\ChessQueenWhite.png";
-        public string PictureNeutralPath => "";
-
-        private readonly Position[] _avaibleMoveDirections =
-        {
-            new Position(0, 1),
-            new Position(0, -1),
-            new Position(1, 0),
-            new Position(-1, 0),
-            new Position(1, 1),
-            new Position(-1, -1),
-            new Position(1, -1),
-            new Position(-1, 1),
-        };
-
-        private readonly Position[] _avaibleAttackDirections =
-        {
-            new Position(0, 1),
-            new Position(0, -1),
-            new Position(1, 0),
-            new Position(-1, 0),
-            new Position(1, 1),
-            new Position(-1, -1),
-            new Position(1, -1),
-            new Position(-1, 1),
-        };
-
-        public Position[] AttackPattern => new[]
-        {
-            new Position(0, 0),
-        };
-
-        public Func<Figure, Figure, Func<Position, Figure>, bool> CanMove => (figure, moveToFigure, getFigureAtPosition) =>
-                 CanMoveDirection(figure, moveToFigure, _avaibleMoveDirections, getFigureAtPosition);
-
-        public Func<Figure, Figure, Func<Position, Figure>, bool> CanAttack => (figure, attackFigure, getFigureAtPosition) =>
-                 CanAttackDirection(figure, attackFigure, _avaibleAttackDirections, getFigureAtPosition);
+        public Position[] AttackPattern => Array.Empty<Position>();
+        public bool CanMove(Tile tile, Tile[] board) => false;
+        public bool CanAttack(Tile tile, Tile[] board) => false;
     }
 }

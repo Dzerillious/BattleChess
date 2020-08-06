@@ -5,6 +5,7 @@
     /// </summary>
     public class Style
     {
+        public static Style Invalid { get; } = new Style("");
         public Style(string directory)
         {
             Name = directory;

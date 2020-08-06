@@ -1,0 +1,99 @@
+﻿using BattleChess3.Core;
+using BattleChess3.Core.Figures;
+
+namespace BattleChess3.UI.Services
+{
+    public class GameService
+    {
+        private readonly BoardService _boardService = CommonServiceLocator.ServiceLocator.Current.GetInstance<BoardService>();
+    
+        // /// <summary>
+        // /// Tries to play the position if it is your turn
+        // /// </summary>
+        // public bool TryPlay(Figure me, Position position)
+        // {
+        //     if (WhooseTurn != me.Owner) return false;
+        //     var enemy = GetFigureAtPosition(position);
+        //     if (me.CanMove(enemy, GetFigureAtPosition))
+        //     {
+        //         MoveFigureToPosition(me.Position, position);
+        //         me.Position = position;
+        //         return true;
+        //     }
+        //     if (enemy.PlayerNumber != me.Owner && me.CanAttack(enemy, GetFigureAtPosition))
+        //     {
+        //         if (me.FigureType.MovingWhileAttacking && TryAttack(me, GetFigureAtPosition(position)))
+        //         {
+        //             MoveFigureToPosition(me.Position, position);
+        //             me.Position = position;
+        //         }
+        //         return true;
+        //     }
+        //     return false;
+        // }
+        //
+        // /// <summary>
+        // /// Tries to attack at certain position and return if attacked
+        // /// </summary>
+        // public bool TryAttack(Figure me, Figure enemy)
+        // {
+        //     var remainingHp = enemy.RemainingHpOfAttacked(me);
+        //     if (me.FigureType.MovingWhileAttacking)
+        //     {
+        //         if (remainingHp > 0) return false;
+        //         AttackPattern(enemy.Position, me);
+        //         return true;
+        //     }
+        //     AttackPattern(enemy.Position, me);
+        //     return true;
+        // }
+        //
+        // /// <summary>
+        // /// Attacks each figure of pattern
+        // /// </summary>
+        // public void AttackPattern(Position attackedPosition, Figure me)
+        // {
+        //     foreach (var position in me.FigureType.AttackPattern)
+        //         AttackFigure(me, GetFigureAtPosition(position.AddPositions(attackedPosition)));
+        // }
+        //
+        // /// <summary>
+        // /// Attacks figure if Hp is lesser 0 figure dies
+        // /// </summary>
+        // public void AttackFigure(Figure attacking, Figure attacked)
+        // {
+        //     attacked.Hp = attacked.RemainingHpOfAttacked(attacking);
+        //     if (attacked.Hp <= 0) KillFigure(attacked);
+        // }
+        //
+        public void ClickedAtTile(Tile tile)
+        {
+            // if (_boardService.SelectedTile.Position == Position.Invalid)
+            // {
+            //     _boardService.SelectedTile = tile;
+            // }
+            // else
+            // {
+            //     _playedPosition = position;
+            //     PlayTurn();
+            // }
+            // HighlightTiles();
+        }
+        //
+        // public void PlayTurn()
+        // {
+        //     var figure = SelectedTile.Figure;
+        //     if (TryPlay(figure, _playedPosition) == false)
+        //     {
+        //         SelectedTile.SetSelected(_playedPosition);
+        //         _playedPosition = Position.Invalid;
+        //     }
+        //     else
+        //     {
+        //         WhooseTurn = WhooseTurn == 1 ? 2 : 1;
+        //         SelectedTile = new SelectedTile();
+        //         _playedPosition = Position.Invalid;
+        //     }
+        // }
+    }
+}

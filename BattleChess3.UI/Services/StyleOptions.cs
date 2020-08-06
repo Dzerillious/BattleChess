@@ -2,13 +2,21 @@
 using System.IO;
 using System.Linq;
 using BattleChess3.Core;
+using GalaSoft.MvvmLight;
 
-namespace BattleChess3.UI.ViewModel
+namespace BattleChess3.UI.Services
 {
-    public static class GameStyles
+    public class StyleOptions : ViewModelBase
     {
-        private static List<Style> _styles = new List<Style>();
-        public static List<Style> Styles
+        private Style _applicationStyle;
+        public Style ApplicationStyle
+        {
+            get => _applicationStyle ??= new Style(Directory.GetCurrentDirectory() + "\\Resources\\Pictures\\Styles\\PaperStyle");
+            set => Set(ref _applicationStyle, value);
+        }
+        
+        private List<Style> _styles = new List<Style>();
+        public List<Style> Styles
         {
             get
             {
@@ -26,6 +34,6 @@ namespace BattleChess3.UI.ViewModel
             }
         }
 
-        public static Style GetStyleFromString(string text) => Styles.FirstOrDefault(style => style.Name == text);
+        public Style GetStyleFromString(string text) => Styles.FirstOrDefault(style => style.Name == text);
     }
 }

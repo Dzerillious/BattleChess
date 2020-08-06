@@ -43,6 +43,12 @@
 
         public static bool operator !=(Position left, Position right)
             => left.X != right.X || left.Y != right.Y;
+        
+        public static implicit operator int(Position position) 
+            => position.X * 8 + position.Y;
+        
+        public static implicit operator Position(int i) 
+            => new Position(i / 8, i % 8);
 
         public bool Equals(Position other) => X == other.X && Y == other.Y;
 

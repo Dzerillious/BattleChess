@@ -1,7 +1,6 @@
 ﻿using BattleChess3.Core.Figures.FigureTypes.Default;
 using System;
 using System.IO;
-using BattleChess3.Core.Resources;
 
 namespace BattleChess3.Core.Figures
 {
@@ -15,14 +14,14 @@ namespace BattleChess3.Core.Figures
             {
                 Hp = 100,
                 Owner = Player.Neutral,
-                FigureType = new Nothing(),
+                FigureType = Nothing.Instance,
                 Highlighted = Directory.GetCurrentDirectory() + "Pictures\\Nothing.png",
-                PicturePath = new Nothing().PictureNeutralPath
+                PicturePath =  GetPicturePath(Nothing.Instance, 0)
             };
         
-        public Player Owner;
-        public IFigure FigureType { get; set; }
-        public int Hp { get; set; }
+        public Player Owner = Player.Neutral;
+        public IFigure FigureType { get; set; } = Nothing.Instance;
+        public int Hp { get; set; } = 0;
         public bool Clicked { get; set; } = false;
         public string Highlighted { get; set; } = "";
         public string PicturePath { get; set; } = "";
@@ -30,10 +29,7 @@ namespace BattleChess3.Core.Figures
         public double AntiBonus { get; private set; } = 0.5;
         
 
-        public Figure()
-        {
-            
-        }
+        public Figure() {}
 
         /// <summary>
         /// Constructor of baseFigure
@@ -44,27 +40,22 @@ namespace BattleChess3.Core.Figures
             Owner = owner;
             FigureType = figureType;
             Highlighted = Directory.GetCurrentDirectory() + "Pictures\\Nothing.png";
-            if (Owner.Id == 1)
-            {
-                PicturePath = FigureType.PictureWhitePath;
-            }
-            else if (Owner.Id == 2)
-            {
-                PicturePath = FigureType.PictureBlackPath;
-            }
-            else
-            {
-                PicturePath = FigureType.PictureNeutralPath;
-            }
+            PicturePath = GetPicturePath(figureType, owner.Id);
         }
+
+        private static string GetPicturePath(IFigure figure, int id)
+            => $"{Directory.GetCurrentDirectory()}\\Pictures\\{figure.GroupName}\\{figure.UnitName}{id}";
 
         /// <summary>
         /// Check if can move at position of figure
         /// </summary>
         /// <param name="figure"></param>
         /// <returns></returns>
-        public bool CanMove(Figure figure, Func<Position, Figure> getFigureAtPosition)
-            => figure.FigureType.UnitName == "Nothing" && FigureType.CanMove(this, figure, getFigureAtPosition);
+        public bool CanMove(Figure figure, Func<Tile, Figure> getFigureAtPosition)
+        {
+            return false;
+            // return figure.FigureType.UnitName == "Nothing" && FigureType.CanMove(this, figure, getFigureAtPosition);
+        }
 
         /// <summary>
         /// Checks if can attack enemy
@@ -73,12 +64,13 @@ namespace BattleChess3.Core.Figures
         /// <returns></returns>
         public bool CanAttack(Figure enemy, Func<Position, Figure> getFigureAtPosition)
         {
-            if (!FigureType.CanAttack(this, enemy, getFigureAtPosition) 
-                || enemy.FigureType.Defence >= FigureType.Attack) return false;
-            if (!FigureType.MovingWhileAttacking) return true;
-            
-            var remainingHp = enemy.RemainingHpOfAttacked(this);
-            return remainingHp <= 0;
+            return false;
+            // if (!FigureType.CanAttack(this, enemy, getFigureAtPosition) 
+            //     || enemy.FigureType.Defence >= FigureType.Attack) return false;
+            // if (!FigureType.MovingAttack) return true;
+            //
+            // var remainingHp = enemy.RemainingHpOfAttacked(this);
+            // return remainingHp <= 0;
         }
 
         /// <summary>

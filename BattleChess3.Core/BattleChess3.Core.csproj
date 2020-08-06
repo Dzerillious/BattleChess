@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Figures\AttackingTypes\DirectionAttack.cs" />
     <Compile Include="Figures\AttackingTypes\DirectionMove.cs" />
+    <Compile Include="Figures\AttackingTypes\IMove.cs" />
     <Compile Include="Figures\AttackingTypes\SimpleAttackFigure.cs" />
     <Compile Include="Figures\AttackingTypes\SimpleFrontAttackFigure.cs" />
     <Compile Include="Figures\AttackingTypes\SimpleFrontMoveFigure.cs" />
@@ -56,7 +57,7 @@
     <Compile Include="Figures\FigureTypes\ClassicChess\ChessQueen.cs" />
     <Compile Include="Figures\FigureTypes\ClassicChess\ChessTower.cs" />
     <Compile Include="Figures\FigureTypes\ClassicChess\ClassicChessGroup.cs" />
-    <Compile Include="Figures\FigureTypes\Default\DefaultGroup.cs" />
+    <Compile Include="Figures\FigureTypes\Default\DefaultFigures.cs" />
     <Compile Include="Figures\FigureTypes\FigureType.cs" />
     <Compile Include="Figures\FigureTypes\Hobbit\HobbitGroup.cs" />
     <Compile Include="Figures\FigureTypes\Hobbit\HobbitHelper.cs" />
@@ -102,6 +103,7 @@
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
     <Compile Include="Style.cs" />
+    <Compile Include="Tile.cs" />
     <Compile Include="TypesOfFigures.cs" />
     <Compile Include="Utilities\LocalizationSourceBase.cs" />
     <Compile Include="Utilities\LocExtension.cs" />

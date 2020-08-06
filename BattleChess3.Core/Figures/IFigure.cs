@@ -1,5 +1,4 @@
-﻿using System;
-using BattleChess3.Core.Figures.FigureTypes;
+﻿using BattleChess3.Core.Figures.FigureTypes;
 
 namespace BattleChess3.Core.Figures
 {
@@ -17,6 +16,11 @@ namespace BattleChess3.Core.Figures
         /// Gets Name of unit
         /// </summary>
         string UnitName { get; }
+        
+        /// <summary>
+        /// Gets name of group of figures
+        /// </summary>
+        string GroupName { get; }
 
         /// <summary>
         /// Gets Type of unit
@@ -46,7 +50,7 @@ namespace BattleChess3.Core.Figures
         /// <summary>
         /// Gets If move while attacking
         /// </summary>
-        bool MovingWhileAttacking { get; }
+        bool MovingAttack { get; }
 
         /// <summary>
         /// Gets Cost of unit
@@ -59,21 +63,6 @@ namespace BattleChess3.Core.Figures
         string Description { get; }
 
         /// <summary>
-        /// Gets PictureBlackPath of unit
-        /// </summary>
-        string PictureBlackPath { get; }
-
-        /// <summary>
-        /// Gets PictureWhitekPath of unit
-        /// </summary>
-        string PictureWhitePath { get; }
-
-        /// <summary>
-        /// Gets PictureNeutralPath of unit
-        /// </summary>
-        string PictureNeutralPath { get; }
-
-        /// <summary>
         /// Gets positions on which attack
         /// </summary>
         Position[] AttackPattern { get; }
@@ -81,11 +70,11 @@ namespace BattleChess3.Core.Figures
         /// <summary>
         /// Check if can move on position
         /// </summary>
-        Func<Figure, Figure, Func<Position, Figure>, bool> CanMove { get; }
+        bool CanMove(Tile tile, Tile[] board);
 
         /// <summary>
         /// Check if can attack on position
         /// </summary>
-        Func<Figure, Figure, Func<Position, Figure>, bool> CanAttack { get; }
+        bool CanAttack(Tile tile, Tile[] board);
     }
 }

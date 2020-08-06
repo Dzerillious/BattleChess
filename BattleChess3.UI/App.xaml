@@ -1,7 +1,6 @@
 ﻿<Application x:Class="BattleChess3.UI.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:game="clr-namespace:BattleChess3.UI.Game"
              StartupUri="./Views/MainWindow.xaml">
     <Application.Resources>
         <Style x:Key="TextBlockStyle" TargetType="TextBlock">
@@ -50,17 +49,16 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Foreground" Value="Blue" />
-                    <Setter Property="Background">
-                        <Setter.Value>
-                            <ImageBrush
-                                ImageSource="{Binding Path=ApplicationStyle.DefaultButtonMouseOn, Source={x:Static game:Session.SelectedStyle}}" />
-                        </Setter.Value>
-                    </Setter>
-                </Trigger>
-            </Style.Triggers>
+            <!-- <Style.Triggers> -->
+            <!--     <Trigger Property="IsMouseOver" Value="True"> -->
+            <!--         <Setter Property="Foreground" Value="Blue" /> -->
+            <!--         <Setter Property="Background"> -->
+            <!--             <Setter.Value> -->
+            <!--                 <ImageBrush ImageSource="{Binding Path=ApplicationStyle.DefaultButtonMouseOn, Source={x:Static game:Session.SelectedStyle}}" /> -->
+            <!--             </Setter.Value> -->
+            <!--         </Setter> -->
+            <!--     </Trigger> -->
+            <!-- </Style.Triggers> -->
         </Style>
         <Style x:Key="ChessButtonStyle" TargetType="Button">
             <Setter Property="BorderThickness" Value="0" />
@@ -80,16 +78,15 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background">
-                        <Setter.Value>
-                            <ImageBrush
-                                ImageSource="{Binding Path=ApplicationStyle.SelectedChessTile, Source={x:Static game:Session.SelectedStyle}}" />
-                        </Setter.Value>
-                    </Setter>
-                </Trigger>
-            </Style.Triggers>
+            <!-- <Style.Triggers> -->
+            <!--     <Trigger Property="IsMouseOver" Value="True"> -->
+            <!--         <Setter Property="Background"> -->
+            <!--             <Setter.Value> -->
+            <!--                 <ImageBrush ImageSource="{Binding Path=ApplicationStyle.SelectedChessTile, Source={x:Static game:Session.SelectedStyle}}" /> -->
+            <!--             </Setter.Value> -->
+            <!--         </Setter> -->
+            <!--     </Trigger> -->
+            <!-- </Style.Triggers> -->
         </Style>
         <Style x:Key="TabItemStyle" TargetType="TabItem">
             <Setter Property="Foreground" Value="Black" />

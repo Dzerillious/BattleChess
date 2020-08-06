@@ -17,7 +17,7 @@ namespace BattleChess3.Core
         public static readonly IFIgureGroup SilmarillionGroup = new SilmarillionGroup();
         public static readonly IFIgureGroup HobbitGroup = new HobbitGroup();
         public static readonly IFIgureGroup ClassicChessGroup = new ClassicChessGroup();
-        public static readonly IFIgureGroup DefaultGroup = new DefaultGroup();
+        public static readonly IFIgureGroup DefaultGroup = new DefaultFigures();
 
         public static readonly IFIgureGroup[] FigureGroups =
         {
@@ -25,7 +25,7 @@ namespace BattleChess3.Core
             new SilmarillionGroup(),
             new HobbitGroup(),
             new ClassicChessGroup(),
-            new DefaultGroup(),
+            new DefaultFigures(),
         };
 
         /// <summary>

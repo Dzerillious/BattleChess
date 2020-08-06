@@ -1,23 +1,21 @@
 ﻿using BattleChess3.Core;
 using BattleChess3.Core.Figures;
-using BattleChess3.UI.ViewModel;
 
 namespace BattleChess3.UI.Services
 {
     public class BoardService
     {
-        public readonly PlayerService PlayerService = CommonServiceLocator.ServiceLocator.Current.GetInstance<PlayerService>();
-        
-        public SelectedTile SelectedTile = new SelectedTile();
-        public SelectedTile HoverTile = new SelectedTile();
-        public static readonly Figure[][] Board = new Figure[8][];
+        public Tile SelectedTile = Tile.Invalid;
+        public Tile HoverTile = Tile.Invalid;
+        public readonly Tile[] Board = new Tile[64];
 
-        public static Figure GetFigureAtPosition(Position position)
-        {
-            return Board[position.X][position.Y];
-        }
-        
-        public static void CreateFigure(string tile, Position position, Player player)
+        public Figure GetFigureAtPosition(Position position) 
+            => Board[position].Figure;
+
+        public Tile GetTileAtPosition(Position position) 
+            => Board[position];
+
+        public void CreateFigure(string tile, Position position, Player player)
         {
             var figure = TypesOfFigures.GetFigureFromString(tile.Replace(player.Id.ToString(), ""));
             Figure newFigure = new Figure(player, figure);
@@ -25,22 +23,22 @@ namespace BattleChess3.UI.Services
             SetFigureAtPosition(position, newFigure);
         }
 
-        public static void SetFigureAtPosition(Position position, Figure figure)
+        public void SetFigureAtPosition(Position position, Figure figure)
         {
-            Board[position.X][position.Y] = figure;
+            Board[position].Figure = figure;
         }
 
-        public static void MoveFigureToPosition(Position position, Position newPosition)
+        public void MoveFigureToPosition(Position position, Position newPosition)
         {
             var figure = GetFigureAtPosition(position);
             SetFigureAtPosition(position, Figure.Empty);
             SetFigureAtPosition(newPosition, figure);
         }
 
-        public static void KillFigure(Figure figure)
+        public void KillFigureAtTile(Tile tile)
         {
-            SetFigureAtPosition(figure.Position, new Figure(figure.Position));
-            figure.Owner.Figures.Remove(figure);
+            SetFigureAtPosition(tile.Position, Figure.Empty);
+            tile.Figure.Owner.Figures.Remove(tile.Figure);
         }
     }
 }

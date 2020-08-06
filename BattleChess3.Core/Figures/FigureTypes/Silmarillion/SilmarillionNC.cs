@@ -1,53 +1,25 @@
-﻿using BattleChess3.Core.Figures.AttackingTypes;
-using System;
-using System.IO;
+﻿using System;
 
 namespace BattleChess3.Core.Figures.FigureTypes.Silmarillion
 {
-    public class SilmarillionNC : DirectionAttack, IFigure
+    public class SilmarillionNC : IFigure
     {
         public string ShownName => "Mandos/Carcharoth";
         public string UnitName => "SilmarillionNC";
+        public string GroupName => "Silmarillion";
         public FigureType UnitType => FigureType.Foot;
         public FigureType Bonus => FigureType.Nothing;
         public FigureType AntiBonus => FigureType.Nothing;
         public int Attack => 100;
         public int Defence => 0;
-        public bool MovingWhileAttacking => true;
+        public bool MovingAttack => true;
         public int Cost => 3;
 
         public string Description => "\nMandos\n\nMandos (Quenya; IPA: [ˈmandos] - \"Prison-Fortress\") is an Ainu, one of the Aratar and a Vala who is responsible for the judgement of the Spirits, or Fëa of all Elven dead. He also has responsibility for pronouncing the dooms and judgments of Eru Ilúvatar under Manwë. His real name is Námo (Quenya; IPA: \"Ordainer\" or \"Judge\") but was later known by the Elves as Mandos after his sacred halls Halls of Mandos, over which he presides and where ultimately the Elves go after they are slain.\n" +
             "\nCarcharoth\n\nCarcharoth, also known as the Red Maw, lived in the First Age of the Sun, and was the greatest werewolf who ever lived. He was of the line of Draugluin.";
 
-        public string PictureBlackPath => Directory.GetCurrentDirectory() + "\\Pictures\\Silmarillion\\Carcharoth.png";
-        public string PictureWhitePath => Directory.GetCurrentDirectory() + "\\Pictures\\Silmarillion\\Namo.png";
-        public string PictureNeutralPath => "";
-
-        private readonly Position[] _avaibleMoveDirections =
-        {
-            new Position(1, 1),
-            new Position(-1, -1),
-            new Position(1, -1),
-            new Position(-1, 1),
-        };
-
-        private readonly Position[] _avaibleAttackDirections =
-        {
-            new Position(1, 1),
-            new Position(-1, -1),
-            new Position(1, -1),
-            new Position(-1, 1),
-        };
-
-        public Position[] AttackPattern => new[]
-        {
-            new Position(0, 0),
-        };
-
-        public Func<Figure, Figure, Func<Position, Figure>, bool> CanMove => (figure, moveToFigure, getFigureAtPosition) =>
-                 CanMoveDirection(figure, moveToFigure, _avaibleMoveDirections, getFigureAtPosition);
-
-        public Func<Figure, Figure, Func<Position, Figure>, bool> CanAttack => (figure, attackFigure, getFigureAtPosition) =>
-                 CanAttackDirection(figure, attackFigure, _avaibleAttackDirections, getFigureAtPosition);
+        public Position[] AttackPattern => Array.Empty<Position>();
+        public bool CanMove(Tile tile, Tile[] board) => false;
+        public bool CanAttack(Tile tile, Tile[] board) => false;
     }
 }

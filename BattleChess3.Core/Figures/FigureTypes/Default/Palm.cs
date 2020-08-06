@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 
 namespace BattleChess3.Core.Figures.FigureTypes.Default
 {
@@ -7,19 +6,17 @@ namespace BattleChess3.Core.Figures.FigureTypes.Default
     {
         public string ShownName => "Palm";
         public string UnitName => "Palm";
+        public string GroupName => "Default";
         public FigureType UnitType => FigureType.Object;
         public FigureType Bonus => FigureType.Nothing;
         public FigureType AntiBonus => FigureType.Nothing;
         public int Attack => 0;
         public int Defence => -50;
-        public bool MovingWhileAttacking => false;
+        public bool MovingAttack => false;
         public string Description => "Palm tile, which you can easily destroy. It cannot move and belongs to no one";
-        public string PictureBlackPath => "";
-        public string PictureWhitePath => "";
-        public string PictureNeutralPath => Directory.GetCurrentDirectory() + "\\Pictures\\Palm.png";
         public int Cost => 0;
-        public Position[] AttackPattern => null;
-        public Func<Figure, Figure, Func<Position, Figure>, bool> CanMove => (figure, moveToFigure, x) => false;
-        public Func<Figure, Figure, Func<Position, Figure>, bool> CanAttack => (figure, attackFigure, x) => false;
+        public Position[] AttackPattern => Array.Empty<Position>();
+        public bool CanMove(Tile tile, Tile[] board) => false;
+        public bool CanAttack(Tile tile, Tile[] board) => false;
     }
 }

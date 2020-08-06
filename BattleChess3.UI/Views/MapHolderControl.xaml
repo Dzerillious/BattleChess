@@ -6,24 +6,24 @@
              xmlns:views="clr-namespace:BattleChess3.UI.Views"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="350">
-    <Grid DataContext="{Binding Source={x:Static views:MainWindow.MapsHolder}, UpdateSourceTrigger=PropertyChanged}">
-        <ListBox ItemsSource="{Binding Maps}"
-                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                     ScrollViewer.VerticalScrollBarVisibility="Hidden"
-                     SelectionChanged="OnSelectedMapChanged"
-                     BorderThickness="0"
-                     Background="{Binding Path=ApplicationStyle.DefaultObject}">
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel Orientation="Horizontal" IsItemsHost="True" />
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Image Source="{Binding Path=PreviewPath, UpdateSourceTrigger=PropertyChanged}"
-                               Width="500" Margin="10" />
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-    </Grid>
+    <!-- <Grid DataContext="{Binding Source={x:Static views:MainWindow.MapsHolder}, UpdateSourceTrigger=PropertyChanged}"> -->
+    <!--     <ListBox ItemsSource="{Binding Maps}" -->
+    <!--                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" -->
+    <!--                  ScrollViewer.VerticalScrollBarVisibility="Hidden" -->
+    <!--                  SelectionChanged="OnSelectedMapChanged" -->
+    <!--                  BorderThickness="0" -->
+    <!--                  Background="{Binding Path=ApplicationStyle.DefaultObject}"> -->
+    <!--         <ListBox.ItemsPanel> -->
+    <!--             <ItemsPanelTemplate> -->
+    <!--                 <WrapPanel Orientation="Horizontal" IsItemsHost="True" /> -->
+    <!--             </ItemsPanelTemplate> -->
+    <!--         </ListBox.ItemsPanel> -->
+    <!--         <ListBox.ItemTemplate> -->
+    <!--             <DataTemplate> -->
+    <!--                 <Image Source="{Binding Path=PreviewPath, UpdateSourceTrigger=PropertyChanged}" -->
+    <!--                            Width="500" Margin="10" /> -->
+    <!--             </DataTemplate> -->
+    <!--         </ListBox.ItemTemplate> -->
+    <!--     </ListBox> -->
+    <!-- </Grid> -->
 </UserControl>
