@@ -32,8 +32,8 @@ namespace BattleChess3.UI.Views
         {
             var button = (Button)sender;
             var figure = (BaseFigure)button.CommandParameter;
-            Session.MouseOn.SelFigure = figure;
-            Session.MouseOn.SelPosition = figure.Position;
+            Session.MouseOn.Figure = figure;
+            Session.MouseOn.Position = figure.Position;
         }
     }
 }

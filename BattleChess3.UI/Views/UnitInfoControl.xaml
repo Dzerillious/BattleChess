@@ -33,22 +33,22 @@
                         Orientation="Vertical"
                         DataContext="{Binding Source={x:Static game:Session.MouseOn}}">
                 <TextBlock
-                    Text="{Binding Path=SelFigure.FigureType.ShownName, UpdateSourceTrigger=PropertyChanged}" />
+                    Text="{Binding Path=Figure.FigureType.ShownName, UpdateSourceTrigger=PropertyChanged}" />
                 <TextBlock
-                    Text="{Binding Path=SelFigure.FigureType.UnitType, UpdateSourceTrigger=PropertyChanged}" />
-                <TextBlock Text="{Binding Path=SelFigure.Hp, UpdateSourceTrigger=PropertyChanged}" />
+                    Text="{Binding Path=Figure.FigureType.UnitType, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock Text="{Binding Path=Figure.Hp, UpdateSourceTrigger=PropertyChanged}" />
                 <TextBlock
-                    Text="{Binding Path=SelFigure.FigureType.Attack, UpdateSourceTrigger=PropertyChanged}" />
+                    Text="{Binding Path=Figure.FigureType.Attack, UpdateSourceTrigger=PropertyChanged}" />
                 <TextBlock
-                    Text="{Binding Path=SelFigure.FigureType.Defence, UpdateSourceTrigger=PropertyChanged}" />
+                    Text="{Binding Path=Figure.FigureType.Defence, UpdateSourceTrigger=PropertyChanged}" />
                 <TextBlock
-                    Text="{Binding Path=SelFigure.FigureType.Bonus, UpdateSourceTrigger=PropertyChanged}" />
+                    Text="{Binding Path=Figure.FigureType.Bonus, UpdateSourceTrigger=PropertyChanged}" />
                 <TextBlock
-                    Text="{Binding Path=SelFigure.FigureType.AntiBonus, UpdateSourceTrigger=PropertyChanged}" />
+                    Text="{Binding Path=Figure.FigureType.AntiBonus, UpdateSourceTrigger=PropertyChanged}" />
                 <TextBlock
-                    Text="{Binding Path=SelFigure.FigureType.Cost, UpdateSourceTrigger=PropertyChanged}" />
+                    Text="{Binding Path=Figure.FigureType.Cost, UpdateSourceTrigger=PropertyChanged}" />
                 <TextBlock
-                    Text="{Binding Path=SelFigure.FigureType.MovingWhileAttacking, UpdateSourceTrigger=PropertyChanged}" />
+                    Text="{Binding Path=Figure.FigureType.MovingWhileAttacking, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
         </Grid>
     </Viewbox>

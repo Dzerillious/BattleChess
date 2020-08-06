@@ -9,8 +9,8 @@ namespace BattleChess3.UI.Game
     /// </summary>
     public static partial class Session
     {
-        public static SelectedFigure Selected = new SelectedFigure();
-        public static SelectedFigure MouseOn = new SelectedFigure();
+        public static Selected Selected = new Selected();
+        public static Selected MouseOn = new Selected();
         public static SelectedStyle SelectedStyle = new SelectedStyle();
         public static Map SelectedMap = new Map();
 
@@ -19,7 +19,7 @@ namespace BattleChess3.UI.Game
 
         public static void ClickedAtPosition(Position position)
         {
-            if (Selected.SelPosition == null)
+            if (Selected.Position == Position.Invalid)
             {
                 Selected.SetSelected(position);
             }
@@ -34,7 +34,7 @@ namespace BattleChess3.UI.Game
 
         public static void PlayTurn()
         {
-            var figure = Selected.SelFigure;
+            var figure = Selected.Figure;
             if (TryPlay(figure, _playedPosition) == false)
             {
                 Selected.SetSelected(_playedPosition);
@@ -43,7 +43,7 @@ namespace BattleChess3.UI.Game
             else
             {
                 WhooseTurn = WhooseTurn == 1 ? 2 : 1;
-                Selected = new SelectedFigure();
+                Selected = new Selected();
                 _playedPosition = Position.Invalid;
             }
         }

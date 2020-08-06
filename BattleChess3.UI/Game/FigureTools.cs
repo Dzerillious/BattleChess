@@ -1,6 +1,6 @@
 ﻿using BattleChess3.Core;
 using BattleChess3.Core.Figures;
-using BattleChess3.UI.Properties;
+using BattleChess3.UI.Model;
 
 namespace BattleChess3.UI.Game
 {
@@ -13,7 +13,7 @@ namespace BattleChess3.UI.Game
         {
             var figure = TypesOfFigures.GetFigureFromString(tile.Replace(playerNumber.ToString(), ""));
             BaseFigure newBaseFigure = new BaseFigure(playerNumber, position, figure);
-            player?.CreateFigure(newBaseFigure);
+            player?.Figures.Add(newBaseFigure);
             SetFigureAtPosition(position, newBaseFigure);
         }
 
@@ -22,19 +22,19 @@ namespace BattleChess3.UI.Game
         /// </summary>
         public static bool TryPlay(BaseFigure me, Position position)
         {
-            if (Session.WhooseTurn != me.PlayerNumber) return false;
-            var enemy = Session.GetFigureAtPosition(position);
+            if (WhooseTurn != me.PlayerNumber) return false;
+            var enemy = GetFigureAtPosition(position);
             if (me.CanMove(enemy, GetFigureAtPosition))
             {
-                Session.MoveFigureToPosition(me.Position, position);
+                MoveFigureToPosition(me.Position, position);
                 me.Position = position;
                 return true;
             }
             if (enemy.PlayerNumber != me.PlayerNumber && me.CanAttack(enemy, GetFigureAtPosition))
             {
-                if (me.FigureType.MovingWhileAttacking && TryAttack(me, Session.GetFigureAtPosition(position)))
+                if (me.FigureType.MovingWhileAttacking && TryAttack(me, GetFigureAtPosition(position)))
                 {
-                    Session.MoveFigureToPosition(me.Position, position);
+                    MoveFigureToPosition(me.Position, position);
                     me.Position = position;
                 }
                 return true;
@@ -64,9 +64,7 @@ namespace BattleChess3.UI.Game
         public static void AttackPattern(Position attackedPosition, BaseFigure me)
         {
             foreach (var position in me.FigureType.AttackPattern)
-            {
-                AttackFigure(me, Session.GetFigureAtPosition(position.AddPositions(attackedPosition)));
-            }
+                AttackFigure(me, GetFigureAtPosition(position.AddPositions(attackedPosition)));
         }
 
         /// <summary>
@@ -76,9 +74,7 @@ namespace BattleChess3.UI.Game
         {
             attackedFigure.Hp = attackedFigure.RemainingHpOfAttacked(attackingFigure);
             if (attackedFigure.Hp <= 0)
-            {
                 KillFigure(attackedFigure);
-            }
         }
 
         public static BaseFigure GetFigureAtPosition(Position position) => Board[position.X][position.Y];
@@ -98,14 +94,10 @@ namespace BattleChess3.UI.Game
         public static void KillFigure(BaseFigure figure)
         {
             SetFigureAtPosition(figure.Position, new BaseFigure(figure.Position));
-            if (WhitePlayer.Number == figure.PlayerNumber)
-            {
-                WhitePlayer.KillFigure(figure);
-            }
-            else
-            {
-                BlackPlayer.KillFigure(figure);
-            }
+            
+            if (WhitePlayer.PlayerNumber == figure.PlayerNumber)
+                WhitePlayer.Figures.Remove(figure);
+            else BlackPlayer.Figures.Remove(figure);
         }
     }
 }

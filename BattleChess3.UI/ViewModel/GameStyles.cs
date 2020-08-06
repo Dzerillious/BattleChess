@@ -8,7 +8,6 @@ namespace BattleChess3.UI.ViewModel
     public static class GameStyles
     {
         private static List<Style> _styles = new List<Style>();
-
         public static List<Style> Styles
         {
             get

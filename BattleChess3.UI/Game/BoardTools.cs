@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using BattleChess3.Core;
 using BattleChess3.Core.Figures;
-using BattleChess3.UI.Properties;
 using BattleChess3.UI.ViewModel;
 
 namespace BattleChess3.UI.Game
