@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.Model", "BattleChess3.Model\BattleChess3.Model.csproj", "{4663DA29-AA05-4134-800D-1974BE8DB559}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.Core", "BattleChess3.Core\BattleChess3.Core.csproj", "{4663DA29-AA05-4134-800D-1974BE8DB559}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.UI", "BattleChess3.UI\BattleChess3.UI.csproj", "{EDC1603E-4D88-440C-BEFF-7EB78DB64FE0}"
 EndProject

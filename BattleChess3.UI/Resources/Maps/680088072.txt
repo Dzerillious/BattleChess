@@ -1,0 +1,10 @@
+2HobbitMinorWizzard 2HobbitWarrior 2HobbitHelper 2HobbitRingBearer 2HobbitLeader 2HobbitHelper 2HobbitWarrior 2HobbitWizzard 
+2HobbitSoldier 2HobbitSoldier 2HobbitSoldier 2HobbitSoldier 2HobbitSoldier 2HobbitSoldier 2HobbitSoldier 2HobbitSoldier 
+Nothing Nothing Nothing Nothing Nothing Nothing Nothing Nothing 
+Nothing Nothing Nothing Nothing Nothing Nothing Nothing Nothing 
+Nothing Nothing Nothing Nothing Nothing Nothing Nothing Nothing 
+Nothing Nothing Nothing Nothing Nothing Nothing Nothing Nothing 
+1HobbitSoldier 1HobbitSoldier 1HobbitSoldier 1HobbitSoldier 1HobbitSoldier 1HobbitSoldier 1HobbitSoldier 1HobbitSoldier 
+1HobbitMinorWizzard 1HobbitWarrior 1HobbitHelper 1HobbitRingBearer 1HobbitLeader 1HobbitHelper 1HobbitWarrior 1HobbitWizzard 
+Resources\MapsPreviews\680088072.png
+1

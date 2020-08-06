@@ -1,0 +1,10 @@
+2ChessTower 2ChessHorse 2ChessBishop 2ChessQueen 2ChessKing 2ChessBishop 2ChessHorse 2ChessTower 
+2ChessPawn 2ChessPawn 2ChessPawn 2ChessPawn 2ChessPawn 2ChessPawn 2ChessPawn 2ChessPawn 
+Nothing Nothing Nothing Nothing Nothing Nothing Nothing Nothing 
+Nothing Nothing Nothing Nothing Nothing Nothing Nothing Nothing 
+Nothing Nothing Nothing Nothing Nothing Nothing Nothing Nothing 
+Nothing Nothing Nothing Nothing Nothing Nothing Nothing Nothing 
+1ChessPawn 1ChessPawn 1ChessPawn 1ChessPawn 1ChessPawn 1ChessPawn 1ChessPawn 1ChessPawn 
+1ChessTower 1ChessHorse 1ChessBishop 1ChessQueen 1ChessKing 1ChessBishop 1ChessHorse 1ChessTower 
+Resources\MapsPreviews\977250025.png
+1
