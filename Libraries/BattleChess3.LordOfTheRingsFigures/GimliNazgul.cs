@@ -2,10 +2,11 @@
 using BattleChess3.Core;
 using BattleChess3.Core.Figures;
 
-namespace BattleChess3.LordOfTheRings
+namespace BattleChess3.LordOfTheRingsFigures
 {
     public class GimliNazgul : IFigureType
     {
+        public static readonly GimliNazgul Instance = new GimliNazgul();
         public string ShownName => "Gimli/Nazgul";
         public string UnitName => "LOTR_GimliNazgul";
         public string GroupName => "LOTR";

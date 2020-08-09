@@ -6,6 +6,7 @@ namespace BattleChess3.DefaultFigures
 {
     public class Ninja : IFigureType
     {
+        public static readonly Ninja Instance = new Ninja();
         public string ShownName => "Ninja";
         public string UnitName => "Default_Ninja";
         public string GroupName => "Default";

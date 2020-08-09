@@ -6,6 +6,7 @@ namespace BattleChess3.SilmarillionFigures
 {
     public class AuleGothmog : IFigureType
     {
+        public static readonly AuleGothmog Instance = new AuleGothmog();
         public string ShownName => "Aule/Gothmog";
         public string UnitName => "Silmarillion_AuleGothmog";
         public string GroupName => "Silmarillion";

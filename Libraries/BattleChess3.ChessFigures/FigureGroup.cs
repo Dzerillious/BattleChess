@@ -12,7 +12,7 @@ namespace BattleChess3.ChessFigures
             new Queen(),
             new Tower(),
             new Bishop(),
-            new Horse(),
+            new Knight(),
             new Pawn(),
         };
     }

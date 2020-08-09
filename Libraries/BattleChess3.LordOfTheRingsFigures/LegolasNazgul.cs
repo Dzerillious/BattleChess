@@ -2,10 +2,11 @@
 using BattleChess3.Core;
 using BattleChess3.Core.Figures;
 
-namespace BattleChess3.LordOfTheRings
+namespace BattleChess3.LordOfTheRingsFigures
 {
     public class LegolasNazgul : IFigureType
     {
+        public static readonly LegolasNazgul Instance = new LegolasNazgul();
         public string ShownName => "Legolas/Nazgul";
         public string UnitName => "LOTR_LegolasNazgul";
         public string GroupName => "LOTR";

@@ -6,6 +6,7 @@ namespace BattleChess3.SilmarillionFigures
 {
     public class VardaSauron : IFigureType
     {
+        public static readonly VardaSauron Instance = new VardaSauron();
         public string ShownName => "Varda/Sauron";
         public string UnitName => "Silmarillion_VardaSauron";
         public string GroupName => "Silmarillion";

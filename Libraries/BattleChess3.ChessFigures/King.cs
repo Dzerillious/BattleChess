@@ -6,6 +6,7 @@ namespace BattleChess3.ChessFigures
 {
     public class King : IFigureType
     {
+        public static readonly King Instance = new King();
         public string ShownName => "King";
         public string UnitName => "Chess_King";
         public string GroupName => "Chess";

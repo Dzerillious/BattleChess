@@ -2,10 +2,11 @@
 using BattleChess3.Core;
 using BattleChess3.Core.Figures;
 
-namespace BattleChess3.LordOfTheRings
+namespace BattleChess3.LordOfTheRingsFigures
 {
     public class GandalfWitchKing : IFigureType
     {
+        public static readonly GandalfWitchKing Instance = new GandalfWitchKing();
         public string ShownName => "Gandalf/Witch king";
         public string UnitName => "LOTR_GandalfWitchKing";
         public string GroupName => "LOTR";

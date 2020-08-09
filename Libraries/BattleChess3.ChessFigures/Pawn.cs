@@ -6,6 +6,7 @@ namespace BattleChess3.ChessFigures
 {
     public class Pawn : IFigureType
     {
+        public static readonly Pawn Instance = new Pawn();
         public string ShownName => "Pawn";
         public string UnitName => "Chess_Pawn";
         public string GroupName => "Chess";

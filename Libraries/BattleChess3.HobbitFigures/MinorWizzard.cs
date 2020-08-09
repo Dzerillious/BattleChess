@@ -6,6 +6,7 @@ namespace BattleChess3.HobbitFigures
 {
     public class MinorWizzard : IFigureType
     {
+        public static readonly MinorWizzard Instance = new MinorWizzard();
         public string ShownName => "Minor Wizzard";
         public string UnitName => "Hobbit_MinorWizzard";
         public string GroupName => "Hobbit";

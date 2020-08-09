@@ -1,7 +1,6 @@
 ﻿using BattleChess3.Core.Figures;
-using BattleChess3.LordOfTheRingsFigures;
 
-namespace BattleChess3.LordOfTheRings
+namespace BattleChess3.LordOfTheRingsFigures
 {
     class FigureGroup : IFigureGroup
     {

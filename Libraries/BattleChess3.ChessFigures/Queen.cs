@@ -6,6 +6,7 @@ namespace BattleChess3.ChessFigures
 {
     public class Queen : IFigureType
     {
+        public static readonly Queen Instance = new Queen();
         public string ShownName => "Queen";
         public string UnitName => "Chess_Queen";
         public string GroupName => "Chess";

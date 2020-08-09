@@ -6,6 +6,7 @@ namespace BattleChess3.SilmarillionFigures
 {
     public class YavannaGlaurung : IFigureType
     {
+        public static readonly YavannaGlaurung Instance = new YavannaGlaurung();
         public string ShownName => "Yavanna/Glaurung";
         public string UnitName => "Silmarillion_YavannaGlaurung";
         public string GroupName => "Silmarillion";

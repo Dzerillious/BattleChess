@@ -2,10 +2,11 @@
 using BattleChess3.Core;
 using BattleChess3.Core.Figures;
 
-namespace BattleChess3.LordOfTheRings
+namespace BattleChess3.LordOfTheRingsFigures
 {
     public class PipinTroll : IFigureType
     {
+        public static readonly PipinTroll Instance = new PipinTroll();
         public string ShownName => "Peregrin/Troll";
         public string UnitName => "LOTR_PipinTroll";
         public string GroupName => "LOTR";

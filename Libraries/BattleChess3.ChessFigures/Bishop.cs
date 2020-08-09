@@ -6,6 +6,7 @@ namespace BattleChess3.ChessFigures
 {
     public class Bishop : IFigureType
     {
+        public static readonly Bishop Instance = new Bishop();
         public string ShownName => "Bishop";
         public string UnitName => "Chess_Bishop";
         public string GroupName => "Chess";

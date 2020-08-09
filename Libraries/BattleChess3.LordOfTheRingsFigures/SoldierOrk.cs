@@ -2,10 +2,11 @@
 using BattleChess3.Core;
 using BattleChess3.Core.Figures;
 
-namespace BattleChess3.LordOfTheRings
+namespace BattleChess3.LordOfTheRingsFigures
 {
     public class SoldierOrk : IFigureType
     {
+        public static readonly SoldierOrk Instance = new SoldierOrk();
         public string ShownName => "Soldier/Ork";
         public string UnitName => "LOTR_SoldierOrk";
         public string GroupName => "LOTR";

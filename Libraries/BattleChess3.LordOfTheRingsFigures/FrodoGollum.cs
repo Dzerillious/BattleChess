@@ -2,10 +2,11 @@
 using BattleChess3.Core;
 using BattleChess3.Core.Figures;
 
-namespace BattleChess3.LordOfTheRings
+namespace BattleChess3.LordOfTheRingsFigures
 {
     public class FrodoGollum : IFigureType
     {
+        public static readonly FrodoGollum Instance = new FrodoGollum();
         public string ShownName => "Frodo/Gollum";
         public string UnitName => "LOTR_FrodoGollum";
         public string GroupName => "LOTR";

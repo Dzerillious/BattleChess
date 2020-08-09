@@ -6,6 +6,7 @@ namespace BattleChess3.DefaultFigures
 {
     public class Palm : IFigureType
     {
+        public static readonly Palm Instance = new Palm();
         public string ShownName => "Palm";
         public string UnitName => "Default_Palm";
         public string GroupName => "Default";

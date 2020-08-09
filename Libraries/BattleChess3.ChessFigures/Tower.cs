@@ -6,6 +6,7 @@ namespace BattleChess3.ChessFigures
 {
     public class Tower : IFigureType
     {
+        public static readonly Tower Instance = new Tower();
         public string ShownName => "Tower";
         public string UnitName => "Chess_Tower";
         public string GroupName => "Chess";

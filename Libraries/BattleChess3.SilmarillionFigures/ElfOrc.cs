@@ -6,6 +6,7 @@ namespace BattleChess3.SilmarillionFigures
 {
     public class ElfOrc : IFigureType
     {
+        public static readonly ElfOrc Instance = new ElfOrc();
         public string ShownName => "Elf/Orc";
         public string UnitName => "Silmarillion_ElfOrc";
         public string GroupName => "Silmarillion";

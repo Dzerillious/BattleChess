@@ -1,4 +1,6 @@
 ﻿using BattleChess3.Core.Services;
+using BattleChess3.UI.Services;
+using BattleChess3.UI.Utilities;
 
 namespace BattleChess3.UI
 {
@@ -11,6 +13,7 @@ namespace BattleChess3.UI
         {
             DependenciesBuilder.Initialize();
             CommonServiceLocator.ServiceLocator.Current.GetInstance<FigureService>();
+            // CommonServiceLocator.ServiceLocator.Current.GetInstance<MapService>();
         }
     }
 }

@@ -6,6 +6,7 @@ namespace BattleChess3.HobbitFigures
 {
     public class Soldier : IFigureType
     {
+        public static readonly Soldier Instance = new Soldier();
         public string ShownName => "Soldier";
         public string UnitName => "Hobbit_Soldier";
         public string GroupName => "Hobbit";

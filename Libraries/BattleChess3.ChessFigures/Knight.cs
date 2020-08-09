@@ -4,10 +4,11 @@ using BattleChess3.Core.Figures;
 
 namespace BattleChess3.ChessFigures
 {
-    public class Horse : IFigureType
+    public class Knight : IFigureType
     {
+        public static readonly Knight Instance = new Knight();
         public string ShownName => "Knight";
-        public string UnitName => "Chess_Horse";
+        public string UnitName => "Chess_Knight";
         public string GroupName => "Chess";
         public FigureType UnitType => FigureType.Mount;
         public FigureType Bonus => FigureType.Nothing;

@@ -6,6 +6,7 @@ namespace BattleChess3.HobbitFigures
 {
     public class RingBearer : IFigureType
     {
+        public static readonly RingBearer Instance = new RingBearer();
         public string ShownName => "Ring bearer";
         public string UnitName => "Hobbit_RingBearer";
         public string GroupName => "Hobbit";

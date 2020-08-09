@@ -3,7 +3,7 @@ using BattleChess3.Core;
 
 namespace BattleChess3.UI.Utilities
 {
-    public class FigureHelper
+    public static class FigureHelper
     {
         public static Figure Empty { get; }
             = new Figure(DefaultFigures.Empty.Instance)

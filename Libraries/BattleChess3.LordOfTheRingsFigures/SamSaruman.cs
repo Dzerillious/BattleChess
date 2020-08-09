@@ -2,10 +2,11 @@
 using BattleChess3.Core;
 using BattleChess3.Core.Figures;
 
-namespace BattleChess3.LordOfTheRings
+namespace BattleChess3.LordOfTheRingsFigures
 {
     public class SamSaruman : IFigureType
     {
+        public static readonly SamSaruman Instance = new SamSaruman();
         public string ShownName => "Sam/Saruman";
         public string UnitName => "LOTR_SamSaruman";
         public string GroupName => "LOTR";

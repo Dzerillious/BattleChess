@@ -6,6 +6,7 @@ namespace BattleChess3.SilmarillionFigures
 {
     public class UlmoAncalagon : IFigureType
     {
+        public static readonly UlmoAncalagon Instance = new UlmoAncalagon();
         public string ShownName => "Ulmo/Ancalagon";
         public string UnitName => "Silmarillion_UlmoAncalagon";
         public string GroupName => "Silmarillion";

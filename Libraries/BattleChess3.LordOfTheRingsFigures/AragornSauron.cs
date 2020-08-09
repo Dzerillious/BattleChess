@@ -6,6 +6,7 @@ namespace BattleChess3.LordOfTheRingsFigures
 {
     public class AragornSauron : IFigureType
     {
+        public static readonly AragornSauron Instance = new AragornSauron();
         public string ShownName => "Aragorn/Sauron";
         public string UnitName => "LOTR_AragornSauron";
         public string GroupName => "LOTR";

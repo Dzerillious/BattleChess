@@ -6,6 +6,7 @@ namespace BattleChess3.SilmarillionFigures
 {
     public class OromeCarcharoth : IFigureType
     {
+        public static readonly OromeCarcharoth Instance = new OromeCarcharoth();
         public string ShownName => "Orome/Carcharoth";
         public string UnitName => "Silmarillion_OromeCarcharoth";
         public string GroupName => "Silmarillion";

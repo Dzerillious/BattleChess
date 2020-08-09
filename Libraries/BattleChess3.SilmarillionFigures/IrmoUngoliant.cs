@@ -6,6 +6,7 @@ namespace BattleChess3.SilmarillionFigures
 {
     public class IrmoUngoliant : IFigureType
     {
+        public static readonly IrmoUngoliant Instance = new IrmoUngoliant();
         public string ShownName => "Irmo/Ungoliant";
         public string UnitName => "Silmarillion_IrmoUngoliant";
         public string GroupName => "Silmarillion";

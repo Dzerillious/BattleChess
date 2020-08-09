@@ -6,6 +6,7 @@ namespace BattleChess3.SilmarillionFigures
 {
     public class NiennaBalrog : IFigureType
     {
+        public static readonly NiennaBalrog Instance = new NiennaBalrog();
         public string ShownName => "Nienna/Balrog";
         public string UnitName => "Silmarillion_NiennaBalrog";
         public string GroupName => "Silmarillion";

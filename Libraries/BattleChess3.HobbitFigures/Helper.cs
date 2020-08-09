@@ -6,6 +6,7 @@ namespace BattleChess3.HobbitFigures
 {
     public class Helper : IFigureType
     {
+        public static readonly Helper Instance = new Helper();
         public string ShownName => "Helper";
         public string UnitName => "Hobbit_Helper";
         public string GroupName => "Hobbit";

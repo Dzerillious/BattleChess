@@ -6,6 +6,7 @@ namespace BattleChess3.SilmarillionFigures
 {
     public class ManweMelkor : IFigureType
     {
+        public static readonly ManweMelkor Instance = new ManweMelkor();
         public string ShownName => "Manwe/Melkor";
         public string UnitName => "Silmarillion_ManweMelkor";
         public string GroupName => "Silmarillion";

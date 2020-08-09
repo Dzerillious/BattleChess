@@ -6,6 +6,7 @@ namespace BattleChess3.DefaultFigures
 {
     public class Stone : IFigureType
     {
+        public static readonly Stone Instance = new Stone();
         public string ShownName => "Stone";
         public string UnitName => "Default_Stone";
         public string GroupName => "Default";
