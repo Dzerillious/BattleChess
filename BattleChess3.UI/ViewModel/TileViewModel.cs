@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using BattleChess3.Core;
-using BattleChess3.Core.Figures;
 using BattleChess3.UI.Services;
 using BattleChess3.UI.Utilities;
 using CommonServiceLocator;

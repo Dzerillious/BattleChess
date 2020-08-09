@@ -1,7 +1,5 @@
 ﻿using System.IO;
 using BattleChess3.Core;
-using BattleChess3.Core.Figures;
-using BattleChess3.UI.ViewModel;
 
 namespace BattleChess3.UI.Services
 {

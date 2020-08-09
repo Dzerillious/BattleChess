@@ -11,9 +11,10 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Update="FigureSets/**">
+        <None Remove="FigureSets\**" />
+        <Content Include="FigureSets\**">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </None>
+        </Content>
     </ItemGroup>
 
 </Project>

@@ -1,5 +1,4 @@
 ﻿using BattleChess3.Core;
-using BattleChess3.Core.Figures;
 
 namespace BattleChess3.UI.Services
 {

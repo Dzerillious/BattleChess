@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ImageSource x:Key="ApplicationBackground">/Resources/Styles/PaperStyle/ApplicationBackground.jpg</ImageSource>
+    <ImageBrush x:Key="ApplicationBackgroundBrush" ImageSource="{DynamicResource ApplicationBackground}"/>
+    <!-- <ImageSource x:Key="ApplicationBackground"/> -->
+    <!-- <ImageSource x:Key="ChessTile">Resources/Styles/PaperStyle/ChessTile.png</ImageSource> -->
+    <!-- <ImageSource x:Key="ChessTileCanGo">Resources/Styles/PaperStyle/ChessTileCanGo.png</ImageSource> -->
+    <!-- <ImageSource x:Key="ChessTileDangered">Resources/Styles/PaperStyle/ChessTileDangered.png</ImageSource> -->
+    <!-- <ImageSource x:Key="ChessTileSelected">Resources/Styles/PaperStyle/ChessTileSelected.png</ImageSource> -->
+    <!-- <ImageSource x:Key="DefaultButton">Resources/Styles/PaperStyle/DefaultButton.png</ImageSource> -->
+    <!-- <ImageSource x:Key="DefaultButtonMouseOn">Resources/Styles/PaperStyle/DefaultButtonMouseOn.png</ImageSource> -->
+    <!-- <ImageSource x:Key="DefaultObject">Resources/Styles/PaperStyle/DefaultObject.png</ImageSource> -->
+    <!-- <ImageSource x:Key="DefaultPreview">Resources/Styles/PaperStyle/Preview.png</ImageSource> -->
+    <!-- <ImageSource x:Key="TabItem">Resources/Styles/PaperStyle/TabItem.png</ImageSource> -->
+    <!-- <ImageSource x:Key="TabItemDisabled">Resources/Styles/PaperStyle/TabItemDisabled.png</ImageSource> -->
+    <!-- <ImageSource x:Key="TabItemMouseOn">Resources/Styles/PaperStyle/TabItemMouseOn.png</ImageSource> -->
+    <!-- <ImageSource x:Key="TextBox">Resources/Styles/PaperStyle/TextBox.png</ImageSource> -->
+</ResourceDictionary>

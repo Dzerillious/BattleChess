@@ -1,7 +1,4 @@
-﻿using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-using BattleChess3.Core;
+﻿using System.Windows;
 
 namespace BattleChess3.UI.Views
 {

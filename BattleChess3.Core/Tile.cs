@@ -1,6 +1,4 @@
-﻿using BattleChess3.Core.Figures;
-
-namespace BattleChess3.Core
+﻿namespace BattleChess3.Core
 {
     public class Tile
     {

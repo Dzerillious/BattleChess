@@ -18,18 +18,22 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Update="Resources/Maps/**">
+        <None Remove="Resources\Styles\**" />
+        <Content Include="Resources\Styles\**">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </None>
-        <None Update="Resources/MapsPreviews/**">
+        </Content>
+        <None Remove="Resources\Maps\**" />
+        <Content Include="Resources\Maps\**">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </None>
-        <None Update="Resources/Styles/**">
+        </Content>
+        <None Remove="Resources\MapsPreviews\**" />
+        <Content Include="Resources\MapsPreviews\**">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </None>
-        <None Update="Resources/Sounds/**">
+        </Content>
+        <None Remove="Resources\Styles\**" />
+        <Content Include="Resources\Styles\**">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </None>
+        </Content>
     </ItemGroup>
 
     <ItemGroup>
@@ -55,6 +59,15 @@
         <AutoGen>True</AutoGen>
         <DesignTime>True</DesignTime>
       </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="Resources\Styles.xaml">
+        <Generator></Generator>
+      </Page>
+      <Page Update="Resources\Pictures.xaml">
+        <Generator></Generator>
+      </Page>
     </ItemGroup>
     
     <PropertyGroup>
