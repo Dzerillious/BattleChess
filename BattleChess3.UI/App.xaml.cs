@@ -1,4 +1,6 @@
-﻿namespace BattleChess3.UI
+﻿using BattleChess3.Core.Services;
+
+namespace BattleChess3.UI
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -8,6 +10,7 @@
         public App()
         {
             DependenciesBuilder.Initialize();
+            CommonServiceLocator.ServiceLocator.Current.GetInstance<FigureService>();
         }
     }
 }

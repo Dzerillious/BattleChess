@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Extras.CommonServiceLocator;
+using BattleChess3.Core.Services;
 using BattleChess3.UI.Services;
 using CommonServiceLocator;
 
@@ -23,6 +24,9 @@ namespace BattleChess3.UI
             var builder = new ContainerBuilder();
             
             builder.RegisterType<MapService>()
+                .AsSelf()
+                .SingleInstance();
+            builder.RegisterType<FigureService>()
                 .AsSelf()
                 .SingleInstance();
 

@@ -6,6 +6,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.Core", "Battle
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.UI", "BattleChess3.UI\BattleChess3.UI.csproj", "{EDC1603E-4D88-440C-BEFF-7EB78DB64FE0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.ChessFigures", "Libraries\BattleChess3.ChessFigures\BattleChess3.ChessFigures.csproj", "{95A90B4F-E8F1-4447-A90F-EBD234AE1D7A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FigureSets", "FigureSets", "{F4AE98FC-E8F7-4D64-8EDD-CCAF59A5CDDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.SilmarillionFigures", "Libraries\BattleChess3.SilmarillionFigures\BattleChess3.SilmarillionFigures.csproj", "{685C60EC-C7F4-4B61-9E27-43A0EC10FA4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.LordOfTheRingsFigures", "Libraries\BattleChess3.LordOfTheRingsFigures\BattleChess3.LordOfTheRingsFigures.csproj", "{95FBC958-BF26-41AF-9220-697330DAAF20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.HobbitFigures", "Libraries\BattleChess3.HobbitFigures\BattleChess3.HobbitFigures.csproj", "{97F09675-4228-4442-AFD7-4CF7BBE6BBB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.DefaultFigures", "BattleChess3.DefaultFigures\BattleChess3.DefaultFigures.csproj", "{59C0FC88-C112-4875-942D-D8090337E5C3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,11 +32,38 @@ Global
 		{EDC1603E-4D88-440C-BEFF-7EB78DB64FE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDC1603E-4D88-440C-BEFF-7EB78DB64FE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDC1603E-4D88-440C-BEFF-7EB78DB64FE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95A90B4F-E8F1-4447-A90F-EBD234AE1D7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95A90B4F-E8F1-4447-A90F-EBD234AE1D7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95A90B4F-E8F1-4447-A90F-EBD234AE1D7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95A90B4F-E8F1-4447-A90F-EBD234AE1D7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{685C60EC-C7F4-4B61-9E27-43A0EC10FA4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{685C60EC-C7F4-4B61-9E27-43A0EC10FA4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{685C60EC-C7F4-4B61-9E27-43A0EC10FA4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{685C60EC-C7F4-4B61-9E27-43A0EC10FA4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95FBC958-BF26-41AF-9220-697330DAAF20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95FBC958-BF26-41AF-9220-697330DAAF20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95FBC958-BF26-41AF-9220-697330DAAF20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95FBC958-BF26-41AF-9220-697330DAAF20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97F09675-4228-4442-AFD7-4CF7BBE6BBB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97F09675-4228-4442-AFD7-4CF7BBE6BBB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97F09675-4228-4442-AFD7-4CF7BBE6BBB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97F09675-4228-4442-AFD7-4CF7BBE6BBB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59C0FC88-C112-4875-942D-D8090337E5C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59C0FC88-C112-4875-942D-D8090337E5C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59C0FC88-C112-4875-942D-D8090337E5C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59C0FC88-C112-4875-942D-D8090337E5C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0A17059C-17CB-4FA9-BE6E-9BA95510BEFE}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{95A90B4F-E8F1-4447-A90F-EBD234AE1D7A} = {F4AE98FC-E8F7-4D64-8EDD-CCAF59A5CDDF}
+		{685C60EC-C7F4-4B61-9E27-43A0EC10FA4B} = {F4AE98FC-E8F7-4D64-8EDD-CCAF59A5CDDF}
+		{95FBC958-BF26-41AF-9220-697330DAAF20} = {F4AE98FC-E8F7-4D64-8EDD-CCAF59A5CDDF}
+		{97F09675-4228-4442-AFD7-4CF7BBE6BBB7} = {F4AE98FC-E8F7-4D64-8EDD-CCAF59A5CDDF}
+		{59C0FC88-C112-4875-942D-D8090337E5C3} = {F4AE98FC-E8F7-4D64-8EDD-CCAF59A5CDDF}
 	EndGlobalSection
 EndGlobal

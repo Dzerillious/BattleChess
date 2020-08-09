@@ -5,10 +5,16 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <UseWPF>true</UseWPF>
         <Nullable>enable</Nullable>
+        <AssemblyName>BattleChess3</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\BattleChess3.Core\BattleChess3.Core.csproj" />
+      <ProjectReference Include="..\BattleChess3.DefaultFigures\BattleChess3.DefaultFigures.csproj" />
+      <ProjectReference Include="..\Libraries\BattleChess3.ChessFigures\BattleChess3.ChessFigures.csproj" />
+      <ProjectReference Include="..\Libraries\BattleChess3.HobbitFigures\BattleChess3.HobbitFigures.csproj" />
+      <ProjectReference Include="..\Libraries\BattleChess3.LordOfTheRingsFigures\BattleChess3.LordOfTheRingsFigures.csproj" />
+      <ProjectReference Include="..\Libraries\BattleChess3.SilmarillionFigures\BattleChess3.SilmarillionFigures.csproj" />
     </ItemGroup>
 
     <ItemGroup>
@@ -18,10 +24,7 @@
         <None Update="Resources/MapsPreviews/**">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
-        <None Update="Resources/Pictures/**">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </None>
-        <None Update="Resources/Pictures/**">
+        <None Update="Resources/Styles/**">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
         <None Update="Resources/Sounds/**">
@@ -52,5 +55,12 @@
         <DesignTime>True</DesignTime>
       </Compile>
     </ItemGroup>
-
+    
+    <PropertyGroup>
+        <PostBuildEvent>
+            mkdir FigureSets
+            copy *Figures.dll FigureSets
+            copy *Figures.pdb FigureSets
+        </PostBuildEvent>
+    </PropertyGroup>
 </Project>

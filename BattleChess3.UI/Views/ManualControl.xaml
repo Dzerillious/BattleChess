@@ -39,76 +39,76 @@
             <ColumnDefinition Width="300" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <ItemsControl Grid.Column="0" ItemsSource="{Binding Source={x:Static model:TypesOfFigures.FigureGroups}}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Button Content="{Binding Name}" Click="OnManualSelectedClick"/>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-        <ScrollViewer Name="ManualContent"
-                      Foreground="Black" Grid.Column="1" VerticalScrollBarVisibility="Hidden"
-                      DataContext="{Binding Source={x:Static model:TypesOfFigures.LOTRGroup}, UpdateSourceTrigger=PropertyChanged}">
-            <ScrollViewer.Background>
-                <ImageBrush ImageSource="{Binding Path=ApplicationStyle.TextBox}" />
-            </ScrollViewer.Background>
-            <ItemsControl
-                ItemsSource="{Binding GroupFigures}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Border BorderBrush="Black" BorderThickness="10" Margin="5" Padding="10">
-                            <Viewbox>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition />
-                                        <RowDefinition />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" MinWidth="150" />
-                                        <ColumnDefinition Width="*" MinWidth="150" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <StackPanel Grid.Column="0" Grid.Row="0"
-                                            Orientation="Vertical">
-                                        <TextBlock Text="Name:" />
-                                        <TextBlock Text="Unit type: " />
-                                        <TextBlock Text="Attack: " />
-                                        <TextBlock Text="Defence: " />
-                                        <TextBlock Text="Bonus against: " />
-                                        <TextBlock Text="Antibonus against: " />
-                                        <TextBlock Text="Cost of unit: " />
-                                        <TextBlock Text="Moving while attacking: " />
-                                    </StackPanel>
-
-                                    <StackPanel Grid.Column="1" Grid.Row="0"
-                                            Orientation="Vertical"
-                                            DataContext="{Binding Path=.}">
-                                        <TextBlock Text="{Binding Path=ShownName}" />
-                                        <TextBlock Text="{Binding Path=UnitType}" />
-                                        <TextBlock Text="{Binding Path=Attack}" />
-                                        <TextBlock Text="{Binding Path=Defence}" />
-                                        <TextBlock Text="{Binding Path=Bonus}" />
-                                        <TextBlock Text="{Binding Path=AntiBonus}" />
-                                        <TextBlock Text="{Binding Path=Cost}" />
-                                        <TextBlock Text="{Binding Path=MovingAttack}" />
-                                    </StackPanel>
-
-                                    <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
-                                           MaxWidth="800px"
-                                           Text="{Binding Path=Description}" TextWrapping="Wrap" />
-
-                                    <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="2">
-                                        <Image Source="{Binding Path=PictureNeutralPath}" MinHeight="0" MaxHeight="200" />
-                                        <Image Source="{Binding Path=PictureWhitePath}" MinHeight="0" MaxHeight="200" />
-                                        <Image Source="{Binding Path=PictureBlackPath}" MinHeight="0" MaxHeight="200" />
-                                    </StackPanel>
-                                </Grid>
-                            </Viewbox>
-                        </Border>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </ScrollViewer>
+        <!-- <ItemsControl Grid.Column="0" ItemsSource="{Binding Source={x:Static model:TypesOfFigures.FigureGroups}}"> -->
+        <!--     <ItemsControl.ItemTemplate> -->
+        <!--         <DataTemplate> -->
+        <!--             <Button Content="{Binding Name}" Click="OnManualSelectedClick"/> -->
+        <!--         </DataTemplate> -->
+        <!--     </ItemsControl.ItemTemplate> -->
+        <!-- </ItemsControl> -->
+        <!-- <ScrollViewer Name="ManualContent" -->
+        <!--               Foreground="Black" Grid.Column="1" VerticalScrollBarVisibility="Hidden" -->
+        <!--               DataContext="{Binding Source={x:Static model:TypesOfFigures.LOTRGroup}, UpdateSourceTrigger=PropertyChanged}"> -->
+        <!--     <ScrollViewer.Background> -->
+        <!--         <ImageBrush ImageSource="{Binding Path=ApplicationStyle.TextBox}" /> -->
+        <!--     </ScrollViewer.Background> -->
+        <!--     <ItemsControl -->
+        <!--         ItemsSource="{Binding GroupFigures}"> -->
+        <!--         <ItemsControl.ItemTemplate> -->
+        <!--             <DataTemplate> -->
+        <!--                 <Border BorderBrush="Black" BorderThickness="10" Margin="5" Padding="10"> -->
+        <!--                     <Viewbox> -->
+        <!--                         <Grid> -->
+        <!--                             <Grid.RowDefinitions> -->
+        <!--                                 <RowDefinition /> -->
+        <!--                                 <RowDefinition /> -->
+        <!--                             </Grid.RowDefinitions> -->
+        <!--                             <Grid.ColumnDefinitions> -->
+        <!--                                 <ColumnDefinition Width="*" MinWidth="150" /> -->
+        <!--                                 <ColumnDefinition Width="*" MinWidth="150" /> -->
+        <!--                                 <ColumnDefinition Width="*" /> -->
+        <!--                             </Grid.ColumnDefinitions> -->
+        <!-- -->
+        <!--                             <StackPanel Grid.Column="0" Grid.Row="0" -->
+        <!--                                     Orientation="Vertical"> -->
+        <!--                                 <TextBlock Text="Name:" /> -->
+        <!--                                 <TextBlock Text="Unit type: " /> -->
+        <!--                                 <TextBlock Text="Attack: " /> -->
+        <!--                                 <TextBlock Text="Defence: " /> -->
+        <!--                                 <TextBlock Text="Bonus against: " /> -->
+        <!--                                 <TextBlock Text="Antibonus against: " /> -->
+        <!--                                 <TextBlock Text="Cost of unit: " /> -->
+        <!--                                 <TextBlock Text="Moving while attacking: " /> -->
+        <!--                             </StackPanel> -->
+        <!-- -->
+        <!--                             <StackPanel Grid.Column="1" Grid.Row="0" -->
+        <!--                                     Orientation="Vertical" -->
+        <!--                                     DataContext="{Binding Path=.}"> -->
+        <!--                                 <TextBlock Text="{Binding Path=ShownName}" /> -->
+        <!--                                 <TextBlock Text="{Binding Path=UnitType}" /> -->
+        <!--                                 <TextBlock Text="{Binding Path=Attack}" /> -->
+        <!--                                 <TextBlock Text="{Binding Path=Defence}" /> -->
+        <!--                                 <TextBlock Text="{Binding Path=Bonus}" /> -->
+        <!--                                 <TextBlock Text="{Binding Path=AntiBonus}" /> -->
+        <!--                                 <TextBlock Text="{Binding Path=Cost}" /> -->
+        <!--                                 <TextBlock Text="{Binding Path=MovingAttack}" /> -->
+        <!--                             </StackPanel> -->
+        <!-- -->
+        <!--                             <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" -->
+        <!--                                    MaxWidth="800px" -->
+        <!--                                    Text="{Binding Path=Description}" TextWrapping="Wrap" /> -->
+        <!-- -->
+        <!--                             <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="2"> -->
+        <!--                                 <Image Source="{Binding Path=PictureNeutralPath}" MinHeight="0" MaxHeight="200" /> -->
+        <!--                                 <Image Source="{Binding Path=PictureWhitePath}" MinHeight="0" MaxHeight="200" /> -->
+        <!--                                 <Image Source="{Binding Path=PictureBlackPath}" MinHeight="0" MaxHeight="200" /> -->
+        <!--                             </StackPanel> -->
+        <!--                         </Grid> -->
+        <!--                     </Viewbox> -->
+        <!--                 </Border> -->
+        <!--             </DataTemplate> -->
+        <!--         </ItemsControl.ItemTemplate> -->
+        <!--     </ItemsControl> -->
+        <!-- </ScrollViewer> -->
     </Grid>
 </UserControl>

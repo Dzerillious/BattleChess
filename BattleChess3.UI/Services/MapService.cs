@@ -1,4 +1,6 @@
-﻿using BattleChess3.Core.Figures;
+﻿using BattleChess3.Core;
+using BattleChess3.Core.Figures;
+using BattleChess3.UI.Utilities;
 using BattleChess3.UI.ViewModel;
 
 namespace BattleChess3.UI.Services
@@ -16,7 +18,7 @@ namespace BattleChess3.UI.Services
         public void LoadMap()
         {
             for (var i = 0; i < 64; i++)
-                _boardService.Board[i].Figure = Figure.Empty;
+                _boardService.Board[i].Figure = FigureHelper.Empty;
             
             _playerService.CurrentPlayer = SelectedMap.StartingPlayer;
             for (var i = 0; i < SelectedMap.Figure.Length; i++)
@@ -29,6 +31,16 @@ namespace BattleChess3.UI.Services
                     _boardService.CreateFigure(figureName, i, _playerService.Players[playerIndex]);
                 }
             }
+        }
+
+        public MapService()
+        {
+            LoadMaps();
+        }
+
+        private void LoadMaps()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

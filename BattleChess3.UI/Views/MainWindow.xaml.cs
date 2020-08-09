@@ -19,7 +19,7 @@ namespace BattleChess3.UI.Views
         public MainWindow()
         {
             InitializeComponent();
-            MapsHolder.Maps = MapsHolder.GetMaps();
+            // MapsHolder.Maps = MapsHolder.GetMaps();
             TextElement.FontFamilyProperty.OverrideMetadata(
                 typeof(TextElement),
                 new FrameworkPropertyMetadata(

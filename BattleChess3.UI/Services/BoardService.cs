@@ -1,10 +1,14 @@
 ﻿using BattleChess3.Core;
 using BattleChess3.Core.Figures;
+using BattleChess3.Core.Services;
+using BattleChess3.UI.Utilities;
+using BattleChess3.UI.ViewModel;
 
 namespace BattleChess3.UI.Services
 {
     public class BoardService
     {
+        private readonly FigureService _figureService = CommonServiceLocator.ServiceLocator.Current.GetInstance<FigureService>();
         public Tile SelectedTile = Tile.Invalid;
         public Tile HoverTile = Tile.Invalid;
         public readonly Tile[] Board = new Tile[64];
@@ -17,7 +21,7 @@ namespace BattleChess3.UI.Services
 
         public void CreateFigure(string tile, Position position, Player player)
         {
-            var figure = TypesOfFigures.GetFigureFromString(tile.Replace(player.Id.ToString(), ""));
+            var figure = _figureService.GetFigureFromName(tile.Replace(player.Id.ToString(), ""));
             Figure newFigure = new Figure(player, figure);
             player?.Figures.Add(newFigure);
             SetFigureAtPosition(position, newFigure);
@@ -31,13 +35,13 @@ namespace BattleChess3.UI.Services
         public void MoveFigureToPosition(Position position, Position newPosition)
         {
             var figure = GetFigureAtPosition(position);
-            SetFigureAtPosition(position, Figure.Empty);
+            SetFigureAtPosition(position, FigureHelper.Empty);
             SetFigureAtPosition(newPosition, figure);
         }
 
         public void KillFigureAtTile(Tile tile)
         {
-            SetFigureAtPosition(tile.Position, Figure.Empty);
+            SetFigureAtPosition(tile.Position, FigureHelper.Empty);
             tile.Figure.Owner.Figures.Remove(tile.Figure);
         }
     }

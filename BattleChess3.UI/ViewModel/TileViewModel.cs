@@ -4,6 +4,7 @@ using BattleChess3.Core;
 using BattleChess3.Core.Figures;
 using BattleChess3.UI.Annotations;
 using BattleChess3.UI.Services;
+using BattleChess3.UI.Utilities;
 using CommonServiceLocator;
 using GalaSoft.MvvmLight.Command;
 
@@ -28,7 +29,7 @@ namespace BattleChess3.UI.ViewModel
             }
         }
         
-        private Figure _figure = Figure.Empty;
+        private Figure _figure = FigureHelper.Empty;
         public override Figure Figure
         {
             get => _figure;
