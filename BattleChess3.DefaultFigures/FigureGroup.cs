@@ -5,7 +5,7 @@ namespace BattleChess3.DefaultFigures
     public class FigureGroup : IFigureGroup
     {
         public string Name => "Default";
-        public static Nothing Nothing { get; } = new Nothing();
+        public static Empty Empty { get; } = new Empty();
         public static Ninja Ninja { get; } = new Ninja();
         public static Palm Palm { get; } = new Palm();
         public static Stone Stone { get; } = new Stone();
@@ -13,7 +13,7 @@ namespace BattleChess3.DefaultFigures
         public IFigureType[] GroupFigures => new IFigureType[]
         {
             Palm,
-            Nothing,
+            Empty,
             Ninja,
             Stone,
         };

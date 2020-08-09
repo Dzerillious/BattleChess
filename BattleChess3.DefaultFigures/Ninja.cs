@@ -7,7 +7,7 @@ namespace BattleChess3.DefaultFigures
     public class Ninja : IFigureType
     {
         public string ShownName => "Ninja";
-        public string UnitName => "Ninja";
+        public string UnitName => "Default_Ninja";
         public string GroupName => "Default";
         public FigureType UnitType => FigureType.Foot;
         public FigureType Bonus => FigureType.Foot;

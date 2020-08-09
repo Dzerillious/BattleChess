@@ -4,11 +4,11 @@ using BattleChess3.Core.Figures;
 
 namespace BattleChess3.DefaultFigures
 {
-    public class Nothing : IFigureType
+    public class Empty : IFigureType
     {
-        public static Nothing Instance { get; } = new Nothing();
+        public static Empty Instance { get; } = new Empty();
         public string ShownName => "Empty tile";
-        public string UnitName => "Nothing";
+        public string UnitName => "Default_Empty";
         public string GroupName => "Default";
         public FigureType UnitType => FigureType.Nothing;
         public FigureType Bonus => FigureType.Nothing;

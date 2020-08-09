@@ -7,7 +7,7 @@ namespace BattleChess3.DefaultFigures
     public class Palm : IFigureType
     {
         public string ShownName => "Palm";
-        public string UnitName => "Palm";
+        public string UnitName => "Default_Palm";
         public string GroupName => "Default";
         public FigureType UnitType => FigureType.Object;
         public FigureType Bonus => FigureType.Nothing;

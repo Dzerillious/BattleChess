@@ -7,7 +7,7 @@ namespace BattleChess3.DefaultFigures
     public class Stone : IFigureType
     {
         public string ShownName => "Stone";
-        public string UnitName => "Stone";
+        public string UnitName => "Default_Stone";
         public string GroupName => "Default";
         public FigureType UnitType => FigureType.Object;
         public FigureType Bonus => FigureType.Nothing;
