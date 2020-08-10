@@ -2,7 +2,7 @@
 {
     public interface IFigureGroup
     {
-        string Name { get; }
+        string ShownName { get; }
         IFigureType[] GroupFigures { get; }
     }
 }

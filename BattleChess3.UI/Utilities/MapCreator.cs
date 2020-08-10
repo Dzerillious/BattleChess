@@ -50,14 +50,14 @@ namespace BattleChess3.UI.Utilities
                 {
                     Blueprint = new FigureBlueprint[]
                     {
-                        (2, Tower.Instance), (2, Knight.Instance), (2, Bishop.Instance), (2, Queen.Instance), (2, King.Instance), (2, Bishop.Instance), (2, Knight.Instance), (2, Tower.Instance), 
+                        (2, Rook.Instance), (2, Knight.Instance), (2, Bishop.Instance), (2, Queen.Instance), (2, King.Instance), (2, Bishop.Instance), (2, Knight.Instance), (2, Rook.Instance), 
                         (2, Pawn.Instance), (2, Pawn.Instance), (2, Pawn.Instance), (2, Pawn.Instance), (2, Pawn.Instance), (2, Pawn.Instance), (2, Pawn.Instance), (2, Pawn.Instance), 
                         (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), 
                         (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), 
                         (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), 
                         (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance),
                         (1, Pawn.Instance), (1, Pawn.Instance), (1, Pawn.Instance), (1, Pawn.Instance), (1, Pawn.Instance), (1, Pawn.Instance), (1, Pawn.Instance), (1, Pawn.Instance),
-                        (1, Tower.Instance), (1, Knight.Instance), (1, Bishop.Instance), (1, Queen.Instance), (1, King.Instance), (1, Bishop.Instance), (1, Knight.Instance), (1, Tower.Instance),
+                        (1, Rook.Instance), (1, Knight.Instance), (1, Bishop.Instance), (1, Queen.Instance), (1, King.Instance), (1, Bishop.Instance), (1, Knight.Instance), (1, Rook.Instance),
                     },
                     Name = "ChessMap",
                     Path = $"Resources/Maps/Chess_{new Random().Next()}.map",
@@ -88,14 +88,14 @@ namespace BattleChess3.UI.Utilities
                 {
                     Blueprint = new FigureBlueprint[]
                     {
-                        (2, MinorWizzard.Instance), (2, Warrior.Instance), (2, Helper.Instance), (2, RingBearer.Instance), (2, Leader.Instance), (2, Helper.Instance), (2, Warrior.Instance), (2, MinorWizzard.Instance), 
+                        (2, MinorWizard.Instance), (2, Warrior.Instance), (2, Helper.Instance), (2, RingBearer.Instance), (2, Leader.Instance), (2, Helper.Instance), (2, Warrior.Instance), (2, MinorWizard.Instance), 
                         (2, Soldier.Instance), (2, Soldier.Instance), (2, Soldier.Instance), (2, Soldier.Instance), (2, Soldier.Instance), (2, Soldier.Instance), (2, Soldier.Instance), (2, Soldier.Instance), 
                         (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), 
                         (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), 
                         (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), 
                         (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance),
                         (1, Soldier.Instance), (1, Soldier.Instance), (1, Soldier.Instance), (1, Soldier.Instance), (1, Soldier.Instance), (1, Soldier.Instance), (1, Soldier.Instance), (1, Soldier.Instance),
-                        (1, MinorWizzard.Instance), (1, Warrior.Instance), (1, Helper.Instance), (1, RingBearer.Instance), (1, Leader.Instance), (1, Helper.Instance), (1, Warrior.Instance), (1, MinorWizzard.Instance),
+                        (1, MinorWizard.Instance), (1, Warrior.Instance), (1, Helper.Instance), (1, RingBearer.Instance), (1, Leader.Instance), (1, Helper.Instance), (1, Warrior.Instance), (1, MinorWizard.Instance),
                     },
                     Name = "HobbitMap",
                     Path = $"Resources/Maps/Hobbit_{new Random().Next()}.map",

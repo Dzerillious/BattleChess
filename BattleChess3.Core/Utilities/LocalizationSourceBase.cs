@@ -8,7 +8,7 @@ namespace BattleChess3.Core.Utilities
     public abstract class LocalizationSourceBase : INotifyPropertyChanged
     {
         protected static readonly List<LocalizationSourceBase> Sources = new List<LocalizationSourceBase>();
-        private static CultureInfo _currentCulture;
+        private static CultureInfo _currentCulture = CultureInfo.CurrentCulture;
 
         protected abstract ResourceManager ResManager();
 

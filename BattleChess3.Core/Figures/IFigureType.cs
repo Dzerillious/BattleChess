@@ -1,4 +1,6 @@
-﻿namespace BattleChess3.Core.Figures
+﻿using BattleChess3.Core.Models;
+
+namespace BattleChess3.Core.Figures
 {
     /// <summary>
     /// Interface for figures types
@@ -23,17 +25,17 @@
         /// <summary>
         /// Gets Type of unit
         /// </summary>
-        FigureType UnitType { get; }
+        FigureTypes UnitTypes { get; }
 
         /// <summary>
         /// Gets Bonus against type of unit
         /// </summary>
-        FigureType Bonus { get; }
+        FigureTypes Bonus { get; }
 
         /// <summary>
         /// Gets Anti bonus against type of unit
         /// </summary>
-        FigureType AntiBonus { get; }
+        FigureTypes AntiBonus { get; }
 
         /// <summary>
         /// Gets Attack

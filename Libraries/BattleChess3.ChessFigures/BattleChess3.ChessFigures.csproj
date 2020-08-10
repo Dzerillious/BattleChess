@@ -17,4 +17,10 @@
         </Content>
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Update="Localization\Strings.Designer.cs">
+        <DependentUpon>Strings.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
 </Project>

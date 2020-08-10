@@ -59,6 +59,9 @@
         <AutoGen>True</AutoGen>
         <DesignTime>True</DesignTime>
       </Compile>
+      <Compile Update="Resources\Strings.Designer.cs">
+        <DependentUpon>Strings.resx</DependentUpon>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>

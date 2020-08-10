@@ -1,4 +1,6 @@
-﻿namespace BattleChess3.Core.Figures.AttackingTypes
+﻿using BattleChess3.Core.Models;
+
+namespace BattleChess3.Core.Figures.AttackingTypes
 {
     public interface IMove
     {

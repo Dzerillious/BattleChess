@@ -2,7 +2,7 @@
 using System.IO;
 using BattleChess3.Core.Figures;
 
-namespace BattleChess3.Core
+namespace BattleChess3.Core.Models
 {
     /// <summary>
     /// Class for each figure
@@ -73,11 +73,11 @@ namespace BattleChess3.Core
         public int RemainingHpOfAttacked(Figure attackingUnit)
         {
             double bonus = 1;
-            if (FigureTypeType.UnitType == attackingUnit.FigureTypeType.Bonus)
+            if (FigureTypeType.UnitTypes == attackingUnit.FigureTypeType.Bonus)
             {
                 bonus = Bonus;
             }
-            else if (FigureTypeType.UnitType == attackingUnit.FigureTypeType.AntiBonus)
+            else if (FigureTypeType.UnitTypes == attackingUnit.FigureTypeType.AntiBonus)
             {
                 bonus = AntiBonus;
             }

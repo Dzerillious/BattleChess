@@ -1,4 +1,4 @@
-﻿namespace BattleChess3.Core
+﻿namespace BattleChess3.Core.Models
 {
     public struct Position
     {

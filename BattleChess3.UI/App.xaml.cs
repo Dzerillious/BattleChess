@@ -1,9 +1,4 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using BattleChess3.Core.Services;
+﻿using BattleChess3.Core.Services;
 
 namespace BattleChess3.UI
 {

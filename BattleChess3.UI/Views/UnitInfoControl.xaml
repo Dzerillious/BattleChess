@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:util="clr-namespace:BattleChess3.UI.Utilities"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300"
              Background="{DynamicResource TextBoxBrush}">
@@ -15,15 +16,14 @@
     
             <StackPanel Grid.Column="0"
                         Orientation="Vertical">
-                <TextBlock Text="Name:" />
-                <TextBlock Text="Unit type: " />
-                <TextBlock Text="Hp: " />
-                <TextBlock Text="Attack: " />
-                <TextBlock Text="Defence: " />
-                <TextBlock Text="Bonus against: " />
-                <TextBlock Text="Antibonus against: " />
-                <TextBlock Text="Cost of unit: " />
-                <TextBlock Text="Moving while attacking: " />
+                <TextBlock Text="{util:Loc Info_Name}" />
+                <TextBlock Text="{util:Loc Info_UnitType}" />
+                <TextBlock Text="{util:Loc Info_Attack}" />
+                <TextBlock Text="{util:Loc Info_Defense}" />
+                <TextBlock Text="{util:Loc Info_Bonus}" />
+                <TextBlock Text="{util:Loc Info_Antibonus}" />
+                <TextBlock Text="{util:Loc Info_Cost}" />
+                <TextBlock Text="{util:Loc Info_MovingAttack}" />
             </StackPanel>
     
             <StackPanel Grid.Column="1"

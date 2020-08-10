@@ -1,4 +1,4 @@
-﻿using BattleChess3.Core;
+﻿using BattleChess3.Core.Models;
 using BattleChess3.Core.Services;
 using BattleChess3.UI.Utilities;
 

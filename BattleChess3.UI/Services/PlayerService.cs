@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using BattleChess3.Core;
+using BattleChess3.Core.Models;
 
 namespace BattleChess3.UI.Services
 {

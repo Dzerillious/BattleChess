@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using BattleChess3.Core;
+using BattleChess3.Core.Models;
 using GalaSoft.MvvmLight;
 
 namespace BattleChess3.UI.Services
