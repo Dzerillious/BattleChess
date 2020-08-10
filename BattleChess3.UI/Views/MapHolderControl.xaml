@@ -7,11 +7,11 @@
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="350">
     <Grid DataContext="{Binding Source={x:Static views:MainWindow.MapsHolder}, UpdateSourceTrigger=PropertyChanged}">
-        <ListBox ItemsSource="{Binding Maps}"
+        <ListBox BorderThickness="0"
+                 ItemsSource="{Binding Maps}"
+                 Background="{DynamicResource DefaultObjectBrush}"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                 ScrollViewer.VerticalScrollBarVisibility="Hidden"
-                 BorderThickness="0"
-                 Background="{Binding Path=ApplicationStyle.DefaultObject}">
+                 ScrollViewer.VerticalScrollBarVisibility="Hidden">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal" IsItemsHost="True" />
@@ -19,8 +19,8 @@
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Image Source="{Binding Path=PreviewPath, UpdateSourceTrigger=PropertyChanged}"
-                               Width="500" Margin="10" />
+                    <Image Width="500" Margin="10"
+                           Source="{Binding Path=PreviewPath, UpdateSourceTrigger=PropertyChanged}"/>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

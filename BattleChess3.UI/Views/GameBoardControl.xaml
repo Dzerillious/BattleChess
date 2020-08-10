@@ -5,46 +5,43 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
-    <!-- <ItemsControl ItemsSource="{Binding Source={x:Static game:Session.BoardColumns}}" -->
-    <!--               HorizontalAlignment="Stretch"> -->
-    <!--     <ItemsControl.ItemsPanel> -->
-    <!--         <ItemsPanelTemplate> -->
-    <!--             <UniformGrid Rows="8" /> -->
-    <!--         </ItemsPanelTemplate> -->
-    <!--     </ItemsControl.ItemsPanel> -->
-    <!--     <ItemsControl.ItemTemplate> -->
-    <!--         <DataTemplate> -->
-    <!--             <ItemsControl ItemsSource="{Binding Path=ColumnFigures}" -->
-    <!--                           VerticalAlignment="Stretch"> -->
-    <!--                 <ItemsControl.ItemsPanel> -->
-    <!--                     <ItemsPanelTemplate> -->
-    <!--                         <StackPanel Orientation="Horizontal" /> -->
-    <!--                     </ItemsPanelTemplate> -->
-    <!--                 </ItemsControl.ItemsPanel> -->
-    <!--                 <ItemsControl.ItemTemplate> -->
-    <!--                     <DataTemplate> -->
-    <!--                         <DataTemplate.Resources> -->
-    <!--                             <Style TargetType="Button" BasedOn="{StaticResource ChessButtonStyle}"> -->
-    <!--                                 <Style.Triggers> -->
-    <!--                                     <Trigger Property="IsMouseOver" Value="False"> -->
-    <!--                                         <Setter Property="Background"> -->
-    <!--                                             <Setter.Value> -->
-    <!--                                                 <ImageBrush ImageSource="{Binding Path=Highlighted, UpdateSourceTrigger=PropertyChanged}" /> -->
-    <!--                                             </Setter.Value> -->
-    <!--                                         </Setter> -->
-    <!--                                     </Trigger> -->
-    <!--                                 </Style.Triggers> -->
-    <!--                             </Style> -->
-    <!--                         </DataTemplate.Resources> -->
-    <!--                         <Button Click="OnButtonClick" -->
-    <!--                                 MouseEnter="OnMouseEnter" -->
-    <!--                                 CommandParameter="{Binding}"> -->
-    <!--                             <Image Source="{Binding Path=PicturePath}" /> -->
-    <!--                         </Button> -->
-    <!--                     </DataTemplate> -->
-    <!--                 </ItemsControl.ItemTemplate> -->
-    <!--             </ItemsControl> -->
-    <!--         </DataTemplate> -->
-    <!--     </ItemsControl.ItemTemplate> -->
-    <!-- </ItemsControl> -->
+    <ItemsControl HorizontalAlignment="Stretch">
+        <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+                <UniformGrid Rows="8" />
+            </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+            <DataTemplate>
+                <ItemsControl ItemsSource="{Binding Path=ColumnFigures}"
+                              VerticalAlignment="Stretch">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <DataTemplate.Resources>
+                                <Style TargetType="Button" BasedOn="{StaticResource ChessButtonStyle}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="False">
+                                            <Setter Property="Background">
+                                                <Setter.Value>
+                                                    <ImageBrush ImageSource="{Binding Path=Highlighted, UpdateSourceTrigger=PropertyChanged}" />
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataTemplate.Resources>
+                            <Button CommandParameter="{Binding}">
+                                <Image Source="{Binding Path=PicturePath}" />
+                            </Button>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+    </ItemsControl>
 </UserControl>
