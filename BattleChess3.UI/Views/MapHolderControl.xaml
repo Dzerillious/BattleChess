@@ -9,7 +9,7 @@
              DataContext="{Binding Source={x:Static viewModel:ViewModelLocator.MapService}}">
     <ListBox BorderThickness="0"
              ItemsSource="{Binding Maps}"
-             SelectedItem="{Binding SelectedMap, UpdateSourceTrigger=PropertyChanged}"
+             SelectedItem="{Binding SelectedMap, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
              Background="{DynamicResource DefaultObjectBrush}"
              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
              ScrollViewer.VerticalScrollBarVisibility="Hidden">
