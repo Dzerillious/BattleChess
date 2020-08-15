@@ -70,12 +70,12 @@ namespace BattleChess3.UI.Utilities
                     Blueprint = new FigureBlueprint[]
                     {
                         (2, LegolasNazgul.Instance), (2, SamSaruman.Instance), (2, PipinTroll.Instance), (2, GandalfWitchKing.Instance), (2, AragornSauron.Instance), (2, MerryTroll.Instance), (2, FrodoGollum.Instance), (2, GimliNazgul.Instance), 
-                        (2, SoldierOrk.Instance), (2, SoldierOrk.Instance), (2, SoldierOrk.Instance), (2, SoldierOrk.Instance), (2, SoldierOrk.Instance), (2, SoldierOrk.Instance), (2, SoldierOrk.Instance), (2, SoldierOrk.Instance), 
+                        (2, SoldierOrc.Instance), (2, SoldierOrc.Instance), (2, SoldierOrc.Instance), (2, SoldierOrc.Instance), (2, SoldierOrc.Instance), (2, SoldierOrc.Instance), (2, SoldierOrc.Instance), (2, SoldierOrc.Instance), 
                         (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), 
                         (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), 
                         (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), 
                         (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance),
-                        (1, SoldierOrk.Instance), (1, SoldierOrk.Instance), (1, SoldierOrk.Instance), (1, SoldierOrk.Instance), (1, SoldierOrk.Instance), (1, SoldierOrk.Instance), (1, SoldierOrk.Instance), (1, SoldierOrk.Instance),
+                        (1, SoldierOrc.Instance), (1, SoldierOrc.Instance), (1, SoldierOrc.Instance), (1, SoldierOrc.Instance), (1, SoldierOrc.Instance), (1, SoldierOrc.Instance), (1, SoldierOrc.Instance), (1, SoldierOrc.Instance),
                         (1, LegolasNazgul.Instance), (1, SamSaruman.Instance), (1, PipinTroll.Instance), (1, GandalfWitchKing.Instance), (1, AragornSauron.Instance), (1, MerryTroll.Instance), (1, FrodoGollum.Instance), (1, GimliNazgul.Instance),
                     },
                     Name = "LOTRMap",

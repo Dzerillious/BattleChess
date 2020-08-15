@@ -101,6 +101,9 @@
       <Page Update="Resources\Pictures.xaml">
         <Generator></Generator>
       </Page>
+      <Page Update="Resources\Converters.xaml">
+        <Generator></Generator>
+      </Page>
     </ItemGroup>
     
     <PropertyGroup>

@@ -5,11 +5,11 @@ using BattleChess3.LordOfTheRingsFigures.Localization;
 
 namespace BattleChess3.LordOfTheRingsFigures
 {
-    public class SoldierOrk : IFigureType
+    public class SoldierOrc : IFigureType
     {
-        public static readonly SoldierOrk Instance = new SoldierOrk();
+        public static readonly SoldierOrc Instance = new SoldierOrc();
         public string ShownName => CurrentLocalization.Instance["SoldierOrk_Name"];
-        public string UnitName => $"{nameof(LordOfTheRingsFigureGroup)}.{nameof(SoldierOrk)}";
+        public string UnitName => $"{nameof(LordOfTheRingsFigureGroup)}.{nameof(SoldierOrc)}";
         public string GroupName => nameof(LordOfTheRingsFigureGroup);
         public FigureTypes UnitTypes => FigureTypes.Foot;
         public FigureTypes Bonus => FigureTypes.Nothing;

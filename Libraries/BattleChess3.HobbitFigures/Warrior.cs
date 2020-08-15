@@ -18,7 +18,7 @@ namespace BattleChess3.HobbitFigures
         public int Defence => 0;
         public bool MovingAttack => true;
         public int Cost => 3;
-        public string Description => CurrentLocalization.Instance["Warrior_Name"];
+        public string Description => CurrentLocalization.Instance["Warrior_Description"];
         public Position[] AttackPattern => Array.Empty<Position>();
         public bool CanMove(Tile tile, Tile[] board) => false;
         public bool CanAttack(Tile tile, Tile[] board) => false;

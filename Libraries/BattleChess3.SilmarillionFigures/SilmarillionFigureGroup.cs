@@ -2,7 +2,7 @@
 
 namespace BattleChess3.SilmarillionFigures
 {
-    class SilmarillionFigureGroup : IFigureGroup
+    public class SilmarillionFigureGroup : IFigureGroup
     {
         public string ShownName => "Silmarillion";
 

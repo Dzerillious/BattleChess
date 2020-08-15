@@ -16,7 +16,7 @@ namespace BattleChess3.LordOfTheRingsFigures
             LegolasNazgul.Instance,
             MerryTroll.Instance,
             PipinTroll.Instance,
-            SoldierOrk.Instance,
+            SoldierOrc.Instance,
             SamSaruman.Instance,
         };
     }

@@ -4,8 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:util="clr-namespace:BattleChess3.UI.Utilities"
+             xmlns:viewModel="clr-namespace:BattleChess3.UI.ViewModel"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300"
+             DataContext="{Binding Source={x:Static viewModel:ViewModelLocator.FigureService}}"
+             Name="ThisManualControl">
     <UserControl.Resources>
         <Style TargetType="Button">
             <Setter Property="Foreground" Value="Black" />
@@ -34,11 +37,14 @@
             <ColumnDefinition Width="300" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <ItemsControl Grid.Column="0">
+        <ItemsControl Grid.Column="0"
+                      Name="TabItemsControl"
+                      ItemsSource="{Binding FigureGroups}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Button Content="{Binding Name}"
-                            Click="OnManualSelectedClick"/>
+                    <Button Content="{Binding ShownName}"
+                            Command="{Binding DataContext.SelectFigureGroupCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}}"
+                            CommandParameter="{Binding}"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
@@ -46,8 +52,8 @@
                       Grid.Column="1"
                       Foreground="Black" Background="{DynamicResource TextBoxBrush}"
                       VerticalScrollBarVisibility="Hidden">
-            <ItemsControl
-                ItemsSource="{Binding GroupFigures}">
+            <ItemsControl DataContext="{Binding SelectedFigureGroup}" 
+                          ItemsSource="{Binding GroupFigures}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Border Margin="5" Padding="10"
@@ -65,7 +71,7 @@
                                     </Grid.ColumnDefinitions>
         
                                     <StackPanel Grid.Column="0" Grid.Row="0"
-                                            Orientation="Vertical">
+                                                Orientation="Vertical">
                                         <TextBlock Text="{util:Loc Info_Name}" />
                                         <TextBlock Text="{util:Loc Info_UnitType}" />
                                         <TextBlock Text="{util:Loc Info_Attack}" />
@@ -77,10 +83,9 @@
                                     </StackPanel>
         
                                     <StackPanel Grid.Column="1" Grid.Row="0"
-                                                DataContext="{Binding Path=.}"
-                                            Orientation="Vertical">
+                                                Orientation="Vertical">
                                         <TextBlock Text="{Binding Path=ShownName}" />
-                                        <TextBlock Text="{Binding Path=UnitType}" />
+                                        <TextBlock Text="{Binding Path=UnitTypes}" />
                                         <TextBlock Text="{Binding Path=Attack}" />
                                         <TextBlock Text="{Binding Path=Defence}" />
                                         <TextBlock Text="{Binding Path=Bonus}" />
@@ -93,11 +98,20 @@
                                            MaxWidth="800"
                                            Text="{Binding Path=Description}" TextWrapping="Wrap" />
         
-                                    <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="2">
-                                        <Image Source="{Binding Path=PictureNeutralPath}" MinHeight="0" MaxHeight="200" />
-                                        <Image Source="{Binding Path=PictureWhitePath}" MinHeight="0" MaxHeight="200" />
-                                        <Image Source="{Binding Path=PictureBlackPath}" MinHeight="0" MaxHeight="200" />
-                                    </StackPanel>
+                                    <ItemsControl Grid.Row="0" Grid.RowSpan="2" Grid.Column="2"
+                                                  ItemsSource="{Binding Converter={StaticResource FigurePicturePathsConverter}}">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Vertical"/>
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Image MinHeight="0" MaxHeight="200"
+                                                       Source="{Binding}"/>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
                                 </Grid>
                             </Viewbox>
                         </Border>

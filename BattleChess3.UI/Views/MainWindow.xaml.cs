@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
-using BattleChess3.UI.ViewModel;
 using FontFamily = System.Windows.Media.FontFamily;
 
 namespace BattleChess3.UI.Views

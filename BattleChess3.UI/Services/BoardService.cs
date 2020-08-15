@@ -1,12 +1,11 @@
 ﻿using BattleChess3.Core.Models;
-using BattleChess3.Core.Services;
 using BattleChess3.UI.Utilities;
 
 namespace BattleChess3.UI.Services
 {
     public class BoardService
     {
-        private readonly FigureService _figureService = CommonServiceLocator.ServiceLocator.Current.GetInstance<FigureService>();
+        private readonly FigureService _FigureService = CommonServiceLocator.ServiceLocator.Current.GetInstance<FigureService>();
         public Tile SelectedTile = Tile.Invalid;
         public Tile HoverTile = Tile.Invalid;
         public readonly Tile[] Board = new Tile[64];
@@ -19,7 +18,7 @@ namespace BattleChess3.UI.Services
 
         public void CreateFigure(string tile, Position position, Player player)
         {
-            var figure = _figureService.GetFigureFromName(tile.Replace(player.Id.ToString(), ""));
+            var figure = _FigureService.GetFigureFromName(tile.Replace(player.Id.ToString(), ""));
             Figure newFigure = new Figure(player, figure);
             player?.Figures.Add(newFigure);
             SetFigureAtPosition(position, newFigure);

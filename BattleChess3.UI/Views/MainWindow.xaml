@@ -4,10 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:views="clr-namespace:BattleChess3.UI.Views"
+        xmlns:viewModel="clr-namespace:BattleChess3.UI.ViewModel"
         xmlns:util="clr-namespace:BattleChess3.UI.Utilities"
         mc:Ignorable="d"
         Title="MainWindow" Height="620" Width="860" MinHeight="480" MinWidth="640"
-        Background="{DynamicResource ApplicationBackgroundBrush}">
+        Background="{DynamicResource ApplicationBackgroundBrush}"
+        DataContext="{Binding Source={x:Static viewModel:ViewModelLocator.MainWindowViewModel}}">
     <Window.Resources>
         <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle}" />
         <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}" />
@@ -15,7 +17,7 @@
         <Style TargetType="TabControl" BasedOn="{StaticResource TabControlStyle}" />
     </Window.Resources>
     <TabControl Name="ApplicationControl">
-        <TabItem Header="Menu">
+        <TabItem Header="Menu" IsSelected="{Binding MenuTabSelected}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -28,35 +30,42 @@
                     <ColumnDefinition Width="300" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Button Grid.Row="0" Grid.Column="0" 
+                <Button Grid.Row="0" Grid.Column="0"
+                        Command="{Binding NewGameCommand}"
                         Content="{util:Loc MainWindow_NewGame}"/>
                 <Button Grid.Row="1" Grid.Column="0" 
+                        Command="{Binding SaveGameCommand}"
                         Content="{util:Loc MainWindow_SaveGame}"/>
-                <Button Grid.Row="2" Grid.Column="0" 
+                <Button Grid.Row="2" Grid.Column="0"
+                        Command="{Binding DeleteGameCommand}"
                         Content="{util:Loc MainWindow_DeleteGame}"/>
-                <Button Grid.Row="3" Grid.Column="0" 
+                <Button Grid.Row="3" Grid.Column="0"
+                        Command="{Binding SelectOptionsCommand}"
                         Content="{util:Loc MainWindow_Options}"/>
                 <Button Grid.Row="4" Grid.Column="0" 
+                        Command="{Binding CloseApplicationCommand}"
                         Content="{util:Loc MainWindow_Quit}"/>
-                <views:MapHolderControl Grid.Row="0" Grid.RowSpan="5" Grid.Column="1"
-                                           DataContext="ApplicationControl" />
+                <views:MapHolderControl Grid.Row="0" Grid.RowSpan="5" Grid.Column="1" />
             </Grid>
         </TabItem>
-        <TabItem Name="GameTab" Header="Game" 
+        <TabItem Name="GameTab" Header="Game"
+                 IsSelected="{Binding GameTabSelected}"
                  IsEnabled="False">
             <DockPanel LastChildFill="True">
                 <Border Name="BoardControl">
                     <views:GameBoardControl />
                 </Border>
-                <Border BorderThickness="10,0,0,0" BorderBrush="Black">
+                <Border BorderBrush="Black" BorderThickness="10,0,0,0">
                     <views:UnitInfoControl />
                 </Border>
             </DockPanel>
         </TabItem>
-        <TabItem Name="OptionsTab" Header="Options">
+        <TabItem Name="OptionsTab" Header="Options"
+                 IsSelected="{Binding OptionsTabSelected}">
             <views:OptionsControl />
         </TabItem>
-        <TabItem Name="ManualTab" Header="Manual">
+        <TabItem Name="ManualTab" Header="Manual"
+                 IsSelected="{Binding ManualTabSelected}">
             <views:ManualControl />
         </TabItem>
     </TabControl>
