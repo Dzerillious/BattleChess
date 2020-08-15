@@ -1,8 +1,8 @@
 ﻿namespace BattleChess3.UI.Views
 {
-    public partial class GameBoardView
+    public partial class GameBoardControl
     {
-        public GameBoardView()
+        public GameBoardControl()
         {
             InitializeComponent();
         }

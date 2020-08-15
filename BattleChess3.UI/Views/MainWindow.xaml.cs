@@ -11,7 +11,7 @@ namespace BattleChess3.UI.Views
     /// </summary>
     public partial class MainWindow
     {
-        public static MapsHolder MapsHolder = new MapsHolder();
+        // public static MapsHolder MapsHolder = new MapsHolder();
 
         /// <summary>
         /// Main window

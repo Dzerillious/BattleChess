@@ -38,7 +38,7 @@
                         Content="{util:Loc MainWindow_Options}"/>
                 <Button Grid.Row="4" Grid.Column="0" 
                         Content="{util:Loc MainWindow_Quit}"/>
-                <views:MapHolderController Grid.Row="0" Grid.RowSpan="5" Grid.Column="1"
+                <views:MapHolderControl Grid.Row="0" Grid.RowSpan="5" Grid.Column="1"
                                            DataContext="ApplicationControl" />
             </Grid>
         </TabItem>
@@ -46,7 +46,7 @@
                  IsEnabled="False">
             <DockPanel LastChildFill="True">
                 <Border Name="BoardControl">
-                    <views:GameBoardView />
+                    <views:GameBoardControl />
                 </Border>
                 <Border BorderThickness="10,0,0,0" BorderBrush="Black">
                     <views:UnitInfoControl />

@@ -13,7 +13,7 @@ namespace BattleChess3.UI.Services
         // private readonly PlayerService _playerService = CommonServiceLocator.ServiceLocator.Current.GetInstance<PlayerService>();
         
         public MapBlueprint[] Maps { get; set; } 
-        public MapBlueprint SelectedMapBlueprint { get; set; }
+        public MapBlueprint SelectedMap { get; set; }
 
         /// <summary>
         /// If map is not loaded creates empty map.
@@ -53,7 +53,7 @@ namespace BattleChess3.UI.Services
                     return JsonConvert.DeserializeObject<MapBlueprint>(text);
                 })
                 .ToArray();
-            SelectedMapBlueprint = Maps.First();
+            SelectedMap = Maps.First();
         }
     }
 }

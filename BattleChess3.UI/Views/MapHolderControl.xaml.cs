@@ -1,19 +1,10 @@
 ﻿namespace BattleChess3.UI.Views
 {
-    public partial class MapHolderController
+    public partial class MapHolderControl
     {
-        public MapHolderController()
+        public MapHolderControl()
         {
             InitializeComponent();
         }
-
-        // /// <summary>
-        // /// Called when selected map is changed
-        // /// </summary>
-        // private void OnSelectedMapChanged(object sender, SelectionChangedEventArgs e)
-        // {
-        //     var listBox = (ListBox)sender;
-        //     Session.SelectedMap = (Map)listBox.SelectedItem;
-        // }
     }
 }

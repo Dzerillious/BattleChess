@@ -7,11 +7,11 @@ namespace BattleChess3.Core.Models
     /// </summary>
     public class MapBlueprint
     {
-        public string Path { get; set; } = "";
-        public string Name { get; set; } = "";
-        public string PreviewPath { get; set; } = "";
+        public string Path { get; set; }
+        public string Name { get; set; }
+        public string PreviewPath { get; set; }
         public int StartingPlayer { get; set; }
         public int PlayersCount { get; set; }
-        public FigureBlueprint[] Blueprint { get; set; } = Array.Empty<FigureBlueprint>();
+        public FigureBlueprint[] Blueprint { get; set; }
     }
 }

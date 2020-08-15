@@ -10,8 +10,8 @@
 
     <ItemGroup>
       <ProjectReference Include="..\BattleChess3.Core\BattleChess3.Core.csproj" />
-      <ProjectReference Include="..\BattleChess3.DefaultFigures\BattleChess3.DefaultFigures.csproj" />
       <ProjectReference Include="..\Libraries\BattleChess3.ChessFigures\BattleChess3.ChessFigures.csproj" />
+      <ProjectReference Include="..\Libraries\BattleChess3.DefaultFigures\BattleChess3.DefaultFigures.csproj" />
       <ProjectReference Include="..\Libraries\BattleChess3.HobbitFigures\BattleChess3.HobbitFigures.csproj" />
       <ProjectReference Include="..\Libraries\BattleChess3.LordOfTheRingsFigures\BattleChess3.LordOfTheRingsFigures.csproj" />
       <ProjectReference Include="..\Libraries\BattleChess3.SilmarillionFigures\BattleChess3.SilmarillionFigures.csproj" />
@@ -33,6 +33,36 @@
         <None Remove="Resources\Styles\**" />
         <Content Include="Resources\Styles\**">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="Resources\Maps\Silmarillion_948604193.map">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="Resources\Maps\Chess_1616652008.map">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="Resources\Maps\Hobbit_246180674.map">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="Resources\Maps\LOTR_1457745311.map">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="Resources\Maps\Ninja_1832078752.map">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="Resources\Maps\Silmarillion_844286669.map">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="Resources\Maps\Chess_2009829029.map">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="Resources\Maps\Hobbit_248285739.map">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="Resources\Maps\LOTR_1553596950.map">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="Resources\Maps\Ninja_114126531.map">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>
     </ItemGroup>
 

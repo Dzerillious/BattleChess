@@ -42,7 +42,7 @@ namespace BattleChess3.UI.Utilities
                     },
                     Name = "NinjaMap",
                     Path = $"Resources/Maps/Ninja_{new Random().Next()}.map",
-                    PreviewPath = $"Resources/MapsPreviews/Ninja_{new Random().Next()}.png",
+                    PreviewPath = $"/Resources/MapsPreviews/Ninja_{new Random().Next()}.png",
                     StartingPlayer = 1,
                     PlayersCount = 2
                 }, 
@@ -61,7 +61,7 @@ namespace BattleChess3.UI.Utilities
                     },
                     Name = "ChessMap",
                     Path = $"Resources/Maps/Chess_{new Random().Next()}.map",
-                    PreviewPath = $"Resources/MapsPreviews/Chess_{new Random().Next()}.png",
+                    PreviewPath = $"/Resources/MapsPreviews/Chess_{new Random().Next()}.png",
                     StartingPlayer = 1,
                     PlayersCount = 2
                 }, 
@@ -80,7 +80,7 @@ namespace BattleChess3.UI.Utilities
                     },
                     Name = "LOTRMap",
                     Path = $"Resources/Maps/LOTR_{new Random().Next()}.map",
-                    PreviewPath = $"Resources/MapsPreviews/LOTR_{new Random().Next()}.png",
+                    PreviewPath = $"/Resources/MapsPreviews/LOTR_{new Random().Next()}.png",
                     StartingPlayer = 1,
                     PlayersCount = 2
                 }, 
@@ -99,7 +99,7 @@ namespace BattleChess3.UI.Utilities
                     },
                     Name = "HobbitMap",
                     Path = $"Resources/Maps/Hobbit_{new Random().Next()}.map",
-                    PreviewPath = $"Resources/MapsPreviews/Hobbit_{new Random().Next()}.png",
+                    PreviewPath = $"/Resources/MapsPreviews/Hobbit_{new Random().Next()}.png",
                     StartingPlayer = 1,
                     PlayersCount = 2
                 }, 
@@ -118,7 +118,7 @@ namespace BattleChess3.UI.Utilities
                     },
                     Name = "SilmarillionMap",
                     Path = $"Resources/Maps/Silmarillion_{new Random().Next()}.map",
-                    PreviewPath = $"Resources/MapsPreviews/Silmarillion_{new Random().Next()}.png",
+                    PreviewPath = $"/Resources/MapsPreviews/Silmarillion_{new Random().Next()}.png",
                     StartingPlayer = 1,
                     PlayersCount = 2
                 }, 
