@@ -7,7 +7,7 @@ namespace BattleChess3.UI.Services
     {
         private readonly BoardService _boardService = CommonServiceLocator.ServiceLocator.Current.GetInstance<BoardService>();
         private readonly PlayerService _playerService = CommonServiceLocator.ServiceLocator.Current.GetInstance<PlayerService>();
-        private readonly StyleOptions _stylingService = CommonServiceLocator.ServiceLocator.Current.GetInstance<StyleOptions>();
+        private readonly StyleService _stylingService = CommonServiceLocator.ServiceLocator.Current.GetInstance<StyleService>();
         
         public void HighlightTiles()
         {

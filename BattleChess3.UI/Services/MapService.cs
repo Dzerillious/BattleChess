@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using BattleChess3.Core.Models;
 using BattleChess3.Core.Utilities;
 using GalaSoft.MvvmLight;
@@ -23,7 +24,10 @@ namespace BattleChess3.UI.Services
             set => Set(ref _selectedMap, value);
         }
 
-        public MapService() => ReloadMaps();
+        public MapService()
+        {
+            Task.Run(ReloadMaps);
+        }
 
         public void ReloadMaps()
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using BattleChess3.Core.Figures;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
@@ -31,7 +32,7 @@ namespace BattleChess3.UI.Services
 
         public FigureService()
         {
-            ReloadFigures();
+            Task.Run(ReloadFigures);
             SelectFigureGroupCommand = new RelayCommand<IFigureGroup>(group => SelectedFigureGroup = group);
         }
 

@@ -62,7 +62,7 @@
         </TabItem>
         <TabItem Name="OptionsTab" Header="Options"
                  IsSelected="{Binding OptionsTabSelected}">
-            <views:OptionsControl />
+            <views:StylesControl />
         </TabItem>
         <TabItem Name="ManualTab" Header="Manual"
                  IsSelected="{Binding ManualTabSelected}">

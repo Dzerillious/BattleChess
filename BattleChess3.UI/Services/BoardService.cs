@@ -5,13 +5,13 @@ namespace BattleChess3.UI.Services
 {
     public class BoardService
     {
-        private readonly FigureService _figureService = CommonServiceLocator.ServiceLocator.Current.GetInstance<FigureService>();
         public Tile SelectedTile = TileHelper.Invalid;
         public Tile HoverTile = TileHelper.Invalid;
-        public readonly Tile[] Board = new Tile[64];
+        public readonly Tile[] Board;
 
         public BoardService()
         {
+            Board = new Tile[64];
             for (var i = 0; i < Board.Length; i++)
                 Board[i] = TileHelper.Invalid;
         }

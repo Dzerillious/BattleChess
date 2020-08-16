@@ -23,6 +23,9 @@ namespace BattleChess3.UI
         {
             var builder = new ContainerBuilder();
             
+            builder.RegisterType<StyleService>()
+                .AsSelf()
+                .SingleInstance();
             builder.RegisterType<MapService>()
                 .AsSelf()
                 .SingleInstance();

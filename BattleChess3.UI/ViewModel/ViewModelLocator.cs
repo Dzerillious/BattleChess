@@ -10,6 +10,8 @@ namespace BattleChess3.UI.ViewModel
             => CommonServiceLocator.ServiceLocator.Current.GetInstance<BoardViewModel>();
         public static MapService MapService
             => CommonServiceLocator.ServiceLocator.Current.GetInstance<MapService>();
+        public static StyleService StyleService
+            => CommonServiceLocator.ServiceLocator.Current.GetInstance<StyleService>();
         public static FigureService FigureService
             => CommonServiceLocator.ServiceLocator.Current.GetInstance<FigureService>();
     }
