@@ -14,8 +14,8 @@ namespace BattleChess3.HobbitFigures
         public FigureTypes UnitTypes => FigureTypes.Foot;
         public FigureTypes Bonus => FigureTypes.Nothing;
         public FigureTypes AntiBonus => FigureTypes.Nothing;
-        public int Attack => 100;
-        public int Defence => 0;
+        public double Attack => 100;
+        public double Defence => 0;
         public bool MovingAttack => true;
         public int Cost => 5;
         public string Description => CurrentLocalization.Instance["Wizard_Description"];

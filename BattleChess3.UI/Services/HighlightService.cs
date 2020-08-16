@@ -11,33 +11,33 @@ namespace BattleChess3.UI.Services
         
         public void HighlightTiles()
         {
-            if (_boardService.SelectedTile.Position == Position.Invalid)
-            {
-                for (var i = 0; i < 64; i++)
-                    _boardService.Board[i].Figure.Highlighted = Directory.GetCurrentDirectory() + "\\Resources\\Pictures\\Nothing.png";
-            }
-            else
-            {
-                for (var i = 0; i < 64; i++)
-                {
-                    var position = new Position(i / 8, i % 8);
-                    var figure = _boardService.GetFigureAtPosition(position);
-                    figure.Highlighted = _stylingService.ApplicationStyle.ChessTile;
-                    if (_boardService.SelectedTile.Figure.Owner == _playerService.CurrentPlayer)
-                    {
-                        HighlightDangered(figure);
-                        HighlightCanGo(figure);
-                    }
-                }
-                HighlightSelected();
-                HighlightMouseOn();
-            }
+            // if (_boardService.SelectedTile.Position == Position.Invalid)
+            // {
+            //     for (var i = 0; i < 64; i++)
+            //         _boardService.Board[i].Figure.Highlighted = Directory.GetCurrentDirectory() + "\\Resources\\Pictures\\Nothing.png";
+            // }
+            // else
+            // {
+            //     for (var i = 0; i < 64; i++)
+            //     {
+            //         var position = new Position(i / 8, i % 8);
+            //         var figure = _boardService.GetFigureAtPosition(position);
+            //         figure.Highlighted = _stylingService.ApplicationStyle.ChessTile;
+            //         if (_boardService.SelectedTile.Figure.Owner == _playerService.CurrentPlayer)
+            //         {
+            //             HighlightDangered(figure);
+            //             HighlightCanGo(figure);
+            //         }
+            //     }
+            //     HighlightSelected();
+            //     HighlightMouseOn();
+            // }
         }
 
         public void HighlightDangered(Figure figure)
         {
-            if (figure.Owner != _boardService.SelectedTile.Figure.Owner && _boardService.SelectedTile.Figure.CanAttack(figure, _boardService.GetFigureAtPosition))
-                figure.Highlighted = _stylingService.ApplicationStyle.DangeredChessTile;
+            // if (figure.Owner != _boardService.SelectedTile.Figure.Owner && _boardService.SelectedTile.Figure.CanAttack(figure, _boardService.GetFigureAtPosition))
+            //     figure.Highlighted = _stylingService.ApplicationStyle.DangeredChessTile;
         }
 
         public void HighlightCanGo(Figure figure)
@@ -48,12 +48,12 @@ namespace BattleChess3.UI.Services
 
         public void HighlightSelected()
         {
-            _boardService.SelectedTile.Figure.Highlighted = _stylingService.ApplicationStyle.SelectedChessTile;
+            // _boardService.SelectedTile.Figure.Highlighted = _stylingService.ApplicationStyle.SelectedChessTile;
         }
 
         public void HighlightMouseOn()
         {
-            _boardService.HoverTile.Figure.Highlighted = _stylingService.ApplicationStyle.SelectedChessTile;
+            // _boardService.HoverTile.Figure.Highlighted = _stylingService.ApplicationStyle.SelectedChessTile;
         }
     }
 }

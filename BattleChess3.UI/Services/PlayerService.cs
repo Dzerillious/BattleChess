@@ -8,6 +8,14 @@ namespace BattleChess3.UI.Services
     {
         public List<Player> Players = new List<Player>();
         public Player CurrentPlayer = new Player(0);
-        public Player GetPlayer(int id) => Players.First(player => player.Id == id);
+        public Player GetPlayer(int id) => Players[id];
+
+        public void InitializePlayers(in int playersCount, in int currentPlayer)
+        {
+            Players.Clear();
+            for (var i = 0; i < playersCount + 1; i++)
+                Players.Add(new Player(i));
+            CurrentPlayer = Players[currentPlayer];
+        }
     }
 }

@@ -10,30 +10,22 @@ namespace BattleChess3.Core.Models
     public class Figure
     {
         public Player Owner = Player.Neutral;
-        public IFigureType FigureTypeType { get; set; }
-        public int Hp { get; set; } = 0;
-        public bool Clicked { get; set; } = false;
-        public string Highlighted { get; set; } = "";
-        public string PicturePath { get; set; } = "";
-        public double Bonus { get; private set; } = 2;
-        public double AntiBonus { get; private set; } = 0.5;
+        public IFigureType FigureType { get; set; }
+        public double Hp { get; set; } = 0;
 
-
-        public Figure(IFigureType figureTypeType)
+        public Figure(IFigureType figureType)
         {
-            FigureTypeType = figureTypeType;
+            FigureType = figureType;
         }
 
         /// <summary>
         /// Constructor of baseFigure
         /// </summary>
-        public Figure(Player owner, IFigureType figureTypeType)
+        public Figure(Player owner, IFigureType figureType)
         {
             Hp = 100;
             Owner = owner;
-            FigureTypeType = figureTypeType;
-            Highlighted = Directory.GetCurrentDirectory() + "Pictures\\Nothing.png";
-            PicturePath = GetFigurePicturePath(figureTypeType, owner.Id);
+            FigureType = figureType;
         }
 
         public static string GetFigurePicturePath(IFigureType figureType, int id)
@@ -70,18 +62,18 @@ namespace BattleChess3.Core.Models
         /// Returns remaining hp of attacked unit
         /// </summary>
         /// <param name="attackingUnit"></param>
-        public int RemainingHpOfAttacked(Figure attackingUnit)
+        public double RemainingHpOfAttacked(Figure attackingUnit)
         {
             double bonus = 1;
-            if (FigureTypeType.UnitTypes == attackingUnit.FigureTypeType.Bonus)
+            if (FigureType.UnitTypes == attackingUnit.FigureType.Bonus)
             {
-                bonus = Bonus;
+                bonus = 2;
             }
-            else if (FigureTypeType.UnitTypes == attackingUnit.FigureTypeType.AntiBonus)
+            else if (FigureType.UnitTypes == attackingUnit.FigureType.AntiBonus)
             {
-                bonus = AntiBonus;
+                bonus = 0.5;
             }
-            return Hp - (int)(attackingUnit.FigureTypeType.Attack * bonus) - FigureTypeType.Defence;
+            return Hp - (attackingUnit.FigureType.Attack * bonus) - FigureType.Defence;
         }
     }
 }

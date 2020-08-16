@@ -14,8 +14,8 @@ namespace BattleChess3.DefaultFigures
         public FigureTypes UnitTypes => FigureTypes.Object;
         public FigureTypes Bonus => FigureTypes.Nothing;
         public FigureTypes AntiBonus => FigureTypes.Nothing;
-        public int Attack => 0;
-        public int Defence => -50;
+        public double Attack => 0;
+        public double Defence => -50;
         public bool MovingAttack => false;
         public string Description => CurrentLocalization.Instance["Palm_Description"];
         public int Cost => 0;

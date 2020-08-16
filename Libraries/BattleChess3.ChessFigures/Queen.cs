@@ -14,8 +14,8 @@ namespace BattleChess3.ChessFigures
         public FigureTypes UnitTypes => FigureTypes.Special;
         public FigureTypes Bonus => FigureTypes.Nothing;
         public FigureTypes AntiBonus => FigureTypes.Nothing;
-        public int Attack => 100;
-        public int Defence => 0;
+        public double Attack => 100;
+        public double Defence => 0;
         public bool MovingAttack => true;
         public int Cost => 9;
         public string Description => CurrentLocalization.Instance["Queen_Description"];

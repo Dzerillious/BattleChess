@@ -23,14 +23,27 @@ namespace BattleChess3.UI
         {
             var builder = new ContainerBuilder();
             
-            builder.RegisterType<MainWindowViewModel>()
-                .AsSelf();
             builder.RegisterType<MapService>()
                 .AsSelf()
                 .SingleInstance();
             builder.RegisterType<FigureService>()
                 .AsSelf()
                 .SingleInstance();
+            builder.RegisterType<GameService>()
+                .AsSelf()
+                .SingleInstance();
+            builder.RegisterType<PlayerService>()
+                .AsSelf()
+                .SingleInstance();
+            builder.RegisterType<BoardService>()
+                .AsSelf()
+                .SingleInstance();
+            
+            builder.RegisterType<MainWindowViewModel>()
+                .AsSelf();
+            builder.RegisterType<BoardViewModel>()
+                .AsSelf();
+            
 
             var locator = new AutofacServiceLocator(builder.Build());
             ServiceLocator.SetLocatorProvider(() => locator);

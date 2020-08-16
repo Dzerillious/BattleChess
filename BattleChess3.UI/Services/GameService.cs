@@ -4,8 +4,29 @@ namespace BattleChess3.UI.Services
 {
     public class GameService
     {
+        private readonly PlayerService _playerService = CommonServiceLocator.ServiceLocator.Current.GetInstance<PlayerService>();
+        private readonly FigureService _figureService = CommonServiceLocator.ServiceLocator.Current.GetInstance<FigureService>();
         private readonly BoardService _boardService = CommonServiceLocator.ServiceLocator.Current.GetInstance<BoardService>();
-    
+        
+        public void LoadMap(MapBlueprint map)
+        {
+            _playerService.InitializePlayers(map.PlayersCount, map.StartingPlayer);
+            for (var i = 0; i < 64; i++)
+            {
+                var figureBlueprint = map.Blueprint[i];
+                _boardService.Board[i].Figure = CreateFigure(figureBlueprint);
+            }
+        }
+
+        private Figure CreateFigure(FigureBlueprint figureBlueprint)
+        {
+            var figureType = _figureService.GetFigureFromName(figureBlueprint.FigureName);
+            var player = _playerService.GetPlayer(figureBlueprint.PlayerId);
+            var figure =  new Figure(player, figureType);
+            player.Figures.Add(figure);
+            return figure;
+        }
+        
         // /// <summary>
         // /// Tries to play the position if it is your turn
         // /// </summary>

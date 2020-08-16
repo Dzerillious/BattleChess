@@ -43,7 +43,6 @@ namespace BattleChess3.UI.ViewModel
         public TileViewModel()
         {
             ClickedCommand = new RelayCommand(OnClicked);
-            ServiceLocator.Current.GetInstance<BoardService>().Board[_position] = this;
         }
 
         private void OnClicked() => _gameService.ClickedAtTile(this);

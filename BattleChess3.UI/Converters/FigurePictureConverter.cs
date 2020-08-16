@@ -3,23 +3,20 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Data;
-using BattleChess3.Core.Figures;
 using BattleChess3.Core.Models;
-using BattleChess3.Core.Utilities;
-using Newtonsoft.Json;
 
 namespace BattleChess3.UI.Converters
 {
-    public class FigurePicturePathsConverter : IValueConverter
+    public class FigurePictureConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (!(value is IFigureType figureType)) return Array.Empty<string>();
-            DirectoryInfo directory = new DirectoryInfo($"FigureSets/{figureType.GroupName}");
-            string[] items = directory.GetFiles($"{figureType.UnitName}*")
+            if (!(value is Figure figure)) return string.Empty;
+            DirectoryInfo directory = new DirectoryInfo($"FigureSets/{figure.FigureType.GroupName}");
+            string picture = directory.GetFiles($"{figure.FigureType.UnitName}{figure.Owner.Id}*")
                 .Select(file => file.FullName)
-                .ToArray();
-            return items;
+                .First();
+            return picture;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

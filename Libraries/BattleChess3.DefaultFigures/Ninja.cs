@@ -14,8 +14,8 @@ namespace BattleChess3.DefaultFigures
         public FigureTypes UnitTypes => FigureTypes.Foot;
         public FigureTypes Bonus => FigureTypes.Foot;
         public FigureTypes AntiBonus => FigureTypes.Mount;
-        public int Attack => 50;
-        public int Defence => 0;
+        public double Attack => 50;
+        public double Defence => 0;
         public bool MovingAttack => true;
         public int Cost => 1;
         public string Description => CurrentLocalization.Instance["Ninja_Description"];

@@ -49,6 +49,9 @@
         
         public static implicit operator Position(int i) 
             => new Position(i / 8, i % 8);
+        
+        public static implicit operator Position((int i, int j) pos) 
+            => new Position(pos.i, pos.j);
 
         public bool Equals(Position other) => X == other.X && Y == other.Y;
 

@@ -266,18 +266,18 @@ namespace BattleChess3.LordOfTheRingsFigures.Localization {
         ///   
         ///The Guards of the Citadel, sometimes referred to as the Guards of the Tower of Gondor, were the warriors responsible for guarding the upmost level of Minas Tirith, especially the courtyard that held the fountain and the White Tree of Gondor, and gave way the thronehall. They served as personal bodyguards to the Kings of Gondor, and later to the Stewards of Gondor until King Aragorn II Elessar&apos;s coronation. They were mainly a stationary guard unit, rather than a mobile force [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string SoldierOrk_Description {
+        public static string SoldierOrc_Description {
             get {
-                return ResourceManager.GetString("SoldierOrk_Description", resourceCulture);
+                return ResourceManager.GetString("SoldierOrc_Description", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Soldier / Ork.
         /// </summary>
-        public static string SoldierOrk_Name {
+        public static string SoldierOrc_Name {
             get {
-                return ResourceManager.GetString("SoldierOrk_Name", resourceCulture);
+                return ResourceManager.GetString("SoldierOrc_Name", resourceCulture);
             }
         }
     }

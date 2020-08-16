@@ -179,10 +179,10 @@ Saruman
 Saruman (Quenya; IPA: ['saruman] - \"Man Of Skill\"), also known as Saruman the White was an Istar (wizard), who lived in Middle-earth during the Third Age. Originally, he was the chief of the wizards and of the White Council that opposed Sauron. His extensive studies of dark magic, however, eventually led him to desire the One Ring for himself. Thinking he could ally himself with Sauron and then betray him, Saruman allied Isengard with Mordor in the War of the Ring, in which he was defeated. He studied deeply the arts of Sauron, the better to oppose him, but he soon became enamored of Sauron's devices, especially the One Ring. He betrayed his mission and sought the power of the Ring for himself. He initially advocated an alliance with Sauron, but he soon betrayed Sauron as well, as his ultimate goal was to supplant Sauron and rule Middle-earth. But his plans came to nought, and his power was broken in the Battle of the Hornburg and the Battle of Isengard.            
         </value>
     </data>
-    <data name="SoldierOrk_Name" xml:space="preserve">
+    <data name="SoldierOrc_Name" xml:space="preserve">
         <value>Soldier / Ork</value>
     </data>
-    <data name="SoldierOrk_Description" xml:space="preserve">
+    <data name="SoldierOrc_Description" xml:space="preserve">
         <value>
 The Guards of the Citadel
    

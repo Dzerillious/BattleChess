@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using BattleChess3.UI.Services;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
@@ -6,6 +7,11 @@ namespace BattleChess3.UI.ViewModel
 {
     public class MainWindowViewModel : ViewModelBase
     {
+        private readonly GameService _gameService =
+            CommonServiceLocator.ServiceLocator.Current.GetInstance<GameService>();
+        private readonly MapService _mapService =
+            CommonServiceLocator.ServiceLocator.Current.GetInstance<MapService>();
+        
         private bool _menuTabSelected;
         public bool MenuTabSelected
         {
@@ -18,6 +24,13 @@ namespace BattleChess3.UI.ViewModel
         {
             get => _gameTabSelected;
             set => SetSelectedTab(out _gameTabSelected);
+        }
+
+        private bool _gameTabEnabled = false;
+        public bool GameTabEnabled
+        {
+            get => _gameTabEnabled;
+            set => Set(ref _gameTabEnabled, value);
         }
         
         private bool _optionsTabSelected;
@@ -47,9 +60,16 @@ namespace BattleChess3.UI.ViewModel
 
         private void InitializeCommands()
         {
-            // NewGameCommand = new RelayCommand();
+            NewGameCommand = new RelayCommand(NewGame);
             SelectOptionsCommand = new RelayCommand(() => OptionsTabSelected = true);
             CloseApplicationCommand = new RelayCommand(CloseApplication);
+        }
+
+        private void NewGame()
+        {
+            _gameService.LoadMap(_mapService.SelectedMap);
+            GameTabEnabled = true;
+            GameTabSelected = true;
         }
 
         private void CloseApplication() => Application.Current.Shutdown();

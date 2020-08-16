@@ -10,8 +10,6 @@ namespace BattleChess3.UI.Utilities
             {
                 Hp = 100,
                 Owner = Player.Neutral,
-                Highlighted = Directory.GetCurrentDirectory() + "Pictures\\Nothing.png",
-                PicturePath =  Figure.GetFigurePicturePath(DefaultFigures.Empty.Instance, 0)
             };
     }
 }

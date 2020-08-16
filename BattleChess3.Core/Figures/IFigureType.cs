@@ -40,12 +40,12 @@ namespace BattleChess3.Core.Figures
         /// <summary>
         /// Gets Attack
         /// </summary>
-        int Attack { get; }
+        double Attack { get; }
 
         /// <summary>
         /// Gets Defence
         /// </summary>
-        int Defence { get; }
+        double Defence { get; }
 
         /// <summary>
         /// Gets If move while attacking
