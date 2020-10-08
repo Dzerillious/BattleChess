@@ -1,7 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
+        <UseWPF>true</UseWPF>
     </PropertyGroup>
+
+    <ItemGroup>
+        <None Remove="Images\**" />
+        <Resource Include="Images\**" />
+    </ItemGroup>
 
 </Project>

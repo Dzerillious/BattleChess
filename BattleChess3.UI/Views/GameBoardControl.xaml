@@ -26,7 +26,7 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <DataTemplate.Resources>
-                                <Style TargetType="Button" BasedOn="{StaticResource ChessButtonStyle}">
+                                <Style TargetType="Button">
                                     <!-- <Style.Triggers> -->
                                     <!--     <Trigger Property="IsMouseOver" Value="False"> -->
                                     <!--         <Setter Property="Background"> -->
@@ -38,7 +38,8 @@
                                     <!-- </Style.Triggers> -->
                                 </Style>
                             </DataTemplate.Resources>
-                            <Button Command="{Binding ClickedCommand}">
+                            <Button Command="{Binding ClickedCommand}"
+                                    Style="{StaticResource ChessButtonStyle}">
                                 <Image Source="{Binding Figure, Converter={StaticResource FigurePictureConverter}}" />
                             </Button>
                         </DataTemplate>

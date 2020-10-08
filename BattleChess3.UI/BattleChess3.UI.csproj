@@ -10,28 +10,26 @@
 
     <ItemGroup>
       <ProjectReference Include="..\BattleChess3.Core\BattleChess3.Core.csproj" />
-      <ProjectReference Include="..\Libraries\BattleChess3.ChessFigures\BattleChess3.ChessFigures.csproj" />
-      <ProjectReference Include="..\Libraries\BattleChess3.DefaultFigures\BattleChess3.DefaultFigures.csproj" />
-      <ProjectReference Include="..\Libraries\BattleChess3.HobbitFigures\BattleChess3.HobbitFigures.csproj" />
-      <ProjectReference Include="..\Libraries\BattleChess3.LordOfTheRingsFigures\BattleChess3.LordOfTheRingsFigures.csproj" />
-      <ProjectReference Include="..\Libraries\BattleChess3.SilmarillionFigures\BattleChess3.SilmarillionFigures.csproj" />
+      <ProjectReference Include="..\FigureSets\BattleChess3.ChessFigures\BattleChess3.ChessFigures.csproj" />
+      <ProjectReference Include="..\FigureSets\BattleChess3.DefaultFigures\BattleChess3.DefaultFigures.csproj" />
+      <ProjectReference Include="..\FigureSets\BattleChess3.HobbitFigures\BattleChess3.HobbitFigures.csproj" />
+      <ProjectReference Include="..\FigureSets\BattleChess3.LordOfTheRingsFigures\BattleChess3.LordOfTheRingsFigures.csproj" />
+      <ProjectReference Include="..\FigureSets\BattleChess3.SilmarillionFigures\BattleChess3.SilmarillionFigures.csproj" />
+      <ProjectReference Include="..\Styles\BattleChess3.GondolinStyle\BattleChess3.GondolinStyle.csproj" />
+      <ProjectReference Include="..\Styles\BattleChess3.MinasTirithStyle\BattleChess3.MinasTirithStyle.csproj" />
+      <ProjectReference Include="..\Styles\BattleChess3.PaperStyle\BattleChess3.PaperStyle.csproj" />
+      <ProjectReference Include="..\Styles\BattleChess3.PixarStyle\BattleChess3.PixarStyle.csproj" />
+      <ProjectReference Include="..\Styles\BattleChess3.RivendellStyle\BattleChess3.RivendellStyle.csproj" />
+      <ProjectReference Include="..\Styles\BattleChess3.ValinorStyle\BattleChess3.ValinorStyle.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <None Remove="Resources\Styles\**" />
-        <Content Include="Resources\Styles\**">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
         <None Remove="Resources\Maps\**" />
         <Content Include="Resources\Maps\**">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>
         <None Remove="Resources\MapsPreviews\**" />
         <Content Include="Resources\MapsPreviews\**">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
-        <None Remove="Resources\Styles\**" />
-        <Content Include="Resources\Styles\**">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>
     </ItemGroup>
@@ -46,26 +44,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <EmbeddedResource Update="Resources\Resource.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>Resource.Designer.cs</LastGenOutput>
-        <SubType>Designer</SubType>
-      </EmbeddedResource>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Compile Update="Resources\Resource.Designer.cs">
-        <DependentUpon>Resource.resx</DependentUpon>
-        <AutoGen>True</AutoGen>
-        <DesignTime>True</DesignTime>
-      </Compile>
       <Compile Update="Resources\Strings.Designer.cs">
         <DependentUpon>Strings.resx</DependentUpon>
       </Compile>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Resources\Styles\GondolinStyle" />
     </ItemGroup>
     
     <PropertyGroup>
@@ -73,6 +54,9 @@
             mkdir FigureSets
             copy *Figures.dll FigureSets
             copy *Figures.pdb FigureSets
+            mkdir Styles
+            copy *Style.dll Styles
+            copy *Style.pdb Styles
         </PostBuildEvent>
     </PropertyGroup>
 </Project>

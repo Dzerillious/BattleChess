@@ -103,4 +103,16 @@
     <data name="Info_MovingAttack" xml:space="preserve">
         <value>Moving attack: </value>
     </data>
+    <data name="MainWindow_Menu_Header" xml:space="preserve">
+        <value>Menu</value>
+    </data>
+    <data name="MainWindow_Options_Header" xml:space="preserve">
+        <value>Options</value>
+    </data>
+    <data name="MainWindow_Game_Header" xml:space="preserve">
+        <value>Game</value>
+    </data>
+    <data name="MainWindow_Manual_Header" xml:space="preserve">
+        <value>Manual</value>
+    </data>
 </root>

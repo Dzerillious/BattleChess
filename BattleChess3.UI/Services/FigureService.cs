@@ -41,16 +41,16 @@ namespace BattleChess3.UI.Services
             var groupType = typeof(IFigureGroup);
             DirectoryInfo directory = new DirectoryInfo("FigureSets");
             var files = directory.GetFiles("*.dll")
-                .Select(file => Path.GetFileNameWithoutExtension(file.Name));
+                                 .Select(file => Path.GetFileNameWithoutExtension(file.Name));
 
             FigureGroups = files.Select(Assembly.Load)
-                .SelectMany(assembly => assembly.GetTypes())
-                .Where(type => type.GetInterfaces().Any(x => x == groupType))
-                .Select(type => (IFigureGroup) Activator.CreateInstance(type)!)
-                .ToArray();
+                                .SelectMany(assembly => assembly.GetTypes())
+                                .Where(type => type.GetInterfaces().Any(x => x == groupType))
+                                .Select(type => (IFigureGroup) Activator.CreateInstance(type)!)
+                                .ToArray();
 
             _figuresDictionary = FigureGroups.SelectMany(group => group.GroupFigures)
-                .ToDictionary(figure => figure.UnitName, figure => figure);
+                                             .ToDictionary(figure => figure.UnitName, figure => figure);
 
             SelectedFigureGroup = FigureGroups.First();
         }
