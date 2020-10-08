@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <RootNamespace>BattleChess3.SilmarillionFigures</RootNamespace>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\BattleChess3.Core\BattleChess3.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="FigureSets\**" />
+        <Content Include="FigureSets\**">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Localization\Strings.Designer.cs">
+        <DependentUpon>Strings.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Localization\Strings.Designer.cs">
+        <DependentUpon></DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+        <xsd:element name="root" msdata:IsDataSet="true">
+            <xsd:complexType>
+                <xsd:choice maxOccurs="unbounded">
+                    <xsd:element name="metadata">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" use="required" type="xsd:string"/>
+                            <xsd:attribute name="type" type="xsd:string"/>
+                            <xsd:attribute name="mimetype" type="xsd:string"/>
+                            <xsd:attribute ref="xml:space"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="assembly">
+                        <xsd:complexType>
+                            <xsd:attribute name="alias" type="xsd:string"/>
+                            <xsd:attribute name="name" type="xsd:string"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="data">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+                            <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+                            <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+                            <xsd:attribute ref="xml:space"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="resheader">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:complexType>
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <data name="ChessFigureGroup_Name" xml:space="preserve">
+        <value>Chess</value>
+    </data>
+    <data name="Bishop_Name" xml:space="preserve">
+        <value>Bishop</value>
+    </data>
+    <data name="Bishop_Description" xml:space="preserve">
+        <value>
+Bishop
+
+A bishop (♗,♝) is a piece in the board game of chess. Each player begins the game with two bishops. One starts between the king's knight and the king, the other between the queen's knight and the queen. The starting squares are c1 and f1 for White's bishops, and c8 and f8 for Black's bishops.
+        </value>
+    </data>
+    <data name="King_Name" xml:space="preserve">
+        <value>King</value>
+    </data>
+    <data name="King_Description" xml:space="preserve">
+        <value>
+King
+
+In chess, the king (♔,♚) is the most important piece. The object of the game is to give presents to the opponent's king in such a way that escape is not possible (checkmate). If a player's king is threatened with capture, it is said to be in check, and the player must remove the threat of capture on the next move. If this cannot be done, the king is said to be in checkmate, resulting in a loss for that player. Although the king is the most important piece, it is usually the weakest piece in the game until a later phase, the endgame. Players cannot make any move that places their own king in check.
+        </value>
+    </data>
+    <data name="Knight_Name" xml:space="preserve">
+        <value>Knight</value>
+    </data>
+    <data name="Knight_Description" xml:space="preserve">
+        <value>
+Knight
+
+The knight (♘ ♞ /naɪt/) is a piece in the game of chess, representing a knight (armored cavalry). It is normally represented by a horse's head and neck. Each player starts with two knights, which begin on the row closest to the player, between the rooks and bishops.
+        </value>
+    </data>
+    <data name="Pawn_Name" xml:space="preserve">
+        <value>Pawn</value>
+    </data>
+    <data name="Pawn_Description" xml:space="preserve">
+        <value>
+Pawn
+
+The pawn (♙,♟) is the most numerous piece in the game of chess, and in most circumstances, also the weakest. It historically represents infantry, or more particularly, armed peasants or pikemen. Each player begins a game with eight pawns, one on each square of the rank immediately in front of the other pieces. (The white pawns start on a2, b2, c2, ..., h2; the black pawns start on a7, b7, c7, ..., h7.). Individual pawns are referred to by the file on which they stand.For example, one speaks of \"White's f-pawn\" or \"Black's b-pawn\", or less commonly (using descriptive notation), \"White's king bishop pawn\" or \"Black's queen knight pawn\". It is also common to refer to a rook pawn, meaning any pawn on the a- or h-files, a knight pawn(on the b- or g-files), a bishop pawn(on the c- or f-file), a queen pawn(on the d-file), a king pawn(on the e-file), and a central pawn(on the d- or e-files).
+        </value>
+    </data>
+    <data name="Queen_Name" xml:space="preserve">
+        <value>Queen</value>
+    </data>
+    <data name="Queen_Description" xml:space="preserve">
+        <value>
+Queen
+
+The queen (♕,♛) is the most powerful piece in the game of chess, able to move any number of squares vertically, horizontally or diagonally. Each player starts the game with one queen, placed in the middle of the first rank next to the king. Because the queen is the strongest piece, a pawn is promoted to a queen in the vast majority of cases. In the game shatranj, the ancestor of chess that included only male figures, the closest thing to the queen was the “vizier”, a weak piece only able to move or capture one step diagonally and not at all in any other direction. The modern chess queen gained power in the 15th century.
+        </value>
+    </data>
+    <data name="Rook_Name" xml:space="preserve">
+        <value>Rook</value>
+    </data>
+    <data name="Rook_Description" xml:space="preserve">
+        <value>
+Rook
+
+A rook (/rʊk/; ♖,♜) is a piece in the strategy board game of chess. Formerly the piece was called the tower, marquess, rector, and comes (Sunnucks 1970). The term castle is considered informal, incorrect, or old-fashioned. Each player starts the game with two rooks, one on each of the corner squares on their own side of the board.
+        </value>
+    </data>
+</root>
