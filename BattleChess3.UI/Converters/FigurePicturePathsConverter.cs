@@ -17,8 +17,8 @@ namespace BattleChess3.UI.Converters
             if (!(value is IFigureType figureType)) return Array.Empty<string>();
             DirectoryInfo directory = new DirectoryInfo($"FigureSets/{figureType.GroupName}");
             string[] items = directory.GetFiles($"{figureType.UnitName}*")
-                .Select(file => file.FullName)
-                .ToArray();
+                                      .Select(file => file.FullName)
+                                      .ToArray();
             return items;
         }
 

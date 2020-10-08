@@ -6,17 +6,31 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.Core", "Battle
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.UI", "BattleChess3.UI\BattleChess3.UI.csproj", "{EDC1603E-4D88-440C-BEFF-7EB78DB64FE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.ChessFigures", "Libraries\BattleChess3.ChessFigures\BattleChess3.ChessFigures.csproj", "{95A90B4F-E8F1-4447-A90F-EBD234AE1D7A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.ChessFigures", "FigureSets\BattleChess3.ChessFigures\BattleChess3.ChessFigures.csproj", "{95A90B4F-E8F1-4447-A90F-EBD234AE1D7A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FigureSets", "FigureSets", "{F4AE98FC-E8F7-4D64-8EDD-CCAF59A5CDDF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.SilmarillionFigures", "Libraries\BattleChess3.SilmarillionFigures\BattleChess3.SilmarillionFigures.csproj", "{685C60EC-C7F4-4B61-9E27-43A0EC10FA4B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.SilmarillionFigures", "FigureSets\BattleChess3.SilmarillionFigures\BattleChess3.SilmarillionFigures.csproj", "{685C60EC-C7F4-4B61-9E27-43A0EC10FA4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.LordOfTheRingsFigures", "Libraries\BattleChess3.LordOfTheRingsFigures\BattleChess3.LordOfTheRingsFigures.csproj", "{95FBC958-BF26-41AF-9220-697330DAAF20}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.LordOfTheRingsFigures", "FigureSets\BattleChess3.LordOfTheRingsFigures\BattleChess3.LordOfTheRingsFigures.csproj", "{95FBC958-BF26-41AF-9220-697330DAAF20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.HobbitFigures", "Libraries\BattleChess3.HobbitFigures\BattleChess3.HobbitFigures.csproj", "{97F09675-4228-4442-AFD7-4CF7BBE6BBB7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.HobbitFigures", "FigureSets\BattleChess3.HobbitFigures\BattleChess3.HobbitFigures.csproj", "{97F09675-4228-4442-AFD7-4CF7BBE6BBB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.DefaultFigures", "Libraries\BattleChess3.DefaultFigures\BattleChess3.DefaultFigures.csproj", "{EF9D77DE-FDAF-4A48-9224-C101A2E277F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.DefaultFigures", "FigureSets\BattleChess3.DefaultFigures\BattleChess3.DefaultFigures.csproj", "{EF9D77DE-FDAF-4A48-9224-C101A2E277F1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Styles", "Styles", "{A20E2905-567B-420B-951E-D888DFAC7632}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.GondolinStyle", "Styles\BattleChess3.GondolinStyle\BattleChess3.GondolinStyle.csproj", "{0E8B2661-92F9-4583-AE25-18831BCE3B2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.MinasTirithStyle", "Styles\BattleChess3.MinasTirithStyle\BattleChess3.MinasTirithStyle.csproj", "{0E6942B1-ED82-4D10-BB35-42D906D92440}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.PaperStyle", "Styles\BattleChess3.PaperStyle\BattleChess3.PaperStyle.csproj", "{12F6BBBE-511B-49E0-9A58-D5F21F00907C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.RivendellStyle", "Styles\BattleChess3.RivendellStyle\BattleChess3.RivendellStyle.csproj", "{B8F5AF3E-D0BB-44B6-9C08-1971805FA7B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.ValinorStyle", "Styles\BattleChess3.ValinorStyle\BattleChess3.ValinorStyle.csproj", "{097371C8-8D8B-4E1D-ADD8-32AD7D919BF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.PixarStyle", "Styles\BattleChess3.PixarStyle\BattleChess3.PixarStyle.csproj", "{D076094B-98CB-48BB-8665-191B9B2EBF0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,6 +66,30 @@ Global
 		{EF9D77DE-FDAF-4A48-9224-C101A2E277F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF9D77DE-FDAF-4A48-9224-C101A2E277F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF9D77DE-FDAF-4A48-9224-C101A2E277F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E8B2661-92F9-4583-AE25-18831BCE3B2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E8B2661-92F9-4583-AE25-18831BCE3B2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E8B2661-92F9-4583-AE25-18831BCE3B2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E8B2661-92F9-4583-AE25-18831BCE3B2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E6942B1-ED82-4D10-BB35-42D906D92440}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E6942B1-ED82-4D10-BB35-42D906D92440}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E6942B1-ED82-4D10-BB35-42D906D92440}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E6942B1-ED82-4D10-BB35-42D906D92440}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12F6BBBE-511B-49E0-9A58-D5F21F00907C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12F6BBBE-511B-49E0-9A58-D5F21F00907C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12F6BBBE-511B-49E0-9A58-D5F21F00907C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12F6BBBE-511B-49E0-9A58-D5F21F00907C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8F5AF3E-D0BB-44B6-9C08-1971805FA7B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8F5AF3E-D0BB-44B6-9C08-1971805FA7B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8F5AF3E-D0BB-44B6-9C08-1971805FA7B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8F5AF3E-D0BB-44B6-9C08-1971805FA7B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{097371C8-8D8B-4E1D-ADD8-32AD7D919BF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{097371C8-8D8B-4E1D-ADD8-32AD7D919BF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{097371C8-8D8B-4E1D-ADD8-32AD7D919BF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{097371C8-8D8B-4E1D-ADD8-32AD7D919BF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D076094B-98CB-48BB-8665-191B9B2EBF0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D076094B-98CB-48BB-8665-191B9B2EBF0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D076094B-98CB-48BB-8665-191B9B2EBF0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D076094B-98CB-48BB-8665-191B9B2EBF0C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,5 +103,11 @@ Global
 		{95FBC958-BF26-41AF-9220-697330DAAF20} = {F4AE98FC-E8F7-4D64-8EDD-CCAF59A5CDDF}
 		{97F09675-4228-4442-AFD7-4CF7BBE6BBB7} = {F4AE98FC-E8F7-4D64-8EDD-CCAF59A5CDDF}
 		{EF9D77DE-FDAF-4A48-9224-C101A2E277F1} = {F4AE98FC-E8F7-4D64-8EDD-CCAF59A5CDDF}
+		{0E8B2661-92F9-4583-AE25-18831BCE3B2F} = {A20E2905-567B-420B-951E-D888DFAC7632}
+		{0E6942B1-ED82-4D10-BB35-42D906D92440} = {A20E2905-567B-420B-951E-D888DFAC7632}
+		{12F6BBBE-511B-49E0-9A58-D5F21F00907C} = {A20E2905-567B-420B-951E-D888DFAC7632}
+		{B8F5AF3E-D0BB-44B6-9C08-1971805FA7B5} = {A20E2905-567B-420B-951E-D888DFAC7632}
+		{097371C8-8D8B-4E1D-ADD8-32AD7D919BF9} = {A20E2905-567B-420B-951E-D888DFAC7632}
+		{D076094B-98CB-48BB-8665-191B9B2EBF0C} = {A20E2905-567B-420B-951E-D888DFAC7632}
 	EndGlobalSection
 EndGlobal

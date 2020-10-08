@@ -23,5 +23,10 @@ namespace BattleChess3.Core.Models
         /// Gets path of preview image of style
         /// </summary>
         public string Preview { get; }
+
+        /// <summary>
+        /// Gets path of preview image of style
+        /// </summary>
+        public string Brushes { get; }
     }
 }

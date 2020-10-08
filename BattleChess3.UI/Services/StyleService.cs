@@ -9,7 +9,8 @@ namespace BattleChess3.UI.Services
 {
     public class StyleService : ViewModelBase
     {
-        private static readonly ImageSourceConverter _imageSourceConverter = new ImageSourceConverter();
+        private static readonly ImageSourceConverter ImageSourceConverter = new ImageSourceConverter();
+        
         private Style _selectedStyle;
         public Style SelectedStyle
         {
@@ -20,8 +21,8 @@ namespace BattleChess3.UI.Services
 
                 foreach (string file in Directory.GetFiles(value.Directory))
                 {
-                    string? key = Path.GetFileNameWithoutExtension(Path.GetFileName(file));
-                    ImageSource imageSource = (ImageSource)_imageSourceConverter.ConvertFromString(file);
+                    string key = Path.GetFileNameWithoutExtension(Path.GetFileName(file));
+                    ImageSource imageSource = (ImageSource) ImageSourceConverter.ConvertFromString(file);
                     Application.Current.Resources[key] = imageSource;
                     Application.Current.Resources[$"{key}Brush"] = new ImageBrush(imageSource);
                 }
@@ -35,17 +36,19 @@ namespace BattleChess3.UI.Services
             set => Set(ref _styles, value);
         }
 
-        public StyleService() => ReloadStyles();
+        public StyleService()
+        {
+            ReloadStyles();
+        }
 
         public void ReloadStyles()
         {
             string directory = Path.GetFullPath("Resources\\Styles");
-            string[] dirs = Directory.GetDirectories(directory);
-            Styles = dirs
-                .Select(dir => new Style(dir))
-                .ToArray();
+            Styles = Directory.GetDirectories(directory)
+                              .Select(dir => new Style(dir))
+                              .ToArray();
             SelectedStyle = Styles.FirstOrDefault(style => style.Directory.Contains("Paper"))
-                ?? Styles.FirstOrDefault();
+                         ?? Styles.First();
         }
     }
 }
