@@ -5,23 +5,18 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Remove="FigureSets\**" />
-        <Content Include="FigureSets\**">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
+        <ProjectReference Include="..\..\BattleChess3.Core\BattleChess3.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="Images\**" />
+        <Resource Include="Images\**" />
     </ItemGroup>
 
     <ItemGroup>
       <Compile Update="Localization\Strings.Designer.cs">
         <DependentUpon>Strings.resx</DependentUpon>
       </Compile>
-      <Compile Update="Localization\Strings.Designer.cs">
-        <DependentUpon>Strings.resx</DependentUpon>
-      </Compile>
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\..\BattleChess3.Core\BattleChess3.Core.csproj" />
     </ItemGroup>
 
 </Project>

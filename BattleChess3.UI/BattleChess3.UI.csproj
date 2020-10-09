@@ -32,6 +32,7 @@
         <Content Include="Resources\MapsPreviews\**">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>
+        <None Remove="BattleChess3.deps.json" />
     </ItemGroup>
 
     <ItemGroup>
