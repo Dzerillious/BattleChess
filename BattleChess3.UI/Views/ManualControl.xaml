@@ -8,29 +8,6 @@
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300"
              DataContext="{Binding Source={x:Static viewModel:ViewModelLocator.FigureService}}">
-    <UserControl.Resources>
-        <Style TargetType="Button">
-            <Setter Property="Foreground" Value="Black" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="FontSize" Value="50" />
-            <Setter Property="FontWeight" Value="Heavy" />
-            <Setter Property="Background" Value="{DynamicResource DefaultObject}"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Foreground" Value="Blue" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300" />
@@ -42,7 +19,8 @@
                 <DataTemplate>
                     <Button Content="{Binding ShownName}"
                             Command="{Binding DataContext.SelectFigureGroupCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}}"
-                            CommandParameter="{Binding}"/>
+                            CommandParameter="{Binding}"
+                            Style="{DynamicResource ManualButtonStyle}"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
@@ -69,31 +47,40 @@
         
                                     <StackPanel Grid.Column="0" Grid.Row="0"
                                                 Orientation="Vertical">
-                                        <TextBlock Text="{util:Loc Info_Name}" />
-                                        <TextBlock Text="{util:Loc Info_UnitType}" />
-                                        <TextBlock Text="{util:Loc Info_Attack}" />
-                                        <TextBlock Text="{util:Loc Info_Defense}" />
-                                        <TextBlock Text="{util:Loc Info_Bonus}" />
-                                        <TextBlock Text="{util:Loc Info_Antibonus}" />
-                                        <TextBlock Text="{util:Loc Info_Cost}" />
-                                        <TextBlock Text="{util:Loc Info_MovingAttack}" />
+                                        <TextBlock Text="{util:Loc Info_Name}" Style="{DynamicResource TextBlockStyle}" />
+                                        <TextBlock Text="{util:Loc Info_UnitType}" Style="{DynamicResource TextBlockStyle}" />
+                                        <TextBlock Text="{util:Loc Info_Attack}" Style="{DynamicResource TextBlockStyle}" />
+                                        <TextBlock Text="{util:Loc Info_Defense}" Style="{DynamicResource TextBlockStyle}" />
+                                        <TextBlock Text="{util:Loc Info_Bonus}" Style="{DynamicResource TextBlockStyle}" />
+                                        <TextBlock Text="{util:Loc Info_Antibonus}" Style="{DynamicResource TextBlockStyle}" />
+                                        <TextBlock Text="{util:Loc Info_Cost}" Style="{DynamicResource TextBlockStyle}" />
+                                        <TextBlock Text="{util:Loc Info_MovingAttack}" Style="{DynamicResource TextBlockStyle}" />
                                     </StackPanel>
         
                                     <StackPanel Grid.Column="1" Grid.Row="0"
                                                 Orientation="Vertical">
-                                        <TextBlock Text="{Binding Path=ShownName}" />
-                                        <TextBlock Text="{Binding Path=UnitTypes}" />
-                                        <TextBlock Text="{Binding Path=Attack}" />
-                                        <TextBlock Text="{Binding Path=Defence}" />
-                                        <TextBlock Text="{Binding Path=Bonus}" />
-                                        <TextBlock Text="{Binding Path=AntiBonus}" />
-                                        <TextBlock Text="{Binding Path=Cost}" />
-                                        <TextBlock Text="{Binding Path=MovingAttack}" />
+                                        <TextBlock Text="{Binding Path=ShownName}"
+                                                   Style="{DynamicResource TextBlockStyle}"/>
+                                        <TextBlock Text="{Binding Path=UnitTypes}"
+                                                   Style="{DynamicResource TextBlockStyle}"/>
+                                        <TextBlock Text="{Binding Path=Attack}"
+                                                   Style="{DynamicResource TextBlockStyle}"/>
+                                        <TextBlock Text="{Binding Path=Defence}"
+                                                   Style="{DynamicResource TextBlockStyle}"/>
+                                        <TextBlock Text="{Binding Path=Bonus}"
+                                                   Style="{DynamicResource TextBlockStyle}"/>
+                                        <TextBlock Text="{Binding Path=AntiBonus}"
+                                                   Style="{DynamicResource TextBlockStyle}"/>
+                                        <TextBlock Text="{Binding Path=Cost}"
+                                                   Style="{DynamicResource TextBlockStyle}"/>
+                                        <TextBlock Text="{Binding Path=MovingAttack}"
+                                                   Style="{DynamicResource TextBlockStyle}"/>
                                     </StackPanel>
         
                                     <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
                                            MaxWidth="800"
-                                           Text="{Binding Path=Description}" TextWrapping="Wrap" />
+                                           Text="{Binding Path=Description}" TextWrapping="Wrap"
+                                           Style="{DynamicResource TextBlockStyle}"/>
         
                                     <ItemsControl Grid.Row="0" Grid.RowSpan="2" Grid.Column="2"
                                                   ItemsSource="{Binding Converter={StaticResource FigurePicturePathsConverter}}">

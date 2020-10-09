@@ -34,7 +34,7 @@ namespace BattleChess3.UI.Services
         
         public void ReloadStyles()
         {
-            DirectoryInfo directory = new DirectoryInfo("Styles");
+            DirectoryInfo directory = new DirectoryInfo("Themes");
             Styles = directory.GetFiles("*.dll")
                               .Select(fileInfo => new Style(fileInfo.FullName))
                               .ToArray();

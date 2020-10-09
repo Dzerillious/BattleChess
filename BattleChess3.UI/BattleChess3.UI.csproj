@@ -15,12 +15,12 @@
       <ProjectReference Include="..\FigureSets\BattleChess3.HobbitFigures\BattleChess3.HobbitFigures.csproj" />
       <ProjectReference Include="..\FigureSets\BattleChess3.LordOfTheRingsFigures\BattleChess3.LordOfTheRingsFigures.csproj" />
       <ProjectReference Include="..\FigureSets\BattleChess3.SilmarillionFigures\BattleChess3.SilmarillionFigures.csproj" />
-      <ProjectReference Include="..\Styles\BattleChess3.GondolinStyle\BattleChess3.GondolinStyle.csproj" />
-      <ProjectReference Include="..\Styles\BattleChess3.MinasTirithStyle\BattleChess3.MinasTirithStyle.csproj" />
-      <ProjectReference Include="..\Styles\BattleChess3.PaperStyle\BattleChess3.PaperStyle.csproj" />
-      <ProjectReference Include="..\Styles\BattleChess3.PixarStyle\BattleChess3.PixarStyle.csproj" />
-      <ProjectReference Include="..\Styles\BattleChess3.RivendellStyle\BattleChess3.RivendellStyle.csproj" />
-      <ProjectReference Include="..\Styles\BattleChess3.ValinorStyle\BattleChess3.ValinorStyle.csproj" />
+      <ProjectReference Include="..\Themes\BattleChess3.GondolinTheme\BattleChess3.GondolinTheme.csproj" />
+      <ProjectReference Include="..\Themes\BattleChess3.MinasTirithTheme\BattleChess3.MinasTirithTheme.csproj" />
+      <ProjectReference Include="..\Themes\BattleChess3.PaperTheme\BattleChess3.PaperTheme.csproj" />
+      <ProjectReference Include="..\Themes\BattleChess3.PixarTheme\BattleChess3.PixarTheme.csproj" />
+      <ProjectReference Include="..\Themes\BattleChess3.RivendellTheme\BattleChess3.RivendellTheme.csproj" />
+      <ProjectReference Include="..\Themes\BattleChess3.ValinorTheme\BattleChess3.ValinorTheme.csproj" />
     </ItemGroup>
 
     <ItemGroup>
@@ -54,9 +54,9 @@
             mkdir FigureSets
             copy *Figures.dll FigureSets
             copy *Figures.pdb FigureSets
-            mkdir Styles
-            copy *Style.dll Styles
-            copy *Style.pdb Styles
+            mkdir Themes
+            copy *Theme.dll Themes
+            copy *Theme.pdb Themes
         </PostBuildEvent>
     </PropertyGroup>
 </Project>

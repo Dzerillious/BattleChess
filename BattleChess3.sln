@@ -18,19 +18,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.HobbitFigures"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.DefaultFigures", "FigureSets\BattleChess3.DefaultFigures\BattleChess3.DefaultFigures.csproj", "{EF9D77DE-FDAF-4A48-9224-C101A2E277F1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Styles", "Styles", "{A20E2905-567B-420B-951E-D888DFAC7632}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Themes", "Themes", "{A20E2905-567B-420B-951E-D888DFAC7632}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.GondolinStyle", "Styles\BattleChess3.GondolinStyle\BattleChess3.GondolinStyle.csproj", "{0E8B2661-92F9-4583-AE25-18831BCE3B2F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.MinasTirithTheme", "Themes\BattleChess3.MinasTirithTheme\BattleChess3.MinasTirithTheme.csproj", "{0E6942B1-ED82-4D10-BB35-42D906D92440}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.MinasTirithStyle", "Styles\BattleChess3.MinasTirithStyle\BattleChess3.MinasTirithStyle.csproj", "{0E6942B1-ED82-4D10-BB35-42D906D92440}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.PaperTheme", "Themes\BattleChess3.PaperTheme\BattleChess3.PaperTheme.csproj", "{12F6BBBE-511B-49E0-9A58-D5F21F00907C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.PaperStyle", "Styles\BattleChess3.PaperStyle\BattleChess3.PaperStyle.csproj", "{12F6BBBE-511B-49E0-9A58-D5F21F00907C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.RivendellTheme", "Themes\BattleChess3.RivendellTheme\BattleChess3.RivendellTheme.csproj", "{B8F5AF3E-D0BB-44B6-9C08-1971805FA7B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.RivendellStyle", "Styles\BattleChess3.RivendellStyle\BattleChess3.RivendellStyle.csproj", "{B8F5AF3E-D0BB-44B6-9C08-1971805FA7B5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.ValinorTheme", "Themes\BattleChess3.ValinorTheme\BattleChess3.ValinorTheme.csproj", "{097371C8-8D8B-4E1D-ADD8-32AD7D919BF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.ValinorStyle", "Styles\BattleChess3.ValinorStyle\BattleChess3.ValinorStyle.csproj", "{097371C8-8D8B-4E1D-ADD8-32AD7D919BF9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.PixarStyle", "Styles\BattleChess3.PixarStyle\BattleChess3.PixarStyle.csproj", "{D076094B-98CB-48BB-8665-191B9B2EBF0C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.PixarTheme", "Themes\BattleChess3.PixarTheme\BattleChess3.PixarTheme.csproj", "{D076094B-98CB-48BB-8665-191B9B2EBF0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -66,10 +64,6 @@ Global
 		{EF9D77DE-FDAF-4A48-9224-C101A2E277F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF9D77DE-FDAF-4A48-9224-C101A2E277F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF9D77DE-FDAF-4A48-9224-C101A2E277F1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0E8B2661-92F9-4583-AE25-18831BCE3B2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0E8B2661-92F9-4583-AE25-18831BCE3B2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0E8B2661-92F9-4583-AE25-18831BCE3B2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0E8B2661-92F9-4583-AE25-18831BCE3B2F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0E6942B1-ED82-4D10-BB35-42D906D92440}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0E6942B1-ED82-4D10-BB35-42D906D92440}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E6942B1-ED82-4D10-BB35-42D906D92440}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -103,7 +97,6 @@ Global
 		{95FBC958-BF26-41AF-9220-697330DAAF20} = {F4AE98FC-E8F7-4D64-8EDD-CCAF59A5CDDF}
 		{97F09675-4228-4442-AFD7-4CF7BBE6BBB7} = {F4AE98FC-E8F7-4D64-8EDD-CCAF59A5CDDF}
 		{EF9D77DE-FDAF-4A48-9224-C101A2E277F1} = {F4AE98FC-E8F7-4D64-8EDD-CCAF59A5CDDF}
-		{0E8B2661-92F9-4583-AE25-18831BCE3B2F} = {A20E2905-567B-420B-951E-D888DFAC7632}
 		{0E6942B1-ED82-4D10-BB35-42D906D92440} = {A20E2905-567B-420B-951E-D888DFAC7632}
 		{12F6BBBE-511B-49E0-9A58-D5F21F00907C} = {A20E2905-567B-420B-951E-D888DFAC7632}
 		{B8F5AF3E-D0BB-44B6-9C08-1971805FA7B5} = {A20E2905-567B-420B-951E-D888DFAC7632}
