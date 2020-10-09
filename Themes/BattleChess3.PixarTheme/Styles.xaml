@@ -1,21 +1,21 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
-    <BitmapImage x:Key="Preview" UriSource="/BattleChess3.PixarTheme;component/Images/Preview.png"/>
-    <ImageBrush x:Key="ApplicationBackground" ImageSource="/BattleChess3.PixarTheme;component/Images/ApplicationBackground.jpg" />
+    <BitmapImage x:Key="Preview" UriSource="pack://application:,,,/BattleChess3.PixarTheme;component/Images/Preview.png"/>
+    <ImageBrush x:Key="ApplicationBackground" ImageSource="pack://application:,,,/BattleChess3.PixarTheme;component/Images/ApplicationBackground.jpg" />
     
     <SolidColorBrush x:Key="DefaultObjectForeground" Color="Black" />
     <SolidColorBrush x:Key="DefaultObjectMouseOnForeground" Color="#0000AF" />
     <SolidColorBrush x:Key="DefaultObjectSelectedForeground" Color="#1FAD00" />
     <SolidColorBrush x:Key="DefaultObjectDisabledForeground" Color="#AD0B00" />
     
-    <ImageBrush x:Key="TabItemBackground" ImageSource="/BattleChess3.PixarTheme;component/Images/TabItem.png" />
-    <ImageBrush x:Key="TabItemMouseOnBackground" ImageSource="/BattleChess3.PixarTheme;component/Images/TabItemMouseOn.png" />
-    <ImageBrush x:Key="TabItemDisabledBackground" ImageSource="/BattleChess3.PixarTheme;component/Images/TabItemDisabled.png" />
-    <ImageBrush x:Key="DefaultButtonBackground" ImageSource="/BattleChess3.PixarTheme;component/Images/DefaultButton.png" />
-    <ImageBrush x:Key="DefaultButtonMouseOnBackground" ImageSource="/BattleChess3.PixarTheme;component/Images/DefaultButtonMouseOn.png" />
+    <ImageBrush x:Key="TabItemBackground" ImageSource="pack://application:,,,/BattleChess3.PixarTheme;component/Images/TabItem.png" />
+    <ImageBrush x:Key="TabItemMouseOnBackground" ImageSource="pack://application:,,,/BattleChess3.PixarTheme;component/Images/TabItemMouseOn.png" />
+    <ImageBrush x:Key="TabItemDisabledBackground" ImageSource="pack://application:,,,/BattleChess3.PixarTheme;component/Images/TabItemDisabled.png" />
+    <ImageBrush x:Key="DefaultButtonBackground" ImageSource="pack://application:,,,/BattleChess3.PixarTheme;component/Images/DefaultButton.png" />
+    <ImageBrush x:Key="DefaultButtonMouseOnBackground" ImageSource="pack://application:,,,/BattleChess3.PixarTheme;component/Images/DefaultButtonMouseOn.png" />
     
-    <ImageBrush x:Key="ChessTileSelectedBackground" ImageSource="/BattleChess3.PixarTheme;component/Images/ChessTileSelected.png"/>
+    <ImageBrush x:Key="ChessTileSelectedBackground" ImageSource="pack://application:,,,/BattleChess3.PixarTheme;component/Images/ChessTileSelected.png"/>
     
     <Style TargetType="TabControl">
         <Setter Property="Background" Value="Transparent"/>

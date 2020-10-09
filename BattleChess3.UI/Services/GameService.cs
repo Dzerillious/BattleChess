@@ -22,7 +22,7 @@ namespace BattleChess3.UI.Services
         {
             var figureType = _figureService.GetFigureFromName(figureBlueprint.FigureName);
             var player = _playerService.GetPlayer(figureBlueprint.PlayerId);
-            var figure =  new Figure(player, figureType);
+            var figure = new Figure(player, figureType);
             player.Figures.Add(figure);
             return figure;
         }

@@ -51,7 +51,6 @@ namespace BattleChess3.UI.Services
 
             _figuresDictionary = FigureGroups.SelectMany(group => group.GroupFigures)
                                              .ToDictionary(figure => figure.UnitName, figure => figure);
-
             SelectedFigureGroup = FigureGroups.First();
         }
 

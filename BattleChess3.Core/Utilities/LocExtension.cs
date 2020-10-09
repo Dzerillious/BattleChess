@@ -6,8 +6,12 @@ namespace BattleChess3.Core.Utilities
     internal class CurrentLocalization : LocalizationSourceBase
     {
         public static LocalizationSourceBase Instance { get; } = new CurrentLocalization();
-        private CurrentLocalization() => Sources.Add(this);
+        private CurrentLocalization()
+        {
+            Sources.Add(this);
+        }
+
         protected override ResourceManager ResManager() => Strings.ResourceManager;
-        public new static string GetString(string key) => Instance[key];
+        public static string GetString(string key) => Instance[key];
     }
 }

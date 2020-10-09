@@ -33,13 +33,13 @@ namespace BattleChess3.UI.Services
         {
             DirectoryInfo directory = new DirectoryInfo("Resources/Maps");
             Maps = directory.GetFiles("*.map")
-                .Select(file =>
-                {
-                    string text = File.ReadAllText(file.FullName);
-                    text = CompressionHelper.Decompress(text);
-                    return JsonConvert.DeserializeObject<MapBlueprint>(text);
-                })
-                .ToArray();
+                            .Select(file =>
+                             {
+                                 string text = File.ReadAllText(file.FullName);
+                                 text = CompressionHelper.Decompress(text);
+                                 return JsonConvert.DeserializeObject<MapBlueprint>(text);
+                             })
+                            .ToArray();
             SelectedMap = Maps.First();
         }
     }

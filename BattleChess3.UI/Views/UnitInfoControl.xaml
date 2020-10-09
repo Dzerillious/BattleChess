@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:util="clr-namespace:BattleChess3.UI.Utilities"
-             mc:Ignorable="d"
+             xmlns:viewModel="clr-namespace:BattleChess3.UI.ViewModel"
+             mc:Ignorable="d" d:DataContext="{d:DesignInstance viewModel:TileViewModel}"
              d:DesignHeight="300" d:DesignWidth="300"
              Background="{DynamicResource TextBoxBrush}">
     <Viewbox>
@@ -38,7 +39,7 @@
                         Orientation="Vertical">
                 <TextBlock Text="{Binding Path=Figure.FigureType.ShownName, UpdateSourceTrigger=PropertyChanged}" 
                            Style="{DynamicResource TextBlockStyle}" />
-                <TextBlock Text="{Binding Path=Figure.FigureType.UnitType, UpdateSourceTrigger=PropertyChanged}" 
+                <TextBlock Text="{Binding Path=Figure.FigureType.UnitTypes, UpdateSourceTrigger=PropertyChanged}" 
                            Style="{DynamicResource TextBlockStyle}" />
                 <TextBlock Text="{Binding Path=Figure.Hp, UpdateSourceTrigger=PropertyChanged}" 
                            Style="{DynamicResource TextBlockStyle}" />
@@ -52,7 +53,7 @@
                            Style="{DynamicResource TextBlockStyle}" />
                 <TextBlock Text="{Binding Path=Figure.FigureType.Cost, UpdateSourceTrigger=PropertyChanged}"
                            Style="{DynamicResource TextBlockStyle}" />
-                <TextBlock Text="{Binding Path=Figure.FigureType.MovingWhileAttacking, UpdateSourceTrigger=PropertyChanged}"
+                <TextBlock Text="{Binding Path=Figure.FigureType.MovingAttack, UpdateSourceTrigger=PropertyChanged}"
                            Style="{DynamicResource TextBlockStyle}" />
             </StackPanel>
         </Grid>

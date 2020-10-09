@@ -1,17 +1,17 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
-    <BitmapImage x:Key="Preview" UriSource="/BattleChess3.ValinorTheme;component/Images/Preview.png"/>
-    <ImageBrush x:Key="ApplicationBackground" ImageSource="/BattleChess3.ValinorTheme;component/Images/ApplicationBackground.jpg" />
+    <BitmapImage x:Key="Preview" UriSource="pack://application:,,,/BattleChess3.ValinorTheme;component/Images/Preview.png"/>
+    <ImageBrush x:Key="ApplicationBackground" ImageSource="pack://application:,,,/BattleChess3.ValinorTheme;component/Images/ApplicationBackground.jpg" />
     
     <SolidColorBrush x:Key="DefaultObjectForeground" Color="#FAF0AF" />
     <SolidColorBrush x:Key="DefaultObjectMouseOnForeground" Color="#B7B080" />
     <SolidColorBrush x:Key="DefaultObjectSelectedForeground" Color="#88B27C" />
     <SolidColorBrush x:Key="DefaultObjectDisabledForeground" Color="#CC8A8B" />
     
-    <ImageBrush x:Key="DefaultButtonBackground" ImageSource="/BattleChess3.ValinorTheme;component/Images/DefaultButton.png" />
-    <ImageBrush x:Key="DefaultButtonMouseOnBackground" ImageSource="/BattleChess3.ValinorTheme;component/Images/DefaultButtonMouseOn.png" />
-    <ImageBrush x:Key="ChessTileSelectedBackground" ImageSource="/BattleChess3.ValinorTheme;component/Images/ChessTileSelected.png"/>
+    <ImageBrush x:Key="DefaultButtonBackground" ImageSource="pack://application:,,,/BattleChess3.ValinorTheme;component/Images/DefaultButton.png" />
+    <ImageBrush x:Key="DefaultButtonMouseOnBackground" ImageSource="pack://application:,,,/BattleChess3.ValinorTheme;component/Images/DefaultButtonMouseOn.png" />
+    <ImageBrush x:Key="ChessTileSelectedBackground" ImageSource="pack://application:,,,/BattleChess3.ValinorTheme;component/Images/ChessTileSelected.png"/>
     
     <Style TargetType="TabControl">
         <Setter Property="Background" Value="Transparent"/>

@@ -1,4 +1,6 @@
-﻿using BattleChess3.Core.Models;
+﻿using System;
+using System.Collections.Generic;
+using BattleChess3.Core.Models;
 
 namespace BattleChess3.Core.Figures
 {
@@ -61,6 +63,11 @@ namespace BattleChess3.Core.Figures
         /// Gets Description of unit
         /// </summary>
         string Description { get; }
+        
+        /// <summary>
+        /// Images of player with id
+        /// </summary>
+        Dictionary<int, Uri> ImageUris { get; }
 
         /// <summary>
         /// Gets positions on which attack

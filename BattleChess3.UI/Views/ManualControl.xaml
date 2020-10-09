@@ -83,7 +83,7 @@
                                            Style="{DynamicResource TextBlockStyle}"/>
         
                                     <ItemsControl Grid.Row="0" Grid.RowSpan="2" Grid.Column="2"
-                                                  ItemsSource="{Binding Converter={StaticResource FigurePicturePathsConverter}}">
+                                                  ItemsSource="{Binding ImageUris}">
                                         <ItemsControl.ItemsPanel>
                                             <ItemsPanelTemplate>
                                                 <StackPanel Orientation="Vertical"/>
@@ -92,7 +92,7 @@
                                         <ItemsControl.ItemTemplate>
                                             <DataTemplate>
                                                 <Image MinHeight="0" MaxHeight="200"
-                                                       Source="{Binding}"/>
+                                                       Source="{Binding Value}"/>
                                             </DataTemplate>
                                         </ItemsControl.ItemTemplate>
                                     </ItemsControl>
