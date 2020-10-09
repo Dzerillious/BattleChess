@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BattleChess3.Core.Models
+﻿namespace BattleChess3.Core.Models
 {
     /// <summary>
     /// Class for each map

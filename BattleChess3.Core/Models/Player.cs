@@ -13,5 +13,7 @@ namespace BattleChess3.Core.Models
         {
             Id = id;
         }
+
+        public override string ToString() => $"Player{Id}";
     }
 }

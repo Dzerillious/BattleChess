@@ -101,9 +101,28 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Background="{TemplateBinding Background}">
+                    <Grid>
+                        <Border Background="{TemplateBinding Background}"
+                                RenderTransformOrigin="0.5, 0.5">
+                            <Border.RenderTransform>
+                                <RotateTransform />
+                            </Border.RenderTransform>
+                            <Border.Triggers>
+                                <EventTrigger RoutedEvent="Loaded">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(RotateTransform.Angle)"
+                                                             From="0" 
+                                                             To="360"
+                                                             RepeatBehavior="Forever"
+                                                             Duration="0:0:20" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Border.Triggers>
+                        </Border>
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                    </Border>
+                    </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

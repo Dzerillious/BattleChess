@@ -3,8 +3,8 @@
     public struct Position
     {
         public static readonly Position Invalid = new Position(-1, -1);
-        public int X { get; set; }
-        public int Y { get; set; }
+        public int X { get; }
+        public int Y { get; }
 
         public Position(int x, int y)
         {
@@ -12,25 +12,7 @@
             Y = y;
         }
 
-        public bool CheckIfInBoard()
-        {
-            return X >= 0 && X < 8 && Y >= 0 && Y < 8;
-        }
-
-        /// <summary>
-        /// Adds one position to another
-        /// </summary>
-        public Position AddPositions(Position position) => new Position(X + position.X, Y + position.Y);
-
-        /// <summary>
-        /// Subtracts one position from another
-        /// </summary>
-        public Position SubtractPositions(Position position) => new Position(X - position.X, Y - position.Y);
-
-        /// <summary>
-        /// Multiplies one position with coefficient
-        /// </summary>
-        public Position MultiplePosition(int coefficient) => new Position(X * coefficient, Y * coefficient);
+        public bool InBounds() => X >= 0 && X < 8 && Y >= 0 && Y < 8;
 
         public override bool Equals(object obj)
         {
@@ -43,6 +25,18 @@
 
         public static bool operator !=(Position left, Position right)
             => left.X != right.X || left.Y != right.Y;
+        
+        public static Position operator +(Position left, Position right)
+            => new Position(left.X + right.X, left.Y + right.Y);
+        
+        public static Position operator -(Position left, Position right)
+            => new Position(left.X - right.X, left.Y - right.Y);
+        
+        public static Position operator *(Position left, Position right)
+            => new Position(left.X * right.X, left.Y * right.Y);
+        
+        public static Position operator *(Position left, int right)
+            => new Position(left.X * right, left.Y * right);
         
         public static implicit operator int(Position position) 
             => position.X * 8 + position.Y;
@@ -62,5 +56,7 @@
                 return (X * 397) ^ Y;
             }
         }
+
+        public override string ToString() => $"({Y},{X})";
     }
 }

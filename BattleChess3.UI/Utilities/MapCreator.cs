@@ -24,7 +24,7 @@ namespace BattleChess3.UI.Utilities
             }
         }
 
-        private static  MapBlueprint[] CreateDefaultMaps() 
+        private static MapBlueprint[] CreateDefaultMaps() 
             => new[]
             {
                 new MapBlueprint

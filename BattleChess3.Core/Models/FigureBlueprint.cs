@@ -13,5 +13,7 @@ namespace BattleChess3.Core.Models
                 PlayerId = pair.id,
                 FigureName = pair.figure.UnitName
             };
+
+        public override string ToString() => $"{FigureName}{PlayerId}";
     }
 }

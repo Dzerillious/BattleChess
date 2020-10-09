@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using BattleChess3.Core.Figures;
 
 namespace BattleChess3.Core.Models
@@ -12,6 +11,8 @@ namespace BattleChess3.Core.Models
         public Player Owner = Player.Neutral;
         public IFigureType FigureType { get; set; }
         public double Hp { get; set; } = 0;
+
+        public Uri ImageUri => FigureType.ImageUris[Owner.Id];
 
         public Figure(IFigureType figureType)
         {
@@ -27,9 +28,6 @@ namespace BattleChess3.Core.Models
             Owner = owner;
             FigureType = figureType;
         }
-
-        public static string GetFigurePicturePath(IFigureType figureType, int id)
-            => $"{Directory.GetCurrentDirectory()}\\Pictures\\{figureType.GroupName}\\{figureType.UnitName}{id}";
 
         /// <summary>
         /// Check if can move at position of figure
@@ -75,5 +73,7 @@ namespace BattleChess3.Core.Models
             }
             return Hp - (attackingUnit.FigureType.Attack * bonus) - FigureType.Defence;
         }
+
+        public override string ToString() => $"{FigureType.UnitName}{Owner}";
     }
 }

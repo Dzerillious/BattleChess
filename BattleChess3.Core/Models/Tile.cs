@@ -4,5 +4,7 @@
     {
         public virtual Position Position { get; set; } = Position.Invalid;
         public virtual Figure Figure { get; set; }
+
+        public override string ToString() => $"{Figure}";
     }
 }

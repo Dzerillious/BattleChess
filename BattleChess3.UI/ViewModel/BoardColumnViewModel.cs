@@ -2,9 +2,6 @@
 
 namespace BattleChess3.UI.ViewModel
 {
-    /// <summary>
-    /// One column of board
-    /// </summary>
     public class BoardColumnViewModel : ViewModelBase
     {
         private TileViewModel[] _tiles = new TileViewModel[8];

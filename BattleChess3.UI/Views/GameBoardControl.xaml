@@ -39,8 +39,8 @@
                                 </Style>
                             </DataTemplate.Resources>
                             <Button Command="{Binding ClickedCommand}"
-                                    Style="{StaticResource ChessButtonStyle}">
-                                <Image Source="{Binding Figure, Converter={StaticResource FigurePictureConverter}}" />
+                                    Style="{DynamicResource ChessButtonStyle}">
+                                <Image Source="{Binding Figure.ImageUri}" />
                             </Button>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
