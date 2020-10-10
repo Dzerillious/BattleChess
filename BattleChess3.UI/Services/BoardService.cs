@@ -1,4 +1,5 @@
-﻿using BattleChess3.Core.Model;
+﻿using System.Linq;
+using BattleChess3.Core.Model;
 using BattleChess3.Core.Resources;
 using BattleChess3.UI.ViewModel;
 using GalaSoft.MvvmLight;
@@ -7,7 +8,9 @@ namespace BattleChess3.UI.Services
 {
     public class BoardService : ViewModelBase
     {
-        public Tile[] Board { get; }
+        public Tile[] Board { get; } = Enumerable.Range(0, Constants.BoardSize)
+                                                 .Select(position => (Tile) new TileViewModel(position))
+                                                 .ToArray();
         
         private Tile _selectedTile = Tile.Invalid;
         public Tile SelectedTile
@@ -31,17 +34,6 @@ namespace BattleChess3.UI.Services
                 Set(ref _mouseOnTile, value);
                 value.IsMouseOver = true;
             }
-        }
-        
-        public BoardService()
-        {
-            var board = new Tile[Constants.BoardSize];
-            for (var i = 0; i < Constants.BoardSize; i++)
-            {
-                Position position = i;
-                board[i] = new TileViewModel(position);
-            }
-            Board = board;
         }
     }
 }

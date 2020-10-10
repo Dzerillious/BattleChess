@@ -55,13 +55,15 @@ namespace BattleChess3.UI.ViewModel
         public MainWindowViewModel()
         {
             NewGameCommand = new RelayCommand(NewGame);
+            SaveGameCommand = new RelayCommand(() => { });
+            DeleteGameCommand = new RelayCommand(() => { });
             SelectOptionsCommand = new RelayCommand(() => OptionsTabSelected = true);
             CloseApplicationCommand = new RelayCommand(CloseApplication);
         }
 
         private void NewGame()
         {
-            _gameService.LoadMap(_mapService.SelectedMap);
+            _mapService.LoadMap(_mapService.SelectedMap);
             GameTabEnabled = true;
             GameTabSelected = true;
         }

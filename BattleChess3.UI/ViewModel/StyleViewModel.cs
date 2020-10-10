@@ -11,18 +11,21 @@ namespace BattleChess3.UI.ViewModel
     /// <summary>
     /// Interface for style of application
     /// </summary>
-    public class Style
+    public class StyleViewModel
     {
-        public readonly ResourceDictionary ResourceDictionary = new ResourceDictionary();
+        public static readonly StyleViewModel Invalid = new StyleViewModel();
         
+        public readonly ResourceDictionary ResourceDictionary = new ResourceDictionary();
         public string Name { get; }
-
-        /// <summary>
-        /// Gets path of preview image of style
-        /// </summary>
         public ImageSource Preview { get; }
         
-        public Style(string assemblyPath)
+        public StyleViewModel()
+        {
+            Name = string.Empty;
+            Preview = (ImageSource) ResourceDictionary["Preview"];
+        }
+        
+        public StyleViewModel(string assemblyPath)
         {
             LoadResources(assemblyPath);
 
@@ -37,14 +40,19 @@ namespace BattleChess3.UI.ViewModel
             if (stream == null) return;
             var resourceReader = new ResourceReader(stream);
 
-            foreach (DictionaryEntry resource in resourceReader)
+            foreach (DictionaryEntry? resource in resourceReader)
             {
-                var keyName = resource.Key.ToString();
-                if (!keyName.EndsWith(".baml")) continue;
+                if (!(resource is { } entry)) return;
+                string keyName = entry.Key.ToString() ?? string.Empty;
+                if (!keyName.EndsWith(".baml", StringComparison.OrdinalIgnoreCase)) continue;
+                
                 Uri uri = new Uri("/" + assembly.GetName().Name + ";component/" + keyName.Replace(".baml", ".xaml"), UriKind.Relative);
                 ResourceDictionary dictionary = (ResourceDictionary) Application.LoadComponent(uri);
-                foreach (object key in dictionary.Keys)
+                foreach (object? keyObject in dictionary.Keys)
+                {
+                    if (!(keyObject is { } key)) return;
                     ResourceDictionary[key] = dictionary[key];
+                }
             }
         }
     }

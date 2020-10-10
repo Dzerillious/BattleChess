@@ -53,7 +53,7 @@ namespace BattleChess3.UI.ViewModel
             Position = position;
         }
 
-        protected void Set<T>(ref T field, T value, [CallerMemberName] string? propertyName = null)
+        private void Set<T>(ref T field, T value, [CallerMemberName] string? propertyName = null)
         {
             var isSet = !field.Equals(value);
             field = value;

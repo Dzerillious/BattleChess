@@ -1,27 +1,32 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
+using BattleChess3.UI.ViewModel;
 using GalaSoft.MvvmLight;
-using Style = BattleChess3.UI.ViewModel.Style;
 
 namespace BattleChess3.UI.Services
 {
     public class StyleService : ViewModelBase
     {
-        private Style _selectedStyle;
-        public Style SelectedStyle
+        private StyleViewModel _selectedStyleViewModel = StyleViewModel.Invalid;
+        public StyleViewModel SelectedStyleViewModel
         {
-            get => _selectedStyle;
+            get => _selectedStyleViewModel;
             set
             {
-                Set(ref _selectedStyle, value);
-                foreach (object key in value.ResourceDictionary.Keys)
+                Set(ref _selectedStyleViewModel, value);
+                foreach (object? keyObject in value.ResourceDictionary.Keys)
+                {
+                    if (!(keyObject is { } key)) return;
                     Application.Current.Resources[key] = value.ResourceDictionary[key];
+                }
             }
         }
 
-        private Style[] _styles;
-        public Style[] Styles
+        private StyleViewModel[] _styles = Array.Empty<StyleViewModel>();
+        public StyleViewModel[] Styles
         {
             get => _styles;
             set => Set(ref _styles, value);
@@ -29,17 +34,17 @@ namespace BattleChess3.UI.Services
 
         public StyleService()
         {
-            ReloadStyles();
+            Task.Run(ReloadStyles);
         }
         
         public void ReloadStyles()
         {
             DirectoryInfo directory = new DirectoryInfo("Themes");
             Styles = directory.GetFiles("*.dll")
-                              .Select(fileInfo => new Style(fileInfo.FullName))
+                              .Select(fileInfo => new StyleViewModel(fileInfo.FullName))
                               .ToArray();
-            SelectedStyle = Styles.FirstOrDefault(style => style.Name.Contains("Paper"))
-                         ?? Styles.First();
+            SelectedStyleViewModel = Styles.FirstOrDefault(style => style.Name.Contains("Paper"))
+                                  ?? Styles.First();
         }
     }
 }

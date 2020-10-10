@@ -7,9 +7,8 @@ namespace BattleChess3.Core.Model.Figures
         public static readonly Figure Empty = new Figure(Player.Neutral, EmptyFigure.Instance);
         
         public Player Owner { get; }
-        public double Hp { get; set; }
         public IFigureType FigureType { get; set; }
-
+        public double Hp { get; set; }
         public Uri ImageUri => FigureType.ImageUris[Owner.Id];
 
         public Figure(Player owner, IFigureType figureType)

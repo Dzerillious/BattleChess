@@ -10,7 +10,7 @@
     <ListBox BorderThickness="0"
              Background="{DynamicResource DefaultObjectBrush}"
              ItemsSource="{Binding Styles}"
-             SelectedItem="{Binding SelectedStyle}"
+             SelectedItem="{Binding SelectedStyleViewModel}"
              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
              ScrollViewer.VerticalScrollBarVisibility="Hidden">
         <ListBox.ItemsPanel>
