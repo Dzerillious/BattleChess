@@ -1,22 +1,23 @@
 ﻿using BattleChess3.UI.Services;
+using CommonServiceLocator;
 
 namespace BattleChess3.UI.ViewModel
 {
     public static class ViewModelLocator
     {
         public static MainWindowViewModel MainWindowViewModel
-            => CommonServiceLocator.ServiceLocator.Current.GetInstance<MainWindowViewModel>();
+            => ServiceLocator.Current.GetInstance<MainWindowViewModel>();
         public static BoardViewModel BoardViewModel
-            => CommonServiceLocator.ServiceLocator.Current.GetInstance<BoardViewModel>();
+            => ServiceLocator.Current.GetInstance<BoardViewModel>();
         public static MapService MapService
-            => CommonServiceLocator.ServiceLocator.Current.GetInstance<MapService>();
+            => ServiceLocator.Current.GetInstance<MapService>();
         public static StyleService StyleService
-            => CommonServiceLocator.ServiceLocator.Current.GetInstance<StyleService>();
+            => ServiceLocator.Current.GetInstance<StyleService>();
         public static GameService GameService
-            => CommonServiceLocator.ServiceLocator.Current.GetInstance<GameService>();
+            => ServiceLocator.Current.GetInstance<GameService>();
         public static BoardService BoardService
-            => CommonServiceLocator.ServiceLocator.Current.GetInstance<BoardService>();
+            => ServiceLocator.Current.GetInstance<BoardService>();
         public static FigureService FigureService
-            => CommonServiceLocator.ServiceLocator.Current.GetInstance<FigureService>();
+            => ServiceLocator.Current.GetInstance<FigureService>();
     }
 }

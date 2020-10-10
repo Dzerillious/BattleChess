@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using BattleChess3.Core.Model;
-using BattleChess3.Core.Model.Figure;
+using BattleChess3.Core.Model.Figures;
 using BattleChess3.DefaultFigures.Localization;
 
 namespace BattleChess3.DefaultFigures
@@ -11,22 +11,20 @@ namespace BattleChess3.DefaultFigures
         public static Empty Instance { get; } = new Empty();
         
         public static Figure Figure { get; }
-            = new Figure(Instance)
+            = new Figure(Player.Neutral, Instance)
             {
                 Hp = 100,
-                Owner = Player.Neutral
             };
         
         public string ShownName => CurrentLocalization.Instance["Empty_Name"];
+        public string Description { get; } = CurrentLocalization.Instance["Empty_Description"];
         public string UnitName => $"{nameof(DefaultFigureGroup)}.{nameof(Empty)}";
-        public string GroupName => nameof(DefaultFigureGroup);
         public FigureTypes UnitTypes => FigureTypes.Nothing;
         public FigureTypes Bonus => FigureTypes.Nothing;
         public FigureTypes AntiBonus => FigureTypes.Nothing;
         public double Attack => 0;
         public double Defence => double.PositiveInfinity;
         public bool MovingAttack => false;
-        public string Description { get; } = CurrentLocalization.Instance["Empty_Description"];
 
         public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
         {
@@ -35,7 +33,11 @@ namespace BattleChess3.DefaultFigures
 
         public int Cost => 0;
 
-        public void AttackAction(Position from, Position to, Tile[] board)
+        public void AttackAction(Tile from, Tile to, Tile[] board)
+        {
+        }
+
+        public void MoveAction(Tile from, Tile to, Tile[] board)
         {
         }
 

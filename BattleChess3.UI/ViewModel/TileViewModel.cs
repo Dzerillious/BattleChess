@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using BattleChess3.Core.Model;
-using BattleChess3.Core.Model.Figure;
+using BattleChess3.Core.Model.Figures;
 using BattleChess3.UI.Services;
 using CommonServiceLocator;
 using GalaSoft.MvvmLight.Command;

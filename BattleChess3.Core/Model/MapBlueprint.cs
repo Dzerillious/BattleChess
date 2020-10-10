@@ -1,4 +1,5 @@
-﻿using BattleChess3.Core.Model.Figure;
+﻿using System;
+using BattleChess3.Core.Model.Figures;
 
 namespace BattleChess3.Core.Model
 {
@@ -7,11 +8,11 @@ namespace BattleChess3.Core.Model
     /// </summary>
     public class MapBlueprint
     {
-        public string Path { get; set; }
-        public string Name { get; set; }
-        public string PreviewPath { get; set; }
-        public int StartingPlayer { get; set; }
-        public int PlayersCount { get; set; }
-        public FigureBlueprint[] Blueprint { get; set; }
+        public string Path { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
+        public string PreviewPath { get; set; } = string.Empty;
+        public int StartingPlayer { get; set; } = 0;
+        public int PlayersCount { get; set; } = 2;
+        public FigureBlueprint[] Blueprint { get; set; } = Array.Empty<FigureBlueprint>();
     }
 }

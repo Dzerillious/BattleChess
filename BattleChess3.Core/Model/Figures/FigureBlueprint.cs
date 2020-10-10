@@ -1,9 +1,9 @@
-﻿namespace BattleChess3.Core.Model.Figure
+﻿namespace BattleChess3.Core.Model.Figures
 {
     public class FigureBlueprint
     {
-        public int PlayerId { get; set; }
-        public string FigureName { get; set; } = "";
+        public int PlayerId { get; set; } = Player.Neutral.Id;
+        public string FigureName { get; set; } = string.Empty;
 
         public static implicit operator FigureBlueprint((int id, IFigureType figure) pair) 
             => new FigureBlueprint

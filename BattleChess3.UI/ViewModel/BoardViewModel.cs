@@ -1,6 +1,7 @@
 ﻿using BattleChess3.Core.Model;
 using BattleChess3.Core.Resources;
 using BattleChess3.UI.Services;
+using CommonServiceLocator;
 using GalaSoft.MvvmLight;
 
 namespace BattleChess3.UI.ViewModel
@@ -8,7 +9,7 @@ namespace BattleChess3.UI.ViewModel
     public class BoardViewModel : ViewModelBase
     {
         private readonly BoardService _boardService 
-            = CommonServiceLocator.ServiceLocator.Current.GetInstance<BoardService>();
+            = ServiceLocator.Current.GetInstance<BoardService>();
         
         private TileViewModel[] _tiles = new TileViewModel[Constants.BoardSize];
         public TileViewModel[] Tiles

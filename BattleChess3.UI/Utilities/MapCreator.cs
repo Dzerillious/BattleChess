@@ -2,7 +2,7 @@
 using System.IO;
 using BattleChess3.ChessFigures;
 using BattleChess3.Core.Model;
-using BattleChess3.Core.Model.Figure;
+using BattleChess3.Core.Model.Figures;
 using BattleChess3.Core.Utilities;
 using BattleChess3.DefaultFigures;
 using BattleChess3.HobbitFigures;

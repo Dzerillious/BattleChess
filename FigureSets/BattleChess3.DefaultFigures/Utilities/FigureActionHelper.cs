@@ -4,7 +4,7 @@ namespace BattleChess3.DefaultFigures.Utilities
 {
     public static class FigureActionHelper
     {
-        public static void MoveToPosition(this Tile tile, Tile[] board, Position position)
+        public static void MoveToPosition(this Tile tile, Position position, Tile[] board)
         {
             board[position].Figure = board[tile.Position].Figure;
             board[tile.Position].Figure = Empty.Figure;

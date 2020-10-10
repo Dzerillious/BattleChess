@@ -19,12 +19,6 @@ namespace BattleChess3.Core.Model
                               && X < Constants.BoardLength 
                               && Y < Constants.BoardLength;
 
-        public override bool Equals(object obj)
-        {
-            if (!(obj is Position pos)) return false;
-            return pos.X == X && pos.Y == Y;
-        }
-
         public static bool operator ==(Position left, Position right)
             => left.X == right.X && left.Y == right.Y;
 
@@ -52,6 +46,13 @@ namespace BattleChess3.Core.Model
         public static implicit operator Position((int y, int x) pos) 
             => new Position(pos.y, pos.x);
 
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Position pos)) return false;
+            return Equals(pos);
+        }
+        
         public bool Equals(Position other) => X == other.X && Y == other.Y;
 
         public override int GetHashCode()

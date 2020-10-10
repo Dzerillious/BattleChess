@@ -12,10 +12,7 @@ namespace BattleChess3.Core.Utilities
 
         protected abstract ResourceManager ResManager();
 
-        public string this[string key] =>
-            key == null
-                ? string.Empty
-                : ResManager().GetString(key, CultureInfo.CurrentCulture) ?? string.Empty;
+        public string this[string key] => ResManager().GetString(key, CultureInfo.CurrentCulture) ?? string.Empty;
 
         public static CultureInfo CurrentCulture
         {
@@ -28,6 +25,6 @@ namespace BattleChess3.Core.Utilities
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
     }
 }

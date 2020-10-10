@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using BattleChess3.ChessFigures.Localization;
 using BattleChess3.Core.Model;
-using BattleChess3.Core.Model.Figure;
+using BattleChess3.Core.Model.Figures;
 using BattleChess3.DefaultFigures.Utilities;
 
 namespace BattleChess3.ChessFigures
@@ -11,16 +11,15 @@ namespace BattleChess3.ChessFigures
     {
         public static readonly Pawn Instance = new Pawn();
         public string ShownName => CurrentLocalization.Instance["Pawn_Name"];
-        public string UnitName => $"{nameof(ChessFigureGroup)}.{nameof(Pawn)}";
-        public string GroupName => nameof(ChessFigureGroup);
-        public FigureTypes UnitTypes => FigureTypes.Foot;
-        public FigureTypes Bonus => FigureTypes.Nothing;
-        public FigureTypes AntiBonus => FigureTypes.Nothing;
-        public double Attack => 100;
-        public double Defence => 0;
-        public bool MovingAttack => true;
-        public int Cost => 1;
         public string Description => CurrentLocalization.Instance["Pawn_Description"];
+        public string UnitName { get; } = $"{nameof(ChessFigureGroup)}.{nameof(Pawn)}";
+        public FigureTypes UnitTypes { get; } = FigureTypes.Foot;
+        public FigureTypes Bonus { get; } = FigureTypes.Nothing;
+        public FigureTypes AntiBonus { get; } = FigureTypes.Nothing;
+        public double Attack { get; } = 100;
+        public double Defence { get; } = 0;
+        public bool MovingAttack { get; } = true;
+        public int Cost { get; } = 1;
 
         public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
         {
@@ -28,8 +27,11 @@ namespace BattleChess3.ChessFigures
             {1, new Uri("pack://application:,,,/BattleChess3.ChessFigures;component/Images/Pawn2.png", UriKind.Absolute)},
         };
 
-        public void AttackAction(Position from, Position to, Tile[] board)
-            => board[to].KillFigure(board);
+        public void AttackAction(Tile from, Tile to, Tile[] board)
+            => to.KillFigure(board);
+
+        public void MoveAction(Tile from, Tile to, Tile[] board)
+            => from.MoveToPosition(to.Position, board);
 
         private readonly Position[][] _firstMoveChain = 
         {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BattleChess3.Core.Model.Figure
+namespace BattleChess3.Core.Model.Figures
 {
     /// <summary>
     /// Interface for figures types
@@ -14,54 +14,49 @@ namespace BattleChess3.Core.Model.Figure
         string ShownName { get; }
 
         /// <summary>
-        /// Gets Name of unit
+        /// Gets description of unit
+        /// </summary>
+        string Description { get; }
+
+        /// <summary>
+        /// Gets name of unit
         /// </summary>
         string UnitName { get; }
-        
-        /// <summary>
-        /// Gets name of group of figures
-        /// </summary>
-        string GroupName { get; }
 
         /// <summary>
-        /// Gets Type of unit
-        /// </summary>
-        FigureTypes UnitTypes { get; }
-
-        /// <summary>
-        /// Gets Bonus against type of unit
-        /// </summary>
-        FigureTypes Bonus { get; }
-
-        /// <summary>
-        /// Gets Anti bonus against type of unit
-        /// </summary>
-        FigureTypes AntiBonus { get; }
-
-        /// <summary>
-        /// Gets Attack
+        /// Gets attack
         /// </summary>
         double Attack { get; }
 
         /// <summary>
-        /// Gets Defence
+        /// Gets defence
         /// </summary>
         double Defence { get; }
 
         /// <summary>
-        /// Gets If move while attacking
+        /// Gets type of unit
+        /// </summary>
+        FigureTypes UnitTypes { get; }
+
+        /// <summary>
+        /// Gets bonus against type of unit
+        /// </summary>
+        FigureTypes Bonus { get; }
+
+        /// <summary>
+        /// Gets anti-bonus against type of unit
+        /// </summary>
+        FigureTypes AntiBonus { get; }
+
+        /// <summary>
+        /// Gets if move while attacking
         /// </summary>
         bool MovingAttack { get; }
 
         /// <summary>
-        /// Gets Cost of unit
+        /// Gets cost of unit
         /// </summary>
         int Cost { get; }
-
-        /// <summary>
-        /// Gets Description of unit
-        /// </summary>
-        string Description { get; }
         
         /// <summary>
         /// Images of player with id
@@ -71,7 +66,12 @@ namespace BattleChess3.Core.Model.Figure
         /// <summary>
         /// Attack action
         /// </summary>
-        void AttackAction(Position from, Position to, Tile[] board);
+        void AttackAction(Tile from, Tile to, Tile[] board);
+
+        /// <summary>
+        /// Move action
+        /// </summary>
+        void MoveAction(Tile from, Tile to, Tile[] board);
 
         /// <summary>
         /// Check if can move on position

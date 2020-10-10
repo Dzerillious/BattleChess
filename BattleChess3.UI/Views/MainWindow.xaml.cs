@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
-using FontFamily = System.Windows.Media.FontFamily;
+using System.Windows.Media;
 
 namespace BattleChess3.UI.Views
 {

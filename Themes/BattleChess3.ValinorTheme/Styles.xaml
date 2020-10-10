@@ -134,7 +134,7 @@
             <DataTrigger Binding="{Binding IsPossibleMove}" Value="True">
                 <Setter Property="Background" Value="{StaticResource ChessTileCanGoBackground}"/>
             </DataTrigger>
-            <DataTrigger Binding="{Binding IsPossibleAction}" Value="True">
+            <DataTrigger Binding="{Binding IsPossibleAttack}" Value="True">
                 <Setter Property="Background" Value="{StaticResource ChessTileDangeredBackground}"/>
             </DataTrigger>
             <DataTrigger Binding="{Binding IsMouseOver}" Value="True">

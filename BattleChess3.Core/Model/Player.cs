@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using BattleChess3.Core.Model.Figures;
 
 namespace BattleChess3.Core.Model
 {
@@ -7,7 +8,7 @@ namespace BattleChess3.Core.Model
         public static readonly Player Neutral = new Player(-1);
         
         public int Id { get; }
-        public List<Figure.Figure> Figures { get; } = new List<Figure.Figure>();
+        public List<Figure> Figures { get; } = new List<Figure>();
 
         public Player(int id)
         {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BattleChess3.Core.Model.Figure
+namespace BattleChess3.Core.Model.Figures
 {
     public class EmptyFigure : IFigureType
     {
@@ -20,12 +20,16 @@ namespace BattleChess3.Core.Model.Figure
         public string Description { get; } = string.Empty;
         public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>();
 
-        public void AttackAction(Position @from, Position to, Tile[] board)
+        public void AttackAction(Tile from, Tile to, Tile[] board)
         {
         }
 
-        public Position[][] GetMoveChains(Position @from) => Array.Empty<Position[]>();
+        public void MoveAction(Tile from, Tile to, Tile[] board)
+        {
+        }
 
-        public Position[][] GetAttackChains(Position @from) => Array.Empty<Position[]>();
+        public Position[][] GetMoveChains(Position from) => Array.Empty<Position[]>();
+
+        public Position[][] GetAttackChains(Position from) => Array.Empty<Position[]>();
     }
 }
