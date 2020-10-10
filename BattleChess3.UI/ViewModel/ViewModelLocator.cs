@@ -7,8 +7,6 @@ namespace BattleChess3.UI.ViewModel
     {
         public static MainWindowViewModel MainWindowViewModel
             => ServiceLocator.Current.GetInstance<MainWindowViewModel>();
-        public static BoardViewModel BoardViewModel
-            => ServiceLocator.Current.GetInstance<BoardViewModel>();
         public static MapService MapService
             => ServiceLocator.Current.GetInstance<MapService>();
         public static StyleService StyleService

@@ -2,16 +2,11 @@
 using System.Runtime.CompilerServices;
 using BattleChess3.Core.Model;
 using BattleChess3.Core.Model.Figures;
-using BattleChess3.UI.Services;
-using CommonServiceLocator;
-using GalaSoft.MvvmLight.Command;
 
 namespace BattleChess3.UI.ViewModel
 {
     public class TileViewModel : Tile, INotifyPropertyChanged
     {
-        private readonly GameService _gameService = ServiceLocator.Current.GetInstance<GameService>();
-
         public override Position Position { get; }
 
         private bool _isMouseOver;
@@ -52,18 +47,13 @@ namespace BattleChess3.UI.ViewModel
                 OnPropertyChanged();
             }
         }
-        
-        public RelayCommand ClickedCommand { get; private set; }
-        public RelayCommand MouseEnterCommand { get; private set; }
 
         public TileViewModel(Position position)
         {
             Position = position;
-            ClickedCommand = new RelayCommand(() => _gameService.ClickedAtTile(this));
-            MouseEnterCommand = new RelayCommand(() => _gameService.MouseEnterTile(this));
         }
 
-        protected void Set<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
+        protected void Set<T>(ref T field, T value, [CallerMemberName] string? propertyName = null)
         {
             var isSet = !field.Equals(value);
             field = value;
@@ -72,7 +62,7 @@ namespace BattleChess3.UI.ViewModel
 
         public event PropertyChangedEventHandler? PropertyChanged;
         [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

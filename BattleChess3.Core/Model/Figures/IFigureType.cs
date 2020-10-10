@@ -3,9 +3,6 @@ using System.Collections.Generic;
 
 namespace BattleChess3.Core.Model.Figures
 {
-    /// <summary>
-    /// Interface for figures types
-    /// </summary>
     public interface IFigureType
     {
         /// <summary>

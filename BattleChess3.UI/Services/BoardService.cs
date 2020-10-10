@@ -1,13 +1,13 @@
-﻿using System.Linq;
-using BattleChess3.Core.Model;
+﻿using BattleChess3.Core.Model;
 using BattleChess3.Core.Resources;
+using BattleChess3.UI.ViewModel;
 using GalaSoft.MvvmLight;
 
 namespace BattleChess3.UI.Services
 {
     public class BoardService : ViewModelBase
     {
-        public readonly Tile[] Board = Enumerable.Repeat(Tile.Invalid, Constants.BoardSize).ToArray();
+        public Tile[] Board { get; }
         
         private Tile _selectedTile = Tile.Invalid;
         public Tile SelectedTile
@@ -31,6 +31,17 @@ namespace BattleChess3.UI.Services
                 Set(ref _mouseOnTile, value);
                 value.IsMouseOver = true;
             }
+        }
+        
+        public BoardService()
+        {
+            var board = new Tile[Constants.BoardSize];
+            for (var i = 0; i < Constants.BoardSize; i++)
+            {
+                Position position = i;
+                board[i] = new TileViewModel(position);
+            }
+            Board = board;
         }
     }
 }

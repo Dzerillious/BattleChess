@@ -30,7 +30,7 @@ namespace BattleChess3.UI.Utilities
             {
                 new MapBlueprint
                 {
-                    Blueprint = new FigureBlueprint[]
+                    Figures = new FigureBlueprint[]
                     {
                         (1, Ninja.Instance), (1, Ninja.Instance), (1, Ninja.Instance), (1, Ninja.Instance), (1, Ninja.Instance), (1, Ninja.Instance), (1, Ninja.Instance), (1, Ninja.Instance), 
                         (1, Ninja.Instance), (1, Ninja.Instance), (1, Ninja.Instance), (1, Ninja.Instance), (1, Ninja.Instance), (1, Ninja.Instance), (1, Ninja.Instance), (1, Ninja.Instance), 
@@ -49,7 +49,7 @@ namespace BattleChess3.UI.Utilities
                 }, 
                 new MapBlueprint
                 {
-                    Blueprint = new FigureBlueprint[]
+                    Figures = new FigureBlueprint[]
                     {
                         (1, Rook.Instance), (1, Knight.Instance), (1, Bishop.Instance), (1, Queen.Instance), (1, King.Instance), (1, Bishop.Instance), (1, Knight.Instance), (1, Rook.Instance), 
                         (1, Pawn.Instance), (1, Pawn.Instance), (1, Pawn.Instance), (1, Pawn.Instance), (1, Pawn.Instance), (1, Pawn.Instance), (1, Pawn.Instance), (1, Pawn.Instance), 
@@ -68,7 +68,7 @@ namespace BattleChess3.UI.Utilities
                 }, 
                 new MapBlueprint
                 {
-                    Blueprint = new FigureBlueprint[]
+                    Figures = new FigureBlueprint[]
                     {
                         (1, LegolasNazgul.Instance), (1, SamSaruman.Instance), (1, PipinTroll.Instance), (1, GandalfWitchKing.Instance), (1, AragornSauron.Instance), (1, MerryTroll.Instance), (1, FrodoGollum.Instance), (1, GimliNazgul.Instance), 
                         (1, SoldierOrc.Instance), (1, SoldierOrc.Instance), (1, SoldierOrc.Instance), (1, SoldierOrc.Instance), (1, SoldierOrc.Instance), (1, SoldierOrc.Instance), (1, SoldierOrc.Instance), (1, SoldierOrc.Instance), 
@@ -87,7 +87,7 @@ namespace BattleChess3.UI.Utilities
                 }, 
                 new MapBlueprint
                 {
-                    Blueprint = new FigureBlueprint[]
+                    Figures = new FigureBlueprint[]
                     {
                         (1, MinorWizard.Instance), (1, Warrior.Instance), (1, Helper.Instance), (1, RingBearer.Instance), (1, Leader.Instance), (1, Helper.Instance), (1, Warrior.Instance), (1, MinorWizard.Instance), 
                         (1, Soldier.Instance), (1, Soldier.Instance), (1, Soldier.Instance), (1, Soldier.Instance), (1, Soldier.Instance), (1, Soldier.Instance), (1, Soldier.Instance), (1, Soldier.Instance), 
@@ -106,7 +106,7 @@ namespace BattleChess3.UI.Utilities
                 }, 
                 new MapBlueprint
                 {
-                    Blueprint = new FigureBlueprint[]
+                    Figures = new FigureBlueprint[]
                     {
                         (1, UlmoAncalagon.Instance), (1, IrmoUngoliant.Instance), (1, NiennaBalrog.Instance), (1, YavannaGlaurung.Instance), (1, ManweMelkor.Instance), (1, AuleGothmog.Instance), (1, VardaSauron.Instance), (1, OromeCarcharoth.Instance), 
                         (1, ElfOrc.Instance), (1, ElfOrc.Instance), (1, ElfOrc.Instance), (1, ElfOrc.Instance), (1, ElfOrc.Instance), (1, ElfOrc.Instance), (1, ElfOrc.Instance), (1, ElfOrc.Instance), 

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using BattleChess3.Core.Model;
@@ -10,14 +11,14 @@ namespace BattleChess3.UI.Services
 {
     public class MapService : ViewModelBase
     {
-        private MapBlueprint[] _maps;
+        private MapBlueprint[] _maps = Array.Empty<MapBlueprint>();
         public MapBlueprint[] Maps
         {
             get => _maps;
             set => Set(ref _maps, value);
         }
 
-        private MapBlueprint _selectedMap;
+        private MapBlueprint _selectedMap = MapBlueprint.Empty;
         public MapBlueprint SelectedMap
         {
             get => _selectedMap;

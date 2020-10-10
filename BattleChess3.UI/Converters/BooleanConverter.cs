@@ -7,8 +7,8 @@ namespace BattleChess3.UI.Converters
 {
     public class BooleanConverter : MarkupExtension, IValueConverter
     {
-        public object TrueValue { get; set; }
-        public object FalseValue { get; set; }
+        public object TrueValue { get; set; } = true;
+        public object FalseValue { get; set; } = false;
 
         public override object ProvideValue(IServiceProvider serviceProvider) => this;
 

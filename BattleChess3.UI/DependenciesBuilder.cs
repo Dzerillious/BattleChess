@@ -44,8 +44,6 @@ namespace BattleChess3.UI
             
             builder.RegisterType<MainWindowViewModel>()
                    .AsSelf();
-            builder.RegisterType<BoardViewModel>()
-                   .AsSelf();
             
 
             var locator = new AutofacServiceLocator(builder.Build());

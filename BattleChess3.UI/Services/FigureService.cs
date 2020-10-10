@@ -12,23 +12,23 @@ namespace BattleChess3.UI.Services
 {
     public class FigureService : ViewModelBase
     {
-        private Dictionary<string, IFigureType> _figuresDictionary;
+        private Dictionary<string, IFigureType> _figuresDictionary = new Dictionary<string, IFigureType>();
 
-        private IFigureGroup[] _figureGroups;
+        private IFigureGroup[] _figureGroups = Array.Empty<IFigureGroup>();
         public IFigureGroup[] FigureGroups
         {
             get => _figureGroups;
             set => Set(ref _figureGroups, value);
         }
 
-        private IFigureGroup _selectedFigureGroup;
+        private IFigureGroup _selectedFigureGroup = EmptyFigureGroup.Instance;
         public IFigureGroup SelectedFigureGroup
         {
             get => _selectedFigureGroup;
             set => Set(ref _selectedFigureGroup, value);
         }
         
-        public RelayCommand<IFigureGroup> SelectFigureGroupCommand { get; private set; }
+        public RelayCommand<IFigureGroup> SelectFigureGroupCommand { get; }
 
         public FigureService()
         {
@@ -40,14 +40,14 @@ namespace BattleChess3.UI.Services
         {
             var groupType = typeof(IFigureGroup);
             DirectoryInfo directory = new DirectoryInfo("FigureSets");
-            var files = directory.GetFiles("*.dll")
-                                 .Select(file => Path.GetFileNameWithoutExtension(file.Name));
 
-            FigureGroups = files.Select(Assembly.Load)
-                                .SelectMany(assembly => assembly.GetTypes())
-                                .Where(type => type.GetInterfaces().Any(x => x == groupType))
-                                .Select(type => (IFigureGroup) Activator.CreateInstance(type)!)
-                                .ToArray();
+            FigureGroups = directory.GetFiles("*.dll")
+                                    .Select(file => Path.GetFileNameWithoutExtension(file.Name))
+                                    .Select(Assembly.Load)
+                                    .SelectMany(assembly => assembly.GetTypes())
+                                    .Where(type => type.GetInterfaces().Any(x => x == groupType))
+                                    .Select(type => (IFigureGroup) Activator.CreateInstance(type)!)
+                                    .ToArray();
 
             _figuresDictionary = FigureGroups.SelectMany(group => group.GroupFigures)
                                              .ToDictionary(figure => figure.UnitName, figure => figure);

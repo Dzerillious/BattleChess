@@ -7,8 +7,8 @@ namespace BattleChess3.UI.Converters
 {
     public class IsNullConverter : MarkupExtension, IValueConverter
     {
-        public object NullValue { get; set; }
-        public object NotNullValue { get; set; }
+        public object NullValue { get; set; } = true;
+        public object NotNullValue { get; set; } = false;
 
         public override object ProvideValue(IServiceProvider serviceProvider) => this;
 

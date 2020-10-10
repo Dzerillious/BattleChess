@@ -7,9 +7,9 @@
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300"
-             DataContext="{Binding Source={x:Static viewModel:ViewModelLocator.BoardViewModel}}">
+             DataContext="{Binding Source={x:Static viewModel:ViewModelLocator.BoardService}}">
     <ItemsControl HorizontalAlignment="Stretch"
-                  ItemsSource="{Binding Tiles}">
+                  ItemsSource="{Binding Board}">
         <ItemsControl.ItemsPanel>
             <ItemsPanelTemplate>
                 <UniformGrid Columns="8"/>
@@ -17,11 +17,16 @@
         </ItemsControl.ItemsPanel>
         <ItemsControl.ItemTemplate>
             <DataTemplate>
-                <Button Command="{Binding ClickedCommand}"
-                        Style="{DynamicResource ChessButtonStyle}">
+                <Button Command="{Binding ClickedCommand, 
+                            Source={x:Static viewModel:ViewModelLocator.GameService}}"
+                        CommandParameter="{Binding}"
+                        Style="{DynamicResource ChessButtonStyle}"
+                        d:DataContext="{d:DesignInstance viewModel:TileViewModel}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseEnter">
-                            <i:InvokeCommandAction Command="{Binding MouseEnterCommand}"/>
+                            <i:InvokeCommandAction Command="{Binding MouseEnterCommand, 
+                                                        Source={x:Static viewModel:ViewModelLocator.GameService}}"
+                                                   CommandParameter="{Binding}"/>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                     <Image Source="{Binding Figure.ImageUri}" />

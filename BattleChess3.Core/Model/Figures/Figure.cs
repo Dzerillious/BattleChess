@@ -2,9 +2,6 @@
 
 namespace BattleChess3.Core.Model.Figures
 {
-    /// <summary>
-    /// Class for each figure
-    /// </summary>
     public class Figure
     {
         public static readonly Figure Empty = new Figure(Player.Neutral, EmptyFigure.Instance);
@@ -22,8 +19,6 @@ namespace BattleChess3.Core.Model.Figures
             FigureType = figureType;
         }
 
-        public override string ToString() => $"{FigureType.UnitName}{Owner}";
-
         public bool CanKill(Figure figure)
         {
             if (Owner.Id == figure.Owner.Id) return false;
@@ -31,5 +26,7 @@ namespace BattleChess3.Core.Model.Figures
             double antiBonusCoefficient = (figure.FigureType.UnitTypes & FigureType.Bonus) > 0 ? 0.5 : 1;
             return figure.Hp - (FigureType.Attack - figure.FigureType.Defence) * bonusCoefficient * antiBonusCoefficient <= 0;
         }
+
+        public override string ToString() => $"{FigureType.UnitName}{Owner}";
     }
 }
