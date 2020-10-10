@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using BattleChess3.Core.Models;
 
-namespace BattleChess3.Core.Figures
+namespace BattleChess3.Core.Model.Figure
 {
     /// <summary>
     /// Interface for figures types
@@ -77,11 +76,11 @@ namespace BattleChess3.Core.Figures
         /// <summary>
         /// Check if can move on position
         /// </summary>
-        Position[][] MoveChain(Position from);
+        Position[][] GetMoveChains(Position from);
 
         /// <summary>
         /// Check if can attack on position
         /// </summary>
-        Position[][] AttackChain(Position from);
+        Position[][] GetAttackChains(Position from);
     }
 }

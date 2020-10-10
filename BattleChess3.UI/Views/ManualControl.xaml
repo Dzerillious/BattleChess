@@ -5,8 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:util="clr-namespace:BattleChess3.UI.Utilities"
              xmlns:viewModel="clr-namespace:BattleChess3.UI.ViewModel"
-             mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300"
+             mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300"
              DataContext="{Binding Source={x:Static viewModel:ViewModelLocator.FigureService}}">
     <Grid>
         <Grid.ColumnDefinitions>

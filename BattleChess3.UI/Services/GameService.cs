@@ -1,4 +1,8 @@
-﻿using BattleChess3.Core.Models;
+﻿using BattleChess3.Core.Model;
+using BattleChess3.Core.Model.Figure;
+using BattleChess3.Core.Resources;
+using BattleChess3.DefaultFigures;
+using BattleChess3.DefaultFigures.Utilities;
 using GalaSoft.MvvmLight;
 
 namespace BattleChess3.UI.Services
@@ -12,7 +16,7 @@ namespace BattleChess3.UI.Services
         public void LoadMap(MapBlueprint map)
         {
             _playerService.InitializePlayers(map.PlayersCount, map.StartingPlayer);
-            for (var i = 0; i < 64; i++)
+            for (var i = 0; i < Constants.BoardSize; i++)
             {
                 var figureBlueprint = map.Blueprint[i];
                 _boardService.Board[i].Figure = CreateFigure(figureBlueprint);
@@ -28,104 +32,73 @@ namespace BattleChess3.UI.Services
             return figure;
         }
         
-        // /// <summary>
-        // /// Tries to play the position if it is your turn
-        // /// </summary>
-        // public bool TryPlay(Figure me, Position position)
-        // {
-        //     if (WhooseTurn != me.Owner) return false;
-        //     var enemy = GetFigureAtPosition(position);
-        //     if (me.CanMove(enemy, GetFigureAtPosition))
-        //     {
-        //         MoveFigureToPosition(me.Position, position);
-        //         me.Position = position;
-        //         return true;
-        //     }
-        //     if (enemy.PlayerNumber != me.Owner && me.CanAttack(enemy, GetFigureAtPosition))
-        //     {
-        //         if (me.FigureType.MovingWhileAttacking && TryAttack(me, GetFigureAtPosition(position)))
-        //         {
-        //             MoveFigureToPosition(me.Position, position);
-        //             me.Position = position;
-        //         }
-        //         return true;
-        //     }
-        //     return false;
-        // }
-        //
-        // /// <summary>
-        // /// Tries to attack at certain position and return if attacked
-        // /// </summary>
-        // public bool TryAttack(Figure me, Figure enemy)
-        // {
-        //     var remainingHp = enemy.RemainingHpOfAttacked(me);
-        //     if (me.FigureType.MovingWhileAttacking)
-        //     {
-        //         if (remainingHp > 0) return false;
-        //         AttackPattern(enemy.Position, me);
-        //         return true;
-        //     }
-        //     AttackPattern(enemy.Position, me);
-        //     return true;
-        // }
-        //
-        // /// <summary>
-        // /// Attacks each figure of pattern
-        // /// </summary>
-        // public void AttackPattern(Position attackedPosition, Figure me)
-        // {
-        //     foreach (var position in me.FigureType.AttackPattern)
-        //         AttackFigure(me, GetFigureAtPosition(position.AddPositions(attackedPosition)));
-        // }
-        //
-        // /// <summary>
-        // /// Attacks figure if Hp is lesser 0 figure dies
-        // /// </summary>
-        // public void AttackFigure(Figure attacking, Figure attacked)
-        // {
-        //     attacked.Hp = attacked.RemainingHpOfAttacked(attacking);
-        //     if (attacked.Hp <= 0) KillFigure(attacked);
-        // }
-        //
         public void ClickedAtTile(Tile tile)
         {
-            // if (tile.IsPossibleAction)
-            //     _boardService.SelectedTile.DoAction(tile);
-            // else if (tile.IsPossibleMove)
-            //     _boardService.SelectedTile.Move(tile);
-            // else _boardService.SelectedTile = tile;
-            // SetPossibleActions();
-            
-            // if (_boardService.SelectedTile.Position == Position.Invalid)
-            // {
-            //     _boardService.SelectedTile = tile;
-            // }
-            // else
-            // {
-            //     _playedPosition = position;
-            //     PlayTurn();
-            // }
-            // HighlightTiles();
+            if (tile.IsPossibleAttack)
+            {
+                _boardService.SelectedTile.Figure.FigureType.AttackAction(_boardService.SelectedTile.Position, tile.Position, _boardService.Board);
+                _boardService.SelectedTile = Tile.Invalid;
+                _playerService.NextTurn();
+            }
+            else if (tile.IsPossibleMove)
+            {
+                _boardService.SelectedTile.MoveToPosition(_boardService.Board, tile.Position);
+                _boardService.SelectedTile = Tile.Invalid;
+                _playerService.NextTurn();
+            }
+            else if (tile.Figure.Owner.Id == _playerService.CurrentPlayer.Id)
+                _boardService.SelectedTile = tile;
+            else _boardService.SelectedTile = Tile.Invalid;
+            SetPossibleActions(tile);
         }
-        
+
+        private void SetPossibleActions(Tile clickedTile)
+        {
+            foreach (Tile tile in _boardService.Board)
+            {
+                tile.IsPossibleAttack = false;
+                tile.IsPossibleMove = false;
+            }
+
+            if (_playerService.CurrentPlayer.Id != _boardService.SelectedTile.Figure.Owner.Id)
+                return;
+            SetPossibleAttacks(clickedTile);
+            SetPossibleMoves(clickedTile);
+        }
+
+        private void SetPossibleAttacks(Tile clickedTile)
+        {
+            // var playerRelativePosition = GetPlayerRelativePosition(_boardService.SelectedTile.Position, _playerService.CurrentPlayer.Id);
+            // var attackChains = clickedTile.Figure.FigureType.GetAttackChains(playerRelativePosition);
+            // foreach (Position[] attackChain in attackChains)
+            // {
+            //     foreach (Position position in attackChain)
+            //     {
+            //         if (_boardService.Board[position].Figure.FigureType == Empty.Instance)
+            //             _boardService.Board[position].IsPossibleMove = true;
+            //         else break;
+            //     }
+            // }
+        }
+
+        private void SetPossibleMoves(Tile clickedTile)
+        {
+            var playerRelativePosition = clickedTile.Position.GetPlayerAbsolute(_playerService.CurrentPlayer.Id);
+            Position[][] moveChains = clickedTile.Figure.FigureType.GetMoveChains(playerRelativePosition);
+            foreach (Position[] moveChain in moveChains)
+            {
+                foreach (Position position in moveChain)
+                {
+                    Position absolute = clickedTile.Position + position.GetPlayerRelative(_playerService.CurrentPlayer.Id);
+                    if (!absolute.InBoard()) break;
+                    if (_boardService.Board[absolute].Figure.FigureType == Empty.Instance)
+                        _boardService.Board[absolute].IsPossibleMove = true;
+                    else break;
+                }
+            }
+        }
+
         public void MouseEnterTile(Tile tile)
             => _boardService.MouseOnTile = tile;
-        
-        //
-        // public void PlayTurn()
-        // {
-        //     var figure = SelectedTile.Figure;
-        //     if (TryPlay(figure, _playedPosition) == false)
-        //     {
-        //         SelectedTile.SetSelected(_playedPosition);
-        //         _playedPosition = Position.Invalid;
-        //     }
-        //     else
-        //     {
-        //         WhooseTurn = WhooseTurn == 1 ? 2 : 1;
-        //         SelectedTile = new SelectedTile();
-        //         _playedPosition = Position.Invalid;
-        //     }
-        // }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace BattleChess3.Core.Figures
+﻿namespace BattleChess3.Core.Model.Figure
 {
     public interface IFigureGroup
     {

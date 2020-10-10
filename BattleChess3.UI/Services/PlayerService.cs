@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using BattleChess3.Core.Models;
+using BattleChess3.Core.Model;
 
 namespace BattleChess3.UI.Services
 {
@@ -8,15 +7,21 @@ namespace BattleChess3.UI.Services
     {
         public readonly List<Player> Players = new List<Player>();
         
-        public Player CurrentPlayer = new Player(0);
-        public Player GetPlayer(int id) => Players[id];
+        public Player CurrentPlayer = Player.Neutral;
+        public Player GetPlayer(int id) => Players[id + 1];
 
         public void InitializePlayers(in int playersCount, in int currentPlayer)
         {
             Players.Clear();
-            for (var i = 0; i < playersCount + 1; i++)
+            for (int i = -1; i < playersCount; i++)
                 Players.Add(new Player(i));
-            CurrentPlayer = Players[currentPlayer];
+            CurrentPlayer = GetPlayer(currentPlayer);
+        }
+
+        public void NextTurn()
+        {
+            int nextId = (CurrentPlayer.Id + 1) % (Players.Count - 1);
+            CurrentPlayer = GetPlayer(nextId);
         }
     }
 }

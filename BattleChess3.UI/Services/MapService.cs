@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using BattleChess3.Core.Models;
+using BattleChess3.Core.Model;
 using BattleChess3.Core.Utilities;
 using GalaSoft.MvvmLight;
 using Newtonsoft.Json;

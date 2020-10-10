@@ -9,35 +9,23 @@
              d:DesignHeight="300" d:DesignWidth="300"
              DataContext="{Binding Source={x:Static viewModel:ViewModelLocator.BoardViewModel}}">
     <ItemsControl HorizontalAlignment="Stretch"
-                  ItemsSource="{Binding Columns}">
+                  ItemsSource="{Binding Tiles}">
         <ItemsControl.ItemsPanel>
             <ItemsPanelTemplate>
-                <UniformGrid Rows="8" />
+                <UniformGrid Columns="8"/>
             </ItemsPanelTemplate>
         </ItemsControl.ItemsPanel>
         <ItemsControl.ItemTemplate>
             <DataTemplate>
-                <ItemsControl ItemsSource="{Binding Tiles}"
-                              VerticalAlignment="Stretch">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal" />
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Button Command="{Binding ClickedCommand}"
-                                    Style="{DynamicResource ChessButtonStyle}">
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="MouseEnter">
-                                        <i:InvokeCommandAction Command="{Binding MouseEnterCommand}"/>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                                <Image Source="{Binding Figure.ImageUri}" />
-                            </Button>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
+                <Button Command="{Binding ClickedCommand}"
+                        Style="{DynamicResource ChessButtonStyle}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseEnter">
+                            <i:InvokeCommandAction Command="{Binding MouseEnterCommand}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <Image Source="{Binding Figure.ImageUri}" />
+                </Button>
             </DataTemplate>
         </ItemsControl.ItemTemplate>
     </ItemsControl>

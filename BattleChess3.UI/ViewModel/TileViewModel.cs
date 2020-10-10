@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using BattleChess3.Core.Models;
+using BattleChess3.Core.Model;
+using BattleChess3.Core.Model.Figure;
 using BattleChess3.UI.Services;
-using BattleChess3.UI.Utilities;
 using CommonServiceLocator;
 using GalaSoft.MvvmLight.Command;
 
@@ -11,6 +11,8 @@ namespace BattleChess3.UI.ViewModel
     public class TileViewModel : Tile, INotifyPropertyChanged
     {
         private readonly GameService _gameService = ServiceLocator.Current.GetInstance<GameService>();
+
+        public override Position Position { get; }
 
         private bool _isMouseOver;
         public override bool IsMouseOver
@@ -34,13 +36,11 @@ namespace BattleChess3.UI.ViewModel
         }
 
         private bool _isPossibleAction;
-        public override bool IsPossibleAction
+        public override bool IsPossibleAttack
         {
             get => _isPossibleAction;
             set => Set(ref _isPossibleAction, value);
         }
-
-        public override Position Position { get; }
 
         private Figure _figure = Figure.Empty;
         public override Figure Figure

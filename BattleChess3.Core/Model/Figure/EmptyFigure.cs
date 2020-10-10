@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using BattleChess3.Core.Models;
 
-namespace BattleChess3.Core.Figures
+namespace BattleChess3.Core.Model.Figure
 {
     public class EmptyFigure : IFigureType
     {
@@ -25,8 +24,8 @@ namespace BattleChess3.Core.Figures
         {
         }
 
-        public Position[][] MoveChain(Position @from) => Array.Empty<Position[]>();
+        public Position[][] GetMoveChains(Position @from) => Array.Empty<Position[]>();
 
-        public Position[][] AttackChain(Position @from) => Array.Empty<Position[]>();
+        public Position[][] GetAttackChains(Position @from) => Array.Empty<Position[]>();
     }
 }

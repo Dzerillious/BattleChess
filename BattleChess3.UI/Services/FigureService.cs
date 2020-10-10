@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using BattleChess3.Core.Figures;
+using BattleChess3.Core.Model.Figure;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 

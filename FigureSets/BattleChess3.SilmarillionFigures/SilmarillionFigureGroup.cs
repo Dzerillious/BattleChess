@@ -1,4 +1,4 @@
-﻿using BattleChess3.Core.Figures;
+﻿using BattleChess3.Core.Model.Figure;
 
 namespace BattleChess3.SilmarillionFigures
 {

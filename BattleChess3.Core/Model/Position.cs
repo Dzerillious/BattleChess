@@ -1,6 +1,8 @@
-﻿namespace BattleChess3.Core.Models
+﻿using BattleChess3.Core.Resources;
+
+namespace BattleChess3.Core.Model
 {
-    public struct Position
+    public readonly struct Position
     {
         public static readonly Position Invalid = new Position(-1, -1);
         public int Y { get; }
@@ -12,7 +14,10 @@
             X = x;
         }
 
-        public bool InBoard() => X >= 0 && X < 8 && Y >= 0 && Y < 8;
+        public bool InBoard() => X >= 0 
+                              && Y >= 0
+                              && X < Constants.BoardLength 
+                              && Y < Constants.BoardLength;
 
         public override bool Equals(object obj)
         {
@@ -39,12 +44,12 @@
             => new Position(left.Y * right, left.X * right);
         
         public static implicit operator int(Position position) 
-            => position.Y * 8 + position.X;
+            => position.Y * Constants.BoardLength + position.X;
         
         public static implicit operator Position(int i) 
-            => new Position(i / 8, i % 8);
+            => new Position(i / Constants.BoardLength, i % Constants.BoardLength);
         
-        public static implicit operator Position((int x, int y) pos) 
+        public static implicit operator Position((int y, int x) pos) 
             => new Position(pos.y, pos.x);
 
         public bool Equals(Position other) => X == other.X && Y == other.Y;
@@ -58,5 +63,25 @@
         }
 
         public override string ToString() => $"({Y},{X})";
+
+        public Position GetPlayerRelative(in int currentPlayerId) 
+            => (currentPlayerId % 4) switch
+            {
+                0 => new Position(-Y, X),
+                1 => this,
+                2 => new Position(-X, Y),
+                3 => new Position(X, Y),
+                _ => this
+            };
+
+        public Position GetPlayerAbsolute(in int currentPlayerId) 
+            => (currentPlayerId % 4) switch
+            {
+                0 => new Position(Constants.BoardLength - Y - 1, X),
+                1 => this,
+                2 => new Position(Constants.BoardLength - X - 1, Y),
+                3 => new Position(X, Y),
+                _ => this
+            };
     }
 }

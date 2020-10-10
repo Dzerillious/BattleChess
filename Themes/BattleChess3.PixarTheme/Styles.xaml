@@ -120,17 +120,17 @@
             </Setter.Value>
         </Setter>
         <Style.Triggers>
-            <DataTrigger Binding="{Binding IsMouseOver}" Value="True">
-                <Setter Property="Background" Value="{StaticResource ChessTileMouseOnBackground}"/>
-            </DataTrigger>
-            <DataTrigger Binding="{Binding IsSelected}" Value="True">
-                <Setter Property="Background" Value="{StaticResource ChessTileSelectedBackground}"/>
-            </DataTrigger>
             <DataTrigger Binding="{Binding IsPossibleMove}" Value="True">
                 <Setter Property="Background" Value="{StaticResource ChessTileCanGoBackground}"/>
             </DataTrigger>
             <DataTrigger Binding="{Binding IsPossibleAction}" Value="True">
                 <Setter Property="Background" Value="{StaticResource ChessTileDangeredBackground}"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding IsMouseOver}" Value="True">
+                <Setter Property="Background" Value="{StaticResource ChessTileMouseOnBackground}"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding IsSelected}" Value="True">
+                <Setter Property="Background" Value="{StaticResource ChessTileSelectedBackground}"/>
             </DataTrigger>
         </Style.Triggers>
     </Style>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using BattleChess3.Core.Figures;
-using BattleChess3.Core.Models;
+using BattleChess3.Core.Model;
+using BattleChess3.Core.Model.Figure;
 using BattleChess3.DefaultFigures.Utilities;
 using BattleChess3.SilmarillionFigures.Localization;
 
@@ -24,8 +24,8 @@ namespace BattleChess3.SilmarillionFigures
 
         public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
         {
-            {1, new Uri("pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/VardaSauron1.png", UriKind.Absolute)},
-            {2, new Uri("pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/VardaSauron2.png", UriKind.Absolute)},
+            {0, new Uri("pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/VardaSauron1.png", UriKind.Absolute)},
+            {1, new Uri("pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/VardaSauron2.png", UriKind.Absolute)},
         };
 
         public void AttackAction(Position from, Position to, Tile[] board)
@@ -42,7 +42,7 @@ namespace BattleChess3.SilmarillionFigures
             new Position[] {(-1, 2)},
             new Position[] {(1, 2)},
         };
-        public Position[][] MoveChain(Position position) => _moveChain;
+        public Position[][] GetMoveChains(Position position) => _moveChain;
         
         
         private readonly Position[][] _attackChain = 
@@ -56,6 +56,6 @@ namespace BattleChess3.SilmarillionFigures
             new Position[] {(-1, 2)},
             new Position[] {(1, 2)},
         };
-        public Position[][] AttackChain(Position position) => _attackChain;
+        public Position[][] GetAttackChains(Position position) => _attackChain;
     }
 }

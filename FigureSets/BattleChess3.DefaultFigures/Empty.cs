@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using BattleChess3.Core.Figures;
-using BattleChess3.Core.Models;
+using BattleChess3.Core.Model;
+using BattleChess3.Core.Model.Figure;
 using BattleChess3.DefaultFigures.Localization;
-using BattleChess3.DefaultFigures.Utilities;
 
 namespace BattleChess3.DefaultFigures
 {
@@ -31,7 +30,7 @@ namespace BattleChess3.DefaultFigures
 
         public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
         {
-            {0, new Uri("pack://application:,,,/BattleChess3.DefaultFigures;component/Images/Empty0.png", UriKind.Absolute)},
+            {-1, new Uri("pack://application:,,,/BattleChess3.DefaultFigures;component/Images/Empty0.png", UriKind.Absolute)},
         };
 
         public int Cost => 0;
@@ -41,10 +40,10 @@ namespace BattleChess3.DefaultFigures
         }
 
         private readonly Position[][] _moveChain = { };
-        public Position[][] MoveChain(Position position) => _moveChain;
+        public Position[][] GetMoveChains(Position position) => _moveChain;
         
         
         private readonly Position[][] _attackChain = { };
-        public Position[][] AttackChain(Position position) => _attackChain;
+        public Position[][] GetAttackChains(Position position) => _attackChain;
     }
 }

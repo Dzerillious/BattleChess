@@ -65,7 +65,7 @@ namespace BattleChess3.UI.ViewModel
             GameTabSelected = true;
         }
 
-        private void CloseApplication() => Application.Current.Shutdown();
+        private static void CloseApplication() => Application.Current.Shutdown();
 
         private void SetSelectedTab(out bool selectedTab)
         {

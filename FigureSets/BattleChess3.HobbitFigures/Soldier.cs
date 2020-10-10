@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using BattleChess3.Core.Figures;
-using BattleChess3.Core.Models;
+using BattleChess3.Core.Model;
+using BattleChess3.Core.Model.Figure;
 using BattleChess3.DefaultFigures.Utilities;
 using BattleChess3.HobbitFigures.Localization;
 
@@ -24,8 +24,8 @@ namespace BattleChess3.HobbitFigures
 
         public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
         {
-            {1, new Uri("pack://application:,,,/BattleChess3.HobbitFigures;component/Images/Soldier1.png", UriKind.Absolute)},
-            {2, new Uri("pack://application:,,,/BattleChess3.HobbitFigures;component/Images/Soldier2.png", UriKind.Absolute)},
+            {0, new Uri("pack://application:,,,/BattleChess3.HobbitFigures;component/Images/Soldier1.png", UriKind.Absolute)},
+            {1, new Uri("pack://application:,,,/BattleChess3.HobbitFigures;component/Images/Soldier2.png", UriKind.Absolute)},
         };
 
         public void AttackAction(Position from, Position to, Tile[] board)
@@ -39,8 +39,8 @@ namespace BattleChess3.HobbitFigures
         {
             new Position[] {(1, 0)},
         };
-        public Position[][] MoveChain(Position position) 
-            => position.X == 1 ? _firstMoveChain : _moveChain;
+        public Position[][] GetMoveChains(Position position) 
+            => position.Y == 1 ? _firstMoveChain : _moveChain;
 
 
         private readonly Position[][] _attackChain = 
@@ -48,6 +48,6 @@ namespace BattleChess3.HobbitFigures
             new Position[] {(1, 1)},
             new Position[] {(1, -1)},
         };
-        public Position[][] AttackChain(Position position) => _attackChain;
+        public Position[][] GetAttackChains(Position position) => _attackChain;
     }
 }

@@ -1,4 +1,4 @@
-﻿using BattleChess3.Core.Figures;
+﻿using BattleChess3.Core.Model.Figure;
 using BattleChess3.HobbitFigures.Localization;
 
 namespace BattleChess3.HobbitFigures

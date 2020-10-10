@@ -1,4 +1,4 @@
-﻿using BattleChess3.Core.Models;
+﻿using BattleChess3.Core.Model;
 
 namespace BattleChess3.DefaultFigures.Utilities
 {

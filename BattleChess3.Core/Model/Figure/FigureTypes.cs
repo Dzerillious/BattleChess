@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BattleChess3.Core.Figures
+namespace BattleChess3.Core.Model.Figure
 {
     [Flags]
     public enum FigureTypes

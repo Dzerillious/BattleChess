@@ -1,6 +1,4 @@
-﻿using BattleChess3.Core.Figures;
-
-namespace BattleChess3.Core.Models
+﻿namespace BattleChess3.Core.Model.Figure
 {
     public class FigureBlueprint
     {
