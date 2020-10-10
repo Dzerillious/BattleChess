@@ -1,32 +1,42 @@
 ﻿using BattleChess3.Core.Models;
 using BattleChess3.UI.Utilities;
+using GalaSoft.MvvmLight;
 
 namespace BattleChess3.UI.Services
 {
-    public class BoardService
+    public class BoardService : ViewModelBase
     {
-        public Tile SelectedTile = TileHelper.Invalid;
-        public Tile HoverTile = TileHelper.Invalid;
         public readonly Tile[] Board;
+        
+        private Tile _selectedTile = Tile.Invalid;
+        public Tile SelectedTile
+        {
+            get => _selectedTile;
+            set
+            {
+                _selectedTile.IsSelected = false;
+                Set(ref _selectedTile, value);
+                value.IsSelected = true;
+            }
+        }
+
+        private Tile _mouseOnTile = Tile.Invalid;
+        public Tile MouseOnTile
+        {
+            get => _mouseOnTile;
+            set
+            {
+                _mouseOnTile.IsMouseOver = false;
+                Set(ref _mouseOnTile, value);
+                value.IsMouseOver = true;
+            }
+        }
 
         public BoardService()
         {
             Board = new Tile[64];
             for (var i = 0; i < Board.Length; i++)
-                Board[i] = TileHelper.Invalid;
+                Board[i] = Tile.Invalid;
         }
-
-        // public void MoveFigureToPosition(Position position, Position newPosition)
-        // {
-        //     var figure = GetFigureAtPosition(position);
-        //     SetFigureAtPosition(position, FigureHelper.Empty);
-        //     SetFigureAtPosition(newPosition, figure);
-        // }
-        //
-        // public void KillFigureAtTile(Tile tile)
-        // {
-        //     SetFigureAtPosition(tile.Position, FigureHelper.Empty);
-        //     tile.Figure.Owner.Figures.Remove(tile.Figure);
-        // }
     }
 }

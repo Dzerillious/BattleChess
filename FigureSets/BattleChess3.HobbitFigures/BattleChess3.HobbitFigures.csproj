@@ -6,7 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\BattleChess3.Core\BattleChess3.Core.csproj" />
+        <ProjectReference Include="..\BattleChess3.DefaultFigures\BattleChess3.DefaultFigures.csproj" />
     </ItemGroup>
 
     <ItemGroup>

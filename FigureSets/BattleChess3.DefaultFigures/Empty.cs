@@ -3,12 +3,21 @@ using System.Collections.Generic;
 using BattleChess3.Core.Figures;
 using BattleChess3.Core.Models;
 using BattleChess3.DefaultFigures.Localization;
+using BattleChess3.DefaultFigures.Utilities;
 
 namespace BattleChess3.DefaultFigures
 {
     public class Empty : IFigureType
     {
         public static Empty Instance { get; } = new Empty();
+        
+        public static Figure Figure { get; }
+            = new Figure(Instance)
+            {
+                Hp = 100,
+                Owner = Player.Neutral
+            };
+        
         public string ShownName => CurrentLocalization.Instance["Empty_Name"];
         public string UnitName => $"{nameof(DefaultFigureGroup)}.{nameof(Empty)}";
         public string GroupName => nameof(DefaultFigureGroup);
@@ -26,8 +35,16 @@ namespace BattleChess3.DefaultFigures
         };
 
         public int Cost => 0;
-        public Position[] AttackPattern => Array.Empty<Position>();
-        public bool CanMove(Tile tile, Tile[] board) => false;
-        public bool CanAttack(Tile tile, Tile[] board) => false;
+
+        public void AttackAction(Position from, Position to, Tile[] board)
+        {
+        }
+
+        private readonly Position[][] _moveChain = { };
+        public Position[][] MoveChain(Position position) => _moveChain;
+        
+        
+        private readonly Position[][] _attackChain = { };
+        public Position[][] AttackChain(Position position) => _attackChain;
     }
 }

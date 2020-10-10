@@ -54,9 +54,6 @@ namespace BattleChess3.UI.Services
             SelectedFigureGroup = FigureGroups.First();
         }
 
-        /// <summary>
-        /// Gets first figure which name is given string
-        /// </summary>
         public IFigureType GetFigureFromName(string text)
             => _figuresDictionary[text];
     }

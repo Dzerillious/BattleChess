@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using BattleChess3.ChessFigures.Localization;
 using BattleChess3.Core.Figures;
 using BattleChess3.Core.Models;
+using BattleChess3.DefaultFigures.Utilities;
 
 namespace BattleChess3.ChessFigures
 {
@@ -26,9 +27,35 @@ namespace BattleChess3.ChessFigures
             {1, new Uri("pack://application:,,,/BattleChess3.ChessFigures;component/Images/King1.png", UriKind.Absolute)},
             {2, new Uri("pack://application:,,,/BattleChess3.ChessFigures;component/Images/King2.png", UriKind.Absolute)},
         };
+
+        public void AttackAction(Position from, Position to, Tile[] board)
+            => board[to].KillFigure(board);
+
+        private readonly Position[][] _moveChain = 
+        {
+            new Position[] {(1, 1)},
+            new Position[] {(1, 0)},
+            new Position[] {(1, -1)},
+            new Position[] {(0, 1)},
+            new Position[] {(0, -1)},
+            new Position[] {(-1, 1)},
+            new Position[] {(-1, 0)},
+            new Position[] {(-1, -1)},
+        };
+        public Position[][] MoveChain(Position position) => _moveChain;
         
-        public Position[] AttackPattern => Array.Empty<Position>();
-        public bool CanMove(Tile tile, Tile[] board) => false;
-        public bool CanAttack(Tile tile, Tile[] board) => false;
+        
+        private readonly Position[][] _attackChain = 
+        {
+            new Position[] {(1, 1)},
+            new Position[] {(1, 0)},
+            new Position[] {(1, -1)},
+            new Position[] {(0, 1)},
+            new Position[] {(0, -1)},
+            new Position[] {(-1, 1)},
+            new Position[] {(-1, 0)},
+            new Position[] {(-1, -1)},
+        };
+        public Position[][] AttackChain(Position position) => _attackChain;
     }
 }

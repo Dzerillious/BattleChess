@@ -42,7 +42,7 @@ namespace BattleChess3.UI.ViewModel
 
         public override Position Position { get; }
 
-        private Figure _figure = FigureHelper.Empty;
+        private Figure _figure = Figure.Empty;
         public override Figure Figure
         {
             get => _figure;

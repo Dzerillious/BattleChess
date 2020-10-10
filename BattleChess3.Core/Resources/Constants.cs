@@ -1,6 +1,7 @@
 ﻿namespace BattleChess3.Core.Resources
 {
-    public static class Constants
+    public class Constants
     {
+        
     }
 }

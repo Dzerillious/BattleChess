@@ -70,18 +70,18 @@ namespace BattleChess3.Core.Figures
         Dictionary<int, Uri> ImageUris { get; }
 
         /// <summary>
-        /// Gets positions on which attack
+        /// Attack action
         /// </summary>
-        Position[] AttackPattern { get; }
+        void AttackAction(Position from, Position to, Tile[] board);
 
         /// <summary>
         /// Check if can move on position
         /// </summary>
-        bool CanMove(Tile tile, Tile[] board);
+        Position[][] MoveChain(Position from);
 
         /// <summary>
         /// Check if can attack on position
         /// </summary>
-        bool CanAttack(Tile tile, Tile[] board);
+        Position[][] AttackChain(Position from);
     }
 }

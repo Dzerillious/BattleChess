@@ -107,14 +107,14 @@ namespace BattleChess3.UI.Utilities
                 {
                     Blueprint = new FigureBlueprint[]
                     {
-                        (2, AuleGothmog.Instance), (2, IrmoUngoliant.Instance), (2, NiennaBalrog.Instance), (2, YavannaGlaurung.Instance), (2, ManweMelkor.Instance), (2, UlmoAncalagon.Instance), (2, OromeCarcharoth.Instance), (2, OromeCarcharoth.Instance), 
+                        (2, UlmoAncalagon.Instance), (2, IrmoUngoliant.Instance), (2, NiennaBalrog.Instance), (2, YavannaGlaurung.Instance), (2, ManweMelkor.Instance), (2, AuleGothmog.Instance), (2, VardaSauron.Instance), (2, OromeCarcharoth.Instance), 
                         (2, ElfOrc.Instance), (2, ElfOrc.Instance), (2, ElfOrc.Instance), (2, ElfOrc.Instance), (2, ElfOrc.Instance), (2, ElfOrc.Instance), (2, ElfOrc.Instance), (2, ElfOrc.Instance), 
                         (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), 
                         (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), 
                         (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), 
                         (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance),
                         (1, ElfOrc.Instance), (1, ElfOrc.Instance), (1, ElfOrc.Instance), (1, ElfOrc.Instance), (1, ElfOrc.Instance), (1, ElfOrc.Instance), (1, ElfOrc.Instance), (1, ElfOrc.Instance),
-                        (1, AuleGothmog.Instance), (1, IrmoUngoliant.Instance), (1, NiennaBalrog.Instance), (1, YavannaGlaurung.Instance), (1, ManweMelkor.Instance), (1, UlmoAncalagon.Instance), (1, OromeCarcharoth.Instance), (1, OromeCarcharoth.Instance),
+                        (1, UlmoAncalagon.Instance), (1, IrmoUngoliant.Instance), (1, NiennaBalrog.Instance), (1, YavannaGlaurung.Instance), (1, ManweMelkor.Instance), (1, AuleGothmog.Instance), (1, VardaSauron.Instance), (1, OromeCarcharoth.Instance),
                     },
                     Name = "SilmarillionMap",
                     Path = $"Resources/Maps/Silmarillion_{new Random().Next()}.map",

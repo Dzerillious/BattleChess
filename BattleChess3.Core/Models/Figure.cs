@@ -8,6 +8,8 @@ namespace BattleChess3.Core.Models
     /// </summary>
     public class Figure
     {
+        public static readonly Figure Empty = new Figure(Player.Neutral, EmptyFigure.Instance);
+        
         public Player Owner = Player.Neutral;
         public IFigureType FigureType { get; set; }
         public double Hp { get; set; } = 0;

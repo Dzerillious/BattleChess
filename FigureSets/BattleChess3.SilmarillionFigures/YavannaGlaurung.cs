@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using BattleChess3.Core.Figures;
 using BattleChess3.Core.Models;
+using BattleChess3.DefaultFigures.Utilities;
 using BattleChess3.SilmarillionFigures.Localization;
 
 namespace BattleChess3.SilmarillionFigures
@@ -27,8 +28,34 @@ namespace BattleChess3.SilmarillionFigures
             {2, new Uri("pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/YavannaGlaurung2.png", UriKind.Absolute)},
         };
 
-        public Position[] AttackPattern => Array.Empty<Position>();
-        public bool CanMove(Tile tile, Tile[] board) => false;
-        public bool CanAttack(Tile tile, Tile[] board) => false;
+        public void AttackAction(Position from, Position to, Tile[] board)
+            => board[to].KillFigure(board);
+
+        private readonly Position[][] _moveChain = 
+        {
+            new Position[] {(1, 0), (2, 0), (3, 0), (4, 0), (5, 0), (6, 0), (7, 0)}, 
+            new Position[] {(1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7)},
+            new Position[] {(0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7)},
+            new Position[] {(1, -1), (2, -2), (3, -3), (4, -4), (5, -5), (6, -6), (7, -7)},
+            new Position[] {(-1, 1), (-2, 2), (-3, 3), (-4, 4), (-5, 5), (-6, 6), (-7, 7)},
+            new Position[] {(-1, 0), (-2, 0), (-3, 0), (-4, 0), (-5, 0), (-6, 0), (-7, 0)},
+            new Position[] {(-1, -1), (-2, -2), (-3, -3), (-4, -4), (-5, -5), (-6, -6), (-7, -7)},
+            new Position[] {(0, -1), (0, -2), (0, -3), (0, -4), (0, -5), (0, -6), (0, -7)}
+        };
+        public Position[][] MoveChain(Position position) => _moveChain;
+        
+        
+        private readonly Position[][] _attackChain = 
+        {
+            new Position[] {(1, 0), (2, 0), (3, 0), (4, 0), (5, 0), (6, 0), (7, 0)}, 
+            new Position[] {(1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7)},
+            new Position[] {(0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7)},
+            new Position[] {(1, -1), (2, -2), (3, -3), (4, -4), (5, -5), (6, -6), (7, -7)},
+            new Position[] {(-1, 1), (-2, 2), (-3, 3), (-4, 4), (-5, 5), (-6, 6), (-7, 7)},
+            new Position[] {(-1, 0), (-2, 0), (-3, 0), (-4, 0), (-5, 0), (-6, 0), (-7, 0)},
+            new Position[] {(-1, -1), (-2, -2), (-3, -3), (-4, -4), (-5, -5), (-6, -6), (-7, -7)},
+            new Position[] {(0, -1), (0, -2), (0, -3), (0, -4), (0, -5), (0, -6), (0, -7)}
+        };
+        public Position[][] AttackChain(Position position) => _attackChain;
     }
 }

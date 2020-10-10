@@ -6,7 +6,8 @@ namespace BattleChess3.UI.Services
 {
     public class PlayerService
     {
-        public List<Player> Players = new List<Player>();
+        public readonly List<Player> Players = new List<Player>();
+        
         public Player CurrentPlayer = new Player(0);
         public Player GetPlayer(int id) => Players[id];
 

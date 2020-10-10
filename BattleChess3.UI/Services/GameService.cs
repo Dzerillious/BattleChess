@@ -9,30 +9,6 @@ namespace BattleChess3.UI.Services
         private readonly FigureService _figureService = CommonServiceLocator.ServiceLocator.Current.GetInstance<FigureService>();
         private readonly BoardService _boardService = CommonServiceLocator.ServiceLocator.Current.GetInstance<BoardService>();
 
-        private Tile _selectedTile = new Tile();
-        public Tile SelectedTile
-        {
-            get => _selectedTile;
-            set
-            {
-                _selectedTile.IsSelected = false;
-                Set(ref _selectedTile, value);
-                value.IsSelected = true;
-            }
-        }
-
-        private Tile _mouseOnTile = new Tile();
-        public Tile MouseOnTile
-        {
-            get => _mouseOnTile;
-            set
-            {
-                _mouseOnTile.IsMouseOver = false;
-                Set(ref _mouseOnTile, value);
-                value.IsMouseOver = true;
-            }
-        }
-
         public void LoadMap(MapBlueprint map)
         {
             _playerService.InitializePlayers(map.PlayersCount, map.StartingPlayer);
@@ -113,7 +89,13 @@ namespace BattleChess3.UI.Services
         //
         public void ClickedAtTile(Tile tile)
         {
-            SelectedTile = tile;
+            // if (tile.IsPossibleAction)
+            //     _boardService.SelectedTile.DoAction(tile);
+            // else if (tile.IsPossibleMove)
+            //     _boardService.SelectedTile.Move(tile);
+            // else _boardService.SelectedTile = tile;
+            // SetPossibleActions();
+            
             // if (_boardService.SelectedTile.Position == Position.Invalid)
             // {
             //     _boardService.SelectedTile = tile;
@@ -127,7 +109,7 @@ namespace BattleChess3.UI.Services
         }
         
         public void MouseEnterTile(Tile tile)
-            => MouseOnTile = tile;
+            => _boardService.MouseOnTile = tile;
         
         //
         // public void PlayTurn()

@@ -2,6 +2,8 @@
 {
     public class Tile
     {
+        public static readonly Tile Invalid = new Tile();
+        
         public virtual Position Position { get; } = Position.Invalid;
         public virtual Figure Figure { get; set; }
         

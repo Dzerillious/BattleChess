@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using BattleChess3.Core.Figures;
 using BattleChess3.Core.Models;
+using BattleChess3.DefaultFigures.Utilities;
 using BattleChess3.HobbitFigures.Localization;
 
 namespace BattleChess3.HobbitFigures
@@ -27,8 +28,26 @@ namespace BattleChess3.HobbitFigures
             {2, new Uri("pack://application:,,,/BattleChess3.HobbitFigures;component/Images/Soldier2.png", UriKind.Absolute)},
         };
 
-        public Position[] AttackPattern => Array.Empty<Position>();
-        public bool CanMove(Tile tile, Tile[] board) => false;
-        public bool CanAttack(Tile tile, Tile[] board) => false;
+        public void AttackAction(Position from, Position to, Tile[] board)
+            => board[to].KillFigure(board);
+
+        private readonly Position[][] _firstMoveChain = 
+        {
+            new Position[] {(1, 0), (2, 0)},
+        };
+        private readonly Position[][] _moveChain = 
+        {
+            new Position[] {(1, 0)},
+        };
+        public Position[][] MoveChain(Position position) 
+            => position.X == 1 ? _firstMoveChain : _moveChain;
+
+
+        private readonly Position[][] _attackChain = 
+        {
+            new Position[] {(1, 1)},
+            new Position[] {(1, -1)},
+        };
+        public Position[][] AttackChain(Position position) => _attackChain;
     }
 }

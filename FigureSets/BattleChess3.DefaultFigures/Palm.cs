@@ -26,8 +26,16 @@ namespace BattleChess3.DefaultFigures
         };
 
         public int Cost => 0;
-        public Position[] AttackPattern => Array.Empty<Position>();
-        public bool CanMove(Tile tile, Tile[] board) => false;
-        public bool CanAttack(Tile tile, Tile[] board) => false;
+
+        public void AttackAction(Position from, Position to, Tile[] board)
+        {
+        }
+
+        private readonly Position[][] _moveChain = { };
+        public Position[][] MoveChain(Position position) => _moveChain;
+        
+        
+        private readonly Position[][] _attackChain = { };
+        public Position[][] AttackChain(Position position) => _attackChain;
     }
 }

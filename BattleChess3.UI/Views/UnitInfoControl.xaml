@@ -5,10 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:util="clr-namespace:BattleChess3.UI.Utilities"
              xmlns:viewModel="clr-namespace:BattleChess3.UI.ViewModel"
-             xmlns:services="clr-namespace:BattleChess3.UI.Services"
-             DataContext="{Binding Source={x:Static viewModel:ViewModelLocator.GameService}}"
-             mc:Ignorable="d" d:DataContext="{d:DesignInstance services:GameService}"
-             d:DesignHeight="300" d:DesignWidth="300"
+             DataContext="{Binding Source={x:Static viewModel:ViewModelLocator.BoardService}}"
+             mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300"
              Background="{DynamicResource TextBoxBrush}">
     <Viewbox>
         <Grid DataContext="{Binding MouseOnTile.Figure}">
