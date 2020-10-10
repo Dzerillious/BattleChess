@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewModel="clr-namespace:BattleChess3.UI.ViewModel"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300"
              DataContext="{Binding Source={x:Static viewModel:ViewModelLocator.BoardViewModel}}">
@@ -25,21 +26,13 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <DataTemplate.Resources>
-                                <Style TargetType="Button">
-                                    <!-- <Style.Triggers> -->
-                                    <!--     <Trigger Property="IsMouseOver" Value="False"> -->
-                                    <!--         <Setter Property="Background"> -->
-                                    <!--             <Setter.Value> -->
-                                    <!--                 <ImageBrush ImageSource="{Binding Path=Highlighted, UpdateSourceTrigger=PropertyChanged}" /> -->
-                                    <!--             </Setter.Value> -->
-                                    <!--         </Setter> -->
-                                    <!--     </Trigger> -->
-                                    <!-- </Style.Triggers> -->
-                                </Style>
-                            </DataTemplate.Resources>
                             <Button Command="{Binding ClickedCommand}"
                                     Style="{DynamicResource ChessButtonStyle}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseEnter">
+                                        <i:InvokeCommandAction Command="{Binding MouseEnterCommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
                                 <Image Source="{Binding Figure.ImageUri}" />
                             </Button>
                         </DataTemplate>

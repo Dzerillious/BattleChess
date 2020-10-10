@@ -1,13 +1,38 @@
 ﻿using BattleChess3.Core.Models;
+using GalaSoft.MvvmLight;
 
 namespace BattleChess3.UI.Services
 {
-    public class GameService
+    public class GameService : ViewModelBase
     {
         private readonly PlayerService _playerService = CommonServiceLocator.ServiceLocator.Current.GetInstance<PlayerService>();
         private readonly FigureService _figureService = CommonServiceLocator.ServiceLocator.Current.GetInstance<FigureService>();
         private readonly BoardService _boardService = CommonServiceLocator.ServiceLocator.Current.GetInstance<BoardService>();
-        
+
+        private Tile _selectedTile = new Tile();
+        public Tile SelectedTile
+        {
+            get => _selectedTile;
+            set
+            {
+                _selectedTile.IsSelected = false;
+                Set(ref _selectedTile, value);
+                value.IsSelected = true;
+            }
+        }
+
+        private Tile _mouseOnTile = new Tile();
+        public Tile MouseOnTile
+        {
+            get => _mouseOnTile;
+            set
+            {
+                _mouseOnTile.IsMouseOver = false;
+                Set(ref _mouseOnTile, value);
+                value.IsMouseOver = true;
+            }
+        }
+
         public void LoadMap(MapBlueprint map)
         {
             _playerService.InitializePlayers(map.PlayersCount, map.StartingPlayer);
@@ -88,6 +113,7 @@ namespace BattleChess3.UI.Services
         //
         public void ClickedAtTile(Tile tile)
         {
+            SelectedTile = tile;
             // if (_boardService.SelectedTile.Position == Position.Invalid)
             // {
             //     _boardService.SelectedTile = tile;
@@ -99,6 +125,10 @@ namespace BattleChess3.UI.Services
             // }
             // HighlightTiles();
         }
+        
+        public void MouseEnterTile(Tile tile)
+            => MouseOnTile = tile;
+        
         //
         // public void PlayTurn()
         // {

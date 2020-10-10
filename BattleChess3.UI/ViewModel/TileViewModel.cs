@@ -11,22 +11,37 @@ namespace BattleChess3.UI.ViewModel
     public class TileViewModel : Tile, INotifyPropertyChanged
     {
         private readonly GameService _gameService = ServiceLocator.Current.GetInstance<GameService>();
-        
-        public bool IsHovered { get; set; }
-        public bool IsSelected { get; set; }
-        public bool IsDangered { get; set; }
-        
-        private Position _position = Position.Invalid;
-        public override Position Position
+
+        private bool _isMouseOver;
+        public override bool IsMouseOver
         {
-            get => _position;
-            set
-            {
-                _position = value;
-                OnPropertyChanged();
-            }
+            get => _isMouseOver;
+            set => Set(ref _isMouseOver, value);
         }
-        
+
+        private bool _isSelected;
+        public override bool IsSelected
+        {
+            get => _isSelected;
+            set => Set(ref _isSelected, value);
+        }
+
+        private bool _isPossibleMove;
+        public override bool IsPossibleMove
+        {
+            get => _isPossibleMove;
+            set => Set(ref _isPossibleMove, value);
+        }
+
+        private bool _isPossibleAction;
+        public override bool IsPossibleAction
+        {
+            get => _isPossibleAction;
+            set => Set(ref _isPossibleAction, value);
+        }
+
+        public override Position Position { get; }
+
         private Figure _figure = FigureHelper.Empty;
         public override Figure Figure
         {
@@ -39,13 +54,21 @@ namespace BattleChess3.UI.ViewModel
         }
         
         public RelayCommand ClickedCommand { get; private set; }
+        public RelayCommand MouseEnterCommand { get; private set; }
 
-        public TileViewModel()
+        public TileViewModel(Position position)
         {
-            ClickedCommand = new RelayCommand(OnClicked);
+            Position = position;
+            ClickedCommand = new RelayCommand(() => _gameService.ClickedAtTile(this));
+            MouseEnterCommand = new RelayCommand(() => _gameService.MouseEnterTile(this));
         }
 
-        private void OnClicked() => _gameService.ClickedAtTile(this);
+        protected void Set<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
+        {
+            var isSet = !field.Equals(value);
+            field = value;
+            if (isSet) OnPropertyChanged(propertyName);
+        }
 
         public event PropertyChangedEventHandler? PropertyChanged;
         [NotifyPropertyChangedInvocator]

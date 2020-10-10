@@ -15,7 +15,11 @@
     
     <ImageBrush x:Key="DefaultButtonBackground" ImageSource="pack://application:,,,/BattleChess3.PaperTheme;component/Images/DefaultButton.png" />
     <ImageBrush x:Key="DefaultButtonMouseOnBackground" ImageSource="pack://application:,,,/BattleChess3.PaperTheme;component/Images/DefaultButtonMouseOn.png" />
+    
+    <ImageBrush x:Key="ChessTileMouseOnBackground" ImageSource="pack://application:,,,/BattleChess3.PaperTheme;component/Images/ChessTileMouseOn.png"/>
     <ImageBrush x:Key="ChessTileSelectedBackground" ImageSource="pack://application:,,,/BattleChess3.PaperTheme;component/Images/ChessTileSelected.png"/>
+    <ImageBrush x:Key="ChessTileCanGoBackground" ImageSource="pack://application:,,,/BattleChess3.PaperTheme;component/Images/ChessTileCanGo.png"/>
+    <ImageBrush x:Key="ChessTileDangeredBackground" ImageSource="pack://application:,,,/BattleChess3.PaperTheme;component/Images/ChessTileDangered.png"/>
     
     <Style TargetType="TabControl">
         <Setter Property="Background" Value="Transparent"/>
@@ -116,9 +120,18 @@
             </Setter.Value>
         </Setter>
         <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
+            <DataTrigger Binding="{Binding IsMouseOver}" Value="True">
+                <Setter Property="Background" Value="{StaticResource ChessTileMouseOnBackground}"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding IsSelected}" Value="True">
                 <Setter Property="Background" Value="{StaticResource ChessTileSelectedBackground}"/>
-            </Trigger>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding IsPossibleMove}" Value="True">
+                <Setter Property="Background" Value="{StaticResource ChessTileCanGoBackground}"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding IsPossibleAction}" Value="True">
+                <Setter Property="Background" Value="{StaticResource ChessTileDangeredBackground}"/>
+            </DataTrigger>
         </Style.Triggers>
     </Style>
     

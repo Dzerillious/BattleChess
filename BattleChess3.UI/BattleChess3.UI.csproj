@@ -15,7 +15,6 @@
       <ProjectReference Include="..\FigureSets\BattleChess3.HobbitFigures\BattleChess3.HobbitFigures.csproj" />
       <ProjectReference Include="..\FigureSets\BattleChess3.LordOfTheRingsFigures\BattleChess3.LordOfTheRingsFigures.csproj" />
       <ProjectReference Include="..\FigureSets\BattleChess3.SilmarillionFigures\BattleChess3.SilmarillionFigures.csproj" />
-      <ProjectReference Include="..\Themes\BattleChess3.GondolinTheme\BattleChess3.GondolinTheme.csproj" />
       <ProjectReference Include="..\Themes\BattleChess3.MinasTirithTheme\BattleChess3.MinasTirithTheme.csproj" />
       <ProjectReference Include="..\Themes\BattleChess3.PaperTheme\BattleChess3.PaperTheme.csproj" />
       <ProjectReference Include="..\Themes\BattleChess3.PixarTheme\BattleChess3.PixarTheme.csproj" />

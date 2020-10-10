@@ -115,4 +115,7 @@
     <data name="MainWindow_Manual_Header" xml:space="preserve">
         <value>Manual</value>
     </data>
+    <data name="Info_Hp" xml:space="preserve">
+        <value>Hp:</value>
+    </data>
 </root>

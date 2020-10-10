@@ -5,11 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:util="clr-namespace:BattleChess3.UI.Utilities"
              xmlns:viewModel="clr-namespace:BattleChess3.UI.ViewModel"
-             mc:Ignorable="d" d:DataContext="{d:DesignInstance viewModel:TileViewModel}"
+             xmlns:services="clr-namespace:BattleChess3.UI.Services"
+             DataContext="{Binding Source={x:Static viewModel:ViewModelLocator.GameService}}"
+             mc:Ignorable="d" d:DataContext="{d:DesignInstance services:GameService}"
              d:DesignHeight="300" d:DesignWidth="300"
              Background="{DynamicResource TextBoxBrush}">
     <Viewbox>
-        <Grid>
+        <Grid DataContext="{Binding MouseOnTile.Figure}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" MinWidth="150" />
                 <ColumnDefinition Width="*" MinWidth="150" />
@@ -20,6 +22,8 @@
                 <TextBlock Text="{util:Loc Info_Name}" 
                            Style="{DynamicResource TextBlockStyle}" />
                 <TextBlock Text="{util:Loc Info_UnitType}" 
+                           Style="{DynamicResource TextBlockStyle}" />
+                <TextBlock Text="{util:Loc Info_Hp}" 
                            Style="{DynamicResource TextBlockStyle}" />
                 <TextBlock Text="{util:Loc Info_Attack}" 
                            Style="{DynamicResource TextBlockStyle}" />
@@ -37,23 +41,23 @@
     
             <StackPanel Grid.Column="1"
                         Orientation="Vertical">
-                <TextBlock Text="{Binding Path=Figure.FigureType.ShownName, UpdateSourceTrigger=PropertyChanged}" 
+                <TextBlock Text="{Binding Path=FigureType.ShownName, UpdateSourceTrigger=PropertyChanged}" 
                            Style="{DynamicResource TextBlockStyle}" />
-                <TextBlock Text="{Binding Path=Figure.FigureType.UnitTypes, UpdateSourceTrigger=PropertyChanged}" 
+                <TextBlock Text="{Binding Path=FigureType.UnitTypes, UpdateSourceTrigger=PropertyChanged}" 
                            Style="{DynamicResource TextBlockStyle}" />
-                <TextBlock Text="{Binding Path=Figure.Hp, UpdateSourceTrigger=PropertyChanged}" 
+                <TextBlock Text="{Binding Path=Hp, UpdateSourceTrigger=PropertyChanged}" 
                            Style="{DynamicResource TextBlockStyle}" />
-                <TextBlock Text="{Binding Path=Figure.FigureType.Attack, UpdateSourceTrigger=PropertyChanged}" 
+                <TextBlock Text="{Binding Path=FigureType.Attack, UpdateSourceTrigger=PropertyChanged}" 
                            Style="{DynamicResource TextBlockStyle}" />
-                <TextBlock Text="{Binding Path=Figure.FigureType.Defence, UpdateSourceTrigger=PropertyChanged}" 
+                <TextBlock Text="{Binding Path=FigureType.Defence, UpdateSourceTrigger=PropertyChanged}" 
                            Style="{DynamicResource TextBlockStyle}" />
-                <TextBlock Text="{Binding Path=Figure.FigureType.Bonus, UpdateSourceTrigger=PropertyChanged}" 
+                <TextBlock Text="{Binding Path=FigureType.Bonus, UpdateSourceTrigger=PropertyChanged}" 
                            Style="{DynamicResource TextBlockStyle}" />
-                <TextBlock Text="{Binding Path=Figure.FigureType.AntiBonus, UpdateSourceTrigger=PropertyChanged}" 
+                <TextBlock Text="{Binding Path=FigureType.AntiBonus, UpdateSourceTrigger=PropertyChanged}" 
                            Style="{DynamicResource TextBlockStyle}" />
-                <TextBlock Text="{Binding Path=Figure.FigureType.Cost, UpdateSourceTrigger=PropertyChanged}"
+                <TextBlock Text="{Binding Path=FigureType.Cost, UpdateSourceTrigger=PropertyChanged}"
                            Style="{DynamicResource TextBlockStyle}" />
-                <TextBlock Text="{Binding Path=Figure.FigureType.MovingAttack, UpdateSourceTrigger=PropertyChanged}"
+                <TextBlock Text="{Binding Path=FigureType.MovingAttack, UpdateSourceTrigger=PropertyChanged}"
                            Style="{DynamicResource TextBlockStyle}" />
             </StackPanel>
         </Grid>

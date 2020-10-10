@@ -26,8 +26,7 @@ namespace BattleChess3.UI.ViewModel
                 for (var j = 0; j < 8; j++)
                 {
                     Position position = (i, j);
-                    var tile = column.Tiles[j] = new TileViewModel();
-                    tile.Position = position;
+                    var tile = column.Tiles[j] = new TileViewModel(position);
                     if (_boardService.Board[position].Position != Position.Invalid)
                         tile.Figure = _boardService.Board[position].Figure;
                     _boardService.Board[position] = tile;

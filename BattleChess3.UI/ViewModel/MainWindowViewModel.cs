@@ -7,10 +7,8 @@ namespace BattleChess3.UI.ViewModel
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        private readonly GameService _gameService =
-            CommonServiceLocator.ServiceLocator.Current.GetInstance<GameService>();
-        private readonly MapService _mapService =
-            CommonServiceLocator.ServiceLocator.Current.GetInstance<MapService>();
+        private readonly GameService _gameService = CommonServiceLocator.ServiceLocator.Current.GetInstance<GameService>();
+        private readonly MapService _mapService = CommonServiceLocator.ServiceLocator.Current.GetInstance<MapService>();
         
         private bool _menuTabSelected;
         public bool MenuTabSelected
@@ -54,11 +52,6 @@ namespace BattleChess3.UI.ViewModel
         public RelayCommand CloseApplicationCommand { get; private set; }
 
         public MainWindowViewModel()
-        {
-            InitializeCommands();
-        }
-
-        private void InitializeCommands()
         {
             NewGameCommand = new RelayCommand(NewGame);
             SelectOptionsCommand = new RelayCommand(() => OptionsTabSelected = true);
