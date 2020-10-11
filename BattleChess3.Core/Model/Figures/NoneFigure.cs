@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace BattleChess3.Core.Model.Figures
 {
-    public class EmptyFigure : IFigureType
+    public class NoneFigure : IFigureType
     {
-        public static IFigureType Instance { get; } = new EmptyFigure();
+        public static IFigureType Instance { get; } = new NoneFigure();
         
         public string ShownName { get; } = string.Empty;
         public string Description { get; } = string.Empty;

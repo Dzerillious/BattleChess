@@ -5,9 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewModel="clr-namespace:BattleChess3.UI.ViewModel"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-             mc:Ignorable="d"
+             mc:Ignorable="d" d:DataContext="{d:DesignInstance viewModel:BoardViewModel}"
              d:DesignHeight="300" d:DesignWidth="300"
-             DataContext="{Binding Source={x:Static viewModel:ViewModelLocator.BoardService}}">
+             x:Name="ThisUserControl">
     <ItemsControl HorizontalAlignment="Stretch"
                   ItemsSource="{Binding Board}">
         <ItemsControl.ItemsPanel>
@@ -17,15 +17,13 @@
         </ItemsControl.ItemsPanel>
         <ItemsControl.ItemTemplate>
             <DataTemplate>
-                <Button Command="{Binding ClickedCommand, 
-                            Source={x:Static viewModel:ViewModelLocator.GameService}}"
+                <Button Command="{Binding DataContext.ClickedCommand, ElementName=ThisUserControl}"
                         CommandParameter="{Binding}"
                         Style="{DynamicResource ChessButtonStyle}"
                         d:DataContext="{d:DesignInstance viewModel:TileViewModel}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseEnter">
-                            <i:InvokeCommandAction Command="{Binding MouseEnterCommand, 
-                                                        Source={x:Static viewModel:ViewModelLocator.GameService}}"
+                            <i:InvokeCommandAction Command="{Binding DataContext.MouseEnterCommand, ElementName=ThisUserControl}"
                                                    CommandParameter="{Binding}"/>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>

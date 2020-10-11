@@ -4,7 +4,7 @@ namespace BattleChess3.Core.Model.Figures
 {
     public class Figure
     {
-        public static readonly Figure Empty = new Figure(Player.Neutral, EmptyFigure.Instance);
+        public static readonly Figure None = new Figure(Player.Neutral, NoneFigure.Instance);
         
         public Player Owner { get; }
         public IFigureType FigureType { get; set; }

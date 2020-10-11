@@ -8,7 +8,6 @@ namespace BattleChess3.UI.ViewModel
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        private readonly GameService _gameService = ServiceLocator.Current.GetInstance<GameService>();
         private readonly MapService _mapService = ServiceLocator.Current.GetInstance<MapService>();
         
         private bool _menuTabSelected;
@@ -45,12 +44,14 @@ namespace BattleChess3.UI.ViewModel
             get => _manualTabSelected;
             set => SetSelectedTab(out _manualTabSelected);
         }
+        
+        public BoardViewModel BoardViewModel { get; } = new BoardViewModel();
 
-        public RelayCommand NewGameCommand { get; private set; }
-        public RelayCommand SaveGameCommand { get; private set; }
-        public RelayCommand DeleteGameCommand { get; private set; }
-        public RelayCommand SelectOptionsCommand { get; private set; }
-        public RelayCommand CloseApplicationCommand { get; private set; }
+        public RelayCommand NewGameCommand { get; }
+        public RelayCommand SaveGameCommand { get; }
+        public RelayCommand DeleteGameCommand { get; }
+        public RelayCommand SelectOptionsCommand { get; }
+        public RelayCommand CloseApplicationCommand { get; }
 
         public MainWindowViewModel()
         {
@@ -63,7 +64,7 @@ namespace BattleChess3.UI.ViewModel
 
         private void NewGame()
         {
-            _mapService.LoadMap(_mapService.SelectedMap);
+            BoardViewModel.LoadMap(_mapService.SelectedMap);
             GameTabEnabled = true;
             GameTabSelected = true;
         }

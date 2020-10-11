@@ -8,9 +8,8 @@
              d:DesignHeight="300" d:DesignWidth="300"
              DataContext="{Binding Source={x:Static viewModel:ViewModelLocator.StyleService}}">
     <ListBox BorderThickness="0"
-             Background="{DynamicResource DefaultObjectBrush}"
              ItemsSource="{Binding Styles}"
-             SelectedItem="{Binding SelectedStyleViewModel}"
+             SelectedItem="{Binding SelectedStyle}"
              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
              ScrollViewer.VerticalScrollBarVisibility="Hidden">
         <ListBox.ItemsPanel>

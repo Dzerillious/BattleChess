@@ -39,7 +39,7 @@
                                 Content="{util:Loc MainWindow_Quit}"/>
                     </DockPanel>
                 </Viewbox>
-                <views:MapHolderControl MinWidth="500" />
+                <views:MapsControl MinWidth="500" />
             </DockPanel>
         </TabItem>
         <TabItem Header="{util:Loc MainWindow_Game_Header}"
@@ -47,10 +47,10 @@
                  IsEnabled="{Binding GameTabEnabled}">
             <DockPanel LastChildFill="True">
                 <Border>
-                    <views:GameBoardControl />
+                    <views:GameBoardControl DataContext="{Binding GameViewModel}"/>
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="10,0,0,0">
-                    <views:UnitInfoControl />
+                    <views:UnitInfoControl DataContext="{Binding GameViewModel}"/>
                 </Border>
             </DockPanel>
         </TabItem>

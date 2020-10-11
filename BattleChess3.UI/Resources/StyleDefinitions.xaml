@@ -8,5 +8,4 @@
     <Style x:Key="ChessButtonStyle" TargetType="Button" />
     
     <Style x:Key="ManualButtonStyle" TargetType="Button" />
-    
 </ResourceDictionary>

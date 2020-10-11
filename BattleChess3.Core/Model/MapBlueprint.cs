@@ -5,7 +5,7 @@ namespace BattleChess3.Core.Model
 {
     public class MapBlueprint
     {
-        public static readonly MapBlueprint Empty = new MapBlueprint();
+        public static readonly MapBlueprint None = new MapBlueprint();
         public string Path { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public string PreviewPath { get; set; } = string.Empty;

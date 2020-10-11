@@ -1,8 +1,8 @@
 ﻿namespace BattleChess3.UI.Views
 {
-    public partial class MapHolderControl
+    public partial class MapsControl
     {
-        public MapHolderControl()
+        public MapsControl()
         {
             InitializeComponent();
         }

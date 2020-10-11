@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 using BattleChess3.UI.ViewModel;
 using GalaSoft.MvvmLight;
@@ -10,13 +9,13 @@ namespace BattleChess3.UI.Services
 {
     public class StyleService : ViewModelBase
     {
-        private StyleViewModel _selectedStyleViewModel = StyleViewModel.Invalid;
-        public StyleViewModel SelectedStyleViewModel
+        private StyleViewModel _selectedStyle = StyleViewModel.Invalid;
+        public StyleViewModel SelectedStyle
         {
-            get => _selectedStyleViewModel;
+            get => _selectedStyle;
             set
             {
-                Set(ref _selectedStyleViewModel, value);
+                Set(ref _selectedStyle, value);
                 foreach (object? keyObject in value.ResourceDictionary.Keys)
                 {
                     if (!(keyObject is { } key)) return;
@@ -34,7 +33,7 @@ namespace BattleChess3.UI.Services
 
         public StyleService()
         {
-            Task.Run(ReloadStyles);
+            ReloadStyles();
         }
         
         public void ReloadStyles()
@@ -43,8 +42,8 @@ namespace BattleChess3.UI.Services
             Styles = directory.GetFiles("*.dll")
                               .Select(fileInfo => new StyleViewModel(fileInfo.FullName))
                               .ToArray();
-            SelectedStyleViewModel = Styles.FirstOrDefault(style => style.Name.Contains("Paper"))
-                                  ?? Styles.First();
+            SelectedStyle = Styles.FirstOrDefault(style => style.Name.Contains("Paper"))
+                         ?? Styles.First();
         }
     }
 }

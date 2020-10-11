@@ -17,6 +17,10 @@
     <ImageBrush x:Key="ChessTileCanGoBackground" ImageSource="pack://application:,,,/BattleChess3.MinasTirithTheme;component/Images/ChessTileCanGo.png"/>
     <ImageBrush x:Key="ChessTileDangeredBackground" ImageSource="pack://application:,,,/BattleChess3.MinasTirithTheme;component/Images/ChessTileDangered.png"/>
     
+    <Style TargetType="ListBox" >
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+    
     <Style TargetType="TabControl">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="{StaticResource DefaultObjectForeground}"/>

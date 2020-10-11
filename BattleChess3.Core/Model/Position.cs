@@ -4,7 +4,7 @@ namespace BattleChess3.Core.Model
 {
     public readonly struct Position
     {
-        public static readonly Position Invalid = new Position(-1, -1);
+        public static readonly Position None = new Position(-1, -1);
         public int Y { get; }
         public int X { get; }
 
@@ -65,8 +65,8 @@ namespace BattleChess3.Core.Model
 
         public override string ToString() => $"({Y},{X})";
 
-        public Position GetPlayerRelative(in int currentPlayerId) 
-            => (currentPlayerId % 4) switch
+        public Position GetPlayerPOVRelative(in Player currentPlayer) 
+            => (currentPlayer.Id % 4) switch
             {
                 0 => new Position(-Y, X),
                 1 => this,
@@ -75,8 +75,8 @@ namespace BattleChess3.Core.Model
                 _ => this
             };
 
-        public Position GetPlayerAbsolute(in int currentPlayerId) 
-            => (currentPlayerId % 4) switch
+        public Position GetPlayerPOVPosition(in Player currentPlayer) 
+            => (currentPlayer.Id % 4) switch
             {
                 0 => new Position(Constants.BoardLength - Y - 1, X),
                 1 => this,

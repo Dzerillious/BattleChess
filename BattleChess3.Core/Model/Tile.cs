@@ -4,10 +4,10 @@ namespace BattleChess3.Core.Model
 {
     public class Tile
     {
-        public static readonly Tile Invalid = new Tile();
+        public static readonly Tile None = new Tile();
         
-        public virtual Position Position { get; } = Position.Invalid;
-        public virtual Figure Figure { get; set; } = Figure.Empty;
+        public virtual Position Position { get; } = Position.None;
+        public virtual Figure Figure { get; set; } = Figure.None;
         
         public virtual bool IsMouseOver { get; set; }
         public virtual bool IsSelected { get; set; }

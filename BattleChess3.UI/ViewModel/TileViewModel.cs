@@ -37,15 +37,11 @@ namespace BattleChess3.UI.ViewModel
             set => Set(ref _isPossibleAction, value);
         }
 
-        private Figure _figure = Figure.Empty;
+        private Figure _figure = Figure.None;
         public override Figure Figure
         {
             get => _figure;
-            set
-            {
-                _figure = value;
-                OnPropertyChanged();
-            }
+            set => Set(ref _figure, value);
         }
 
         public TileViewModel(Position position)
@@ -55,7 +51,7 @@ namespace BattleChess3.UI.ViewModel
 
         private void Set<T>(ref T field, T value, [CallerMemberName] string? propertyName = null)
         {
-            var isSet = !field.Equals(value);
+            var isSet = !field!.Equals(value);
             field = value;
             if (isSet) OnPropertyChanged(propertyName);
         }

@@ -32,13 +32,7 @@ namespace BattleChess3.UI
             builder.RegisterType<FigureService>()
                    .AsSelf()
                    .SingleInstance();
-            builder.RegisterType<GameService>()
-                   .AsSelf()
-                   .SingleInstance();
             builder.RegisterType<PlayerService>()
-                   .AsSelf()
-                   .SingleInstance();
-            builder.RegisterType<BoardService>()
                    .AsSelf()
                    .SingleInstance();
             
