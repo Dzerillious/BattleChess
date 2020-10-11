@@ -16,6 +16,7 @@ namespace BattleChess3.UI.Utilities
     {
         public static void CreateAndSaveMaps()
         {
+            Directory.CreateDirectory("Resources/Maps");
             MapBlueprint[] maps = CreateDefaultMaps();
             foreach (var map in maps)
             {

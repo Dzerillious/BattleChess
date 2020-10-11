@@ -68,9 +68,9 @@ namespace BattleChess3.UI.ViewModel
 
         private Figure CreateFigure(FigureBlueprint figureBlueprint)
         {
-            var figureType = _figureService.GetFigureFromName(figureBlueprint.FigureName);
+            var figureType = _figureService.GetFigureFromName(figureBlueprint.UnitName);
             var player = _playerService.GetPlayer(figureBlueprint.PlayerId);
-            var figure = new Figure(player, figureType);
+            var figure = new Figure(player, figureType, figureBlueprint.Hp);
             player.Figures.Add(figure);
             return figure;
         }

@@ -16,6 +16,7 @@ namespace BattleChess3.SilmarillionFigures
         public FigureTypes UnitTypes { get; } = FigureTypes.Foot;
         public FigureTypes Bonus { get; } = FigureTypes.Nothing;
         public FigureTypes AntiBonus { get; } = FigureTypes.Nothing;
+        public double FullHp { get; } = 100;
         public double Attack { get; } = 100;
         public double Defence { get; } = 0;
         public bool MovingAttack { get; } = true;

@@ -16,8 +16,9 @@ namespace BattleChess3.DefaultFigures
         public FigureTypes UnitTypes => FigureTypes.Nothing;
         public FigureTypes Bonus => FigureTypes.Nothing;
         public FigureTypes AntiBonus => FigureTypes.Nothing;
-        public double Attack => 0;
-        public double Defence => double.PositiveInfinity;
+        public double FullHp { get; } = 0;
+        public double Attack { get; } = 0;
+        public double Defence { get; } = double.PositiveInfinity;
         public bool MovingAttack => false;
         public int Cost => 0;
 

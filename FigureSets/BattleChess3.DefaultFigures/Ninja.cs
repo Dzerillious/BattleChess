@@ -16,6 +16,7 @@ namespace BattleChess3.DefaultFigures
         public FigureTypes UnitTypes { get; } = FigureTypes.Foot;
         public FigureTypes Bonus { get; } = FigureTypes.Foot;
         public FigureTypes AntiBonus { get; } = FigureTypes.Mount;
+        public double FullHp { get; } = 100;
         public double Attack { get; } = 50;
         public double Defence { get; } = 0;
         public bool MovingAttack { get; } = true;

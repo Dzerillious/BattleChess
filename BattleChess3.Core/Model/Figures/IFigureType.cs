@@ -19,7 +19,12 @@ namespace BattleChess3.Core.Model.Figures
         /// Gets name of unit
         /// </summary>
         string UnitName { get; }
-
+        
+        /// <summary>
+        /// Gets full hp of unit
+        /// </summary>
+        double FullHp { get; }
+        
         /// <summary>
         /// Gets attack
         /// </summary>

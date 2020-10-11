@@ -47,7 +47,7 @@ namespace BattleChess3.Core.Model
             => new Position(pos.y, pos.x);
 
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (!(obj is Position pos)) return false;
             return Equals(pos);

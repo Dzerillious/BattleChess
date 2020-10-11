@@ -10,11 +10,11 @@ namespace BattleChess3.UI.ViewModel
 {
     public class ThemeViewModel
     {
-        public static readonly ThemeViewModel Invalid = new ThemeViewModel();
+        public static readonly ThemeViewModel None = new ThemeViewModel();
         
-        public readonly ResourceDictionary ResourceDictionary = new ResourceDictionary();
         public string Name { get; }
         public ImageSource Preview { get; }
+        public ResourceDictionary ResourceDictionary { get; } = new ResourceDictionary();
         
         public ThemeViewModel()
         {

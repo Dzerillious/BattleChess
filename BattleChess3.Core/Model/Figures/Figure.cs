@@ -4,16 +4,16 @@ namespace BattleChess3.Core.Model.Figures
 {
     public class Figure
     {
-        public static readonly Figure None = new Figure(Player.Neutral, NoneFigure.Instance);
+        public static readonly Figure None = new Figure(Player.Neutral, NoneFigure.Instance, 0);
         
         public Player Owner { get; }
         public IFigureType FigureType { get; set; }
         public double Hp { get; set; }
         public Uri ImageUri => FigureType.ImageUris[Owner.Id];
 
-        public Figure(Player owner, IFigureType figureType)
+        public Figure(Player owner, IFigureType figureType, double hp)
         {
-            Hp = 100;
+            Hp = hp;
             Owner = owner;
             FigureType = figureType;
         }

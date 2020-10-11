@@ -10,7 +10,7 @@ namespace BattleChess3.UI.Services
 {
     public class ThemeService : ViewModelBase
     {
-        private ThemeViewModel _selectedTheme = ThemeViewModel.Invalid;
+        private ThemeViewModel _selectedTheme = ThemeViewModel.None;
         public ThemeViewModel SelectedTheme
         {
             get => _selectedTheme;
@@ -25,11 +25,11 @@ namespace BattleChess3.UI.Services
             }
         }
 
-        private ThemeViewModel[] _styles = Array.Empty<ThemeViewModel>();
-        public ThemeViewModel[] Styles
+        private ThemeViewModel[] _themes = Array.Empty<ThemeViewModel>();
+        public ThemeViewModel[] Themes
         {
-            get => _styles;
-            set => Set(ref _styles, value);
+            get => _themes;
+            set => Set(ref _themes, value);
         }
 
         public ThemeService()
@@ -39,11 +39,11 @@ namespace BattleChess3.UI.Services
         
         public void ReloadStyles()
         {
-            Styles = Directory.GetFiles(".", "*Theme.dll")
+            Themes = Directory.GetFiles(".", "*Theme.dll")
                               .Select(path => new ThemeViewModel(Path.GetFullPath(path)))
                               .ToArray();
-            SelectedTheme = Styles.FirstOrDefault(style => style.Name.Contains("Paper"))
-                         ?? Styles.First();
+            SelectedTheme = Themes.FirstOrDefault(style => style.Name.Contains("Paper"))
+                         ?? Themes.First();
         }
     }
 }

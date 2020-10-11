@@ -14,37 +14,57 @@ namespace BattleChess3.UI.ViewModel
         public bool MenuTabSelected
         {
             get => _menuTabSelected;
-            set => SetSelectedTab(out _menuTabSelected);
+            set
+            {
+                _ = value;
+                SetSelectedTab(out _menuTabSelected);
+            }
         }
 
         private bool _gameTabSelected;
         public bool GameTabSelected
         {
             get => _gameTabSelected;
-            set => SetSelectedTab(out _gameTabSelected);
+            set
+            {
+                _ = value;
+                SetSelectedTab(out _gameTabSelected);
+            }
         }
 
         private bool _gameTabEnabled;
         public bool GameTabEnabled
         {
             get => _gameTabEnabled;
-            set => Set(ref _gameTabEnabled, value);
+            set
+            {
+                _ = value;
+                Set(ref _gameTabEnabled, value);
+            }
         }
-        
+
         private bool _optionsTabSelected;
         public bool OptionsTabSelected
         {
             get => _optionsTabSelected;
-            set => SetSelectedTab(out _optionsTabSelected);
+            set
+            {
+                _ = value;
+                SetSelectedTab(out _optionsTabSelected);
+            }
         }
-        
+
         private bool _manualTabSelected;
         public bool ManualTabSelected
         {
             get => _manualTabSelected;
-            set => SetSelectedTab(out _manualTabSelected);
+            set
+            {
+                _ = value;
+                SetSelectedTab(out _manualTabSelected);
+            }
         }
-        
+
         public BoardViewModel BoardViewModel { get; } = new BoardViewModel();
 
         public RelayCommand NewGameCommand { get; }

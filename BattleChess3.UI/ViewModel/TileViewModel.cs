@@ -2,6 +2,7 @@
 using System.Runtime.CompilerServices;
 using BattleChess3.Core.Model;
 using BattleChess3.Core.Model.Figures;
+using BattleChess3.UI.Annotations;
 
 namespace BattleChess3.UI.ViewModel
 {

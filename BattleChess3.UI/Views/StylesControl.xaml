@@ -8,7 +8,7 @@
              d:DesignHeight="300" d:DesignWidth="300"
              DataContext="{Binding Source={x:Static viewModel:ViewModelLocator.ThemeService}}">
     <ListBox BorderThickness="0"
-             ItemsSource="{Binding Styles}"
+             ItemsSource="{Binding Themes}"
              SelectedItem="{Binding SelectedTheme}"
              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
              ScrollViewer.VerticalScrollBarVisibility="Hidden">

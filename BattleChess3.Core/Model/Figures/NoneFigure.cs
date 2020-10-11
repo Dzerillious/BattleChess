@@ -13,6 +13,7 @@ namespace BattleChess3.Core.Model.Figures
         public FigureTypes UnitTypes { get; } = FigureTypes.Nothing;
         public FigureTypes Bonus { get; } = FigureTypes.Nothing;
         public FigureTypes AntiBonus { get; } = FigureTypes.Nothing;
+        public double FullHp { get; } = 0;
         public double Attack { get; } = 0;
         public double Defence { get; } = 0;
         public bool MovingAttack { get; } = false;

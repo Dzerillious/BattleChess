@@ -3,6 +3,7 @@ using BattleChess3.Core.Model.Figures;
 
 namespace BattleChess3.Core.Model
 {
+    // JSON serializable
     public class MapBlueprint
     {
         public static readonly MapBlueprint None = new MapBlueprint();
