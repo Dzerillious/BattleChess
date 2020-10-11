@@ -7,7 +7,7 @@ namespace BattleChess3.ChessFigures
     {
         public string ShownName => CurrentLocalization.Instance["ChessFigureGroup_Name"];
 
-        public IFigureType[] GroupFigures => new IFigureType[]
+        public IFigureType[] FigureTypes => new IFigureType[]
         {
             King.Instance,
             Queen.Instance,

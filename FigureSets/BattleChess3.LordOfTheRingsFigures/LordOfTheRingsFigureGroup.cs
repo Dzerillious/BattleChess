@@ -7,7 +7,7 @@ namespace BattleChess3.LordOfTheRingsFigures
     {
         public string ShownName => CurrentLocalization.Instance["LordOfTheRingsFigureGroup_Name"];
 
-        public IFigureType[] GroupFigures => new IFigureType[]
+        public IFigureType[] FigureTypes => new IFigureType[]
         {
             AragornSauron.Instance,
             GandalfWitchKing.Instance,

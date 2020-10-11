@@ -68,20 +68,20 @@ namespace BattleChess3.Core.Model.Figures
         /// <summary>
         /// Attack action
         /// </summary>
-        void AttackAction(Tile from, Tile to, Tile[] board);
+        void AttackAction(ITile from, ITile to, ITile[] board);
 
         /// <summary>
         /// Move action
         /// </summary>
-        void MoveAction(Tile from, Tile to, Tile[] board);
+        void MoveAction(ITile from, ITile to, ITile[] board);
 
         /// <summary>
-        /// Check if can move on position
+        /// Chain of positions of move (if can go at first position of chain, check next one)
         /// </summary>
         Position[][] GetMoveChains(Position from);
 
         /// <summary>
-        /// Check if can attack on position
+        /// Chain of positions of move (if can attack first position of chain, check next one)
         /// </summary>
         Position[][] GetAttackChains(Position from);
     }

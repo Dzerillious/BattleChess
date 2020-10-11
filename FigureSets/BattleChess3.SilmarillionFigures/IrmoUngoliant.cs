@@ -28,10 +28,10 @@ namespace BattleChess3.SilmarillionFigures
             {1, new Uri("pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/IrmoUngoliant2.png", UriKind.Absolute)},
         };
 
-        public void AttackAction(Tile from, Tile to, Tile[] board)
+        public void AttackAction(ITile from, ITile to, ITile[] board)
             => to.KillFigure(board);
 
-        public void MoveAction(Tile from, Tile to, Tile[] board)
+        public void MoveAction(ITile from, ITile to, ITile[] board)
             => from.MoveToPosition(to.Position, board);
 
         private readonly Position[][] _moveChain = 

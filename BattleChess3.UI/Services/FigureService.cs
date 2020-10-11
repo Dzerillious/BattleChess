@@ -47,7 +47,7 @@ namespace BattleChess3.UI.Services
                                     .Select(type => (IFigureGroup) Activator.CreateInstance(type)!)
                                     .ToArray();
 
-            _figuresDictionary = FigureGroups.SelectMany(group => group.GroupFigures)
+            _figuresDictionary = FigureGroups.SelectMany(group => group.FigureTypes)
                                              .ToDictionary(figure => figure.UnitName, figure => figure);
             SelectedFigureGroup = FigureGroups.First();
         }

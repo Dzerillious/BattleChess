@@ -7,7 +7,7 @@ namespace BattleChess3.DefaultFigures
     {
         public string ShownName => CurrentLocalization.Instance["DefaultFigureGroup_Name"];
 
-        public IFigureType[] GroupFigures => new IFigureType[]
+        public IFigureType[] FigureTypes => new IFigureType[]
         {
             Palm.Instance,
             Empty.Instance,

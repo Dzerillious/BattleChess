@@ -2,7 +2,14 @@
 {
     public interface IFigureGroup
     {
+        /// <summary>
+        /// Shown name of figure group
+        /// </summary>
         string ShownName { get; }
-        IFigureType[] GroupFigures { get; }
+        
+        /// <summary>
+        /// Figure types of group
+        /// </summary>
+        IFigureType[] FigureTypes { get; }
     }
 }

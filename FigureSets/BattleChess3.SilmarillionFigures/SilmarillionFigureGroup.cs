@@ -6,7 +6,7 @@ namespace BattleChess3.SilmarillionFigures
     {
         public string ShownName => "Silmarillion";
 
-        public IFigureType[] GroupFigures => new IFigureType[]
+        public IFigureType[] FigureTypes => new IFigureType[]
         {
             ManweMelkor.Instance,
             UlmoAncalagon.Instance,

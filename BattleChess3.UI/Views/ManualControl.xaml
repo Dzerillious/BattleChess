@@ -28,7 +28,7 @@
                       Foreground="Black" Background="{DynamicResource TextBoxBrush}"
                       VerticalScrollBarVisibility="Hidden">
             <ItemsControl DataContext="{Binding SelectedFigureGroup}" 
-                          ItemsSource="{Binding GroupFigures}">
+                          ItemsSource="{Binding FigureTypes}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Border Margin="5" Padding="10"

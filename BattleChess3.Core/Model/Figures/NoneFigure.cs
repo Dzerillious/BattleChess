@@ -20,11 +20,11 @@ namespace BattleChess3.Core.Model.Figures
         public int Cost { get; } = 0;
         public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>();
 
-        public void AttackAction(Tile from, Tile to, Tile[] board)
+        public void AttackAction(ITile from, ITile to, ITile[] board)
         {
         }
 
-        public void MoveAction(Tile from, Tile to, Tile[] board)
+        public void MoveAction(ITile from, ITile to, ITile[] board)
         {
         }
 

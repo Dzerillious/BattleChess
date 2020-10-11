@@ -7,7 +7,7 @@ namespace BattleChess3.HobbitFigures
     {
         public string ShownName => CurrentLocalization.Instance["HobbitFigureGroup_Name"];
 
-        public IFigureType[] GroupFigures => new IFigureType[]
+        public IFigureType[] FigureTypes => new IFigureType[]
         {
             Leader.Instance,
             RingBearer.Instance,

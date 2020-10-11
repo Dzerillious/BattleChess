@@ -26,11 +26,11 @@ namespace BattleChess3.DefaultFigures
             {-1, new Uri("pack://application:,,,/BattleChess3.DefaultFigures;component/Images/Stone0.png", UriKind.Absolute)},
         };
 
-        public void AttackAction(Tile from, Tile to, Tile[] board)
+        public void AttackAction(ITile from, ITile to, ITile[] board)
         {
         }
 
-        public void MoveAction(Tile from, Tile to, Tile[] board)
+        public void MoveAction(ITile from, ITile to, ITile[] board)
         {
         }
 

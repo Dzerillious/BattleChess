@@ -15,8 +15,8 @@ namespace BattleChess3.UI.ViewModel
         private readonly FigureService _figureService = ServiceLocator.Current.GetInstance<FigureService>();
         private readonly PlayerService _playerService = ServiceLocator.Current.GetInstance<PlayerService>();
 
-        private Tile _selectedTile = Tile.None;
-        public Tile SelectedTile
+        private ITile _selectedTile = NoneTile.Instance;
+        public ITile SelectedTile
         {
             get => _selectedTile;
             set
@@ -27,8 +27,8 @@ namespace BattleChess3.UI.ViewModel
             }
         }
 
-        private Tile _mouseOnTile = Tile.None;
-        public Tile MouseOnTile
+        private ITile _mouseOnTile = NoneTile.Instance;
+        public ITile MouseOnTile
         {
             get => _mouseOnTile;
             set
@@ -39,25 +39,25 @@ namespace BattleChess3.UI.ViewModel
             }
         }
         
-        public Tile[] Board { get; } = Enumerable.Range(0, Constants.BoardSize)
-                                                 .Select<int, Tile>(position => new TileViewModel(position))
-                                                 .ToArray();
+        public ITile[] Board { get; } = Enumerable.Range(0, Constants.BoardSize)
+                                                  .Select<int, ITile>(position => new TileViewModel(position))
+                                                  .ToArray();
         
-        public RelayCommand<Tile> ClickedCommand { get; }
-        public RelayCommand<Tile> MouseEnterCommand { get; }
-        public RelayCommand<Tile> MouseExitCommand { get; }
+        public RelayCommand<ITile> ClickedCommand { get; }
+        public RelayCommand<ITile> MouseEnterCommand { get; }
+        public RelayCommand<ITile> MouseExitCommand { get; }
         
 
         public BoardViewModel()
         {
-            ClickedCommand = new RelayCommand<Tile>(ClickedAtTile);
-            MouseEnterCommand = new RelayCommand<Tile>(MouseEnterTile);
-            MouseExitCommand = new RelayCommand<Tile>(MouseExitTile);
+            ClickedCommand = new RelayCommand<ITile>(ClickedAtTile);
+            MouseEnterCommand = new RelayCommand<ITile>(MouseEnterTile);
+            MouseExitCommand = new RelayCommand<ITile>(MouseExitTile);
         }
         
         public void LoadMap(MapBlueprint map)
         {
-            ClickedAtTile(Tile.None);
+            ClickedAtTile(NoneTile.Instance);
             _playerService.InitializePlayers(map.PlayersCount, map.StartingPlayer);
             for (var i = 0; i < Constants.BoardSize; i++)
             {
@@ -76,31 +76,31 @@ namespace BattleChess3.UI.ViewModel
         }
 
 
-        private void ClickedAtTile(Tile clickedTile)
+        private void ClickedAtTile(ITile clickedTile)
         {
             var selectedType = SelectedTile.Figure.FigureType;
             if (clickedTile.IsPossibleAttack)
             {
                 selectedType.AttackAction(SelectedTile, clickedTile, Board);
                 if (selectedType.MovingAttack) selectedType.MoveAction(SelectedTile, clickedTile, Board);
-                SelectedTile = Tile.None;
+                SelectedTile = NoneTile.Instance;
                 _playerService.NextTurn();
             }
             else if (clickedTile.IsPossibleMove)
             {
                 selectedType.MoveAction(SelectedTile, clickedTile, Board);
-                SelectedTile = Tile.None;
+                SelectedTile = NoneTile.Instance;
                 _playerService.NextTurn();
             }
             else if (clickedTile.Figure.Owner == _playerService.CurrentPlayer)
                 SelectedTile = clickedTile;
-            else SelectedTile = Tile.None;
+            else SelectedTile = NoneTile.Instance;
             SetPossibleActions(clickedTile);
         }
 
-        private void SetPossibleActions(Tile clickedTile)
+        private void SetPossibleActions(ITile clickedTile)
         {
-            foreach (Tile tile in Board)
+            foreach (ITile tile in Board)
             {
                 tile.IsPossibleAttack = false;
                 tile.IsPossibleMove = false;
@@ -112,7 +112,7 @@ namespace BattleChess3.UI.ViewModel
             SetPossibleMoves(clickedTile);
         }
 
-        private void SetPossibleAttacks(Tile clickedTile)
+        private void SetPossibleAttacks(ITile clickedTile)
         {
             var playerPOVPosition = clickedTile.Position.GetPlayerPOVPosition(_playerService.CurrentPlayer);
             Position[][] attackChains = clickedTile.Figure.FigureType.GetAttackChains(playerPOVPosition);
@@ -131,7 +131,7 @@ namespace BattleChess3.UI.ViewModel
             }
         }
 
-        private void SetPossibleMoves(Tile clickedTile)
+        private void SetPossibleMoves(ITile clickedTile)
         {
             var playerPOVPosition = clickedTile.Position.GetPlayerPOVPosition(_playerService.CurrentPlayer);
             Position[][] moveChains = clickedTile.Figure.FigureType.GetMoveChains(playerPOVPosition);
@@ -148,12 +148,12 @@ namespace BattleChess3.UI.ViewModel
             }
         }
 
-        private void MouseEnterTile(Tile tile)
+        private void MouseEnterTile(ITile tile)
             => MouseOnTile = tile;
 
-        private void MouseExitTile(Tile tile)
+        private void MouseExitTile(ITile tile)
         {
-            if (MouseOnTile == tile) MouseOnTile = Tile.None;
+            if (MouseOnTile == tile) MouseOnTile = NoneTile.Instance;
         }
     }
 }

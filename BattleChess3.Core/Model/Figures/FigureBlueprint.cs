@@ -1,12 +1,12 @@
 ﻿namespace BattleChess3.Core.Model.Figures
 {
-    // JSON serializable
     public class FigureBlueprint
     {
         public int PlayerId { get; set; } = Player.Neutral.Id;
         public string UnitName { get; set; } = NoneFigure.Instance.UnitName;
         public double Hp { get; set; } = 100;
 
+        // JSON serializable
         public FigureBlueprint()
         {
         }

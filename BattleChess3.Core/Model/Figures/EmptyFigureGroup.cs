@@ -6,6 +6,6 @@ namespace BattleChess3.Core.Model.Figures
     {
         public static EmptyFigureGroup Instance { get; } = new EmptyFigureGroup();
         public string ShownName { get; } = string.Empty;
-        public IFigureType[] GroupFigures { get; } = Array.Empty<IFigureType>();
+        public IFigureType[] FigureTypes { get; } = Array.Empty<IFigureType>();
     }
 }
