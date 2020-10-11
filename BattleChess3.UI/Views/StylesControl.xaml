@@ -6,10 +6,10 @@
              xmlns:viewModel="clr-namespace:BattleChess3.UI.ViewModel"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300"
-             DataContext="{Binding Source={x:Static viewModel:ViewModelLocator.StyleService}}">
+             DataContext="{Binding Source={x:Static viewModel:ViewModelLocator.ThemeService}}">
     <ListBox BorderThickness="0"
              ItemsSource="{Binding Styles}"
-             SelectedItem="{Binding SelectedStyle}"
+             SelectedItem="{Binding SelectedTheme}"
              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
              ScrollViewer.VerticalScrollBarVisibility="Hidden">
         <ListBox.ItemsPanel>

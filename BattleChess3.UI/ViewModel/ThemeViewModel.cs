@@ -8,24 +8,21 @@ using System.Windows.Media;
 
 namespace BattleChess3.UI.ViewModel
 {
-    /// <summary>
-    /// Interface for style of application
-    /// </summary>
-    public class StyleViewModel
+    public class ThemeViewModel
     {
-        public static readonly StyleViewModel Invalid = new StyleViewModel();
+        public static readonly ThemeViewModel Invalid = new ThemeViewModel();
         
         public readonly ResourceDictionary ResourceDictionary = new ResourceDictionary();
         public string Name { get; }
         public ImageSource Preview { get; }
         
-        public StyleViewModel()
+        public ThemeViewModel()
         {
             Name = string.Empty;
             Preview = (ImageSource) ResourceDictionary["Preview"];
         }
         
-        public StyleViewModel(string assemblyPath)
+        public ThemeViewModel(string assemblyPath)
         {
             LoadResources(assemblyPath);
 

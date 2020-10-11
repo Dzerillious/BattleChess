@@ -9,8 +9,8 @@ namespace BattleChess3.UI.ViewModel
             => ServiceLocator.Current.GetInstance<MainWindowViewModel>();
         public static MapService MapService
             => ServiceLocator.Current.GetInstance<MapService>();
-        public static StyleService StyleService
-            => ServiceLocator.Current.GetInstance<StyleService>();
+        public static ThemeService ThemeService
+            => ServiceLocator.Current.GetInstance<ThemeService>();
         public static FigureService FigureService
             => ServiceLocator.Current.GetInstance<FigureService>();
     }

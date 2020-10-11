@@ -26,6 +26,6 @@ namespace BattleChess3.Core.Model.Figures
             return figure.Hp - (FigureType.Attack - figure.FigureType.Defence) * bonusCoefficient * antiBonusCoefficient <= 0;
         }
 
-        public override string ToString() => $"{FigureType.UnitName}{Owner}";
+        public override string ToString() => $"{FigureType.ShownName}:{Owner.Id}";
     }
 }

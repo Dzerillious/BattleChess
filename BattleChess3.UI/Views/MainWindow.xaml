@@ -47,10 +47,10 @@
                  IsEnabled="{Binding GameTabEnabled}">
             <DockPanel LastChildFill="True">
                 <Border>
-                    <views:GameBoardControl DataContext="{Binding GameViewModel}"/>
+                    <views:GameBoardControl DataContext="{Binding BoardViewModel}"/>
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="10,0,0,0">
-                    <views:UnitInfoControl DataContext="{Binding GameViewModel}"/>
+                    <views:UnitInfoControl DataContext="{Binding BoardViewModel}"/>
                 </Border>
             </DockPanel>
         </TabItem>

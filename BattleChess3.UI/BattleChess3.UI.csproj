@@ -48,15 +48,4 @@
         <DependentUpon>Strings.resx</DependentUpon>
       </Compile>
     </ItemGroup>
-    
-    <PropertyGroup>
-        <PostBuildEvent>
-            mkdir FigureSets
-            copy *Figures.dll FigureSets
-            copy *Figures.pdb FigureSets
-            mkdir Themes
-            copy *Theme.dll Themes
-            copy *Theme.pdb Themes
-        </PostBuildEvent>
-    </PropertyGroup>
 </Project>

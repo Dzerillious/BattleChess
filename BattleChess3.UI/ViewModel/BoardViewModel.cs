@@ -2,7 +2,7 @@
 using BattleChess3.Core.Model;
 using BattleChess3.Core.Model.Figures;
 using BattleChess3.Core.Resources;
-using BattleChess3.DefaultFigures;
+using BattleChess3.DefaultFigures.Utilities;
 using BattleChess3.UI.Services;
 using CommonServiceLocator;
 using GalaSoft.MvvmLight;
@@ -14,10 +14,6 @@ namespace BattleChess3.UI.ViewModel
     {
         private readonly FigureService _figureService = ServiceLocator.Current.GetInstance<FigureService>();
         private readonly PlayerService _playerService = ServiceLocator.Current.GetInstance<PlayerService>();
-        
-        public Tile[] Board { get; } = Enumerable.Range(0, Constants.BoardSize)
-                                                 .Select<int, Tile>(position => new TileViewModel(position))
-                                                 .ToArray();
 
         private Tile _selectedTile = Tile.None;
         public Tile SelectedTile
@@ -43,18 +39,25 @@ namespace BattleChess3.UI.ViewModel
             }
         }
         
+        public Tile[] Board { get; } = Enumerable.Range(0, Constants.BoardSize)
+                                                 .Select<int, Tile>(position => new TileViewModel(position))
+                                                 .ToArray();
+        
         public RelayCommand<Tile> ClickedCommand { get; }
         public RelayCommand<Tile> MouseEnterCommand { get; }
+        public RelayCommand<Tile> MouseExitCommand { get; }
         
 
         public BoardViewModel()
         {
             ClickedCommand = new RelayCommand<Tile>(ClickedAtTile);
             MouseEnterCommand = new RelayCommand<Tile>(MouseEnterTile);
+            MouseExitCommand = new RelayCommand<Tile>(MouseExitTile);
         }
         
         public void LoadMap(MapBlueprint map)
         {
+            ClickedAtTile(Tile.None);
             _playerService.InitializePlayers(map.PlayersCount, map.StartingPlayer);
             for (var i = 0; i < Constants.BoardSize; i++)
             {
@@ -71,16 +74,15 @@ namespace BattleChess3.UI.ViewModel
             player.Figures.Add(figure);
             return figure;
         }
-        
 
-        public void ClickedAtTile(Tile clickedTile)
+
+        private void ClickedAtTile(Tile clickedTile)
         {
             var selectedType = SelectedTile.Figure.FigureType;
             if (clickedTile.IsPossibleAttack)
             {
                 selectedType.AttackAction(SelectedTile, clickedTile, Board);
-                if (selectedType.MovingAttack)
-                    selectedType.MoveAction(SelectedTile, clickedTile, Board);
+                if (selectedType.MovingAttack) selectedType.MoveAction(SelectedTile, clickedTile, Board);
                 SelectedTile = Tile.None;
                 _playerService.NextTurn();
             }
@@ -122,7 +124,7 @@ namespace BattleChess3.UI.ViewModel
                 if (!attackPosition.InBoard()) break;
 
                 var attackedTile = Board[attackPosition];
-                if (attackedTile.Figure.FigureType == Empty.Instance) 
+                if (attackedTile.Figure.FigureType.IsEmpty()) 
                     continue;
                 attackedTile.IsPossibleAttack = clickedTile.Figure.CanKill(attackedTile.Figure);
                 break;
@@ -139,15 +141,19 @@ namespace BattleChess3.UI.ViewModel
             {
                 Position movePosition = clickedTile.Position + position.GetPlayerPOVRelative(_playerService.CurrentPlayer);
                 if (!movePosition.InBoard()) break;
-                
-                var movedTile = Board[movePosition];
-                if (movedTile.Figure.FigureType == Empty.Instance)
-                    movedTile.IsPossibleMove = true;
+
+                if (Board[movePosition].Figure.FigureType.IsEmpty())
+                    Board[movePosition].IsPossibleMove = true;
                 else break;
             }
         }
 
-        public void MouseEnterTile(Tile tile)
+        private void MouseEnterTile(Tile tile)
             => MouseOnTile = tile;
+
+        private void MouseExitTile(Tile tile)
+        {
+            if (MouseOnTile == tile) MouseOnTile = Tile.None;
+        }
     }
 }

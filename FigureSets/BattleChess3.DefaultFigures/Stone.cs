@@ -18,13 +18,12 @@ namespace BattleChess3.DefaultFigures
         public double Attack { get; } = 0;
         public double Defence { get; } = double.PositiveInfinity;
         public bool MovingAttack { get; } = false;
+        public int Cost => 0;
 
         public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
         {
             {-1, new Uri("pack://application:,,,/BattleChess3.DefaultFigures;component/Images/Stone0.png", UriKind.Absolute)},
         };
-
-        public int Cost => 0;
 
         public void AttackAction(Tile from, Tile to, Tile[] board)
         {

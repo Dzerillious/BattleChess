@@ -14,6 +14,6 @@ namespace BattleChess3.Core.Model
         public virtual bool IsPossibleMove { get; set; }
         public virtual bool IsPossibleAttack { get; set; }
 
-        public override string ToString() => $"{Figure}";
+        public override string ToString() => $"{Position}:{Figure}";
     }
 }

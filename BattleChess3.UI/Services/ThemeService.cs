@@ -4,18 +4,19 @@ using System.Linq;
 using System.Windows;
 using BattleChess3.UI.ViewModel;
 using GalaSoft.MvvmLight;
+using Path = System.IO.Path;
 
 namespace BattleChess3.UI.Services
 {
-    public class StyleService : ViewModelBase
+    public class ThemeService : ViewModelBase
     {
-        private StyleViewModel _selectedStyle = StyleViewModel.Invalid;
-        public StyleViewModel SelectedStyle
+        private ThemeViewModel _selectedTheme = ThemeViewModel.Invalid;
+        public ThemeViewModel SelectedTheme
         {
-            get => _selectedStyle;
+            get => _selectedTheme;
             set
             {
-                Set(ref _selectedStyle, value);
+                Set(ref _selectedTheme, value);
                 foreach (object? keyObject in value.ResourceDictionary.Keys)
                 {
                     if (!(keyObject is { } key)) return;
@@ -24,25 +25,24 @@ namespace BattleChess3.UI.Services
             }
         }
 
-        private StyleViewModel[] _styles = Array.Empty<StyleViewModel>();
-        public StyleViewModel[] Styles
+        private ThemeViewModel[] _styles = Array.Empty<ThemeViewModel>();
+        public ThemeViewModel[] Styles
         {
             get => _styles;
             set => Set(ref _styles, value);
         }
 
-        public StyleService()
+        public ThemeService()
         {
             ReloadStyles();
         }
         
         public void ReloadStyles()
         {
-            DirectoryInfo directory = new DirectoryInfo("Themes");
-            Styles = directory.GetFiles("*.dll")
-                              .Select(fileInfo => new StyleViewModel(fileInfo.FullName))
+            Styles = Directory.GetFiles(".", "*Theme.dll")
+                              .Select(path => new ThemeViewModel(Path.GetFullPath(path)))
                               .ToArray();
-            SelectedStyle = Styles.FirstOrDefault(style => style.Name.Contains("Paper"))
+            SelectedTheme = Styles.FirstOrDefault(style => style.Name.Contains("Paper"))
                          ?? Styles.First();
         }
     }

@@ -26,6 +26,10 @@
                             <i:InvokeCommandAction Command="{Binding DataContext.MouseEnterCommand, ElementName=ThisUserControl}"
                                                    CommandParameter="{Binding}"/>
                         </i:EventTrigger>
+                        <i:EventTrigger EventName="MouseExit">
+                            <i:InvokeCommandAction Command="{Binding DataContext.MouseExitCommand, ElementName=ThisUserControl}"
+                                                   CommandParameter="{Binding}"/>
+                        </i:EventTrigger>
                     </i:Interaction.Triggers>
                     <Image Source="{Binding Figure.ImageUri}" />
                 </Button>
