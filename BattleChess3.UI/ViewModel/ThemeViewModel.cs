@@ -11,23 +11,23 @@ namespace BattleChess3.UI.ViewModel
     public class ThemeViewModel
     {
         public static readonly ThemeViewModel None = new ThemeViewModel();
-        
+
         public string Name { get; }
         public ImageSource Preview { get; }
         public ResourceDictionary ResourceDictionary { get; } = new ResourceDictionary();
-        
+
         public ThemeViewModel()
         {
             Name = string.Empty;
             Preview = (ImageSource) ResourceDictionary["Preview"];
         }
-        
+
         public ThemeViewModel(string assemblyPath)
         {
             LoadResources(assemblyPath);
+            Preview = (ImageSource) ResourceDictionary["Preview"];
 
             Name = Path.GetFileNameWithoutExtension(assemblyPath);
-            Preview = (ImageSource) ResourceDictionary["Preview"];
         }
 
         private void LoadResources(string assemblyPath)
@@ -42,8 +42,9 @@ namespace BattleChess3.UI.ViewModel
                 if (!(resource is { } entry)) return;
                 string keyName = entry.Key.ToString() ?? string.Empty;
                 if (!keyName.EndsWith(".baml", StringComparison.OrdinalIgnoreCase)) continue;
-                
-                Uri uri = new Uri("/" + assembly.GetName().Name + ";component/" + keyName.Replace(".baml", ".xaml"), UriKind.Relative);
+
+                Uri uri = new Uri("/" + assembly.GetName().Name + ";component/" + keyName.Replace(".baml", ".xaml"),
+                    UriKind.Relative);
                 ResourceDictionary dictionary = (ResourceDictionary) Application.LoadComponent(uri);
                 foreach (object? keyObject in dictionary.Keys)
                 {
