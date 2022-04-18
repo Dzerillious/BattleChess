@@ -1,48 +1,93 @@
 ﻿using BattleChess3.Core.Model;
+using BattleChess3.Core.Model.Figures;
+using BattleChess3.Core.Utilities;
 using BattleChess3.UI.Services;
 using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Threading;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 
 namespace BattleChess3.UI.ViewModel;
 
 public class MapsViewModel : ViewModelBase
 {
-    private IMapService _mapService;
+    private readonly IMapService _mapService;
+    private readonly IPlayerService _playerService;
 
     private MapBlueprint _selectedMap = MapBlueprint.None;
     public MapBlueprint SelectedMap
     {
         get => _selectedMap;
-        set => Set(ref _selectedMap, value);
+        set
+        {
+            if (value == null)
+                value = MapBlueprint.None;
+
+            Set(ref _selectedMap, value);
+        }
     }
 
-    private IList<MapBlueprint> _maps = Array.Empty<MapBlueprint>();
-    public IList<MapBlueprint> Maps
+    private ObservableCollection<MapBlueprint> _maps = new ObservableCollection<MapBlueprint>();
+    public ObservableCollection<MapBlueprint> Maps
     {
         get => _maps;
         set
         {
-            Set(ref _maps, value);
-            if (!_maps.Contains(_selectedMap))
+            if (!value.Any(x => x.MapPath == _selectedMap.MapPath))
             {
-                _selectedMap = _maps.FirstOrDefault() 
+                SelectedMap = value.FirstOrDefault()
                     ?? MapBlueprint.None;
             }
+            Set(ref _maps, value);
         }
     }
 
-    public MapsViewModel(IMapService mapService)
+    public MapsViewModel(
+        IMapService mapService,
+        IPlayerService playerService)
     {
         _mapService = mapService;
-        Maps = _mapService.GetCurrentMaps();
+        _playerService = playerService;
+
+        Maps = new ObservableCollection<MapBlueprint>(_mapService.GetCurrentMaps());
         _mapService.MapsChanged += OnMapsChanged;
     }
 
     public void OnMapsChanged(object sender, IList<MapBlueprint> maps)
     {
-        Maps = maps;
+        Maps = new ObservableCollection<MapBlueprint>(maps);
+    }
+
+    internal void DeleteSelectedMap()
+    {
+        if (SelectedMap is null)
+            return;
+
+        File.Delete(SelectedMap.MapPath);
+        Maps.Remove(SelectedMap);
+    }
+
+    internal void SaveSelectedMap(string identifier, ITile[] board)
+    {
+        var map = new MapBlueprint
+        {
+            Figures = board.Select(x => new FigureBlueprint
+            {
+                Hp = x.Figure.Hp,
+                PlayerId = x.Figure.Owner.Id,
+                UnitName = x.Figure.FigureType.UnitName
+            }).ToArray(),
+            MapPath = $"Resources/Maps/{identifier}.map",
+            PreviewPath = $"./Resources/Maps/{identifier}.png",
+            PlayersCount = _playerService.PlayersCount,
+            StartingPlayer = _playerService.CurrentPlayer.Id,
+        };
+
+        string text = JsonConvert.SerializeObject(map);
+        text = CompressionHelper.Compress(text);
+        File.WriteAllText(map.MapPath, text);
     }
 }

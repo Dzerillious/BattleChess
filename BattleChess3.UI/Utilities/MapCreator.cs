@@ -22,7 +22,7 @@ public static class MapCreator
         {
             string text = JsonConvert.SerializeObject(map);
             text = CompressionHelper.Compress(text);
-            File.WriteAllText(map.Path, text);
+            File.WriteAllText(map.MapPath, text);
         }
     }
 
@@ -42,9 +42,8 @@ public static class MapCreator
                     (0, Ninja.Instance), (0, Ninja.Instance), (0, Ninja.Instance), (0, Ninja.Instance), (0, Ninja.Instance), (0, Ninja.Instance), (0, Ninja.Instance), (0, Ninja.Instance),
                     (0, Ninja.Instance), (0, Ninja.Instance), (0, Ninja.Instance), (0, Ninja.Instance), (0, Ninja.Instance), (0, Ninja.Instance), (0, Ninja.Instance), (0, Ninja.Instance),
                 },
-                Name = "NinjaMap",
-                Path = $"Resources/Maps/Ninja_{new Random().Next()}.map",
-                PreviewPath = $"/Resources/MapsPreviews/Ninja_{new Random().Next()}.png",
+                MapPath = $"Resources/Maps/Ninja_{new Random().Next()}.map",
+                PreviewPath = $"/Resources/Maps/Ninja_{new Random().Next()}.png",
                 StartingPlayer = 0,
                 PlayersCount = 2
             }, 
@@ -61,9 +60,8 @@ public static class MapCreator
                     (0, Pawn.Instance), (0, Pawn.Instance), (0, Pawn.Instance), (0, Pawn.Instance), (0, Pawn.Instance), (0, Pawn.Instance), (0, Pawn.Instance), (0, Pawn.Instance),
                     (0, Rook.Instance), (0, Knight.Instance), (0, Bishop.Instance), (0, Queen.Instance), (0, King.Instance), (0, Bishop.Instance), (0, Knight.Instance), (0, Rook.Instance),
                 },
-                Name = "ChessMap",
-                Path = $"Resources/Maps/Chess_{new Random().Next()}.map",
-                PreviewPath = $"/Resources/MapsPreviews/Chess_{new Random().Next()}.png",
+                MapPath = $"Resources/Maps/Chess_{new Random().Next()}.map",
+                PreviewPath = $"/Resources/Maps/Chess_{new Random().Next()}.png",
                 StartingPlayer = 0,
                 PlayersCount = 2
             }, 
@@ -80,9 +78,8 @@ public static class MapCreator
                     (0, SoldierOrc.Instance), (0, SoldierOrc.Instance), (0, SoldierOrc.Instance), (0, SoldierOrc.Instance), (0, SoldierOrc.Instance), (0, SoldierOrc.Instance), (0, SoldierOrc.Instance), (0, SoldierOrc.Instance),
                     (0, LegolasNazgul.Instance), (0, SamSaruman.Instance), (0, PipinTroll.Instance), (0, GandalfWitchKing.Instance), (0, AragornSauron.Instance), (0, MerryTroll.Instance), (0, FrodoGollum.Instance), (0, GimliNazgul.Instance),
                 },
-                Name = "LOTRMap",
-                Path = $"Resources/Maps/LOTR_{new Random().Next()}.map",
-                PreviewPath = $"/Resources/MapsPreviews/LOTR_{new Random().Next()}.png",
+                MapPath = $"Resources/Maps/LOTR_{new Random().Next()}.map",
+                PreviewPath = $"/Resources/Maps/LOTR_{new Random().Next()}.png",
                 StartingPlayer = 0,
                 PlayersCount = 2
             }, 
@@ -99,9 +96,8 @@ public static class MapCreator
                     (0, Soldier.Instance), (0, Soldier.Instance), (0, Soldier.Instance), (0, Soldier.Instance), (0, Soldier.Instance), (0, Soldier.Instance), (0, Soldier.Instance), (0, Soldier.Instance),
                     (0, MinorWizard.Instance), (0, Warrior.Instance), (0, Helper.Instance), (0, RingBearer.Instance), (0, Leader.Instance), (0, Helper.Instance), (0, Warrior.Instance), (0, MinorWizard.Instance),
                 },
-                Name = "HobbitMap",
-                Path = $"Resources/Maps/Hobbit_{new Random().Next()}.map",
-                PreviewPath = $"/Resources/MapsPreviews/Hobbit_{new Random().Next()}.png",
+                MapPath = $"Resources/Maps/Hobbit_{new Random().Next()}.map",
+                PreviewPath = $"/Resources/Maps/Hobbit_{new Random().Next()}.png",
                 StartingPlayer = 0,
                 PlayersCount = 2
             }, 
@@ -118,9 +114,8 @@ public static class MapCreator
                     (0, ElfOrc.Instance), (0, ElfOrc.Instance), (0, ElfOrc.Instance), (0, ElfOrc.Instance), (0, ElfOrc.Instance), (0, ElfOrc.Instance), (0, ElfOrc.Instance), (0, ElfOrc.Instance),
                     (0, UlmoAncalagon.Instance), (0, IrmoUngoliant.Instance), (0, NiennaBalrog.Instance), (0, YavannaGlaurung.Instance), (0, ManweMelkor.Instance), (0, AuleGothmog.Instance), (0, VardaSauron.Instance), (0, OromeCarcharoth.Instance),
                 },
-                Name = "SilmarillionMap",
-                Path = $"Resources/Maps/Silmarillion_{new Random().Next()}.map",
-                PreviewPath = $"/Resources/MapsPreviews/Silmarillion_{new Random().Next()}.png",
+                MapPath = $"Resources/Maps/Silmarillion_{new Random().Next()}.map",
+                PreviewPath = $"/Resources/Maps/Silmarillion_{new Random().Next()}.png",
                 StartingPlayer = 0,
                 PlayersCount = 2
             }, 

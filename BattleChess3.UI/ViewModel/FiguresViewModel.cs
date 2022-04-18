@@ -16,7 +16,13 @@ public class FiguresViewModel : ViewModelBase
     public IFigureGroup SelectedFigureGroup
     {
         get => _selectedFigureGroup;
-        set => Set(ref _selectedFigureGroup, value);
+        set
+        {
+            if (value is null)
+                value = EmptyFigureGroup.Instance;
+
+            Set(ref _selectedFigureGroup, value);
+        }
     }
 
     private IList<IFigureGroup> _figureGroups = Array.Empty<IFigureGroup>();
@@ -26,9 +32,9 @@ public class FiguresViewModel : ViewModelBase
         set
         {
             Set(ref _figureGroups, value);
-            if (!_figureGroups.Contains(_selectedFigureGroup))
+            if (!_figureGroups.Any(x => x.ShownName == _selectedFigureGroup.ShownName))
             {
-                _selectedFigureGroup = _figureGroups.FirstOrDefault()
+                SelectedFigureGroup = _figureGroups.FirstOrDefault()
                     ?? EmptyFigureGroup.Instance;
             }
         }

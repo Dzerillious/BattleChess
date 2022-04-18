@@ -23,8 +23,8 @@ public class DependenciesBuilder
     {
         var builder = new ContainerBuilder();
         
-        builder.RegisterType<ThemesService>()
-               .As<IThemesService>()
+        builder.RegisterType<ThemeService>()
+               .As<IThemeService>()
                .SingleInstance();
         builder.RegisterType<MapService>()
                .As<IMapService>()

@@ -5,6 +5,11 @@ namespace BattleChess3.UI.Services
     public interface IPlayerService
     {
         /// <summary>
+        /// Gets players count.
+        /// </summary>
+        int PlayersCount { get; }
+
+        /// <summary>
         /// Gets current player.
         /// </summary>
         Player CurrentPlayer { get; }

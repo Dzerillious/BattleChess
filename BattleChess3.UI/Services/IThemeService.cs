@@ -7,7 +7,7 @@ namespace BattleChess3.UI.Services;
 /// <summary>
 /// Service for handling themes.
 /// </summary>
-public interface IThemesService
+public interface IThemeService
 {
     /// <summary>
     /// Raised when themes collection changes.

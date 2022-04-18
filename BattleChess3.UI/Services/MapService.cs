@@ -12,15 +12,17 @@ namespace BattleChess3.UI.Services;
 
 public class MapService : ViewModelBase, IMapService
 {
+    private readonly FileSystemWatcher _watcher;
+
     private MapBlueprint[] _maps = Array.Empty<MapBlueprint>();
 
     public event EventHandler<IList<MapBlueprint>>? MapsChanged;
 
     public MapService()
     {
-        using var watcher = new FileSystemWatcher("Resources/Maps");
+        _watcher = new FileSystemWatcher("Resources/Maps");
 
-        watcher.NotifyFilter = NotifyFilters.Attributes
+        _watcher.NotifyFilter = NotifyFilters.Attributes
                              | NotifyFilters.CreationTime
                              | NotifyFilters.DirectoryName
                              | NotifyFilters.FileName
@@ -29,14 +31,14 @@ public class MapService : ViewModelBase, IMapService
                              | NotifyFilters.Security
                              | NotifyFilters.Size;
 
-        watcher.Changed += OnChanged;
-        watcher.Created += OnChanged;
-        watcher.Deleted += OnChanged;
-        watcher.Renamed += OnChanged;
+        _watcher.Changed += OnChanged;
+        _watcher.Created += OnChanged;
+        _watcher.Deleted += OnChanged;
+        _watcher.Renamed += OnChanged;
 
-        watcher.Filter = "*.map";
-        watcher.IncludeSubdirectories = true;
-        watcher.EnableRaisingEvents = true;
+        _watcher.Filter = "*.map";
+        _watcher.IncludeSubdirectories = true;
+        _watcher.EnableRaisingEvents = true;
 
         Task.Run(() => ReloadMaps());
     }
@@ -54,13 +56,38 @@ public class MapService : ViewModelBase, IMapService
     private void ReloadMaps()
     {
         _maps = Directory.GetFiles("Resources/Maps", "*.map")
-                        .Select(path =>
-                        {
-                            string text = File.ReadAllText(Path.GetFullPath(path));
-                            text = CompressionHelper.Decompress(text);
-                            return JsonConvert.DeserializeObject<MapBlueprint>(text);
-                        })
-                        .ToArray();
+            .Where(path => File.Exists(Path.GetFullPath(path)))
+            .Select(path =>
+            {
+                string text = File.ReadAllText(Path.GetFullPath(path));
+                text = CompressionHelper.Decompress(text);
+                return JsonConvert.DeserializeObject<MapBlueprint>(text);
+            })
+            .OrderByDescending(map => map.MapPath)
+            .ToArray();
+
+        var maps = Directory.GetFiles("Resources/Maps", "*.map")
+            .Select(x => Path.GetFileNameWithoutExtension(x))
+            .ToHashSet();
+        var mapPreviews = Directory.GetFiles("Resources/Maps", "*.png")
+            .Select(x => Path.GetFileNameWithoutExtension(x))
+            .ToList();
+
+        foreach (var item in mapPreviews)
+        {
+            if (maps.Contains(item))
+                continue;
+
+            try
+            {
+                File.Delete(Path.GetFullPath($"Resources/Maps/{item}.png"));
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+
         MapsChanged?.Invoke(this, _maps);
     }
 }

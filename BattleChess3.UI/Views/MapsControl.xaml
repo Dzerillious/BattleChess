@@ -19,8 +19,8 @@
         </ListBox.ItemsPanel>
         <ListBox.ItemTemplate>
             <DataTemplate>
-                <Image Width="500" Margin="10"
-                       Source="{Binding Path=PreviewPath}"/>
+                <Image Width="400" Margin="10"
+                       Source="{Binding Path=PreviewUri}"/>
             </DataTemplate>
         </ListBox.ItemTemplate>
     </ListBox>

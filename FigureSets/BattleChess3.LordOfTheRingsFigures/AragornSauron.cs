@@ -24,8 +24,8 @@ public class AragornSauron : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {0, new Uri("pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/AragornSauron1.png", UriKind.Absolute)},
-        {1, new Uri("pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/AragornSauron2.png", UriKind.Absolute)},
+        {1, new Uri("pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/AragornSauron1.png", UriKind.Absolute)},
+        {2, new Uri("pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/AragornSauron2.png", UriKind.Absolute)},
     };
 
     public void AttackAction(ITile from, ITile to, ITile[] board)

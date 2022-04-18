@@ -10,7 +10,7 @@ namespace BattleChess3.UI.ViewModel;
 
 public class ThemesViewModel : ViewModelBase
 {
-    public readonly IThemesService _themesService;
+    public readonly IThemeService _themesService;
 
     private ThemeModel _selectedTheme = ThemeModel.None;
     public ThemeModel SelectedTheme
@@ -18,6 +18,9 @@ public class ThemesViewModel : ViewModelBase
         get => _selectedTheme;
         set
         {
+            if (value is null)
+                value = ThemeModel.None;
+
             Set(ref _selectedTheme, value);
             foreach (var keyObject in value.ResourceDictionary.Keys)
             {
@@ -34,7 +37,7 @@ public class ThemesViewModel : ViewModelBase
         set
         {
             Set(ref _themes, value);
-            if (!_themes.Contains(_selectedTheme))
+            if (!_themes.Any(x => x.Name == _selectedTheme.Name))
             {
                 SelectedTheme = _themes.FirstOrDefault(x => x.Name.Contains("Paper")) ??
                     _themes.FirstOrDefault() ??
@@ -44,7 +47,7 @@ public class ThemesViewModel : ViewModelBase
     }
 
     public ThemesViewModel(
-        IThemesService themesService)
+        IThemeService themesService)
     {
         _themesService = themesService;
         Themes = _themesService.GetCurrentThemes();

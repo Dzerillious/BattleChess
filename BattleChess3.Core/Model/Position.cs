@@ -66,22 +66,16 @@ public readonly struct Position
     public override string ToString() => $"({Y},{X})";
 
     public Position GetPlayerPOVRelative(in Player currentPlayer) 
-        => (currentPlayer.Id % 4) switch
+        => (currentPlayer.Id % 2) switch
         {
-            0 => new Position(-Y, X),
-            1 => this,
-            2 => new Position(-X, Y),
-            3 => new Position(X, Y),
-            _ => this
+            1 => new Position(-Y, X),
+            _ => new Position(Y, X),
         };
 
     public Position GetPlayerPOVPosition(in Player currentPlayer) 
-        => (currentPlayer.Id % 4) switch
+        => (currentPlayer.Id % 2) switch
         {
-            0 => new Position(Constants.BoardLength - Y - 1, X),
-            1 => this,
-            2 => new Position(Constants.BoardLength - X - 1, Y),
-            3 => new Position(X, Y),
-            _ => this
+            1 => new Position(Constants.BoardLength - Y - 1, X),
+            _ => new Position(Y, X),
         };
 }

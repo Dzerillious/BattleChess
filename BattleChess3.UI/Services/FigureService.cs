@@ -10,6 +10,8 @@ namespace BattleChess3.UI.Services;
 
 public class FigureService : IFigureService
 {
+    private readonly FileSystemWatcher _watcher;
+
     private IFigureGroup[] _figureGroups = Array.Empty<IFigureGroup>();
     private Dictionary<string, IFigureType> _figuresDictionary = new Dictionary<string, IFigureType>();
 
@@ -17,9 +19,9 @@ public class FigureService : IFigureService
 
     public FigureService()
     {
-        using var watcher = new FileSystemWatcher(".");
+        _watcher = new FileSystemWatcher(".");
 
-        watcher.NotifyFilter = NotifyFilters.Attributes
+        _watcher.NotifyFilter = NotifyFilters.Attributes
                              | NotifyFilters.CreationTime
                              | NotifyFilters.DirectoryName
                              | NotifyFilters.FileName
@@ -28,14 +30,14 @@ public class FigureService : IFigureService
                              | NotifyFilters.Security
                              | NotifyFilters.Size;
 
-        watcher.Changed += OnChanged;
-        watcher.Created += OnChanged;
-        watcher.Deleted += OnChanged;
-        watcher.Renamed += OnChanged;
+        _watcher.Changed += OnChanged;
+        _watcher.Created += OnChanged;
+        _watcher.Deleted += OnChanged;
+        _watcher.Renamed += OnChanged;
 
-        watcher.Filter = "*Figures.dll";
-        watcher.IncludeSubdirectories = true;
-        watcher.EnableRaisingEvents = true;
+        _watcher.Filter = "*Figures.dll";
+        _watcher.IncludeSubdirectories = true;
+        _watcher.EnableRaisingEvents = true;
 
         Task.Run(() => ReloadFigures());
     }

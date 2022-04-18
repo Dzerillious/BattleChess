@@ -48,7 +48,9 @@
                  IsEnabled="{Binding GameTabEnabled}">
             <DockPanel LastChildFill="True">
                 <Border>
-                    <views:GameBoardControl DataContext="{Binding BoardViewModel}"/>
+                    <views:GameBoardControl 
+                        x:Name="GameBoard"
+                        DataContext="{Binding BoardViewModel}"/>
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="10,0,0,0">
                     <views:UnitInfoControl DataContext="{Binding BoardViewModel}"/>

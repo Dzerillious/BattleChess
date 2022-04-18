@@ -8,17 +8,19 @@ using System.Threading.Tasks;
 
 namespace BattleChess3.UI.Services
 {
-    public class ThemesService : IThemesService
+    public class ThemeService : IThemeService
     {
+        private readonly FileSystemWatcher _watcher;
+
         private ThemeModel[] _themes = Array.Empty<ThemeModel>();
 
         public event EventHandler<IList<ThemeModel>>? ThemesChanged;
 
-        public ThemesService()
+        public ThemeService()
         {
-            using var watcher = new FileSystemWatcher(".");
+            _watcher = new FileSystemWatcher(".");
 
-            watcher.NotifyFilter = NotifyFilters.Attributes
+            _watcher.NotifyFilter = NotifyFilters.Attributes
                                  | NotifyFilters.CreationTime
                                  | NotifyFilters.DirectoryName
                                  | NotifyFilters.FileName
@@ -27,14 +29,14 @@ namespace BattleChess3.UI.Services
                                  | NotifyFilters.Security
                                  | NotifyFilters.Size;
 
-            watcher.Changed += OnChanged;
-            watcher.Created += OnChanged;
-            watcher.Deleted += OnChanged;
-            watcher.Renamed += OnChanged;
+            _watcher.Changed += OnChanged;
+            _watcher.Created += OnChanged;
+            _watcher.Deleted += OnChanged;
+            _watcher.Renamed += OnChanged;
 
-            watcher.Filter = "*Theme.dll";
-            watcher.IncludeSubdirectories = true;
-            watcher.EnableRaisingEvents = true;
+            _watcher.Filter = "*Theme.dll";
+            _watcher.IncludeSubdirectories = true;
+            _watcher.EnableRaisingEvents = true;
 
             Task.Run(() => ReloadThemes());
         }

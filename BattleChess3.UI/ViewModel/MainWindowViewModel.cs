@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Threading.Tasks;
+using System.Windows;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
@@ -10,55 +12,35 @@ public class MainWindowViewModel : ViewModelBase
     public bool MenuTabSelected
     {
         get => _menuTabSelected;
-        set
-        {
-            _ = value;
-            SetSelectedTab(out _menuTabSelected);
-        }
+        set => SetTabSelected(out _menuTabSelected);
     }
 
     private bool _gameTabSelected;
     public bool GameTabSelected
     {
         get => _gameTabSelected;
-        set
-        {
-            _ = value;
-            SetSelectedTab(out _gameTabSelected);
-        }
+        set => SetTabSelected(out _gameTabSelected);
     }
 
     private bool _gameTabEnabled;
     public bool GameTabEnabled
     {
         get => _gameTabEnabled;
-        set
-        {
-            _ = value;
-            Set(ref _gameTabEnabled, value);
-        }
+        set => Set(ref _gameTabEnabled, value);
     }
 
     private bool _optionsTabSelected;
     public bool OptionsTabSelected
     {
         get => _optionsTabSelected;
-        set
-        {
-            _ = value;
-            SetSelectedTab(out _optionsTabSelected);
-        }
+        set => SetTabSelected(out _optionsTabSelected);
     }
 
     private bool _manualTabSelected;
     public bool ManualTabSelected
     {
         get => _manualTabSelected;
-        set
-        {
-            _ = value;
-            SetSelectedTab(out _manualTabSelected);
-        }
+        set => SetTabSelected(out _manualTabSelected);
     }
 
     public MapsViewModel MapsViewModel { get; }
@@ -70,6 +52,8 @@ public class MainWindowViewModel : ViewModelBase
     public RelayCommand SelectOptionsCommand { get; }
     public RelayCommand CloseApplicationCommand { get; }
 
+    public event EventHandler<string>? RequestSavePreview;
+
     public MainWindowViewModel(
         MapsViewModel mapsViewModel,
         BoardViewModel boardViewModel)
@@ -78,8 +62,8 @@ public class MainWindowViewModel : ViewModelBase
         BoardViewModel = boardViewModel;
 
         NewGameCommand = new RelayCommand(NewGame);
-        SaveGameCommand = new RelayCommand(() => { });
-        DeleteGameCommand = new RelayCommand(() => { });
+        SaveGameCommand = new RelayCommand(SaveGame);
+        DeleteGameCommand = new RelayCommand(DeleteGame);
         SelectOptionsCommand = new RelayCommand(() => OptionsTabSelected = true);
         CloseApplicationCommand = new RelayCommand(CloseApplication);
     }
@@ -91,9 +75,24 @@ public class MainWindowViewModel : ViewModelBase
         GameTabSelected = true;
     }
 
+    private void SaveGame()
+    {
+        if (!GameTabEnabled)
+            return;
+
+        var indentifier = DateTime.Now.Ticks.ToString();
+        RequestSavePreview?.Invoke(this, indentifier);
+        MapsViewModel.SaveSelectedMap(indentifier, BoardViewModel.Board);
+    }
+
+    private void DeleteGame()
+    {
+        MapsViewModel.DeleteSelectedMap();
+    }
+
     private static void CloseApplication() => Application.Current.Shutdown();
 
-    private void SetSelectedTab(out bool selectedTab)
+    private void SetTabSelected(out bool selectedTab)
     {
         _menuTabSelected = false;
         _gameTabSelected = false;

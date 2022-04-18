@@ -24,8 +24,8 @@ public class Queen : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {0, new Uri("pack://application:,,,/BattleChess3.ChessFigures;component/Images/Queen1.png", UriKind.Absolute)},
-        {1, new Uri("pack://application:,,,/BattleChess3.ChessFigures;component/Images/Queen2.png", UriKind.Absolute)},
+        {1, new Uri("pack://application:,,,/BattleChess3.ChessFigures;component/Images/Queen1.png", UriKind.Absolute)},
+        {2, new Uri("pack://application:,,,/BattleChess3.ChessFigures;component/Images/Queen2.png", UriKind.Absolute)},
     };
 
     public void AttackAction(ITile from, ITile to, ITile[] board)
