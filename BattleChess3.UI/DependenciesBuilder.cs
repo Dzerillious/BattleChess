@@ -23,19 +23,27 @@ public class DependenciesBuilder
     {
         var builder = new ContainerBuilder();
         
-        builder.RegisterType<ThemeService>()
-               .AsSelf()
+        builder.RegisterType<ThemesService>()
+               .As<IThemesService>()
                .SingleInstance();
         builder.RegisterType<MapService>()
-               .AsSelf()
+               .As<IMapService>()
                .SingleInstance();
         builder.RegisterType<FigureService>()
-               .AsSelf()
+               .As<IFigureService>()
                .SingleInstance();
         builder.RegisterType<PlayerService>()
-               .AsSelf()
+               .As<IPlayerService>()
                .SingleInstance();
-        
+
+        builder.RegisterType<MapsViewModel>()
+               .AsSelf();
+        builder.RegisterType<BoardViewModel>()
+               .AsSelf();
+        builder.RegisterType<ThemesViewModel>()
+               .AsSelf();
+        builder.RegisterType<FiguresViewModel>()
+               .AsSelf();
         builder.RegisterType<MainWindowViewModel>()
                .AsSelf();
         

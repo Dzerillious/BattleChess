@@ -39,7 +39,8 @@
                                 Content="{util:Loc MainWindow_Quit}"/>
                     </DockPanel>
                 </Viewbox>
-                <views:MapsControl MinWidth="500" />
+                <views:MapsControl MinWidth="500"
+                                   DataContext="{Binding MapsViewModel}"/>
             </DockPanel>
         </TabItem>
         <TabItem Header="{util:Loc MainWindow_Game_Header}"

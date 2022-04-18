@@ -5,52 +5,67 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using BattleChess3.Core.Model.Figures;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
 
 namespace BattleChess3.UI.Services;
 
-public class FigureService : ViewModelBase
+public class FigureService : IFigureService
 {
-    private IFigureGroup _selectedFigureGroup = EmptyFigureGroup.Instance;
-    public IFigureGroup SelectedFigureGroup
-    {
-        get => _selectedFigureGroup;
-        set => Set(ref _selectedFigureGroup, value);
-    }
-    
+    private IFigureGroup[] _figureGroups = Array.Empty<IFigureGroup>();
     private Dictionary<string, IFigureType> _figuresDictionary = new Dictionary<string, IFigureType>();
 
-    private IFigureGroup[] _figureGroups = Array.Empty<IFigureGroup>();
-    public IFigureGroup[] FigureGroups
-    {
-        get => _figureGroups;
-        set => Set(ref _figureGroups, value);
-    }
-    
-    public RelayCommand<IFigureGroup> SelectFigureGroupCommand { get; }
+    public event EventHandler<IList<IFigureGroup>>? FigureGroupsChanged;
 
     public FigureService()
     {
-        Task.Run(ReloadFigures);
-        SelectFigureGroupCommand = new RelayCommand<IFigureGroup>(group => SelectedFigureGroup = group);
+        using var watcher = new FileSystemWatcher(".");
+
+        watcher.NotifyFilter = NotifyFilters.Attributes
+                             | NotifyFilters.CreationTime
+                             | NotifyFilters.DirectoryName
+                             | NotifyFilters.FileName
+                             | NotifyFilters.LastAccess
+                             | NotifyFilters.LastWrite
+                             | NotifyFilters.Security
+                             | NotifyFilters.Size;
+
+        watcher.Changed += OnChanged;
+        watcher.Created += OnChanged;
+        watcher.Deleted += OnChanged;
+        watcher.Renamed += OnChanged;
+
+        watcher.Filter = "*Figures.dll";
+        watcher.IncludeSubdirectories = true;
+        watcher.EnableRaisingEvents = true;
+
+        Task.Run(() => ReloadFigures());
     }
 
-    public void ReloadFigures()
+    public IList<IFigureGroup> GetCurrentMaps()
     {
-        var groupType = typeof(IFigureGroup);
-        
-        FigureGroups = Directory.GetFiles(".", "*Figures.dll")
+        return _figureGroups;
+    }
+
+    private void OnChanged(object sender, FileSystemEventArgs e)
+    {
+        ReloadFigures();
+    }
+
+    private void ReloadFigures()
+    {
+        _figureGroups = Directory.GetFiles(".", "*Figures.dll")
                                 .Select(path => Assembly.LoadFile(Path.GetFullPath(path)))
                                 .SelectMany(assembly => assembly.GetTypes())
-                                .Where(type => type.GetInterfaces().Any(x => x == groupType))
-                                .Select(type => (IFigureGroup) Activator.CreateInstance(type)!)
+                                .Where(type => type.GetInterfaces().Any(x => x == typeof(IFigureGroup)))
+                                .Select(type => (IFigureGroup)Activator.CreateInstance(type)!)
                                 .ToArray();
 
-        _figuresDictionary = FigureGroups.SelectMany(group => group.FigureTypes)
+        _figuresDictionary = _figureGroups.SelectMany(group => group.FigureTypes)
                                          .ToDictionary(figure => figure.UnitName, figure => figure);
-        SelectedFigureGroup = FigureGroups.First();
+        FigureGroupsChanged?.Invoke(this, _figureGroups);
     }
+
+    public IList<IFigureGroup> GetFigureGroups()
+        => _figureGroups;
 
     public IFigureType GetFigureFromName(string text)
         => _figuresDictionary[text];

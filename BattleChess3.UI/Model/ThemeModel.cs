@@ -6,23 +6,23 @@ using System.Resources;
 using System.Windows;
 using System.Windows.Media;
 
-namespace BattleChess3.UI.ViewModel;
+namespace BattleChess3.UI.Model;
 
-public class ThemeViewModel
+public class ThemeModel
 {
-    public static readonly ThemeViewModel None = new ThemeViewModel();
+    public static readonly ThemeModel None = new();
 
     public string Name { get; }
     public ImageSource Preview { get; }
     public ResourceDictionary ResourceDictionary { get; } = new ResourceDictionary();
 
-    public ThemeViewModel()
+    public ThemeModel()
     {
         Name = string.Empty;
         Preview = (ImageSource) ResourceDictionary["Preview"];
     }
 
-    public ThemeViewModel(string assemblyPath)
+    public ThemeModel(string assemblyPath)
     {
         LoadResources(assemblyPath);
         Preview = (ImageSource) ResourceDictionary["Preview"];

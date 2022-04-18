@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,37 +10,57 @@ using Newtonsoft.Json;
 
 namespace BattleChess3.UI.Services;
 
-public class MapService : ViewModelBase
+public class MapService : ViewModelBase, IMapService
 {
-    private MapBlueprint _selectedMap = MapBlueprint.None;
-    public MapBlueprint SelectedMap
-    {
-        get => _selectedMap;
-        set => Set(ref _selectedMap, value);
-    }
-    
     private MapBlueprint[] _maps = Array.Empty<MapBlueprint>();
-    public MapBlueprint[] Maps
-    {
-        get => _maps;
-        set => Set(ref _maps, value);
-    }
+
+    public event EventHandler<IList<MapBlueprint>>? MapsChanged;
 
     public MapService()
     {
-        Task.Run(ReloadMaps);
+        using var watcher = new FileSystemWatcher("Resources/Maps");
+
+        watcher.NotifyFilter = NotifyFilters.Attributes
+                             | NotifyFilters.CreationTime
+                             | NotifyFilters.DirectoryName
+                             | NotifyFilters.FileName
+                             | NotifyFilters.LastAccess
+                             | NotifyFilters.LastWrite
+                             | NotifyFilters.Security
+                             | NotifyFilters.Size;
+
+        watcher.Changed += OnChanged;
+        watcher.Created += OnChanged;
+        watcher.Deleted += OnChanged;
+        watcher.Renamed += OnChanged;
+
+        watcher.Filter = "*.map";
+        watcher.IncludeSubdirectories = true;
+        watcher.EnableRaisingEvents = true;
+
+        Task.Run(() => ReloadMaps());
     }
 
-    public void ReloadMaps()
+    public IList<MapBlueprint> GetCurrentMaps()
     {
-        Maps = Directory.GetFiles("Resources/Maps", "*.map")
+        return _maps;
+    }
+
+    private void OnChanged(object sender, FileSystemEventArgs e)
+    {
+        ReloadMaps();
+    }
+
+    private void ReloadMaps()
+    {
+        _maps = Directory.GetFiles("Resources/Maps", "*.map")
                         .Select(path =>
-                         {
-                             string text = File.ReadAllText(Path.GetFullPath(path));
-                             text = CompressionHelper.Decompress(text);
-                             return JsonConvert.DeserializeObject<MapBlueprint>(text);
-                         })
+                        {
+                            string text = File.ReadAllText(Path.GetFullPath(path));
+                            text = CompressionHelper.Decompress(text);
+                            return JsonConvert.DeserializeObject<MapBlueprint>(text);
+                        })
                         .ToArray();
-        SelectedMap = Maps.First();
+        MapsChanged?.Invoke(this, _maps);
     }
 }

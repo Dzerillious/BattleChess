@@ -4,7 +4,6 @@ using BattleChess3.Core.Model.Figures;
 using BattleChess3.Core.Resources;
 using BattleChess3.DefaultFigures.Utilities;
 using BattleChess3.UI.Services;
-using CommonServiceLocator;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
@@ -12,8 +11,8 @@ namespace BattleChess3.UI.ViewModel;
 
 public class BoardViewModel : ViewModelBase
 {
-    private readonly FigureService _figureService = ServiceLocator.Current.GetInstance<FigureService>();
-    private readonly PlayerService _playerService = ServiceLocator.Current.GetInstance<PlayerService>();
+    private readonly IFigureService _figureService;
+    private readonly IPlayerService _playerService;
 
     private ITile _selectedTile = NoneTile.Instance;
     public ITile SelectedTile
@@ -48,8 +47,13 @@ public class BoardViewModel : ViewModelBase
     public RelayCommand<ITile> MouseExitCommand { get; }
     
 
-    public BoardViewModel()
+    public BoardViewModel(
+        IFigureService figureService,
+        IPlayerService playerService)
     {
+        _figureService = figureService;
+        _playerService = playerService;
+
         ClickedCommand = new RelayCommand<ITile>(ClickedAtTile);
         MouseEnterCommand = new RelayCommand<ITile>(MouseEnterTile);
         MouseExitCommand = new RelayCommand<ITile>(MouseExitTile);

@@ -1,4 +1,6 @@
-﻿namespace BattleChess3.UI;
+﻿using GalaSoft.MvvmLight.Threading;
+
+namespace BattleChess3.UI;
 
 /// <summary>
 /// Interaction logic for App.xaml
@@ -7,6 +9,7 @@ public partial class App
 {
     public App()
     {
+        DispatcherHelper.Initialize();
         DependenciesBuilder.Initialize();
     }
 }
