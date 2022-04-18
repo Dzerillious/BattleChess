@@ -7,40 +7,39 @@ using BattleChess3.Core.Utilities;
 using GalaSoft.MvvmLight;
 using Newtonsoft.Json;
 
-namespace BattleChess3.UI.Services
+namespace BattleChess3.UI.Services;
+
+public class MapService : ViewModelBase
 {
-    public class MapService : ViewModelBase
+    private MapBlueprint _selectedMap = MapBlueprint.None;
+    public MapBlueprint SelectedMap
     {
-        private MapBlueprint _selectedMap = MapBlueprint.None;
-        public MapBlueprint SelectedMap
-        {
-            get => _selectedMap;
-            set => Set(ref _selectedMap, value);
-        }
-        
-        private MapBlueprint[] _maps = Array.Empty<MapBlueprint>();
-        public MapBlueprint[] Maps
-        {
-            get => _maps;
-            set => Set(ref _maps, value);
-        }
+        get => _selectedMap;
+        set => Set(ref _selectedMap, value);
+    }
+    
+    private MapBlueprint[] _maps = Array.Empty<MapBlueprint>();
+    public MapBlueprint[] Maps
+    {
+        get => _maps;
+        set => Set(ref _maps, value);
+    }
 
-        public MapService()
-        {
-            Task.Run(ReloadMaps);
-        }
+    public MapService()
+    {
+        Task.Run(ReloadMaps);
+    }
 
-        public void ReloadMaps()
-        {
-            Maps = Directory.GetFiles("Resources/Maps", "*.map")
-                            .Select(path =>
-                             {
-                                 string text = File.ReadAllText(Path.GetFullPath(path));
-                                 text = CompressionHelper.Decompress(text);
-                                 return JsonConvert.DeserializeObject<MapBlueprint>(text);
-                             })
-                            .ToArray();
-            SelectedMap = Maps.First();
-        }
+    public void ReloadMaps()
+    {
+        Maps = Directory.GetFiles("Resources/Maps", "*.map")
+                        .Select(path =>
+                         {
+                             string text = File.ReadAllText(Path.GetFullPath(path));
+                             text = CompressionHelper.Decompress(text);
+                             return JsonConvert.DeserializeObject<MapBlueprint>(text);
+                         })
+                        .ToArray();
+        SelectedMap = Maps.First();
     }
 }

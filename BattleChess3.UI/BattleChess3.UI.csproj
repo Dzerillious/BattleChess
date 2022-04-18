@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <TargetFramework>net6.0-windows</TargetFramework>
         <UseWPF>true</UseWPF>
         <Nullable>enable</Nullable>
         <AssemblyName>BattleChess3</AssemblyName>
@@ -38,7 +38,6 @@
       <PackageReference Include="Autofac" Version="5.2.0" />
       <PackageReference Include="Autofac.Extras.CommonServiceLocator" Version="6.0.0" />
       <PackageReference Include="CommonServiceLocator" Version="2.0.5" />
-      <PackageReference Include="MvvmLight" Version="5.4.1.1" />
       <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
       <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     </ItemGroup>

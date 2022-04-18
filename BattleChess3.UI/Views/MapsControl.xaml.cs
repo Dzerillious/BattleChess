@@ -1,10 +1,9 @@
-﻿namespace BattleChess3.UI.Views
+﻿namespace BattleChess3.UI.Views;
+
+public partial class MapsControl
 {
-    public partial class MapsControl
+    public MapsControl()
     {
-        public MapsControl()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

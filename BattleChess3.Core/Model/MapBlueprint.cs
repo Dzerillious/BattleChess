@@ -1,17 +1,16 @@
 ﻿using System;
 using BattleChess3.Core.Model.Figures;
 
-namespace BattleChess3.Core.Model
+namespace BattleChess3.Core.Model;
+
+// JSON serializable
+public class MapBlueprint
 {
-    // JSON serializable
-    public class MapBlueprint
-    {
-        public static readonly MapBlueprint None = new MapBlueprint();
-        public string Path { get; set; } = string.Empty;
-        public string Name { get; set; } = string.Empty;
-        public string PreviewPath { get; set; } = string.Empty;
-        public int StartingPlayer { get; set; } = 0;
-        public int PlayersCount { get; set; } = 2;
-        public FigureBlueprint[] Figures { get; set; } = Array.Empty<FigureBlueprint>();
-    }
+    public static readonly MapBlueprint None = new();
+    public string Path { get; set; } = string.Empty;
+    public string Name { get; set; } = string.Empty;
+    public string PreviewPath { get; set; } = string.Empty;
+    public int StartingPlayer { get; set; } = 0;
+    public int PlayersCount { get; set; } = 2;
+    public FigureBlueprint[] Figures { get; set; } = Array.Empty<FigureBlueprint>();
 }

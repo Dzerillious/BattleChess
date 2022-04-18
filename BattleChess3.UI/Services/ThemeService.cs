@@ -5,46 +5,45 @@ using System.Windows;
 using BattleChess3.UI.ViewModel;
 using GalaSoft.MvvmLight;
 
-namespace BattleChess3.UI.Services
+namespace BattleChess3.UI.Services;
+
+public class ThemeService : ViewModelBase
 {
-    public class ThemeService : ViewModelBase
+    private ThemeViewModel _selectedTheme = ThemeViewModel.None;
+
+    private ThemeViewModel[] _themes = Array.Empty<ThemeViewModel>();
+
+    public ThemeService()
     {
-        private ThemeViewModel _selectedTheme = ThemeViewModel.None;
+        ReloadStyles();
+    }
 
-        private ThemeViewModel[] _themes = Array.Empty<ThemeViewModel>();
-
-        public ThemeService()
+    public ThemeViewModel SelectedTheme
+    {
+        get => _selectedTheme;
+        set
         {
-            ReloadStyles();
-        }
-
-        public ThemeViewModel SelectedTheme
-        {
-            get => _selectedTheme;
-            set
+            Set(ref _selectedTheme, value);
+            foreach (var keyObject in value.ResourceDictionary.Keys)
             {
-                Set(ref _selectedTheme, value);
-                foreach (var keyObject in value.ResourceDictionary.Keys)
-                {
-                    if (!(keyObject is { } key)) return;
-                    Application.Current.Resources[key] = value.ResourceDictionary[key];
-                }
+                if (!(keyObject is { } key)) return;
+                Application.Current.Resources[key] = value.ResourceDictionary[key];
             }
         }
+    }
 
-        public ThemeViewModel[] Themes
-        {
-            get => _themes;
-            set => Set(ref _themes, value);
-        }
+    public ThemeViewModel[] Themes
+    {
+        get => _themes;
+        set => Set(ref _themes, value);
+    }
 
-        public void ReloadStyles()
-        {
-            Themes = Directory.GetFiles(".", "*Theme.dll")
-                .Select(path => new ThemeViewModel(Path.GetFullPath(path)))
-                .ToArray();
-            SelectedTheme = Themes.FirstOrDefault(style => style.Name.Contains("Paper"))
-                            ?? Themes.First();
-        }
+    public void ReloadStyles()
+    {
+        Themes = Directory.GetFiles(".", "*Theme.dll")
+            .Select(path => new ThemeViewModel(Path.GetFullPath(path)))
+            .ToArray();
+        SelectedTheme = Themes.FirstOrDefault(style => style.Name.Contains("Paper"))
+                        ?? Themes.First();
     }
 }

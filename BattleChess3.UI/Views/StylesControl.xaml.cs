@@ -1,10 +1,9 @@
-﻿namespace BattleChess3.UI.Views
+﻿namespace BattleChess3.UI.Views;
+
+public partial class StylesControl
 {
-    public partial class StylesControl
+    public StylesControl()
     {
-        public StylesControl()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

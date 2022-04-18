@@ -1,10 +1,9 @@
-﻿namespace BattleChess3.UI.Views
+﻿namespace BattleChess3.UI.Views;
+
+public partial class UnitInfoControl
 {
-    public partial class UnitInfoControl
+    public UnitInfoControl()
     {
-        public UnitInfoControl()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

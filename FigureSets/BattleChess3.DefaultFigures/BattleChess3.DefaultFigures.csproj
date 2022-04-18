@@ -1,18 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <RootNamespace>BattleChess3.DefaultFigures</RootNamespace>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\BattleChess3.Core\BattleChess3.Core.csproj" />
+        <None Remove="Images\**" />
+        <Resource Include="Images\**" />
     </ItemGroup>
 
     <ItemGroup>
-        <None Remove="Images\**" />
-        <Resource Include="Images\**" />
+      <ProjectReference Include="..\..\BattleChess3.Core\BattleChess3.Core.csproj" />
     </ItemGroup>
 
     <ItemGroup>

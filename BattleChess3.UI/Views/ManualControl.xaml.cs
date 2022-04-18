@@ -1,10 +1,9 @@
-﻿namespace BattleChess3.UI.Views
+﻿namespace BattleChess3.UI.Views;
+
+public partial class ManualControl
 {
-    public partial class ManualControl
+    public ManualControl()
     {
-        public ManualControl()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }
