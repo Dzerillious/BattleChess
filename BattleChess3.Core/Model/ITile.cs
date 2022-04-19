@@ -15,26 +15,6 @@ public interface ITile
     Figure Figure { get; set; }
 
     /// <summary>
-    /// Gets if mouse is over tile
-    /// </summary>
-    bool IsMouseOver { get; set; }
-
-    /// <summary>
-    /// Gets if tile is selected
-    /// </summary>
-    bool IsSelected { get; set; }
-    
-    /// <summary>
-    /// Gets if is possible to move at this tile
-    /// </summary>
-    bool IsPossibleMove { get; set; }
-    
-    /// <summary>
-    /// Gets if is possible to attack this tile
-    /// </summary>
-    bool IsPossibleAttack { get; set; }
-
-    /// <summary>
     /// ToString for debugging
     /// </summary>
     /// <returns></returns>

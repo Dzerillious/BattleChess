@@ -14,8 +14,8 @@ public class BoardViewModel : ViewModelBase
     private readonly IFigureService _figureService;
     private readonly IPlayerService _playerService;
 
-    private ITile _selectedTile = NoneTile.Instance;
-    public ITile SelectedTile
+    private ITileViewModel _selectedTile = NoneTileViewModel.Instance;
+    public ITileViewModel SelectedTile
     {
         get => _selectedTile;
         set
@@ -26,8 +26,8 @@ public class BoardViewModel : ViewModelBase
         }
     }
 
-    private ITile _mouseOnTile = NoneTile.Instance;
-    public ITile MouseOnTile
+    private ITileViewModel _mouseOnTile = NoneTileViewModel.Instance;
+    public ITileViewModel MouseOnTile
     {
         get => _mouseOnTile;
         set
@@ -38,13 +38,13 @@ public class BoardViewModel : ViewModelBase
         }
     }
     
-    public ITile[] Board { get; } = Enumerable.Range(0, Constants.BoardSize)
-                                              .Select<int, ITile>(position => new TileViewModel(position))
+    public ITileViewModel[] Board { get; } = Enumerable.Range(0, Constants.BoardSize)
+                                              .Select<int, ITileViewModel>(position => new TileViewModel(position))
                                               .ToArray();
     
-    public RelayCommand<ITile> ClickedCommand { get; }
-    public RelayCommand<ITile> MouseEnterCommand { get; }
-    public RelayCommand<ITile> MouseExitCommand { get; }
+    public RelayCommand<ITileViewModel> ClickedCommand { get; }
+    public RelayCommand<ITileViewModel> MouseEnterCommand { get; }
+    public RelayCommand<ITileViewModel> MouseExitCommand { get; }
     
 
     public BoardViewModel(
@@ -54,14 +54,14 @@ public class BoardViewModel : ViewModelBase
         _figureService = figureService;
         _playerService = playerService;
 
-        ClickedCommand = new RelayCommand<ITile>(ClickedAtTile);
-        MouseEnterCommand = new RelayCommand<ITile>(MouseEnterTile);
-        MouseExitCommand = new RelayCommand<ITile>(MouseExitTile);
+        ClickedCommand = new RelayCommand<ITileViewModel>(ClickedAtTile);
+        MouseEnterCommand = new RelayCommand<ITileViewModel>(MouseEnterTile);
+        MouseExitCommand = new RelayCommand<ITileViewModel>(MouseExitTile);
     }
     
     public void LoadMap(MapBlueprint map)
     {
-        ClickedAtTile(NoneTile.Instance);
+        ClickedAtTile(NoneTileViewModel.Instance);
         _playerService.InitializePlayers(map.PlayersCount, map.StartingPlayer);
         for (var i = 0; i < Constants.BoardSize; i++)
         {
@@ -80,31 +80,31 @@ public class BoardViewModel : ViewModelBase
     }
 
 
-    private void ClickedAtTile(ITile clickedTile)
+    private void ClickedAtTile(ITileViewModel clickedTile)
     {
         var selectedType = SelectedTile.Figure.FigureType;
         if (clickedTile.IsPossibleAttack)
         {
             selectedType.AttackAction(SelectedTile, clickedTile, Board);
             if (selectedType.MovingAttack) selectedType.MoveAction(SelectedTile, clickedTile, Board);
-            SelectedTile = NoneTile.Instance;
+            SelectedTile = NoneTileViewModel.Instance;
             _playerService.NextTurn();
         }
         else if (clickedTile.IsPossibleMove)
         {
             selectedType.MoveAction(SelectedTile, clickedTile, Board);
-            SelectedTile = NoneTile.Instance;
+            SelectedTile = NoneTileViewModel.Instance;
             _playerService.NextTurn();
         }
         else if (clickedTile.Figure.Owner == _playerService.CurrentPlayer)
             SelectedTile = clickedTile;
-        else SelectedTile = NoneTile.Instance;
+        else SelectedTile = NoneTileViewModel.Instance;
         SetPossibleActions(clickedTile);
     }
 
-    private void SetPossibleActions(ITile clickedTile)
+    private void SetPossibleActions(ITileViewModel clickedTile)
     {
-        foreach (ITile tile in Board)
+        foreach (ITileViewModel tile in Board)
         {
             tile.IsPossibleAttack = false;
             tile.IsPossibleMove = false;
@@ -116,7 +116,7 @@ public class BoardViewModel : ViewModelBase
         SetPossibleMoves(clickedTile);
     }
 
-    private void SetPossibleAttacks(ITile clickedTile)
+    private void SetPossibleAttacks(ITileViewModel clickedTile)
     {
         var playerPOVPosition = clickedTile.Position.GetPlayerPOVPosition(_playerService.CurrentPlayer);
         Position[][] attackChains = clickedTile.Figure.FigureType.GetAttackChains(playerPOVPosition);
@@ -135,7 +135,7 @@ public class BoardViewModel : ViewModelBase
         }
     }
 
-    private void SetPossibleMoves(ITile clickedTile)
+    private void SetPossibleMoves(ITileViewModel clickedTile)
     {
         var playerPOVPosition = clickedTile.Position.GetPlayerPOVPosition(_playerService.CurrentPlayer);
         Position[][] moveChains = clickedTile.Figure.FigureType.GetMoveChains(playerPOVPosition);
@@ -152,11 +152,11 @@ public class BoardViewModel : ViewModelBase
         }
     }
 
-    private void MouseEnterTile(ITile tile)
+    private void MouseEnterTile(ITileViewModel tile)
         => MouseOnTile = tile;
 
-    private void MouseExitTile(ITile tile)
+    private void MouseExitTile(ITileViewModel tile)
     {
-        if (MouseOnTile == tile) MouseOnTile = NoneTile.Instance;
+        if (MouseOnTile == tile) MouseOnTile = NoneTileViewModel.Instance;
     }
 }

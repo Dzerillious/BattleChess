@@ -1,10 +1,11 @@
 ﻿using BattleChess3.Core.Model.Figures;
+using BattleChess3.UI.ViewModel;
 
 namespace BattleChess3.Core.Model;
 
-public class NoneTile : ITile
+public class NoneTileViewModel : ITileViewModel
 {
-    public static readonly NoneTile Instance = new();
+    public static readonly NoneTileViewModel Instance = new();
     
     public Position Position { get; } = Position.None;
     public Figure Figure { get; set; } = Figure.None;

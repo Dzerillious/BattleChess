@@ -4,7 +4,7 @@ using GalaSoft.MvvmLight;
 
 namespace BattleChess3.UI.ViewModel;
 
-public class TileViewModel : ViewModelBase, ITile
+public class TileViewModel : ViewModelBase, ITileViewModel
 {
     public Position Position { get; }
 
