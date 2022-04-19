@@ -12,7 +12,7 @@ public interface IFigureService
     /// <summary>
     /// Raised when figure groups changes.
     /// </summary>
-    event EventHandler<IList<IFigureGroup>> FigureGroupsChanged;
+    event EventHandler<IList<IFigureGroup>>? FigureGroupsChanged;
 
     /// <summary>
     /// Gets all figure groups.

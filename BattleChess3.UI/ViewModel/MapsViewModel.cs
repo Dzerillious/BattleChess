@@ -1,18 +1,15 @@
 ﻿using BattleChess3.Core.Model;
 using BattleChess3.Core.Model.Figures;
-using BattleChess3.Core.Utilities;
 using BattleChess3.UI.Services;
 using GalaSoft.MvvmLight;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
 
 namespace BattleChess3.UI.ViewModel;
 
-public class MapsViewModel : ViewModelBase
+public class MapsViewModel : ViewModelBase, IDisposable
 {
     private readonly IMapService _mapService;
     private readonly IPlayerService _playerService;
@@ -56,7 +53,7 @@ public class MapsViewModel : ViewModelBase
         _mapService.MapsChanged += OnMapsChanged;
     }
 
-    public void OnMapsChanged(object sender, IList<MapBlueprint> maps)
+    public void OnMapsChanged(object? sender, IList<MapBlueprint> maps)
     {
         Maps = new ObservableCollection<MapBlueprint>(maps);
     }
@@ -66,7 +63,7 @@ public class MapsViewModel : ViewModelBase
         if (SelectedMap is null)
             return;
 
-        File.Delete(SelectedMap.MapPath);
+        _mapService.Delete(SelectedMap);
         Maps.Remove(SelectedMap);
     }
 
@@ -86,8 +83,11 @@ public class MapsViewModel : ViewModelBase
             StartingPlayer = _playerService.CurrentPlayer.Id,
         };
 
-        string text = JsonConvert.SerializeObject(map);
-        text = CompressionHelper.Compress(text);
-        File.WriteAllText(map.MapPath, text);
+        _mapService.Save(map);
+    }
+
+    public void Dispose()
+    {
+        _mapService.MapsChanged -= OnMapsChanged;
     }
 }

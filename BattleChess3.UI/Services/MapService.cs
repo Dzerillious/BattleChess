@@ -66,28 +66,50 @@ public class MapService : ViewModelBase, IMapService
             .OrderByDescending(map => map.MapPath)
             .ToArray();
 
-        var maps = Directory.GetFiles("Resources/Maps", "*.map")
+        Directory.GetFiles("Resources/Maps", "*.png")
             .Select(x => Path.GetFileNameWithoutExtension(x))
-            .ToHashSet();
-        var mapPreviews = Directory.GetFiles("Resources/Maps", "*.png")
-            .Select(x => Path.GetFileNameWithoutExtension(x))
-            .ToList();
-
-        foreach (var item in mapPreviews)
-        {
-            if (maps.Contains(item))
-                continue;
-
-            try
+            .Except(Directory.GetFiles("Resources/Maps", "*.map")
+                .Select(x => Path.GetFileNameWithoutExtension(x)))
+            .ToList()
+            .ForEach(x =>
             {
-                File.Delete(Path.GetFullPath($"Resources/Maps/{item}.png"));
-            }
-            catch (Exception)
-            {
-            }
-        }
-
+                var fileName = Path.GetFullPath($"Resources/Maps/{x}.png");
+                if (!IsFileLocked(new FileInfo(fileName)))
+                    File.Delete(fileName);
+            });
 
         MapsChanged?.Invoke(this, _maps);
+    }
+
+    public void Delete(MapBlueprint selectedMap)
+    {
+        File.Delete(selectedMap.MapPath);
+    }
+
+    public void Save(MapBlueprint map)
+    {
+        string text = JsonConvert.SerializeObject(map);
+        text = CompressionHelper.Compress(text);
+        File.WriteAllText(map.MapPath, text);
+    }
+
+    protected virtual bool IsFileLocked(FileInfo file)
+    {
+        try
+        {
+            using FileStream stream = file.Open(FileMode.Open, FileAccess.Read, FileShare.None);
+            stream.Close();
+        }
+        catch (IOException)
+        {
+            //the file is unavailable because it is:
+            //still being written to
+            //or being processed by another thread
+            //or does not exist (has already been processed)
+            return true;
+        }
+
+        //file is not locked
+        return false;
     }
 }

@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace BattleChess3.UI.ViewModel;
 
-public class FiguresViewModel : ViewModelBase
+public class FiguresViewModel : ViewModelBase, IDisposable
 {
     private readonly IFigureService _figureService;
 
@@ -51,9 +51,13 @@ public class FiguresViewModel : ViewModelBase
         SelectFigureGroupCommand = new RelayCommand<IFigureGroup>(group => SelectedFigureGroup = group);
     }
 
-
-    public void OnFigureGroupsChanged(object sender, IList<IFigureGroup> groups)
+    public void OnFigureGroupsChanged(object? sender, IList<IFigureGroup> groups)
     {
         FigureGroups = groups;
+    }
+
+    public void Dispose()
+    {
+        _figureService.FigureGroupsChanged -= OnFigureGroupsChanged;
     }
 }

@@ -8,7 +8,7 @@ using GalaSoft.MvvmLight;
 
 namespace BattleChess3.UI.ViewModel;
 
-public class ThemesViewModel : ViewModelBase
+public class ThemesViewModel : ViewModelBase, IDisposable
 {
     public readonly IThemeService _themesService;
 
@@ -24,7 +24,8 @@ public class ThemesViewModel : ViewModelBase
             Set(ref _selectedTheme, value);
             foreach (var keyObject in value.ResourceDictionary.Keys)
             {
-                if (!(keyObject is { } key)) return;
+                if (!(keyObject is { } key))
+                    return;
                 Application.Current.Resources[key] = value.ResourceDictionary[key];
             }
         }
@@ -57,5 +58,10 @@ public class ThemesViewModel : ViewModelBase
     private void OnThemesChanged(object? sender, IList<ThemeModel> themes)
     {
         Themes = themes;
+    }
+
+    public void Dispose()
+    {
+        _themesService.ThemesChanged -= OnThemesChanged;
     }
 }

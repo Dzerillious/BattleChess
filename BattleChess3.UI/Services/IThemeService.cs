@@ -12,7 +12,7 @@ public interface IThemeService
     /// <summary>
     /// Raised when themes collection changes.
     /// </summary>
-    event EventHandler<IList<ThemeModel>> ThemesChanged;
+    event EventHandler<IList<ThemeModel>>? ThemesChanged;
 
     /// <summary>
     /// Gets current themes.
