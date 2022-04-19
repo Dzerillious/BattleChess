@@ -19,21 +19,11 @@
                         Orientation="Vertical">
                 <TextBlock Text="{util:Loc Info_Name}" 
                            Style="{DynamicResource TextBlockStyle}" />
-                <TextBlock Text="{util:Loc Info_UnitType}" 
-                           Style="{DynamicResource TextBlockStyle}" />
                 <TextBlock Text="{util:Loc Info_Hp}" 
                            Style="{DynamicResource TextBlockStyle}" />
                 <TextBlock Text="{util:Loc Info_Attack}" 
                            Style="{DynamicResource TextBlockStyle}" />
-                <TextBlock Text="{util:Loc Info_Defense}" 
-                           Style="{DynamicResource TextBlockStyle}" />
-                <TextBlock Text="{util:Loc Info_Bonus}" 
-                           Style="{DynamicResource TextBlockStyle}" />
-                <TextBlock Text="{util:Loc Info_Antibonus}" 
-                           Style="{DynamicResource TextBlockStyle}" />
                 <TextBlock Text="{util:Loc Info_Cost}" 
-                           Style="{DynamicResource TextBlockStyle}" />
-                <TextBlock Text="{util:Loc Info_MovingAttack}" 
                            Style="{DynamicResource TextBlockStyle}" />
             </StackPanel>
     
@@ -41,21 +31,11 @@
                         Orientation="Vertical">
                 <TextBlock Text="{Binding Path=FigureType.ShownName, UpdateSourceTrigger=PropertyChanged}" 
                            Style="{DynamicResource TextBlockStyle}" />
-                <TextBlock Text="{Binding Path=FigureType.UnitTypes, UpdateSourceTrigger=PropertyChanged}" 
-                           Style="{DynamicResource TextBlockStyle}" />
                 <TextBlock Text="{Binding Path=Hp, UpdateSourceTrigger=PropertyChanged}" 
                            Style="{DynamicResource TextBlockStyle}" />
                 <TextBlock Text="{Binding Path=FigureType.Attack, UpdateSourceTrigger=PropertyChanged}" 
                            Style="{DynamicResource TextBlockStyle}" />
-                <TextBlock Text="{Binding Path=FigureType.Defence, UpdateSourceTrigger=PropertyChanged}" 
-                           Style="{DynamicResource TextBlockStyle}" />
-                <TextBlock Text="{Binding Path=FigureType.Bonus, UpdateSourceTrigger=PropertyChanged}" 
-                           Style="{DynamicResource TextBlockStyle}" />
-                <TextBlock Text="{Binding Path=FigureType.AntiBonus, UpdateSourceTrigger=PropertyChanged}" 
-                           Style="{DynamicResource TextBlockStyle}" />
                 <TextBlock Text="{Binding Path=FigureType.Cost, UpdateSourceTrigger=PropertyChanged}"
-                           Style="{DynamicResource TextBlockStyle}" />
-                <TextBlock Text="{Binding Path=FigureType.MovingAttack, UpdateSourceTrigger=PropertyChanged}"
                            Style="{DynamicResource TextBlockStyle}" />
             </StackPanel>
         </Grid>

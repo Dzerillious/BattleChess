@@ -18,12 +18,10 @@ public class Figure
         FigureType = figureType;
     }
 
-    public bool CanKill(Figure figure)
+    public bool CanAttack(Figure figure)
     {
         if (Owner.Id == figure.Owner.Id) return false;
-        double bonusCoefficient = (figure.FigureType.UnitTypes & FigureType.Bonus) > 0 ? 2 : 1;
-        double antiBonusCoefficient = (figure.FigureType.UnitTypes & FigureType.Bonus) > 0 ? 0.5 : 1;
-        return figure.Hp - (FigureType.Attack - figure.FigureType.Defence) * bonusCoefficient * antiBonusCoefficient <= 0;
+        return figure.Hp - FigureType.AttackCalculation(figure.FigureType) <= 0;
     }
 
     public override string ToString() => $"{FigureType.ShownName}:{Owner.Id}";

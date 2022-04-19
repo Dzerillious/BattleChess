@@ -86,7 +86,6 @@ public class BoardViewModel : ViewModelBase
         if (clickedTile.IsPossibleAttack)
         {
             selectedType.AttackAction(SelectedTile, clickedTile, Board);
-            if (selectedType.MovingAttack) selectedType.MoveAction(SelectedTile, clickedTile, Board);
             SelectedTile = NoneTileViewModel.Instance;
             _playerService.NextTurn();
         }
@@ -119,7 +118,7 @@ public class BoardViewModel : ViewModelBase
     private void SetPossibleAttacks(ITileViewModel clickedTile)
     {
         var playerPOVPosition = clickedTile.Position.GetPlayerPOVPosition(_playerService.CurrentPlayer);
-        Position[][] attackChains = clickedTile.Figure.FigureType.GetAttackChains(playerPOVPosition);
+        Position[][] attackChains = clickedTile.Figure.FigureType.GetAttackChains(playerPOVPosition, Board);
         
         foreach (Position[] moveChain in attackChains)
         foreach (Position position in moveChain)
@@ -130,7 +129,7 @@ public class BoardViewModel : ViewModelBase
             var attackedTile = Board[attackPosition];
             if (attackedTile.Figure.FigureType.IsEmpty()) 
                 continue;
-            attackedTile.IsPossibleAttack = clickedTile.Figure.CanKill(attackedTile.Figure);
+            attackedTile.IsPossibleAttack = clickedTile.Figure.CanAttack(attackedTile.Figure);
             break;
         }
     }
@@ -138,7 +137,7 @@ public class BoardViewModel : ViewModelBase
     private void SetPossibleMoves(ITileViewModel clickedTile)
     {
         var playerPOVPosition = clickedTile.Position.GetPlayerPOVPosition(_playerService.CurrentPlayer);
-        Position[][] moveChains = clickedTile.Figure.FigureType.GetMoveChains(playerPOVPosition);
+        Position[][] moveChains = clickedTile.Figure.FigureType.GetMoveChains(playerPOVPosition, Board);
         
         foreach (Position[] moveChain in moveChains)
         foreach (Position position in moveChain)

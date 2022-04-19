@@ -31,29 +31,9 @@ public interface IFigureType
     double Attack { get; }
 
     /// <summary>
-    /// Gets defence
-    /// </summary>
-    double Defence { get; }
-
-    /// <summary>
     /// Gets type of unit
     /// </summary>
-    FigureTypes UnitTypes { get; }
-
-    /// <summary>
-    /// Gets bonus against type of unit
-    /// </summary>
-    FigureTypes Bonus { get; }
-
-    /// <summary>
-    /// Gets anti-bonus against type of unit
-    /// </summary>
-    FigureTypes AntiBonus { get; }
-
-    /// <summary>
-    /// Gets if move while attacking
-    /// </summary>
-    bool MovingAttack { get; }
+    FigureTypes UnitType { get; }
 
     /// <summary>
     /// Gets cost of unit
@@ -64,6 +44,17 @@ public interface IFigureType
     /// Images of player with id
     /// </summary>
     Dictionary<int, Uri> ImageUris { get; }
+
+    /// <summary>
+    /// Calculation of attack against another unit type.
+    ///   - Considers other unit defence.
+    /// </summary>
+    double AttackCalculation(IFigureType figureType);
+
+    /// <summary>
+    /// Calculation of defence against another unit type.
+    /// </summary>
+    double DefenceCalculation(IFigureType figureType);
 
     /// <summary>
     /// Attack action
@@ -78,10 +69,10 @@ public interface IFigureType
     /// <summary>
     /// Chain of positions of move (if can go at first position of chain, check next one)
     /// </summary>
-    Position[][] GetMoveChains(Position from);
+    Position[][] GetMoveChains(Position from, ITile[] board);
 
     /// <summary>
     /// Chain of positions of move (if can attack first position of chain, check next one)
     /// </summary>
-    Position[][] GetAttackChains(Position from);
+    Position[][] GetAttackChains(Position from, ITile[] board);
 }

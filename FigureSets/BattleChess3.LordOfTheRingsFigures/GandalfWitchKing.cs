@@ -13,13 +13,9 @@ public class GandalfWitchKing : IFigureType
     public string ShownName => CurrentLocalization.Instance["GandalfWitchKing_Name"];
     public string Description => CurrentLocalization.Instance["GandalfWitchKing_Description"];
     public string UnitName => $"{nameof(LordOfTheRingsFigureGroup)}.{nameof(GandalfWitchKing)}";
-    public FigureTypes UnitTypes => FigureTypes.Foot;
-    public FigureTypes Bonus => FigureTypes.Nothing;
-    public FigureTypes AntiBonus => FigureTypes.Nothing;
+    public FigureTypes UnitType => FigureTypes.Foot;
     public double FullHp => 100;
     public double Attack => 100;
-    public double Defence => 0;
-    public bool MovingAttack => true;
     public int Cost => 9;
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
@@ -28,11 +24,17 @@ public class GandalfWitchKing : IFigureType
         {2, new Uri("pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/GandalfWitchKing2.png", UriKind.Absolute)},
     };
 
+    public double AttackCalculation(IFigureType figureType)
+        => figureType.DefenceCalculation(this);
+
+    public double DefenceCalculation(IFigureType figureType)
+        => figureType.Attack;
+
     public void AttackAction(ITile from, ITile to, ITile[] board)
-        => to.KillFigure(board);
+        => board.KillFigureWithMove(from, to);
 
     public void MoveAction(ITile from, ITile to, ITile[] board)
-        => from.MoveToPosition(to.Position, board);
+        => board.MoveToPosition(from, to.Position);
 
     private readonly Position[][] _moveChain = 
     {
@@ -45,7 +47,7 @@ public class GandalfWitchKing : IFigureType
         new Position[] {(-1, -1), (-2, -2), (-3, -3), (-4, -4), (-5, -5), (-6, -6), (-7, -7)},
         new Position[] {(0, -1), (0, -2), (0, -3), (0, -4), (0, -5), (0, -6), (0, -7)}
     };
-    public Position[][] GetMoveChains(Position position) => _moveChain;
+    public Position[][] GetMoveChains(Position position, ITile[] board) => _moveChain;
     
     
     private readonly Position[][] _attackChain = 
@@ -59,5 +61,5 @@ public class GandalfWitchKing : IFigureType
         new Position[] {(-1, -1), (-2, -2), (-3, -3), (-4, -4), (-5, -5), (-6, -6), (-7, -7)},
         new Position[] {(0, -1), (0, -2), (0, -3), (0, -4), (0, -5), (0, -6), (0, -7)}
     };
-    public Position[][] GetAttackChains(Position position) => _attackChain;
+    public Position[][] GetAttackChains(Position position, ITile[] board) => _attackChain;
 }

@@ -13,13 +13,9 @@ public class Wizard : IFigureType
     public string ShownName => CurrentLocalization.Instance["Wizard_Name"];
     public string Description => CurrentLocalization.Instance["Wizard_Description"];
     public string UnitName => $"{nameof(HobbitFigureGroup)}.{nameof(Wizard)}";
-    public FigureTypes UnitTypes => FigureTypes.Foot;
-    public FigureTypes Bonus => FigureTypes.Nothing;
-    public FigureTypes AntiBonus => FigureTypes.Nothing;
+    public FigureTypes UnitType => FigureTypes.Foot;
     public double FullHp => 100;
     public double Attack => 100;
-    public double Defence => 0;
-    public bool MovingAttack => true;
     public int Cost => 5;
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
@@ -28,11 +24,17 @@ public class Wizard : IFigureType
         {2, new Uri("pack://application:,,,/BattleChess3.HobbitFigures;component/Images/Wizard2.png", UriKind.Absolute)},
     };
 
+    public double AttackCalculation(IFigureType figureType)
+        => figureType.DefenceCalculation(this);
+
+    public double DefenceCalculation(IFigureType figureType)
+        => figureType.Attack;
+
     public void AttackAction(ITile from, ITile to, ITile[] board)
-        => to.KillFigure(board);
+        => board.KillFigureWithMove(from, to);
 
     public void MoveAction(ITile from, ITile to, ITile[] board)
-        => from.MoveToPosition(to.Position, board);
+        => board.MoveToPosition(from, to.Position);
 
     private readonly Position[][] _moveChain = 
     {
@@ -41,7 +43,7 @@ public class Wizard : IFigureType
         new Position[] {(-1, 0), (-2, 0), (-3, 0), (-4, 0), (-5, 0), (-6, 0), (-7, 0)},
         new Position[] {(0, -1), (0, -2), (0, -3), (0, -4), (0, -5), (0, -6), (0, -7)}
     };
-    public Position[][] GetMoveChains(Position position) => _moveChain;
+    public Position[][] GetMoveChains(Position position, ITile[] board) => _moveChain;
     
     
     private readonly Position[][] _attackChain = 
@@ -51,5 +53,5 @@ public class Wizard : IFigureType
         new Position[] {(-1, 0), (-2, 0), (-3, 0), (-4, 0), (-5, 0), (-6, 0), (-7, 0)},
         new Position[] {(0, -1), (0, -2), (0, -3), (0, -4), (0, -5), (0, -6), (0, -7)}
     };
-    public Position[][] GetAttackChains(Position position) => _attackChain;
+    public Position[][] GetAttackChains(Position position, ITile[] board) => _attackChain;
 }
