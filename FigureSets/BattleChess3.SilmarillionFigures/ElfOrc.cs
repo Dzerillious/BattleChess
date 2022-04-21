@@ -36,22 +36,22 @@ public class ElfOrc : IFigureType
     public void MoveAction(ITile from, ITile to, ITile[] board)
         => board.MoveToPosition(from, to.Position);
 
-    private readonly Position[][] _firstMoveChain = 
+    private readonly Position[][] _firstMoveChain =
     {
-        new Position[] {(1, 0), (2, 0)},
+        new Position[] {(0, 1), (0, 2)},
     };
-    private readonly Position[][] _moveChain = 
+    private readonly Position[][] _moveChain =
     {
-        new Position[] {(1, 0)},
+        new Position[] {(0, 1)},
     };
-    public Position[][] GetMoveChains(Position position, ITile[] board) 
+    public Position[][] GetMoveChains(Position position, ITile[] board)
         => position.Y == 1 ? _firstMoveChain : _moveChain;
 
 
-    private readonly Position[][] _attackChain = 
+    private readonly Position[][] _attackChain =
     {
         new Position[] {(1, 1)},
-        new Position[] {(1, -1)},
+        new Position[] {(-1, 1)},
     };
     public Position[][] GetAttackChains(Position position, ITile[] board) => _attackChain;
 }

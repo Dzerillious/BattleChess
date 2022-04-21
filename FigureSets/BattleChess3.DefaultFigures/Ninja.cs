@@ -39,16 +39,16 @@ public class Ninja : IFigureType
     private readonly Position[][] _moveChain = 
     {
         new Position[] {(1, 1)},
-        new Position[] {(1, -1)}
+        new Position[] {(-1, 1)}
     };
     public Position[][] GetMoveChains(Position position, ITile[] board) => _moveChain;
     
     
     private readonly Position[][] _attackChain = 
     {
-        new Position[] {(1, 0)},
         new Position[] {(0, 1)},
-        new Position[] {(0, -1)},
+        new Position[] {(1, 0)},
+        new Position[] {(-1, 0)},
     };
     public Position[][] GetAttackChains(Position position, ITile[] board) => _attackChain;
 }

@@ -111,24 +111,28 @@ public class BoardViewModel : ViewModelBase
 
         if (_playerService.CurrentPlayer != SelectedTile.Figure.Owner)
             return;
+
         SetPossibleAttacks(clickedTile);
         SetPossibleMoves(clickedTile);
     }
 
     private void SetPossibleAttacks(ITileViewModel clickedTile)
     {
-        var playerPOVPosition = clickedTile.Position.GetPlayerPOVPosition(_playerService.CurrentPlayer);
-        Position[][] attackChains = clickedTile.Figure.FigureType.GetAttackChains(playerPOVPosition, Board);
-        
-        foreach (Position[] moveChain in attackChains)
-        foreach (Position position in moveChain)
-        {
-            Position attackPosition = clickedTile.Position + position.GetPlayerPOVRelative(_playerService.CurrentPlayer);
-            if (!attackPosition.InBoard()) break;
+        var povPosition = clickedTile.Position.GetPlayerPOVPosition(_playerService.CurrentPlayer);
+        var povBoard = GetPlayerPOVBoard(_playerService.CurrentPlayer, Board);
+        Position[][] attackChains = clickedTile.Figure.FigureType.GetAttackChains(povPosition, povBoard);
 
-            var attackedTile = Board[attackPosition];
-            if (attackedTile.Figure.FigureType.IsEmpty()) 
+        foreach (Position[] moveChain in attackChains)
+        foreach (Position relativeAttack in moveChain)
+        {
+            Position povAttack = (povPosition + relativeAttack).GetPlayerPOVPosition(_playerService.CurrentPlayer);
+            if (!povAttack.InBoard()) 
+                break;
+
+            var attackedTile = Board[povAttack];
+            if (attackedTile.Figure.FigureType.IsEmpty())
                 continue;
+
             attackedTile.IsPossibleAttack = clickedTile.Figure.CanAttack(attackedTile.Figure);
             break;
         }
@@ -136,19 +140,38 @@ public class BoardViewModel : ViewModelBase
 
     private void SetPossibleMoves(ITileViewModel clickedTile)
     {
-        var playerPOVPosition = clickedTile.Position.GetPlayerPOVPosition(_playerService.CurrentPlayer);
-        Position[][] moveChains = clickedTile.Figure.FigureType.GetMoveChains(playerPOVPosition, Board);
+        var povPosition = clickedTile.Position.GetPlayerPOVPosition(_playerService.CurrentPlayer);
+        var povBoard = GetPlayerPOVBoard(_playerService.CurrentPlayer, Board);
+        Position[][] moveChains = clickedTile.Figure.FigureType.GetMoveChains(povPosition, povBoard);
         
         foreach (Position[] moveChain in moveChains)
-        foreach (Position position in moveChain)
+        foreach (Position relativeMove in moveChain)
         {
-            Position movePosition = clickedTile.Position + position.GetPlayerPOVRelative(_playerService.CurrentPlayer);
-            if (!movePosition.InBoard()) break;
+            Position povMove = (povPosition + relativeMove).GetPlayerPOVPosition(_playerService.CurrentPlayer);
+            if (!povMove.InBoard()) 
+                break;
 
-            if (Board[movePosition].Figure.FigureType.IsEmpty())
-                Board[movePosition].IsPossibleMove = true;
-            else break;
+            if (Board[povMove].Figure.FigureType.IsEmpty())
+                Board[povMove].IsPossibleMove = true;
+            else 
+                break;
         }
+    }
+
+    private ITile[] GetPlayerPOVBoard(Player player, ITile[] board)
+    {
+        var povBoard = new ITile[64];
+
+        for (int i = 0; i < 8; i++)
+        {
+            for (int j = 0; j < 8; j++)
+            {
+                var position = new Position(j, i);
+                povBoard[position.GetPlayerPOVPosition(player)] = board[position];
+            }
+        }
+
+        return povBoard;
     }
 
     private void MouseEnterTile(ITileViewModel tile)
