@@ -1,16 +1,19 @@
 ﻿using BattleChess3.Core.Model.Figures;
 using BattleChess3.DefaultFigures.Localization;
 
-namespace BattleChess3.DefaultFigures;
+namespace BattleChess3.CrossFireFigures;
 
-public class DefaultFigureGroup : IFigureGroup
+public class CrossFireFigureGroup : IFigureGroup
 {
     public string ShownName => CurrentLocalization.Instance["DefaultFigureGroup_Name"];
 
     public IFigureType[] FigureTypes => new IFigureType[]
     {
-        Palm.Instance,
-        Empty.Instance,
-        Stone.Instance,
+        Ninja.Instance,
+        Bomber.Instance,
+        Builder.Instance,
+        Knight.Instance,
+        Spy.Instance,
+        Archer.Instance,
     };
 }

@@ -11,6 +11,7 @@
     <ItemGroup>
       <ProjectReference Include="..\BattleChess3.Core\BattleChess3.Core.csproj" />
       <ProjectReference Include="..\FigureSets\BattleChess3.ChessFigures\BattleChess3.ChessFigures.csproj" />
+      <ProjectReference Include="..\FigureSets\BattleChess3.CrossFire\BattleChess3.CrossFireFigures.csproj" />
       <ProjectReference Include="..\FigureSets\BattleChess3.DefaultFigures\BattleChess3.DefaultFigures.csproj" />
       <ProjectReference Include="..\FigureSets\BattleChess3.HobbitFigures\BattleChess3.HobbitFigures.csproj" />
       <ProjectReference Include="..\FigureSets\BattleChess3.LordOfTheRingsFigures\BattleChess3.LordOfTheRingsFigures.csproj" />

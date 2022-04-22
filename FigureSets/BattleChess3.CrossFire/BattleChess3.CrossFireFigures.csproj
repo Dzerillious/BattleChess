@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<RootNamespace>BattleChess3.CrossFireFigures</RootNamespace>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="Images\**" />
+		<Resource Include="Images\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\BattleChess3.Core\BattleChess3.Core.csproj" />
+		<ProjectReference Include="..\BattleChess3.DefaultFigures\BattleChess3.DefaultFigures.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="Localization\Strings.Designer.cs">
+			<DependentUpon>Strings.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+</Project>

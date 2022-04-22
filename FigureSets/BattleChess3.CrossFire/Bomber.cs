@@ -5,23 +5,23 @@ using BattleChess3.Core.Model.Figures;
 using BattleChess3.DefaultFigures.Localization;
 using BattleChess3.DefaultFigures.Utilities;
 
-namespace BattleChess3.DefaultFigures;
+namespace BattleChess3.CrossFireFigures;
 
-public class Ninja : IFigureType
+public class Bomber : IFigureType
 {
-    public static readonly Ninja Instance = new();
-    public string ShownName => CurrentLocalization.Instance["Ninja_Name"];
-    public string Description => CurrentLocalization.Instance["Ninja_Description"];
-    public string UnitName => $"{nameof(DefaultFigureGroup)}.{nameof(Ninja)}";
+    public static readonly Bomber Instance = new();
+    public string ShownName => CurrentLocalization.Instance["Bomber_Name"];
+    public string Description => CurrentLocalization.Instance["Bomber_Description"];
+    public string UnitName => $"{nameof(CrossFireFigureGroup)}.{nameof(Bomber)}";
     public FigureTypes UnitType => FigureTypes.Foot;
     public double FullHp => 100;
-    public double Attack => 50;
+    public double Attack => 100;
     public int Cost => 1;
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {1, new Uri("pack://application:,,,/BattleChess3.DefaultFigures;component/Images/Ninja1.png", UriKind.Absolute)},
-        {2, new Uri("pack://application:,,,/BattleChess3.DefaultFigures;component/Images/Ninja2.png", UriKind.Absolute)},
+        {1, new Uri("pack://application:,,,/BattleChess3.CrossFireFigures;component/Images/Bomber1.png", UriKind.Absolute)},
+        {2, new Uri("pack://application:,,,/BattleChess3.CrossFireFigures;component/Images/Bomber2.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

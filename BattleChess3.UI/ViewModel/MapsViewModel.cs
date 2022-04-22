@@ -27,8 +27,8 @@ public class MapsViewModel : ViewModelBase, IDisposable
         }
     }
 
-    private ObservableCollection<MapBlueprint> _maps = new ObservableCollection<MapBlueprint>();
-    public ObservableCollection<MapBlueprint> Maps
+    private IList<MapBlueprint> _maps = Array.Empty<MapBlueprint>();
+    public IList<MapBlueprint> Maps
     {
         get => _maps;
         set
@@ -64,7 +64,6 @@ public class MapsViewModel : ViewModelBase, IDisposable
             return;
 
         _mapService.Delete(SelectedMap);
-        Maps.Remove(SelectedMap);
     }
 
     internal void SaveSelectedMap(string identifier, ITile[] board)

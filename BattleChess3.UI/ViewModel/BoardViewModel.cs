@@ -37,7 +37,14 @@ public class BoardViewModel : ViewModelBase
             value.IsMouseOver = true;
         }
     }
-    
+
+    private int _boardWidth = 8;
+    public int BoardWidth
+    {
+        get => _boardWidth;
+        set => Set(ref _boardWidth, value);
+    }
+
     public ITileViewModel[] Board { get; } = Enumerable.Range(0, Constants.BoardSize)
                                               .Select<int, ITileViewModel>(position => new TileViewModel(position))
                                               .ToArray();
@@ -96,8 +103,14 @@ public class BoardViewModel : ViewModelBase
             _playerService.NextTurn();
         }
         else if (clickedTile.Figure.Owner == _playerService.CurrentPlayer)
+        {
             SelectedTile = clickedTile;
-        else SelectedTile = NoneTileViewModel.Instance;
+        }
+        else
+        {
+            SelectedTile = NoneTileViewModel.Instance;
+        }
+
         SetPossibleActions(clickedTile);
     }
 
@@ -160,15 +173,13 @@ public class BoardViewModel : ViewModelBase
 
     private ITile[] GetPlayerPOVBoard(Player player, ITile[] board)
     {
-        var povBoard = new ITile[64];
+        var povBoard = new ITile[Constants.BoardSize];
 
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < Constants.BoardLength; i++)
+        for (int j = 0; j < Constants.BoardLength; j++)
         {
-            for (int j = 0; j < 8; j++)
-            {
-                var position = new Position(j, i);
-                povBoard[position.GetPlayerPOVPosition(player)] = board[position];
-            }
+            var position = new Position(j, i);
+            povBoard[position.GetPlayerPOVPosition(player)] = board[position];
         }
 
         return povBoard;

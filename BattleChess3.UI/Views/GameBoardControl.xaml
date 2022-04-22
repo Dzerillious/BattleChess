@@ -12,7 +12,7 @@
                   ItemsSource="{Binding Board}">
         <ItemsControl.ItemsPanel>
             <ItemsPanelTemplate>
-                <UniformGrid Columns="8"/>
+                <UniformGrid Columns="{Binding Bo}"/>
             </ItemsPanelTemplate>
         </ItemsControl.ItemsPanel>
         <ItemsControl.ItemTemplate>
