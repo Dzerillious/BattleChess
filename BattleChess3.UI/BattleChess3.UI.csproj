@@ -6,6 +6,7 @@
         <UseWPF>true</UseWPF>
         <Nullable>enable</Nullable>
         <AssemblyName>BattleChess3</AssemblyName>
+        <ApplicationIcon>morgoth.ico</ApplicationIcon>
     </PropertyGroup>
 
     <ItemGroup>
@@ -29,6 +30,10 @@
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>
         <None Remove="BattleChess3.deps.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="morgoth.ico" />
     </ItemGroup>
 
     <ItemGroup>
