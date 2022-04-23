@@ -50,11 +50,7 @@
                                         <TextBlock Text="{util:Loc Info_Name}" Style="{DynamicResource TextBlockStyle}" />
                                         <TextBlock Text="{util:Loc Info_UnitType}" Style="{DynamicResource TextBlockStyle}" />
                                         <TextBlock Text="{util:Loc Info_Attack}" Style="{DynamicResource TextBlockStyle}" />
-                                        <TextBlock Text="{util:Loc Info_Defense}" Style="{DynamicResource TextBlockStyle}" />
-                                        <TextBlock Text="{util:Loc Info_Bonus}" Style="{DynamicResource TextBlockStyle}" />
-                                        <TextBlock Text="{util:Loc Info_Antibonus}" Style="{DynamicResource TextBlockStyle}" />
                                         <TextBlock Text="{util:Loc Info_Cost}" Style="{DynamicResource TextBlockStyle}" />
-                                        <TextBlock Text="{util:Loc Info_MovingAttack}" Style="{DynamicResource TextBlockStyle}" />
                                     </StackPanel>
         
                                     <StackPanel Grid.Column="1" Grid.Row="0"
@@ -65,15 +61,7 @@
                                                    Style="{DynamicResource TextBlockStyle}"/>
                                         <TextBlock Text="{Binding Path=Attack}"
                                                    Style="{DynamicResource TextBlockStyle}"/>
-                                        <TextBlock Text="{Binding Path=Defence}"
-                                                   Style="{DynamicResource TextBlockStyle}"/>
-                                        <TextBlock Text="{Binding Path=Bonus}"
-                                                   Style="{DynamicResource TextBlockStyle}"/>
-                                        <TextBlock Text="{Binding Path=AntiBonus}"
-                                                   Style="{DynamicResource TextBlockStyle}"/>
                                         <TextBlock Text="{Binding Path=Cost}"
-                                                   Style="{DynamicResource TextBlockStyle}"/>
-                                        <TextBlock Text="{Binding Path=MovingAttack}"
                                                    Style="{DynamicResource TextBlockStyle}"/>
                                     </StackPanel>
         

@@ -1,0 +1,12 @@
+﻿<UserControl x:Class="BattleChess3.UI.Views.EditorControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" d:DataContext="{d:DesignInstance viewModel:BoardViewModel}"
+             d:DesignHeight="300" d:DesignWidth="300"
+             x:Name="ThisUserControl">
+    <Grid>
+        
+    </Grid>
+</UserControl>

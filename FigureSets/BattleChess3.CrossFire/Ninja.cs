@@ -32,19 +32,54 @@ public class Ninja : IFigureType
         => figureType.Attack;
 
     public bool CanAttack(ITile unitTile, ITile targetTile, ITile[] board)
-        => CrossFireActionHelper.CanKill(unitTile, targetTile);
+    {
+        var move = targetTile.Position - unitTile.Position;
+
+        if (move == new Position(0, 2) &&
+            board[unitTile.Position + new Position(0, 1)].IsEmpty())
+        {
+            return false;
+        }
+        else
+        {
+            return CrossFireActionHelper.CanKill(unitTile, targetTile);
+        }
+    }
 
     public void AttackAction(ITile unitTile, ITile targetTile, ITile[] board)
-        => unitTile.KillFigureWithMove(targetTile);
+    {
+        if (targetTile.Position.Y == 7)
+        {
+            unitTile.KillFigureWithoutMove(targetTile);
+            targetTile.CreateFigure(new Figure(unitTile.Figure.Owner, Bomber.Instance));
+            unitTile.KillFigureWithoutMove(unitTile);
+        }
+        else
+        {
+            unitTile.KillFigureWithMove(targetTile);
+        }
+    }
 
     public bool CanMove(ITile unitTile, ITile targetTile, ITile[] board)
-        => targetTile.IsEmpty();
+    {
+        var move = targetTile.Position - unitTile.Position; 
+        
+        if (move == new Position(0, 2) &&
+             board[unitTile.Position + new Position(0, 1)].IsEmpty())
+        {
+            return false;
+        }
+        else
+        {
+            return targetTile.IsEmpty();
+        }
+    }
 
     public void MoveAction(ITile unitTile, ITile targetTile, ITile[] board)
     {
         if (targetTile.Position.Y == 7)
         {
-            targetTile.CreateFigure(new Figure(unitTile.Figure.Owner, Spy.Instance));
+            targetTile.CreateFigure(new Figure(unitTile.Figure.Owner, Bomber.Instance));
             unitTile.KillFigureWithoutMove(unitTile);
         }
         else
@@ -65,6 +100,7 @@ public class Ninja : IFigureType
     private readonly Position[][] _attackChain = 
     {
         new Position[] {(0, 1)},
+        new Position[] {(0, 2)},
         new Position[] {(1, 0)},
         new Position[] {(-1, 0)},
     };

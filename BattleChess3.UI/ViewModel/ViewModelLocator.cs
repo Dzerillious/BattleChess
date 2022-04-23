@@ -1,5 +1,4 @@
-﻿using BattleChess3.UI.Services;
-using CommonServiceLocator;
+﻿using CommonServiceLocator;
 
 namespace BattleChess3.UI.ViewModel;
 

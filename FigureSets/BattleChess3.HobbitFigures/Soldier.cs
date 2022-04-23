@@ -34,7 +34,18 @@ public class Soldier : IFigureType
         => unitTile.CanKill(targetTile);
 
     public void AttackAction(ITile unitTile, ITile targetTile, ITile[] board)
-        => unitTile.KillFigureWithMove(targetTile);
+    {
+        if (targetTile.Position.Y == 7)
+        {
+            unitTile.KillFigureWithoutMove(targetTile);
+            targetTile.CreateFigure(new Figure(unitTile.Figure.Owner, RingBearer.Instance));
+            unitTile.KillFigureWithoutMove(unitTile);
+        }
+        else
+        {
+            unitTile.KillFigureWithMove(targetTile);
+        }
+    }
 
     public bool CanMove(ITile unitTile, ITile targetTile, ITile[] board)
         => targetTile.IsEmpty();

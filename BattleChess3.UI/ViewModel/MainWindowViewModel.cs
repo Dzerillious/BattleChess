@@ -42,8 +42,16 @@ public class MainWindowViewModel : ViewModelBase
         set => SetTabSelected(out _manualTabSelected);
     }
 
+    private bool _editorTabSelected;
+    public bool EditorTabSelected
+    {
+        get => _editorTabSelected;
+        set => SetTabSelected(out _editorTabSelected);
+    }
+
     public MapsViewModel MapsViewModel { get; }
     public BoardViewModel BoardViewModel { get; }
+    public EditorViewModel EditorViewModel { get; }
 
     public RelayCommand NewGameCommand { get; }
     public RelayCommand SaveGameCommand { get; }
@@ -55,10 +63,12 @@ public class MainWindowViewModel : ViewModelBase
 
     public MainWindowViewModel(
         MapsViewModel mapsViewModel,
-        BoardViewModel boardViewModel)
+        BoardViewModel boardViewModel,
+        EditorViewModel editorViewModel)
     {
         MapsViewModel = mapsViewModel;
         BoardViewModel = boardViewModel;
+        EditorViewModel = editorViewModel;
 
         NewGameCommand = new RelayCommand(NewGame);
         SaveGameCommand = new RelayCommand(SaveGame);
@@ -97,11 +107,13 @@ public class MainWindowViewModel : ViewModelBase
         _gameTabSelected = false;
         _optionsTabSelected = false;
         _manualTabSelected = false;
+        _editorTabSelected = false;
         selectedTab = true;
         
         RaisePropertyChanged(nameof(MenuTabSelected));
         RaisePropertyChanged(nameof(GameTabSelected));
         RaisePropertyChanged(nameof(OptionsTabSelected));
         RaisePropertyChanged(nameof(ManualTabSelected));
+        RaisePropertyChanged(nameof(EditorTabSelected));
     }
 }

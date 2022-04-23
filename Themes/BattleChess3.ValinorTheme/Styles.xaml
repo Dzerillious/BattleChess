@@ -65,7 +65,42 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+
+    <Style TargetType="ToggleButton">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{StaticResource DefaultObjectForeground}"/>
+        <Setter Property="FontSize" Value="25" />
+        <Setter Property="Height" Value="40" />
+        <Setter Property="Width" Value="100" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TabItem}">
+                    <Border Background="{TemplateBinding Background}">
+                        <TextBlock Text="{TemplateBinding Header}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Foreground" Value="{StaticResource DefaultObjectForeground}"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{StaticResource DefaultObjectMouseOnForeground}" />
+            </Trigger>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Foreground" Value="{StaticResource DefaultObjectSelectedForeground}" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="{StaticResource DefaultObjectDisabledForeground}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
     <Style TargetType="Button">
         <Setter Property="Foreground" Value="{StaticResource DefaultObjectForeground}"/>
         <Setter Property="Background" Value="{StaticResource DefaultButtonBackground}"/>

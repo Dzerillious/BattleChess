@@ -40,6 +40,8 @@ public class DependenciesBuilder
                .AsSelf();
         builder.RegisterType<BoardViewModel>()
                .AsSelf();
+        builder.RegisterType<EditorViewModel>()
+               .AsSelf();
         builder.RegisterType<ThemesViewModel>()
                .AsSelf();
         builder.RegisterType<FiguresViewModel>()
