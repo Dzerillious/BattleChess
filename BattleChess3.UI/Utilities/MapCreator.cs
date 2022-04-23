@@ -125,6 +125,28 @@ public static class MapCreator
         });
     }
 
+    public static void CreateChess2Map()
+    {
+        CreateMap(new MapBlueprint
+        {
+            Figures = new FigureBlueprint[]
+                {
+                    (2, Rook.Instance), (2, ChessFigures.Knight.Instance), (2, Bishop.Instance), (2, Queen.Instance), (2, King.Instance), (2, Bishop.Instance), (2, ChessFigures.Knight.Instance), (2, Rook.Instance),
+                    (2, Spy.Instance), (2, Pawn.Instance), (2, Pawn.Instance), (2, Pawn.Instance), (2, Pawn.Instance), (2, Pawn.Instance), (2, Pawn.Instance), (2, Pawn.Instance),
+                    (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance),
+                    (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance),
+                    (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance),
+                    (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance),
+                    (1, Spy.Instance), (1, Pawn.Instance), (1, Pawn.Instance), (1, Pawn.Instance), (1, Pawn.Instance), (1, Pawn.Instance), (1, Pawn.Instance), (1, Pawn.Instance),
+                    (1, Rook.Instance), (1, ChessFigures.Knight.Instance), (1, Bishop.Instance), (1, Queen.Instance), (1, King.Instance), (1, Bishop.Instance), (1, ChessFigures.Knight.Instance), (1, Rook.Instance),
+                },
+            MapPath = $"Resources/Maps/Chess_{new Random().Next()}.map",
+            PreviewPath = $"/Resources/Maps/Chess_{new Random().Next()}.png",
+            StartingPlayer = 1,
+            PlayersCount = 2
+        });
+    }
+
     private static void CreateMap(MapBlueprint map)
     {
         Directory.CreateDirectory("Resources/Maps");
