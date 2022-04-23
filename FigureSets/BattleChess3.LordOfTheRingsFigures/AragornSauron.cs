@@ -81,8 +81,7 @@ public class AragornSauron : IFigureType
         {
             unitTile.MoveToTile(targetTile);
         }
-
-        if (targetTile.Position == new Position(0, 0))
+        else if (targetTile.Position == new Position(0, 0))
         {
             unitTile.MoveToTile(board[new Position(2, 0)]);
             targetTile.MoveToTile(board[new Position(3, 0)]);
