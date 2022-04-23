@@ -1,5 +1,5 @@
 ﻿using BattleChess3.Core.Model.Figures;
-using BattleChess3.DefaultFigures.Localization;
+using BattleChess3.CrossFireFigures.Localization;
 
 namespace BattleChess3.CrossFireFigures;
 

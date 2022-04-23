@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using BattleChess3.Core.Model;
 using BattleChess3.Core.Model.Figures;
 using BattleChess3.CrossFireFigures.Utilities;
-using BattleChess3.DefaultFigures.Localization;
+using BattleChess3.CrossFireFigures.Localization;
 using BattleChess3.DefaultFigures.Utilities;
 
 namespace BattleChess3.CrossFireFigures;

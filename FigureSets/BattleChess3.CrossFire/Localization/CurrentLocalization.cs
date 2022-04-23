@@ -1,7 +1,7 @@
 ﻿using System.Resources;
 using BattleChess3.Core.Utilities;
 
-namespace BattleChess3.DefaultFigures.Localization
+namespace BattleChess3.CrossFireFigures.Localization
 {
     internal class CurrentLocalization : LocalizationSourceBase
     {

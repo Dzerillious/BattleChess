@@ -91,13 +91,19 @@ public class BoardViewModel : ViewModelBase
     {
         if (clickedTile.IsPossibleAttack)
         {
-            SelectedTile.Figure.AttackAction(SelectedTile, clickedTile, Board);
+            var clickedPovTile = clickedTile.GetPovTile(_playerService.CurrentPlayer);
+            var selectedPovTile = SelectedTile.GetPovTile(_playerService.CurrentPlayer);
+            var povBoard = GetPlayerPOVBoard(_playerService.CurrentPlayer, Board);
+            SelectedTile.Figure.AttackAction(selectedPovTile, clickedPovTile, povBoard);
             SelectedTile = NoneTileViewModel.Instance;
             _playerService.NextTurn();
         }
         else if (clickedTile.IsPossibleMove)
         {
-            SelectedTile.Figure.MoveAction(SelectedTile, clickedTile, Board);
+            var clickedPovTile = clickedTile.GetPovTile(_playerService.CurrentPlayer);
+            var selectedPovTile = SelectedTile.GetPovTile(_playerService.CurrentPlayer);
+            var povBoard = GetPlayerPOVBoard(_playerService.CurrentPlayer, Board);
+            SelectedTile.Figure.MoveAction(selectedPovTile, clickedPovTile, povBoard);
             SelectedTile = NoneTileViewModel.Instance;
             _playerService.NextTurn();
         }

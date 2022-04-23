@@ -8,15 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.CodeDom.Compiler;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Resources;
-using System.Runtime.CompilerServices;
-
 namespace BattleChess3.CrossFireFigures.Localization {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -24,27 +19,27 @@ namespace BattleChess3.CrossFireFigures.Localization {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [GeneratedCode("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
-    [DebuggerNonUserCode()]
-    [CompilerGenerated()]
-    public class Strings {
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+    internal class Strings {
         
-        private static ResourceManager resourceMan;
+        private static global::System.Resources.ResourceManager resourceMan;
         
-        private static CultureInfo resourceCulture;
+        private static global::System.Globalization.CultureInfo resourceCulture;
         
-        [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Strings() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        public static ResourceManager ResourceManager {
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
-                if (ReferenceEquals(resourceMan, null)) {
-                    ResourceManager temp = new ResourceManager("BattleChess3.DefaultFigures.Localization.Strings", typeof(Strings).Assembly);
+                if (object.ReferenceEquals(resourceMan, null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BattleChess3.CrossFireFigures.Localization.Strings", typeof(Strings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -55,8 +50,8 @@ namespace BattleChess3.CrossFireFigures.Localization {
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        public static CultureInfo Culture {
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -66,99 +61,141 @@ namespace BattleChess3.CrossFireFigures.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Default.
+        ///   Looks up a localized string similar to .
         /// </summary>
-        public static string DefaultFigureGroup_Name {
+        internal static string Archer_Description {
             get {
-                return ResourceManager.GetString("DefaultFigureGroup_Name", resourceCulture);
+                return ResourceManager.GetString("Archer_Description", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 
-        ///Empty tile
+        ///   Looks up a localized string similar to Archer.
+        /// </summary>
+        internal static string Archer_Name {
+            get {
+                return ResourceManager.GetString("Archer_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string Bomber_Description {
+            get {
+                return ResourceManager.GetString("Bomber_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bomber.
+        /// </summary>
+        internal static string Bomber_Name {
+            get {
+                return ResourceManager.GetString("Bomber_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string Builder_Description {
+            get {
+                return ResourceManager.GetString("Builder_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Builder.
+        /// </summary>
+        internal static string Builder_Name {
+            get {
+                return ResourceManager.GetString("Builder_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cross fire.
+        /// </summary>
+        internal static string CrossFireFigureGroup_Name {
+            get {
+                return ResourceManager.GetString("CrossFireFigureGroup_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string Knight_Description {
+            get {
+                return ResourceManager.GetString("Knight_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Knight.
+        /// </summary>
+        internal static string Knight_Name {
+            get {
+                return ResourceManager.GetString("Knight_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ninja
         ///
-        ///Empty tile, where you can go. It cannot be destroyed with almost any unit. It does not stop directional attack.
-        ///        .
+        ///Ninja is secret warrior and with his diagonal moves can he easily surprise enemy. He is one of cheap figures so he is best in front line..
         /// </summary>
-        public static string Empty_Description {
-            get {
-                return ResourceManager.GetString("Empty_Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Empty tile.
-        /// </summary>
-        public static string Empty_Name {
-            get {
-                return ResourceManager.GetString("Empty_Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 
-        ///Ninja
-        ///
-        ///Ninja is secret warrior and with his diagonal moves can he easily surprise enemy. He is one of cheap figures so he is best in front line.
-        ///        .
-        /// </summary>
-        public static string Ninja_Description {
+        internal static string Ninja_Description {
             get {
                 return ResourceManager.GetString("Ninja_Description", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ninja.
+        ///   Looks up a localized string similar to 
+        ///Ninja
+        ///        .
         /// </summary>
-        public static string Ninja_Name {
+        internal static string Ninja_Name {
             get {
                 return ResourceManager.GetString("Ninja_Name", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 
-        ///Palm
-        ///
-        ///Palm tile, which you can easily destroy. It cannot move and belongs to no one.
-        ///        .
+        ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Palm_Description {
+        internal static string Spy_Description {
             get {
-                return ResourceManager.GetString("Palm_Description", resourceCulture);
+                return ResourceManager.GetString("Spy_Description", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Palm.
+        ///   Looks up a localized string similar to Spy.
         /// </summary>
-        public static string Palm_Name {
+        internal static string Spy_Name {
             get {
-                return ResourceManager.GetString("Palm_Name", resourceCulture);
+                return ResourceManager.GetString("Spy_Name", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 
-        ///Stone
-        ///
-        ///Stone tile, which cannot be destroyed and where you cannot go. It cannot move and belongs to no one.
-        ///        .
+        ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Stone_Description {
+        internal static string Wall_Description {
             get {
-                return ResourceManager.GetString("Stone_Description", resourceCulture);
+                return ResourceManager.GetString("Wall_Description", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stone.
+        ///   Looks up a localized string similar to Wall.
         /// </summary>
-        public static string Stone_Name {
+        internal static string Wall_Name {
             get {
-                return ResourceManager.GetString("Stone_Name", resourceCulture);
+                return ResourceManager.GetString("Wall_Name", resourceCulture);
             }
         }
     }
