@@ -86,12 +86,8 @@ public class Bomber : IFigureType
     private readonly Position[][] _attackChain =
     {
         new Position[] {(-2, -2)},
-        new Position[] {(-2, 0)},
         new Position[] {(-2, 2)},
-        new Position[] {(0, -2)},
-        new Position[] {(0, 2)},
         new Position[] {(2, -2)},
-        new Position[] {(2, 0)},
         new Position[] {(2, 2)},
     };
     public Position[][] GetAttackChains(Position position, ITile[] board) => _attackChain;
