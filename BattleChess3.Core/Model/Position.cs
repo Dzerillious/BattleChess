@@ -18,7 +18,6 @@ public readonly struct Position
                           && Y >= 0
                           && X < Constants.BoardLength 
                           && Y < Constants.BoardLength;
-
     public static bool operator ==(Position left, Position right)
         => left.X == right.X && left.Y == right.Y;
 

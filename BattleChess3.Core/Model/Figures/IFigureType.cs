@@ -59,22 +59,22 @@ public interface IFigureType
     /// <summary>
     /// Checks if can attack at target position.
     /// </summary>
-    bool CanAttack(ITile from, ITile to, ITile[] board);
+    bool CanAttack(ITile unitTile, ITile targetTile, ITile[] board);
 
     /// <summary>
     /// Attack action
     /// </summary>
-    void AttackAction(ITile from, ITile to, ITile[] board);
+    void AttackAction(ITile unitTile, ITile targetTile, ITile[] board);
 
     /// <summary>
     /// Checks if can move to target position.
     /// </summary>
-    bool CanMove(ITile from, ITile to, ITile[] board);
+    bool CanMove(ITile unitTile, ITile targetTile, ITile[] board);
 
     /// <summary>
     /// Move action
     /// </summary>
-    void MoveAction(ITile from, ITile to, ITile[] board);
+    void MoveAction(ITile unitTile, ITile targetTile, ITile[] board);
 
     /// <summary>
     /// Chain of positions of move (if can go at first position of chain, check next one)

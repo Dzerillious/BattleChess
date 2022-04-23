@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using BattleChess3.Core.Model;
 using BattleChess3.Core.Model.Figures;
+using BattleChess3.CrossFireFigures.Utilities;
 using BattleChess3.DefaultFigures.Localization;
 using BattleChess3.DefaultFigures.Utilities;
 
@@ -30,31 +31,68 @@ public class Bomber : IFigureType
     public double DefenceCalculation(IFigureType figureType)
         => figureType.Attack;
 
-    public bool CanAttack(ITile from, ITile to, ITile[] board)
-        => to.Figure.Hp - from.Figure.AttackCalculation(to.Figure) <= 0;
+    public bool CanAttack(ITile unitTile, ITile targetTile, ITile[] board)
+        => CrossFireActionHelper.CanKill(unitTile, targetTile);
 
-    public void AttackAction(ITile from, ITile to, ITile[] board)
-        => board.KillFigureWithMove(from, to);
-
-    public bool CanMove(ITile from, ITile tile, ITile[] board)
-        => tile.Figure.IsEmpty();
-
-    public void MoveAction(ITile from, ITile to, ITile[] board)
-        => board.MoveToPosition(from, to.Position);
-
-    private readonly Position[][] _moveChain = 
+    public void AttackAction(ITile unitTile, ITile targetTile, ITile[] board)
     {
-        new Position[] {(1, 1)},
-        new Position[] {(-1, 1)}
+        foreach (var explosionPosition in _bombChain)
+        {
+            if (!(targetTile.Position + explosionPosition).InBoard())
+                continue;
+
+            var explosionTile = board[targetTile.Position + explosionPosition];
+            unitTile.KillFigureWithoutMove(explosionTile);
+        }
+    }
+    public bool CanMove(ITile unitTile, ITile targetTile, ITile[] board)
+        => targetTile.IsEmpty();
+
+    public void MoveAction(ITile unitTile, ITile targetTile, ITile[] board)
+    {
+        foreach (var explosionPosition in _bombChain)
+        {
+            if (!(targetTile.Position + explosionPosition).InBoard())
+                continue;
+
+            var explosionTile = board[targetTile.Position + explosionPosition];
+            unitTile.KillFigureWithoutMove(explosionTile);
+        }
+
+        unitTile.MoveToTile(targetTile);
+    }
+
+    private readonly Position[][] _moveChain =
+    {
+        new Position[] {(-2, -2)},
+        new Position[] {(-2, 2)},
+        new Position[] {(2, -2)},
+        new Position[] {(2, 2)},
     };
-    public Position[][] GetMoveChains(Position position, ITile[] board) => _moveChain;
+    public Position[][] GetMoveChains(Position position, ITile[] board) => _attackChain;
     
-    
-    private readonly Position[][] _attackChain = 
+    private readonly Position[] _bombChain =
     {
-        new Position[] {(0, 1)},
-        new Position[] {(1, 0)},
-        new Position[] {(-1, 0)},
+        (1, 1),
+        (1, 0),
+        (1, -1),
+        (0, 1),
+        (0, -1),
+        (-1, 1),
+        (-1, 0),
+        (-1, -1),
+    };
+
+    private readonly Position[][] _attackChain =
+    {
+        new Position[] {(-2, -2)},
+        new Position[] {(-2, 0)},
+        new Position[] {(-2, 2)},
+        new Position[] {(0, -2)},
+        new Position[] {(0, 2)},
+        new Position[] {(2, -2)},
+        new Position[] {(2, 0)},
+        new Position[] {(2, 2)},
     };
     public Position[][] GetAttackChains(Position position, ITile[] board) => _attackChain;
 }

@@ -5,16 +5,47 @@ namespace BattleChess3.DefaultFigures.Utilities;
 
 public static class FigureActionHelper
 {
-    public static void MoveToPosition(this ITile[] board, ITile tile, Position position)
+    public static void MoveToTile(this ITile unitTile, ITile targetTile)
     {
-        board[position].Figure = board[tile.Position].Figure;
-        board[tile.Position].Figure = new Figure(Player.Neutral, Empty.Instance, 0);
+        targetTile.Figure = unitTile.Figure;
+        unitTile.Figure = new Figure(Player.Neutral, Empty.Instance, 0);
     }
 
-    public static void KillFigureWithMove(this ITile[] board, ITile unit, ITile tile)
+    public static void CreateFigure(this ITile targetTile, Figure createdFiure)
     {
-        board[tile.Position].Figure = new Figure(Player.Neutral, Empty.Instance, 0);
-        tile.Figure.Owner.Figures.Remove(tile.Figure);
-        board.MoveToPosition(unit, tile.Position);
+        targetTile.Figure = createdFiure;
+        targetTile.Figure.Owner.Figures.Add(targetTile.Figure);
+    }
+
+    public static void KillFigureWithoutMove(this ITile unitTile, ITile targetTile)
+    {
+        targetTile.Figure = new Figure(Player.Neutral, Empty.Instance, 0);
+        targetTile.Figure.Owner.Figures.Remove(targetTile.Figure);
+    }
+
+    public static void KillFigureWithMove(this ITile unitTile, ITile targetTile)
+    {
+        targetTile.Figure = new Figure(Player.Neutral, Empty.Instance, 0);
+        targetTile.Figure.Owner.Figures.Remove(targetTile.Figure);
+        unitTile.MoveToTile(targetTile);
+    }
+
+    public static void SwapWithTile(this ITile unitTile, ITile targetTile)
+    {
+        var tmp = targetTile.Figure;
+        targetTile.Figure = unitTile.Figure;
+        unitTile.Figure = tmp;
+    }
+
+    public static void PassTurn(this ITile tile)
+    {
+    }
+
+    public static bool CanKill(this ITile unitTile, ITile targetTile)
+    {
+        if (unitTile.Figure.Owner.Equals(targetTile.Figure.Owner))
+            return false;
+
+        return targetTile.Figure.Hp - unitTile.Figure.AttackCalculation(targetTile.Figure) <= 0;
     }
 }

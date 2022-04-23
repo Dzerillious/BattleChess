@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using BattleChess3.Core.Model;
 using BattleChess3.Core.Model.Figures;
 using BattleChess3.DefaultFigures.Localization;
+using BattleChess3.DefaultFigures.Utilities;
 
 namespace BattleChess3.CrossFireFigures;
 
@@ -29,19 +30,17 @@ public class Wall : IFigureType
     public double DefenceCalculation(IFigureType figureType)
         => figureType.Attack;
 
-    public bool CanAttack(ITile from, ITile to, ITile[] board)
+    public bool CanAttack(ITile unitTile, ITile targetTile, ITile[] board)
         => false;
 
-    public void AttackAction(ITile from, ITile to, ITile[] board)
-    {
-    }
+    public void AttackAction(ITile unitTile, ITile targetTile, ITile[] board)
+        => unitTile.PassTurn();
 
-    public bool CanMove(ITile from, ITile tile, ITile[] board)
+    public bool CanMove(ITile unitTile, ITile targetTile, ITile[] board)
         => false;
 
-    public void MoveAction(ITile from, ITile to, ITile[] board)
-    {
-    }
+    public void MoveAction(ITile unitTile, ITile targetTile, ITile[] board)
+        => unitTile.PassTurn();
 
     private readonly Position[][] _moveChain = {};
     public Position[][] GetMoveChains(Position position, ITile[] board) => _moveChain;

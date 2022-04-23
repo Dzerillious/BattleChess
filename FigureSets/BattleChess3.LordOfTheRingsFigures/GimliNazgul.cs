@@ -30,17 +30,17 @@ public class GimliNazgul : IFigureType
     public double DefenceCalculation(IFigureType figureType)
         => figureType.Attack;
 
-    public bool CanAttack(ITile from, ITile to, ITile[] board)
-        => to.Figure.Hp - from.Figure.AttackCalculation(to.Figure) <= 0;
+    public bool CanAttack(ITile unitTile, ITile targetTile, ITile[] board)
+        => unitTile.CanKill(targetTile);
 
-    public void AttackAction(ITile from, ITile to, ITile[] board)
-        => board.KillFigureWithMove(from, to);
+    public void AttackAction(ITile unitTile, ITile targetTile, ITile[] board)
+        => unitTile.KillFigureWithMove(targetTile);
 
-    public bool CanMove(ITile from, ITile tile, ITile[] board)
-        => tile.Figure.IsEmpty();
+    public bool CanMove(ITile unitTile, ITile targetTile, ITile[] board)
+        => targetTile.IsEmpty();
 
-    public void MoveAction(ITile from, ITile to, ITile[] board)
-        => board.MoveToPosition(from, to.Position);
+    public void MoveAction(ITile unitTile, ITile targetTile, ITile[] board)
+        => unitTile.MoveToTile(targetTile);
 
     private readonly Position[][] _moveChain = 
     {

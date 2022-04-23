@@ -142,7 +142,7 @@ public class BoardViewModel : ViewModelBase
                 break;
 
             var attackedTile = Board[boardAttack].GetPovTile(_playerService.CurrentPlayer);
-            if (attackedTile.Figure.IsEmpty())
+            if (attackedTile.IsEmpty())
                 continue;
 
             Board[boardAttack].IsPossibleAttack = povTile.Figure.CanAttack(povTile, attackedTile, povBoard);

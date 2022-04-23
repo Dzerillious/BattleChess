@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using BattleChess3.Core.Model;
 using BattleChess3.Core.Model.Figures;
+using BattleChess3.CrossFireFigures.Utilities;
 using BattleChess3.DefaultFigures.Localization;
 using BattleChess3.DefaultFigures.Utilities;
 
@@ -30,31 +31,57 @@ public class Spy : IFigureType
     public double DefenceCalculation(IFigureType figureType)
         => figureType.Attack;
 
-    public bool CanAttack(ITile from, ITile to, ITile[] board)
-        => to.Figure.Hp - from.Figure.AttackCalculation(to.Figure) <= 0;
+    public bool CanAttack(ITile unitTile, ITile targetTile, ITile[] board)
+        => CrossFireActionHelper.CanKill(unitTile, targetTile);
 
-    public void AttackAction(ITile from, ITile to, ITile[] board)
-        => board.KillFigureWithMove(from, to);
+    public void AttackAction(ITile unitTile, ITile targetTile, ITile[] board)
+        => unitTile.KillFigureWithMove(targetTile);
 
-    public bool CanMove(ITile from, ITile tile, ITile[] board)
-        => tile.Figure.IsEmpty();
-
-    public void MoveAction(ITile from, ITile to, ITile[] board)
-        => board.MoveToPosition(from, to.Position);
-
-    private readonly Position[][] _moveChain = 
+    public bool CanMove(ITile unitTile, ITile targetTile, ITile[] board)
     {
-        new Position[] {(1, 1)},
-        new Position[] {(-1, 1)}
-    };
-    public Position[][] GetMoveChains(Position position, ITile[] board) => _moveChain;
-    
+        if (targetTile.IsEmpty())
+        {
+            var relative = targetTile.Position - unitTile.Position;
+            return Math.Abs(relative.X) <= 1 &&
+                Math.Abs(relative.Y) <= 1;
+        }
+
+        return targetTile.Figure.Owner.Equals(unitTile.Figure.Owner);
+    }
+
+    public void MoveAction(ITile unitTile, ITile targetTile, ITile[] board)
+    {
+        if (targetTile.IsEmpty())
+        {
+            unitTile.MoveToTile(targetTile);
+        }
+        else
+        {
+            unitTile.SwapWithTile(targetTile);
+        }
+    }
+
+    public Position[][] GetMoveChains(Position position, ITile[] board)
+    {
+        var result = new Position[board.Length][];
+        for (int i = 0; i < board.Length; i++)
+        {
+            result[i] = new Position[] { board[i].Position - position };
+        }
+        return result;
+    }
     
     private readonly Position[][] _attackChain = 
     {
-        new Position[] {(0, 1)},
+        new Position[] {(1, 1)},
         new Position[] {(1, 0)},
+        new Position[] {(1, -1)},
+        new Position[] {(0, 1)},
+        new Position[] {(0, 0)},
+        new Position[] {(0, -1)},
+        new Position[] {(-1, 1)},
         new Position[] {(-1, 0)},
+        new Position[] {(-1, -1)},
     };
     public Position[][] GetAttackChains(Position position, ITile[] board) => _attackChain;
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using BattleChess3.Core.Model;
 using BattleChess3.Core.Model.Figures;
+using BattleChess3.CrossFireFigures.Utilities;
 using BattleChess3.DefaultFigures.Localization;
 using BattleChess3.DefaultFigures.Utilities;
 
@@ -30,21 +31,22 @@ public class Ninja : IFigureType
     public double DefenceCalculation(IFigureType figureType)
         => figureType.Attack;
 
-    public bool CanAttack(ITile from, ITile to, ITile[] board)
-        => to.Figure.Hp - from.Figure.AttackCalculation(to.Figure) <= 0;
+    public bool CanAttack(ITile unitTile, ITile targetTile, ITile[] board)
+        => CrossFireActionHelper.CanKill(unitTile, targetTile);
 
-    public void AttackAction(ITile from, ITile to, ITile[] board)
-        => board.KillFigureWithMove(from, to);
+    public void AttackAction(ITile unitTile, ITile targetTile, ITile[] board)
+        => unitTile.KillFigureWithMove(targetTile);
 
-    public bool CanMove(ITile from, ITile tile, ITile[] board)
-        => tile.Figure.IsEmpty();
+    public bool CanMove(ITile unitTile, ITile targetTile, ITile[] board)
+        => targetTile.IsEmpty();
 
-    public void MoveAction(ITile from, ITile to, ITile[] board)
-        => board.MoveToPosition(from, to.Position);
+    public void MoveAction(ITile unitTile, ITile targetTile, ITile[] board)
+        => unitTile.MoveToTile(targetTile);
 
     private readonly Position[][] _moveChain = 
     {
         new Position[] {(1, 1)},
+        new Position[] {(0, 2)},
         new Position[] {(-1, 1)}
     };
     public Position[][] GetMoveChains(Position position, ITile[] board) => _moveChain;

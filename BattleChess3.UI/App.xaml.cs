@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight.Threading;
+﻿using BattleChess3.UI.Utilities;
+using GalaSoft.MvvmLight.Threading;
 
 namespace BattleChess3.UI;
 
