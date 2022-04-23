@@ -47,4 +47,7 @@ public class TileViewModel : ViewModelBase, ITileViewModel
     {
         Position = position;
     }
+
+    public ITile GetPovTile(Player player)
+        => new PlayedTile(this, player);
 }

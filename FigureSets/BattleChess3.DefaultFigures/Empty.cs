@@ -29,9 +29,15 @@ public class Empty : IFigureType
     public double DefenceCalculation(IFigureType figureType)
         => 0;
 
+    public bool CanAttack(ITile from, ITile to, ITile[] board)
+        => false;
+
     public void AttackAction(ITile from, ITile to, ITile[] board)
     {
     }
+
+    public bool CanMove(ITile from, ITile tile, ITile[] board)
+        => false;
 
     public void MoveAction(ITile from, ITile to, ITile[] board)
     {

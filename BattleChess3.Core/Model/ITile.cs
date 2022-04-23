@@ -15,6 +15,11 @@ public interface ITile
     Figure Figure { get; set; }
 
     /// <summary>
+    /// Gets tile with position according to players point of view.
+    /// </summary>
+    ITile GetPovTile(Player player);
+
+    /// <summary>
     /// ToString for debugging
     /// </summary>
     /// <returns></returns>

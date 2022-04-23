@@ -57,9 +57,19 @@ public interface IFigureType
     double DefenceCalculation(IFigureType figureType);
 
     /// <summary>
+    /// Checks if can attack at target position.
+    /// </summary>
+    bool CanAttack(ITile from, ITile to, ITile[] board);
+
+    /// <summary>
     /// Attack action
     /// </summary>
     void AttackAction(ITile from, ITile to, ITile[] board);
+
+    /// <summary>
+    /// Checks if can move to target position.
+    /// </summary>
+    bool CanMove(ITile from, ITile to, ITile[] board);
 
     /// <summary>
     /// Move action

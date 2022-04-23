@@ -74,7 +74,7 @@ public class MapsViewModel : ViewModelBase, IDisposable
             {
                 Hp = x.Figure.Hp,
                 PlayerId = x.Figure.Owner.Id,
-                UnitName = x.Figure.FigureType.UnitName
+                UnitName = x.Figure.UnitName
             }).ToArray(),
             MapPath = $"Resources/Maps/{identifier}.map",
             PreviewPath = $"./Resources/Maps/{identifier}.png",

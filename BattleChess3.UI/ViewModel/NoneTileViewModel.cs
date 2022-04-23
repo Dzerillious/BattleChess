@@ -13,4 +13,5 @@ public class NoneTileViewModel : ITileViewModel
     public bool IsSelected { get; set; }
     public bool IsPossibleMove { get; set; }
     public bool IsPossibleAttack { get; set; }
+    public ITile GetPovTile(Player player) => this;
 }

@@ -30,11 +30,17 @@ public class Bishop : IFigureType
     public double DefenceCalculation(IFigureType figureType)
         => figureType.Attack;
 
-    public void AttackAction(ITile unit, ITile target, ITile[] board)
-        => board.KillFigureWithMove(unit, target);
+    public bool CanAttack(ITile from, ITile to, ITile[] board)
+        => to.Figure.Hp - from.Figure.AttackCalculation(to.Figure) <= 0;
 
-    public void MoveAction(ITile unit, ITile target, ITile[] board)
-        => board.MoveToPosition(unit, target.Position);
+    public void AttackAction(ITile from, ITile to, ITile[] board)
+        => board.KillFigureWithMove(from, to);
+
+    public bool CanMove(ITile from, ITile to, ITile[] board)
+        => to.Figure.IsEmpty();
+
+    public void MoveAction(ITile from, ITile to, ITile[] board)
+        => board.MoveToPosition(from, to.Position);
 
     private readonly Position[][] _moveChain = 
     {

@@ -29,13 +29,13 @@
     
             <StackPanel Grid.Column="1"
                         Orientation="Vertical">
-                <TextBlock Text="{Binding Path=FigureType.ShownName, UpdateSourceTrigger=PropertyChanged}" 
+                <TextBlock Text="{Binding Path=ShownName, UpdateSourceTrigger=PropertyChanged}" 
                            Style="{DynamicResource TextBlockStyle}" />
                 <TextBlock Text="{Binding Path=Hp, UpdateSourceTrigger=PropertyChanged}" 
                            Style="{DynamicResource TextBlockStyle}" />
-                <TextBlock Text="{Binding Path=FigureType.Attack, UpdateSourceTrigger=PropertyChanged}" 
+                <TextBlock Text="{Binding Path=Attack, UpdateSourceTrigger=PropertyChanged}" 
                            Style="{DynamicResource TextBlockStyle}" />
-                <TextBlock Text="{Binding Path=FigureType.Cost, UpdateSourceTrigger=PropertyChanged}"
+                <TextBlock Text="{Binding Path=Cost, UpdateSourceTrigger=PropertyChanged}"
                            Style="{DynamicResource TextBlockStyle}" />
             </StackPanel>
         </Grid>

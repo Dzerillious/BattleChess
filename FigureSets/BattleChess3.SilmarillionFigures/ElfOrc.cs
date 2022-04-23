@@ -30,8 +30,14 @@ public class ElfOrc : IFigureType
     public double DefenceCalculation(IFigureType figureType)
         => figureType.Attack;
 
+    public bool CanAttack(ITile from, ITile to, ITile[] board)
+        => to.Figure.Hp - from.Figure.AttackCalculation(to.Figure) <= 0;
+
     public void AttackAction(ITile from, ITile to, ITile[] board)
         => board.KillFigureWithMove(from, to);
+
+    public bool CanMove(ITile from, ITile tile, ITile[] board)
+        => tile.Figure.IsEmpty();
 
     public void MoveAction(ITile from, ITile to, ITile[] board)
         => board.MoveToPosition(from, to.Position);
