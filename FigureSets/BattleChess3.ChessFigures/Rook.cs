@@ -10,8 +10,8 @@ namespace BattleChess3.ChessFigures;
 public class Rook : IFigureType
 {
     public static readonly Rook Instance = new();
-    public string ShownName => CurrentLocalization.Instance["Rook_Name"];
-    public string Description => CurrentLocalization.Instance["Rook_Description"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(Rook)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(Rook)}_Description"];
     public string UnitName => $"{nameof(ChessFigureGroup)}.{nameof(Rook)}";
     public FigureTypes UnitType => FigureTypes.Object;
     public double FullHp => 100;
@@ -20,8 +20,8 @@ public class Rook : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {1, new Uri("pack://application:,,,/BattleChess3.ChessFigures;component/Images/Rook1.png", UriKind.Absolute)},
-        {2, new Uri("pack://application:,,,/BattleChess3.ChessFigures;component/Images/Rook2.png", UriKind.Absolute)},
+        {1, new Uri($"pack://application:,,,/BattleChess3.ChessFigures;component/Images/{nameof(Rook)}1.png", UriKind.Absolute)},
+        {2, new Uri($"pack://application:,,,/BattleChess3.ChessFigures;component/Images/{nameof(Rook)}2.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

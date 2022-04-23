@@ -10,8 +10,8 @@ namespace BattleChess3.SilmarillionFigures;
 public class OromeCarcharoth : IFigureType
 {
     public static readonly OromeCarcharoth Instance = new();
-    public string ShownName => CurrentLocalization.Instance["OromeCarcharoth_Name"];
-    public string Description => CurrentLocalization.Instance["OromeCarcharoth_Description"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(OromeCarcharoth)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(OromeCarcharoth)}_Description"];
     public string UnitName => $"{nameof(SilmarillionFigureGroup)}.{nameof(OromeCarcharoth)}";
     public FigureTypes UnitType => FigureTypes.Foot;
     public double FullHp => 100;
@@ -20,8 +20,8 @@ public class OromeCarcharoth : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {1, new Uri("pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/OromeCarcharoth1.png", UriKind.Absolute)},
-        {2, new Uri("pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/OromeCarcharoth2.png", UriKind.Absolute)},
+        {1, new Uri($"pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/{nameof(OromeCarcharoth)}1.png", UriKind.Absolute)},
+        {2, new Uri($"pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/{nameof(OromeCarcharoth)}2.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

@@ -9,8 +9,8 @@ namespace BattleChess3.DefaultFigures;
 public class Palm : IFigureType
 {
     public static readonly Palm Instance = new();
-    public string ShownName => CurrentLocalization.Instance["Palm_Name"];
-    public string Description => CurrentLocalization.Instance["Palm_Description"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(Palm)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(Palm)}_Description"];
     public string UnitName => $"{nameof(DefaultFigureGroup)}.{nameof(Palm)}";
     public FigureTypes UnitType => FigureTypes.Object;
     public double FullHp => 100;
@@ -19,7 +19,7 @@ public class Palm : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {0, new Uri("pack://application:,,,/BattleChess3.DefaultFigures;component/Images/Palm0.png", UriKind.Absolute)},
+        {0, new Uri($"pack://application:,,,/BattleChess3.DefaultFigures;component/Images/{nameof(Palm)}0.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

@@ -10,8 +10,8 @@ namespace BattleChess3.HobbitFigures;
 public class Warrior : IFigureType
 {
     public static readonly Warrior Instance = new();
-    public string ShownName => CurrentLocalization.Instance["Warrior_Name"];
-    public string Description => CurrentLocalization.Instance["Warrior_Description"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(Warrior)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(Warrior)}_Description"];
     public string UnitName => $"{nameof(HobbitFigureGroup)}.{nameof(Warrior)}";
     public FigureTypes UnitType => FigureTypes.Foot;
     public double FullHp => 100;
@@ -20,8 +20,8 @@ public class Warrior : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {1, new Uri("pack://application:,,,/BattleChess3.HobbitFigures;component/Images/Warrior1.png", UriKind.Absolute)},
-        {2, new Uri("pack://application:,,,/BattleChess3.HobbitFigures;component/Images/Warrior2.png", UriKind.Absolute)},
+        {1, new Uri($"pack://application:,,,/BattleChess3.HobbitFigures;component/Images/{nameof(Warrior)}1.png", UriKind.Absolute)},
+        {2, new Uri($"pack://application:,,,/BattleChess3.HobbitFigures;component/Images/{nameof(Warrior)}2.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

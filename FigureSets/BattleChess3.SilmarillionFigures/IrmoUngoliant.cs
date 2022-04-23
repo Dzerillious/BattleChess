@@ -10,8 +10,8 @@ namespace BattleChess3.SilmarillionFigures;
 public class IrmoUngoliant : IFigureType
 {
     public static readonly IrmoUngoliant Instance = new();
-    public string ShownName => CurrentLocalization.Instance["IrmoUngoliant_Name"];
-    public string Description => CurrentLocalization.Instance["IrmoUngoliant_Description"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(IrmoUngoliant)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(IrmoUngoliant)}_Description"];
     public string UnitName => $"{nameof(SilmarillionFigureGroup)}.{nameof(IrmoUngoliant)}";
     public FigureTypes UnitType => FigureTypes.Foot;
     public double FullHp => 100;
@@ -20,8 +20,8 @@ public class IrmoUngoliant : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {1, new Uri("pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/IrmoUngoliant1.png", UriKind.Absolute)},
-        {2, new Uri("pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/IrmoUngoliant2.png", UriKind.Absolute)},
+        {1, new Uri($"pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/{nameof(IrmoUngoliant)}1.png", UriKind.Absolute)},
+        {2, new Uri($"pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/{nameof(IrmoUngoliant)}2.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

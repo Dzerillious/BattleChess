@@ -10,8 +10,8 @@ namespace BattleChess3.LordOfTheRingsFigures;
 public class GandalfWitchKing : IFigureType
 {
     public static readonly GandalfWitchKing Instance = new();
-    public string ShownName => CurrentLocalization.Instance["GandalfWitchKing_Name"];
-    public string Description => CurrentLocalization.Instance["GandalfWitchKing_Description"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(GandalfWitchKing)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(GandalfWitchKing)}_Description"];
     public string UnitName => $"{nameof(LordOfTheRingsFigureGroup)}.{nameof(GandalfWitchKing)}";
     public FigureTypes UnitType => FigureTypes.Foot;
     public double FullHp => 100;
@@ -20,8 +20,8 @@ public class GandalfWitchKing : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {1, new Uri("pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/GandalfWitchKing1.png", UriKind.Absolute)},
-        {2, new Uri("pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/GandalfWitchKing2.png", UriKind.Absolute)},
+        {1, new Uri($"pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/{nameof(GandalfWitchKing)}1.png", UriKind.Absolute)},
+        {2, new Uri($"pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/{nameof(GandalfWitchKing)}2.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

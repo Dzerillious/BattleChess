@@ -10,8 +10,8 @@ namespace BattleChess3.LordOfTheRingsFigures;
 public class AragornSauron : IFigureType
 {
     public static readonly AragornSauron Instance = new();
-    public string ShownName => CurrentLocalization.Instance["AragornSauron_Name"];
-    public string Description => CurrentLocalization.Instance["AragornSauron_Description"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(AragornSauron)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(AragornSauron)}_Description"];
     public string UnitName => $"{nameof(LordOfTheRingsFigureGroup)}.{nameof(AragornSauron)}";
     public FigureTypes UnitType => FigureTypes.Foot;
     public double FullHp => 100;
@@ -20,8 +20,8 @@ public class AragornSauron : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {1, new Uri("pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/AragornSauron1.png", UriKind.Absolute)},
-        {2, new Uri("pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/AragornSauron2.png", UriKind.Absolute)},
+        {1, new Uri($"pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/{nameof(AragornSauron)}1.png", UriKind.Absolute)},
+        {2, new Uri($"pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/{nameof(AragornSauron)}2.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

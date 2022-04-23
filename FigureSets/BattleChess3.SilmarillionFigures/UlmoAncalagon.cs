@@ -10,8 +10,8 @@ namespace BattleChess3.SilmarillionFigures;
 public class UlmoAncalagon : IFigureType
 {
     public static readonly UlmoAncalagon Instance = new();
-    public string ShownName => CurrentLocalization.Instance["UlmoAncalagon_Name"];
-    public string Description => CurrentLocalization.Instance["UlmoAncalagon_Description"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(UlmoAncalagon)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(UlmoAncalagon)}_Description"];
     public string UnitName => $"{nameof(SilmarillionFigureGroup)}.{nameof(UlmoAncalagon)}";
     public FigureTypes UnitType => FigureTypes.Foot;
     public double FullHp => 100;
@@ -20,8 +20,8 @@ public class UlmoAncalagon : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {1, new Uri("pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/UlmoAncalagon1.png", UriKind.Absolute)},
-        {2, new Uri("pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/UlmoAncalagon2.png", UriKind.Absolute)},
+        {1, new Uri($"pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/{nameof(UlmoAncalagon)}1.png", UriKind.Absolute)},
+        {2, new Uri($"pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/{nameof(UlmoAncalagon)}2.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

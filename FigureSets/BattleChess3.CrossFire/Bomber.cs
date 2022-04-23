@@ -10,8 +10,8 @@ namespace BattleChess3.CrossFireFigures;
 public class Bomber : IFigureType
 {
     public static readonly Bomber Instance = new();
-    public string ShownName => CurrentLocalization.Instance["Bomber_Name"];
-    public string Description => CurrentLocalization.Instance["Bomber_Description"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(Bomber)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(Bomber)}_Description"];
     public string UnitName => $"{nameof(CrossFireFigureGroup)}.{nameof(Bomber)}";
     public FigureTypes UnitType => FigureTypes.Foot;
     public double FullHp => 100;
@@ -20,8 +20,8 @@ public class Bomber : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {1, new Uri("pack://application:,,,/BattleChess3.CrossFireFigures;component/Images/Bomber1.png", UriKind.Absolute)},
-        {2, new Uri("pack://application:,,,/BattleChess3.CrossFireFigures;component/Images/Bomber2.png", UriKind.Absolute)},
+        {1, new Uri($"pack://application:,,,/BattleChess3.CrossFireFigures;component/Images/{nameof(Bomber)}1.png", UriKind.Absolute)},
+        {2, new Uri($"pack://application:,,,/BattleChess3.CrossFireFigures;component/Images/{nameof(Bomber)}2.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

@@ -10,8 +10,8 @@ namespace BattleChess3.ChessFigures;
 public class King : IFigureType
 {
     public static readonly King Instance = new();
-    public string ShownName => CurrentLocalization.Instance["King_Name"];
-    public string Description => CurrentLocalization.Instance["King_Description"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(King)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(King)}_Description"];
     public string UnitName => $"{nameof(ChessFigureGroup)}.{nameof(King)}";
     public FigureTypes UnitType => FigureTypes.Special;
     public double FullHp => 100;
@@ -20,8 +20,8 @@ public class King : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {1, new Uri("pack://application:,,,/BattleChess3.ChessFigures;component/Images/King1.png", UriKind.Absolute)},
-        {2, new Uri("pack://application:,,,/BattleChess3.ChessFigures;component/Images/King2.png", UriKind.Absolute)},
+        {1, new Uri($"pack://application:,,,/BattleChess3.ChessFigures;component/Images/{nameof(King)}1.png", UriKind.Absolute)},
+        {2, new Uri($"pack://application:,,,/BattleChess3.ChessFigures;component/Images/{nameof(King)}2.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

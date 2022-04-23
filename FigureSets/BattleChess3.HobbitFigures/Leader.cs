@@ -10,8 +10,8 @@ namespace BattleChess3.HobbitFigures;
 public class Leader : IFigureType
 {
     public static readonly Leader Instance = new();
-    public string ShownName => CurrentLocalization.Instance["Leader_Name"];
-    public string Description => CurrentLocalization.Instance["Leader_Description"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(Leader)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(Leader)}_Description"];
     public string UnitName => $"{nameof(HobbitFigureGroup)}.{nameof(Leader)}";
     public FigureTypes UnitType => FigureTypes.Foot;
     public double FullHp => 100;
@@ -20,8 +20,8 @@ public class Leader : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {1, new Uri("pack://application:,,,/BattleChess3.HobbitFigures;component/Images/Leader1.png", UriKind.Absolute)},
-        {2, new Uri("pack://application:,,,/BattleChess3.HobbitFigures;component/Images/Leader2.png", UriKind.Absolute)},
+        {1, new Uri($"pack://application:,,,/BattleChess3.HobbitFigures;component/Images/{nameof(Leader)}1.png", UriKind.Absolute)},
+        {2, new Uri($"pack://application:,,,/BattleChess3.HobbitFigures;component/Images/{nameof(Leader)}2.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

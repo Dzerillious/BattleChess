@@ -10,8 +10,8 @@ namespace BattleChess3.HobbitFigures;
 public class Helper : IFigureType
 {
     public static readonly Helper Instance = new();
-    public string ShownName => CurrentLocalization.Instance["Helper_Name"];
-    public string Description => CurrentLocalization.Instance["Helper_Description"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(Helper)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(Helper)}_Description"];
     public string UnitName => $"{nameof(HobbitFigureGroup)}.{nameof(Helper)}";
     public FigureTypes UnitType => FigureTypes.Foot;
     public double FullHp => 100;
@@ -20,8 +20,8 @@ public class Helper : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {1, new Uri("pack://application:,,,/BattleChess3.HobbitFigures;component/Images/Helper1.png", UriKind.Absolute)},
-        {2, new Uri("pack://application:,,,/BattleChess3.HobbitFigures;component/Images/Helper2.png", UriKind.Absolute)},
+        {1, new Uri($"pack://application:,,,/BattleChess3.HobbitFigures;component/Images/{nameof(Helper)}1.png", UriKind.Absolute)},
+        {2, new Uri($"pack://application:,,,/BattleChess3.HobbitFigures;component/Images/{nameof(Helper)}2.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

@@ -10,8 +10,8 @@ namespace BattleChess3.LordOfTheRingsFigures;
 public class GimliNazgul : IFigureType
 {
     public static readonly GimliNazgul Instance = new();
-    public string ShownName => CurrentLocalization.Instance["GimliNazgul_Name"];
-    public string Description => CurrentLocalization.Instance["GimliNazgul_Description"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(GimliNazgul)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(GimliNazgul)}_Description"];
     public string UnitName => $"{nameof(LordOfTheRingsFigureGroup)}.{nameof(GimliNazgul)}";
     public FigureTypes UnitType => FigureTypes.Foot;
     public double FullHp => 100;
@@ -20,8 +20,8 @@ public class GimliNazgul : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {1, new Uri("pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/GimliNazgul1.png", UriKind.Absolute)},
-        {2, new Uri("pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/GimliNazgul2.png", UriKind.Absolute)},
+        {1, new Uri($"pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/{nameof(GimliNazgul)}1.png", UriKind.Absolute)},
+        {2, new Uri($"pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/{nameof(GimliNazgul)}2.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

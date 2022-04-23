@@ -160,4 +160,10 @@ Ninja
   <data name="Spy_Name" xml:space="preserve">
     <value>Spy</value>
   </data>
+  <data name="Wall_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Wall_Name" xml:space="preserve">
+    <value>Wall</value>
+  </data>
 </root>

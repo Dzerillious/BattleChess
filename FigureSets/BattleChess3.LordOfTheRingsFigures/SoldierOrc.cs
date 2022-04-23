@@ -10,8 +10,8 @@ namespace BattleChess3.LordOfTheRingsFigures;
 public class SoldierOrc : IFigureType
 {
     public static readonly SoldierOrc Instance = new();
-    public string ShownName => CurrentLocalization.Instance["SoldierOrc_Name"];
-    public string Description => CurrentLocalization.Instance["SoldierOrc_Description"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(SoldierOrc)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(SoldierOrc)}_Description"];
     public string UnitName => $"{nameof(LordOfTheRingsFigureGroup)}.{nameof(SoldierOrc)}";
     public FigureTypes UnitType => FigureTypes.Foot;
     public double FullHp => 100;
@@ -20,8 +20,8 @@ public class SoldierOrc : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {1, new Uri("pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/SoldierOrc1.png", UriKind.Absolute)},
-        {2, new Uri("pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/SoldierOrc2.png", UriKind.Absolute)},
+        {1, new Uri($"pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/{nameof(SoldierOrc)}1.png", UriKind.Absolute)},
+        {2, new Uri($"pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/{nameof(SoldierOrc)}2.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

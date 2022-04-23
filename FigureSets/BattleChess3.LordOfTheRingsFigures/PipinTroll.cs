@@ -10,8 +10,8 @@ namespace BattleChess3.LordOfTheRingsFigures;
 public class PipinTroll : IFigureType
 {
     public static readonly PipinTroll Instance = new();
-    public string ShownName => CurrentLocalization.Instance["PipinTroll_Name"];
-    public string Description => CurrentLocalization.Instance["PipinTroll_Description"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(PipinTroll)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(PipinTroll)}_Description"];
     public string UnitName => $"{nameof(LordOfTheRingsFigureGroup)}.{nameof(PipinTroll)}";
     public FigureTypes UnitType => FigureTypes.Foot;
     public double FullHp => 100;
@@ -20,8 +20,8 @@ public class PipinTroll : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {1, new Uri("pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/PipinTroll1.png", UriKind.Absolute)},
-        {2, new Uri("pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/PipinTroll2.png", UriKind.Absolute)},
+        {1, new Uri($"pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/{nameof(PipinTroll)}1.png", UriKind.Absolute)},
+        {2, new Uri($"pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/{nameof(PipinTroll)}2.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

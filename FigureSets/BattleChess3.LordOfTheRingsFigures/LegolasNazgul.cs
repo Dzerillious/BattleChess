@@ -10,8 +10,8 @@ namespace BattleChess3.LordOfTheRingsFigures;
 public class LegolasNazgul : IFigureType
 {
     public static readonly LegolasNazgul Instance = new();
-    public string ShownName => CurrentLocalization.Instance["LegolasNazgul_Name"];
-    public string Description => CurrentLocalization.Instance["LegolasNazgul_Description"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(LegolasNazgul)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(LegolasNazgul)}_Description"];
     public string UnitName => $"{nameof(LordOfTheRingsFigureGroup)}.{nameof(LegolasNazgul)}";
     public FigureTypes UnitType => FigureTypes.Foot;
     public double FullHp => 100;
@@ -20,8 +20,8 @@ public class LegolasNazgul : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {1, new Uri("pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/LegolasNazgul1.png", UriKind.Absolute)},
-        {2, new Uri("pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/LegolasNazgul2.png", UriKind.Absolute)},
+        {1, new Uri($"pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/{nameof(LegolasNazgul)}1.png", UriKind.Absolute)},
+        {2, new Uri($"pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/{nameof(LegolasNazgul)}2.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

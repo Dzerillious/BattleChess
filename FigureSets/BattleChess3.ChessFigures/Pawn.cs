@@ -10,8 +10,8 @@ namespace BattleChess3.ChessFigures;
 public class Pawn : IFigureType
 {
     public static readonly Pawn Instance = new();
-    public string ShownName => CurrentLocalization.Instance["Pawn_Name"];
-    public string Description => CurrentLocalization.Instance["Pawn_Description"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(Pawn)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(Pawn)}_Description"];
     public string UnitName => $"{nameof(ChessFigureGroup)}.{nameof(Pawn)}";
     public FigureTypes UnitType => FigureTypes.Foot;
     public double FullHp => 100;
@@ -20,8 +20,8 @@ public class Pawn : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {1, new Uri("pack://application:,,,/BattleChess3.ChessFigures;component/Images/Pawn1.png", UriKind.Absolute)},
-        {2, new Uri("pack://application:,,,/BattleChess3.ChessFigures;component/Images/Pawn2.png", UriKind.Absolute)},
+        {1, new Uri($"pack://application:,,,/BattleChess3.ChessFigures;component/Images/{nameof(Pawn)}1.png", UriKind.Absolute)},
+        {2, new Uri($"pack://application:,,,/BattleChess3.ChessFigures;component/Images/{nameof(Pawn)}2.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

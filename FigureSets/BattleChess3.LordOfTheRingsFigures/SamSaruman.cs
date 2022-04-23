@@ -10,8 +10,8 @@ namespace BattleChess3.LordOfTheRingsFigures;
 public class SamSaruman : IFigureType
 {
     public static readonly SamSaruman Instance = new();
-    public string ShownName => CurrentLocalization.Instance["SamSaruman_Name"];
-    public string Description => CurrentLocalization.Instance["SamSaruman_Description"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(SamSaruman)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(SamSaruman)}_Description"];
     public string UnitName => $"{nameof(LordOfTheRingsFigureGroup)}.{nameof(SamSaruman)}";
     public FigureTypes UnitType => FigureTypes.Foot;
     public double FullHp => 100;
@@ -20,8 +20,8 @@ public class SamSaruman : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {1, new Uri("pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/SamSaruman1.png", UriKind.Absolute)},
-        {2, new Uri("pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/SamSaruman2.png", UriKind.Absolute)},
+        {1, new Uri($"pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/{nameof(SamSaruman)}1.png", UriKind.Absolute)},
+        {2, new Uri($"pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/{nameof(SamSaruman)}2.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

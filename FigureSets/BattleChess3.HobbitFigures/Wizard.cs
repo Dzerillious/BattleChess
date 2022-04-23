@@ -10,8 +10,8 @@ namespace BattleChess3.HobbitFigures;
 public class Wizard : IFigureType
 {
     public static readonly Wizard Instance = new();
-    public string ShownName => CurrentLocalization.Instance["Wizard_Name"];
-    public string Description => CurrentLocalization.Instance["Wizard_Description"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(Wizard)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(Wizard)}_Description"];
     public string UnitName => $"{nameof(HobbitFigureGroup)}.{nameof(Wizard)}";
     public FigureTypes UnitType => FigureTypes.Foot;
     public double FullHp => 100;
@@ -20,8 +20,8 @@ public class Wizard : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {1, new Uri("pack://application:,,,/BattleChess3.HobbitFigures;component/Images/Wizard1.png", UriKind.Absolute)},
-        {2, new Uri("pack://application:,,,/BattleChess3.HobbitFigures;component/Images/Wizard2.png", UriKind.Absolute)},
+        {1, new Uri($"pack://application:,,,/BattleChess3.HobbitFigures;component/Images/{nameof(Wizard)}1.png", UriKind.Absolute)},
+        {2, new Uri($"pack://application:,,,/BattleChess3.HobbitFigures;component/Images/{nameof(Wizard)}2.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

@@ -23,10 +23,10 @@ public static class MapCreator
                 {
                     (2, Builder.Instance), (2, CrossFireFigures.Knight.Instance), (2, Archer.Instance), (2, Bomber.Instance), (2, Spy.Instance), (2, Archer.Instance), (2, CrossFireFigures.Knight.Instance), (2, Builder.Instance),
                     (2, Ninja.Instance), (2, Ninja.Instance), (2, Ninja.Instance), (2, Ninja.Instance), (2, Ninja.Instance), (2, Ninja.Instance), (2, Ninja.Instance), (2, Ninja.Instance),
+                    (1, Wall.Instance), (1, Wall.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (1, Wall.Instance), (1, Wall.Instance),
                     (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance),
                     (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance),
-                    (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance),
-                    (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance),
+                    (2, Wall.Instance), (2, Wall.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (2, Wall.Instance), (2, Wall.Instance),
                     (1, Ninja.Instance), (1, Ninja.Instance), (1, Ninja.Instance), (1, Ninja.Instance), (1, Ninja.Instance), (1, Ninja.Instance), (1, Ninja.Instance), (1, Ninja.Instance),
                     (1, Builder.Instance), (1, CrossFireFigures.Knight.Instance), (1, Archer.Instance), (1, Bomber.Instance), (1, Spy.Instance), (1, Archer.Instance), (1, CrossFireFigures.Knight.Instance), (1, Builder.Instance),
                 },

@@ -10,8 +10,8 @@ namespace BattleChess3.HobbitFigures;
 public class MinorWizard : IFigureType
 {
     public static readonly MinorWizard Instance = new();
-    public string ShownName => CurrentLocalization.Instance["MinorWizard_Name"];
-    public string Description => CurrentLocalization.Instance["MinorWizard_Description"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(MinorWizard)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(MinorWizard)}_Description"];
     public string UnitName => $"{nameof(HobbitFigureGroup)}.{nameof(MinorWizard)}";
     public FigureTypes UnitType => FigureTypes.Foot;
     public double FullHp => 100;
@@ -20,8 +20,8 @@ public class MinorWizard : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {1, new Uri("pack://application:,,,/BattleChess3.HobbitFigures;component/Images/MinorWizard1.png", UriKind.Absolute)},
-        {2, new Uri("pack://application:,,,/BattleChess3.HobbitFigures;component/Images/MinorWizard2.png", UriKind.Absolute)},
+        {1, new Uri($"pack://application:,,,/BattleChess3.HobbitFigures;component/Images/{nameof(MinorWizard)}1.png", UriKind.Absolute)},
+        {2, new Uri($"pack://application:,,,/BattleChess3.HobbitFigures;component/Images/{nameof(MinorWizard)}2.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

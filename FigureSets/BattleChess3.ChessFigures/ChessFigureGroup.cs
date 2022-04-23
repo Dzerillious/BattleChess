@@ -5,7 +5,7 @@ namespace BattleChess3.ChessFigures;
 
 public class ChessFigureGroup : IFigureGroup
 {
-    public string ShownName => CurrentLocalization.Instance["ChessFigureGroup_Name"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(ChessFigureGroup)}_Name"];
 
     public IFigureType[] FigureTypes => new IFigureType[]
     {

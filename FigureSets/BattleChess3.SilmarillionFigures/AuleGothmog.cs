@@ -10,8 +10,8 @@ namespace BattleChess3.SilmarillionFigures;
 public class AuleGothmog : IFigureType
 {
     public static readonly AuleGothmog Instance = new();
-    public string ShownName => CurrentLocalization.Instance["AuleGothmog_Name"];
-    public string Description => CurrentLocalization.Instance["AuleGothmog_Description"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(AuleGothmog)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(AuleGothmog)}_Description"];
     public string UnitName => $"{nameof(SilmarillionFigureGroup)}.{nameof(AuleGothmog)}";
     public FigureTypes UnitType => FigureTypes.Foot;
     public double FullHp => 100;
@@ -20,8 +20,8 @@ public class AuleGothmog : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {1, new Uri("pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/AuleGothmog1.png", UriKind.Absolute)},
-        {2, new Uri("pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/AuleGothmog2.png", UriKind.Absolute)},
+        {1, new Uri($"pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/{nameof(AuleGothmog)}1.png", UriKind.Absolute)},
+        {2, new Uri($"pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/{nameof(AuleGothmog)}2.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

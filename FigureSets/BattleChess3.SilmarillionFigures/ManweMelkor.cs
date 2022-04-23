@@ -10,8 +10,8 @@ namespace BattleChess3.SilmarillionFigures;
 public class ManweMelkor : IFigureType
 {
     public static readonly ManweMelkor Instance = new();
-    public string ShownName => CurrentLocalization.Instance["ManweMelkor_Name"];
-    public string Description => CurrentLocalization.Instance["ManweMelkor_Description"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(ManweMelkor)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(ManweMelkor)}_Description"];
     public string UnitName => $"{nameof(SilmarillionFigureGroup)}.{nameof(ManweMelkor)}";
     public FigureTypes UnitType => FigureTypes.Foot;
     public double FullHp => 100;
@@ -20,8 +20,8 @@ public class ManweMelkor : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {1, new Uri("pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/ManweMelkor1.png", UriKind.Absolute)},
-        {2, new Uri("pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/ManweMelkor2.png", UriKind.Absolute)},
+        {1, new Uri($"pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/{nameof(ManweMelkor)}1.png", UriKind.Absolute)},
+        {2, new Uri($"pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/{nameof(ManweMelkor)}2.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

@@ -10,8 +10,8 @@ namespace BattleChess3.LordOfTheRingsFigures;
 public class MerryTroll : IFigureType
 {
     public static readonly MerryTroll Instance = new();
-    public string ShownName => CurrentLocalization.Instance["MerryTroll_Name"];
-    public string Description => CurrentLocalization.Instance["MerryTroll_Description"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(MerryTroll)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(MerryTroll)}_Description"];
     public string UnitName => $"{nameof(LordOfTheRingsFigureGroup)}.{nameof(MerryTroll)}";
     public FigureTypes UnitType => FigureTypes.Foot;
     public double FullHp => 100;
@@ -20,8 +20,8 @@ public class MerryTroll : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {1, new Uri("pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/MerryTroll1.png", UriKind.Absolute)},
-        {2, new Uri("pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/MerryTroll2.png", UriKind.Absolute)},
+        {1, new Uri($"pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/{nameof(MerryTroll)}1.png", UriKind.Absolute)},
+        {2, new Uri($"pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/{nameof(MerryTroll)}2.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

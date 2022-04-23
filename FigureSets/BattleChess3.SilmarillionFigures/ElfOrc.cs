@@ -10,8 +10,8 @@ namespace BattleChess3.SilmarillionFigures;
 public class ElfOrc : IFigureType
 {
     public static readonly ElfOrc Instance = new();
-    public string ShownName => CurrentLocalization.Instance["ElfOrc_Name"];
-    public string Description => CurrentLocalization.Instance["ElfOrc_Description"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(ElfOrc)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(ElfOrc)}_Description"];
     public string UnitName => $"{nameof(SilmarillionFigureGroup)}.{nameof(ElfOrc)}";
     public FigureTypes UnitType => FigureTypes.Foot;
     public double FullHp => 100;
@@ -20,8 +20,8 @@ public class ElfOrc : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {1, new Uri("pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/ElfOrc1.png", UriKind.Absolute)},
-        {2, new Uri("pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/ElfOrc2.png", UriKind.Absolute)},
+        {1, new Uri($"pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/{nameof(ElfOrc)}1.png", UriKind.Absolute)},
+        {2, new Uri($"pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/{nameof(ElfOrc)}2.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

@@ -10,8 +10,8 @@ namespace BattleChess3.SilmarillionFigures;
 public class VardaSauron : IFigureType
 {
     public static readonly VardaSauron Instance = new();
-    public string ShownName => CurrentLocalization.Instance["VardaSauron_Name"];
-    public string Description => CurrentLocalization.Instance["VardaSauron_Description"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(VardaSauron)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(VardaSauron)}_Description"];
     public string UnitName => $"{nameof(SilmarillionFigureGroup)}.{nameof(VardaSauron)}";
     public FigureTypes UnitType => FigureTypes.Foot;
     public double FullHp => 100;
@@ -20,8 +20,8 @@ public class VardaSauron : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {1, new Uri("pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/VardaSauron1.png", UriKind.Absolute)},
-        {2, new Uri("pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/VardaSauron2.png", UriKind.Absolute)},
+        {1, new Uri($"pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/{nameof(VardaSauron)}1.png", UriKind.Absolute)},
+        {2, new Uri($"pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/{nameof(VardaSauron)}2.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

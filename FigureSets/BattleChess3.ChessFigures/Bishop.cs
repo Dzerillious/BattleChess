@@ -10,8 +10,8 @@ namespace BattleChess3.ChessFigures;
 public class Bishop : IFigureType
 {
     public static readonly Bishop Instance = new();
-    public string ShownName => CurrentLocalization.Instance["Bishop_Name"];
-    public string Description => CurrentLocalization.Instance["Bishop_Description"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(Bishop)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(Bishop)}_Description"];
     public string UnitName => $"{nameof(ChessFigureGroup)}.{nameof(Bishop)}";
     public FigureTypes UnitType => FigureTypes.Foot;
     public double FullHp => 100;
@@ -20,8 +20,8 @@ public class Bishop : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {1, new Uri("pack://application:,,,/BattleChess3.ChessFigures;component/Images/Bishop1.png", UriKind.Absolute)},
-        {2, new Uri("pack://application:,,,/BattleChess3.ChessFigures;component/Images/Bishop2.png", UriKind.Absolute)},
+        {1, new Uri($"pack://application:,,,/BattleChess3.ChessFigures;component/Images/{nameof(Bishop)}1.png", UriKind.Absolute)},
+        {2, new Uri($"pack://application:,,,/BattleChess3.ChessFigures;component/Images/{nameof(Bishop)}2.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

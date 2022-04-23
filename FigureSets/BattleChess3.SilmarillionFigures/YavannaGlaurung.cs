@@ -10,8 +10,8 @@ namespace BattleChess3.SilmarillionFigures;
 public class YavannaGlaurung : IFigureType
 {
     public static readonly YavannaGlaurung Instance = new YavannaGlaurung();
-    public string ShownName => CurrentLocalization.Instance["YavannaGlaurung_Name"];
-    public string Description => CurrentLocalization.Instance["YavannaGlaurung_Description"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(YavannaGlaurung)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(YavannaGlaurung)}_Description"];
     public string UnitName => $"{nameof(SilmarillionFigureGroup)}.{nameof(YavannaGlaurung)}";
     public FigureTypes UnitType => FigureTypes.Foot;
     public double FullHp => 100;
@@ -20,8 +20,8 @@ public class YavannaGlaurung : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {1, new Uri("pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/YavannaGlaurung1.png", UriKind.Absolute)},
-        {2, new Uri("pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/YavannaGlaurung2.png", UriKind.Absolute)},
+        {1, new Uri($"pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/{nameof(YavannaGlaurung)}1.png", UriKind.Absolute)},
+        {2, new Uri($"pack://application:,,,/BattleChess3.SilmarillionFigures;component/Images/{nameof(YavannaGlaurung)}2.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

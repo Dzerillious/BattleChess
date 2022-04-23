@@ -10,8 +10,8 @@ namespace BattleChess3.CrossFireFigures;
 public class Spy : IFigureType
 {
     public static readonly Spy Instance = new();
-    public string ShownName => CurrentLocalization.Instance["Spy_Name"];
-    public string Description => CurrentLocalization.Instance["Spy_Description"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(Spy)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(Spy)}_Description"];
     public string UnitName => $"{nameof(CrossFireFigureGroup)}.{nameof(Spy)}";
     public FigureTypes UnitType => FigureTypes.Foot;
     public double FullHp => 100;
@@ -20,8 +20,8 @@ public class Spy : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {1, new Uri("pack://application:,,,/BattleChess3.CrossFireFigures;component/Images/Spy1.png", UriKind.Absolute)},
-        {2, new Uri("pack://application:,,,/BattleChess3.CrossFireFigures;component/Images/Spy2.png", UriKind.Absolute)},
+        {1, new Uri($"pack://application:,,,/BattleChess3.CrossFireFigures;component/Images/{nameof(Spy)}1.png", UriKind.Absolute)},
+        {2, new Uri($"pack://application:,,,/BattleChess3.CrossFireFigures;component/Images/{nameof(Spy)}2.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

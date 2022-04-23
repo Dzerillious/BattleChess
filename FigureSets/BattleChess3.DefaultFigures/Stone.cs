@@ -9,8 +9,8 @@ namespace BattleChess3.DefaultFigures;
 public class Stone : IFigureType
 {
     public static readonly Stone Instance = new();
-    public string ShownName => CurrentLocalization.Instance["Stone_Name"];
-    public string Description => CurrentLocalization.Instance["Stone_Description"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(Stone)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(Stone)}_Description"];
     public string UnitName => $"{nameof(DefaultFigureGroup)}.{nameof(Stone)}";
     public FigureTypes UnitType => FigureTypes.Object;
     public double FullHp => 100;
@@ -19,7 +19,7 @@ public class Stone : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {0, new Uri("pack://application:,,,/BattleChess3.DefaultFigures;component/Images/Stone0.png", UriKind.Absolute)},
+        {0, new Uri($"pack://application:,,,/BattleChess3.DefaultFigures;component/Images/{nameof(Stone)}0.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

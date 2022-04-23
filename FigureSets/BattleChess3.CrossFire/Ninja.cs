@@ -10,8 +10,8 @@ namespace BattleChess3.CrossFireFigures;
 public class Ninja : IFigureType
 {
     public static readonly Ninja Instance = new();
-    public string ShownName => CurrentLocalization.Instance["Ninja_Name"];
-    public string Description => CurrentLocalization.Instance["Ninja_Description"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(Ninja)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(Ninja)}_Description"];
     public string UnitName => $"{nameof(CrossFireFigureGroup)}.{nameof(Ninja)}";
     public FigureTypes UnitType => FigureTypes.Foot;
     public double FullHp => 100;
@@ -20,8 +20,8 @@ public class Ninja : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {1, new Uri("pack://application:,,,/BattleChess3.CrossFireFigures;component/Images/Ninja1.png", UriKind.Absolute)},
-        {2, new Uri("pack://application:,,,/BattleChess3.CrossFireFigures;component/Images/Ninja2.png", UriKind.Absolute)},
+        {1, new Uri($"pack://application:,,,/BattleChess3.CrossFireFigures;component/Images/{nameof(Ninja)}1.png", UriKind.Absolute)},
+        {2, new Uri($"pack://application:,,,/BattleChess3.CrossFireFigures;component/Images/{nameof(Ninja)}2.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

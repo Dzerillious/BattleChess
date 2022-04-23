@@ -7,12 +7,12 @@ using BattleChess3.DefaultFigures.Utilities;
 
 namespace BattleChess3.CrossFireFigures;
 
-public class Archer : IFigureType
+public class Wall : IFigureType
 {
-    public static readonly Archer Instance = new();
-    public string ShownName => CurrentLocalization.Instance[$"{nameof(Archer)}_Name"];
-    public string Description => CurrentLocalization.Instance[$"{nameof(Archer)}_Description"];
-    public string UnitName => $"{nameof(CrossFireFigureGroup)}.{nameof(Archer)}";
+    public static readonly Wall Instance = new();
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(Wall)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(Wall)}_Description"];
+    public string UnitName => $"{nameof(CrossFireFigureGroup)}.{nameof(Wall)}";
     public FigureTypes UnitType => FigureTypes.Foot;
     public double FullHp => 100;
     public double Attack => 100;
@@ -20,8 +20,8 @@ public class Archer : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {1, new Uri($"pack://application:,,,/BattleChess3.CrossFireFigures;component/Images/{nameof(Archer)}1.png", UriKind.Absolute)},
-        {2, new Uri($"pack://application:,,,/BattleChess3.CrossFireFigures;component/Images/{nameof(Archer)}2.png", UriKind.Absolute)},
+        {1, new Uri($"pack://application:,,,/BattleChess3.CrossFireFigures;component/Images/{nameof(Wall)}1.png", UriKind.Absolute)},
+        {2, new Uri($"pack://application:,,,/BattleChess3.CrossFireFigures;component/Images/{nameof(Wall)}2.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

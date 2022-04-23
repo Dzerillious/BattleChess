@@ -5,7 +5,7 @@ namespace BattleChess3.CrossFireFigures;
 
 public class CrossFireFigureGroup : IFigureGroup
 {
-    public string ShownName => CurrentLocalization.Instance["DefaultFigureGroup_Name"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(CrossFireFigureGroup)}_Name"];
 
     public IFigureType[] FigureTypes => new IFigureType[]
     {
@@ -15,5 +15,6 @@ public class CrossFireFigureGroup : IFigureGroup
         Knight.Instance,
         Spy.Instance,
         Archer.Instance,
+        Wall.Instance
     };
 }

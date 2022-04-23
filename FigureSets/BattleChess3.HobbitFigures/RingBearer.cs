@@ -10,8 +10,8 @@ namespace BattleChess3.HobbitFigures;
 public class RingBearer : IFigureType
 {
     public static readonly RingBearer Instance = new();
-    public string ShownName => CurrentLocalization.Instance["RingBearer_Name"];
-    public string Description => CurrentLocalization.Instance["RingBearer_Description"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(RingBearer)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(RingBearer)}_Description"];
     public string UnitName => $"{nameof(HobbitFigureGroup)}.{nameof(RingBearer)}";
     public FigureTypes UnitType => FigureTypes.Foot;
     public double FullHp => 100;
@@ -20,8 +20,8 @@ public class RingBearer : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {1, new Uri("pack://application:,,,/BattleChess3.HobbitFigures;component/Images/RingBearer1.png", UriKind.Absolute)},
-        {2, new Uri("pack://application:,,,/BattleChess3.HobbitFigures;component/Images/RingBearer2.png", UriKind.Absolute)},
+        {1, new Uri($"pack://application:,,,/BattleChess3.HobbitFigures;component/Images/{nameof(RingBearer)}1.png", UriKind.Absolute)},
+        {2, new Uri($"pack://application:,,,/BattleChess3.HobbitFigures;component/Images/{nameof(RingBearer)}2.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)
