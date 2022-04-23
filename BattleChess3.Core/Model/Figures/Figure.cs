@@ -5,7 +5,7 @@ namespace BattleChess3.Core.Model.Figures;
 
 public class Figure : IFigureType
 {
-    public static readonly Figure None = new Figure(Player.Neutral, NoneFigure.Instance, 0);
+    public static readonly Figure None = new Figure(Player.Neutral, NoneFigure.Instance);
     
     public Player Owner { get; }
     public IFigureType FigureType { get; set; }
@@ -26,6 +26,13 @@ public class Figure : IFigureType
         Hp = hp;
         Owner = owner;
         FigureType = figureType;
+    }
+
+    public Figure(Player owner, IFigureType figureType)
+    {
+        Owner = owner;
+        FigureType = figureType;
+        Hp = figureType.FullHp;
     }
 
     public double AttackCalculation(IFigureType figureType)

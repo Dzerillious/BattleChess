@@ -72,7 +72,7 @@ public class Builder : IFigureType
             var shieldTile = board[sourceTile.Position + shieldPosition + move];
             if (shieldTile.IsEmpty())
             {
-                shieldTile.CreateFigure(new Figure(sourceTile.Figure.Owner, Wall.Instance, 100));
+                shieldTile.CreateFigure(new Figure(sourceTile.Figure.Owner, Wall.Instance));
             }
         }
     }
@@ -93,16 +93,20 @@ public class Builder : IFigureType
         {
             if (!(sourceTile.Position + movedPosition).InBoard())
                 continue;
-            if (!(sourceTile.Position + movedPosition + move).InBoard())
-                continue;
 
             var movedTile = board[sourceTile.Position + movedPosition];
-            var moveTargetTile = board[sourceTile.Position + movedPosition + move];
             if (movedTile.IsEmpty() ||
                 movedTile.Figure.Owner == sourceTile.Figure.Owner ||
                 movedTile.Figure.UnitName == Wall.Instance.UnitName)
                 continue;
 
+            if (!(sourceTile.Position + movedPosition + move).InBoard())
+            {
+                sourceTile.KillFigureWithoutMove(movedTile);
+                continue;
+            }
+
+            var moveTargetTile = board[sourceTile.Position + movedPosition + move];
             if (moveTargetTile.IsEmpty())
             {
                 movedTile.MoveToTile(moveTargetTile);

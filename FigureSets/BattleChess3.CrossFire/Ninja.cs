@@ -41,7 +41,17 @@ public class Ninja : IFigureType
         => targetTile.IsEmpty();
 
     public void MoveAction(ITile unitTile, ITile targetTile, ITile[] board)
-        => unitTile.MoveToTile(targetTile);
+    {
+        if (targetTile.Position.Y == 7)
+        {
+            targetTile.CreateFigure(new Figure(unitTile.Figure.Owner, Spy.Instance));
+            unitTile.KillFigureWithoutMove(unitTile);
+        }
+        else
+        {
+            unitTile.MoveToTile(targetTile);
+        }
+    }
 
     private readonly Position[][] _moveChain = 
     {

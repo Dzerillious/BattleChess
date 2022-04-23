@@ -8,7 +8,7 @@ public static class FigureActionHelper
     public static void MoveToTile(this ITile unitTile, ITile targetTile)
     {
         targetTile.Figure = unitTile.Figure;
-        unitTile.Figure = new Figure(Player.Neutral, Empty.Instance, 0);
+        unitTile.Figure = new Figure(Player.Neutral, Empty.Instance);
     }
 
     public static void CreateFigure(this ITile targetTile, Figure createdFiure)
@@ -19,13 +19,13 @@ public static class FigureActionHelper
 
     public static void KillFigureWithoutMove(this ITile unitTile, ITile targetTile)
     {
-        targetTile.Figure = new Figure(Player.Neutral, Empty.Instance, 0);
+        targetTile.Figure = new Figure(Player.Neutral, Empty.Instance);
         targetTile.Figure.Owner.Figures.Remove(targetTile.Figure);
     }
 
     public static void KillFigureWithMove(this ITile unitTile, ITile targetTile)
     {
-        targetTile.Figure = new Figure(Player.Neutral, Empty.Instance, 0);
+        targetTile.Figure = new Figure(Player.Neutral, Empty.Instance);
         targetTile.Figure.Owner.Figures.Remove(targetTile.Figure);
         unitTile.MoveToTile(targetTile);
     }
