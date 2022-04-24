@@ -18,8 +18,15 @@ public class FigureBlueprint
         Hp = hp;
     }
 
+    public FigureBlueprint(int id, IFigureType figureType)
+    {
+        PlayerId = id;
+        UnitName = figureType.UnitName;
+        Hp = figureType.FullHp;
+    }
+
     public static implicit operator FigureBlueprint((int id, IFigureType figure) pair)
-        => new FigureBlueprint(pair.id, pair.figure, pair.figure.FullHp);
+        => new FigureBlueprint(pair.id, pair.figure);
 
     public override string ToString() => $"{UnitName}{PlayerId}";
 }

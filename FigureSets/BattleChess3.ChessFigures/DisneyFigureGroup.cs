@@ -1,11 +1,11 @@
-﻿using BattleChess3.ChessFigures.Localization;
+﻿using BattleChess3.DisneyFigures.Localization;
 using BattleChess3.Core.Model.Figures;
 
-namespace BattleChess3.ChessFigures;
+namespace BattleChess3.DisneyFigures;
 
-public class ChessFigureGroup : IFigureGroup
+public class DisneyFigureGroup : IFigureGroup
 {
-    public string ShownName => CurrentLocalization.Instance[$"{nameof(ChessFigureGroup)}_Name"];
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(DisneyFigureGroup)}_Name"];
 
     public IFigureType[] FigureTypes => new IFigureType[]
     {

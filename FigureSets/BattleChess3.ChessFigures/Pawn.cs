@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using BattleChess3.ChessFigures.Localization;
+using BattleChess3.DisneyFigures.Localization;
 using BattleChess3.Core.Model;
 using BattleChess3.Core.Model.Figures;
 using BattleChess3.DefaultFigures.Utilities;
 
-namespace BattleChess3.ChessFigures;
+namespace BattleChess3.DisneyFigures;
 
 public class Pawn : IFigureType
 {
     public static readonly Pawn Instance = new();
     public string ShownName => CurrentLocalization.Instance[$"{nameof(Pawn)}_Name"];
     public string Description => CurrentLocalization.Instance[$"{nameof(Pawn)}_Description"];
-    public string UnitName => $"{nameof(ChessFigureGroup)}.{nameof(Pawn)}";
+    public string UnitName => $"{nameof(DisneyFigureGroup)}.{nameof(Pawn)}";
     public FigureTypes UnitType => FigureTypes.Foot;
     public double FullHp => 100;
     public double Attack => 100;

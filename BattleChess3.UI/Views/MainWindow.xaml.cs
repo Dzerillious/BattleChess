@@ -11,6 +11,7 @@ namespace BattleChess3.UI.Views;
 
 public partial class MainWindow
 {
+    private GameBoardControl _lastBoardControl;
     public MainWindowViewModel? ViewModel { get; private set; }
 
     public MainWindow()
@@ -28,6 +29,18 @@ public partial class MainWindow
 
         Loaded += MainWindow_Loaded;
         DataContextChanged += MainWindow_DataContextChanged;
+        EditorBoard.RequestBringIntoView += EditorBoard_RequestBringIntoView;
+        GameBoard.RequestBringIntoView += GameBoard_RequestBringIntoView;
+    }
+
+    private void GameBoard_RequestBringIntoView(object sender, RequestBringIntoViewEventArgs e)
+    {
+        _lastBoardControl = GameBoard;
+    }
+
+    private void EditorBoard_RequestBringIntoView(object sender, RequestBringIntoViewEventArgs e)
+    {
+        _lastBoardControl = EditorBoard;
     }
 
     private void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -54,15 +67,15 @@ public partial class MainWindow
 
     public void SaveBoardPreview(string fileName)
     {
-        var dpi = VisualTreeHelper.GetDpi(GameBoard);
+        var dpi = VisualTreeHelper.GetDpi(_lastBoardControl);
         RenderTargetBitmap bmp = new RenderTargetBitmap(
-            (int)GameBoard.ActualWidth, 
-            (int)GameBoard.ActualHeight,
+            (int)_lastBoardControl.ActualWidth, 
+            (int)_lastBoardControl.ActualHeight,
             96,
             96, 
             PixelFormats.Pbgra32);
 
-        bmp.Render(GameBoard);
+        bmp.Render(_lastBoardControl);
 
         var encoder = new PngBitmapEncoder();
         BitmapFrame frame = BitmapFrame.Create(bmp);

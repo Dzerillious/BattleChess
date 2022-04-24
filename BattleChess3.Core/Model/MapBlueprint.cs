@@ -12,6 +12,5 @@ public class MapBlueprint
     public string PreviewPath { get; set; } = string.Empty;
     public Uri PreviewUri => new Uri(Path.GetFullPath(PreviewPath));
     public int StartingPlayer { get; set; } = 0;
-    public int PlayersCount { get; set; } = 2;
     public FigureBlueprint[] Figures { get; set; } = Array.Empty<FigureBlueprint>();
 }

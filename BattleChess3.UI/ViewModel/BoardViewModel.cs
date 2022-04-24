@@ -69,23 +69,22 @@ public class BoardViewModel : ViewModelBase
     public void LoadMap(MapBlueprint map)
     {
         ClickedAtTile(NoneTileViewModel.Instance);
-        _playerService.InitializePlayers(map.PlayersCount, map.StartingPlayer);
+        _playerService.InitializePlayers(map.StartingPlayer);
+
         for (var i = 0; i < Constants.BoardSize; i++)
-        {
-            var figureBlueprint = map.Figures[i];
-            Board[i].Figure = CreateFigure(figureBlueprint);
-        }
+            CreateFigure(Board[i], map.Figures[i]);
     }
 
-    private Figure CreateFigure(FigureBlueprint figureBlueprint)
+    public void CreateFigure(ITileViewModel tile, FigureBlueprint figureBlueprint)
     {
+        tile.KillFigureWithoutMove(tile);
+
         var figureType = _figureService.GetFigureFromName(figureBlueprint.UnitName);
         var player = _playerService.GetPlayer(figureBlueprint.PlayerId);
         var figure = new Figure(player, figureType, figureBlueprint.Hp);
         player.Figures.Add(figure);
-        return figure;
+        tile.Figure = figure;
     }
-
 
     private void ClickedAtTile(ITileViewModel clickedTile)
     {
@@ -148,7 +147,8 @@ public class BoardViewModel : ViewModelBase
                 break;
 
             var attackedTile = Board[boardAttack].GetPovTile(_playerService.CurrentPlayer);
-            if (attackedTile.IsEmpty())
+            if (attackedTile.IsEmpty() ||
+                attackedTile.IsWater())
                 continue;
 
             Board[boardAttack].IsPossibleAttack = povTile.Figure.CanAttack(povTile, attackedTile, povBoard);
@@ -172,6 +172,8 @@ public class BoardViewModel : ViewModelBase
             var targetTile = Board[boardMove].GetPovTile(_playerService.CurrentPlayer);
             if (povTile.Figure.CanMove(povTile, targetTile, povBoard))
                 Board[boardMove].IsPossibleMove = true;
+            else if (targetTile.IsWater())
+                continue;
             else
                 break;
         }

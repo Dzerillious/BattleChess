@@ -78,7 +78,6 @@ public class MapsViewModel : ViewModelBase, IDisposable
             }).ToArray(),
             MapPath = $"Resources/Maps/{identifier}.map",
             PreviewPath = $"./Resources/Maps/{identifier}.png",
-            PlayersCount = _playerService.PlayersCount,
             StartingPlayer = _playerService.CurrentPlayer.Id,
         };
 

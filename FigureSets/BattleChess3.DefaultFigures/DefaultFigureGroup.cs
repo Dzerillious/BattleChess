@@ -12,5 +12,6 @@ public class DefaultFigureGroup : IFigureGroup
         Palm.Instance,
         Empty.Instance,
         Stone.Instance,
+        Water.Instance,
     };
 }

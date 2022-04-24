@@ -51,7 +51,7 @@ public class MainWindowViewModel : ViewModelBase
 
     public MapsViewModel MapsViewModel { get; }
     public BoardViewModel BoardViewModel { get; }
-    public EditorViewModel EditorViewModel { get; }
+    public FiguresViewModel FiguresViewModel { get; }
 
     public RelayCommand NewGameCommand { get; }
     public RelayCommand SaveGameCommand { get; }
@@ -64,11 +64,11 @@ public class MainWindowViewModel : ViewModelBase
     public MainWindowViewModel(
         MapsViewModel mapsViewModel,
         BoardViewModel boardViewModel,
-        EditorViewModel editorViewModel)
+        FiguresViewModel figuresViewModel)
     {
         MapsViewModel = mapsViewModel;
         BoardViewModel = boardViewModel;
-        EditorViewModel = editorViewModel;
+        FiguresViewModel = figuresViewModel;
 
         NewGameCommand = new RelayCommand(NewGame);
         SaveGameCommand = new RelayCommand(SaveGame);

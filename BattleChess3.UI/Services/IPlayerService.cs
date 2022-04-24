@@ -20,9 +20,9 @@ namespace BattleChess3.UI.Services
         Player GetPlayer(int id);
 
         /// <summary>
-        /// Initialize players.
+        /// Set current players.
         /// </summary>
-        void InitializePlayers(in int playersCount, in int currentPlayer);
+        void InitializePlayers(in int currentPlayer);
 
         /// <summary>
         /// Sets next player as <see cref="CurrentPlayer"/>.

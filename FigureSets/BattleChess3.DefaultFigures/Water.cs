@@ -7,13 +7,13 @@ using BattleChess3.DefaultFigures.Utilities;
 
 namespace BattleChess3.DefaultFigures;
 
-public class Empty : IFigureType
+public class Water : IFigureType
 {
-    public static Empty Instance { get; } = new();
+    public static Water Instance { get; } = new();
     
-    public string ShownName => CurrentLocalization.Instance[$"{nameof(Empty)}_Name"];
-    public string Description => CurrentLocalization.Instance[$"{nameof(Empty)}_Description"];
-    public string UnitName => $"{nameof(DefaultFigureGroup)}.{nameof(Empty)}";
+    public string ShownName => CurrentLocalization.Instance[$"{nameof(Water)}_Name"];
+    public string Description => CurrentLocalization.Instance[$"{nameof(Water)}_Description"];
+    public string UnitName => $"{nameof(DefaultFigureGroup)}.{nameof(Water)}";
     public FigureTypes UnitType => FigureTypes.Nothing;
     public double FullHp => 0;
     public double Attack => 0;
@@ -21,7 +21,7 @@ public class Empty : IFigureType
 
     public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
     {
-        {0, new Uri($"pack://application:,,,/BattleChess3.DefaultFigures;component/Images/{nameof(Empty)}0.png", UriKind.Absolute)},
+        {0, new Uri($"pack://application:,,,/BattleChess3.DefaultFigures;component/Images/{nameof(Water)}0.png", UriKind.Absolute)},
     };
 
     public double AttackCalculation(IFigureType figureType)

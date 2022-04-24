@@ -68,7 +68,7 @@
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="10,0,0,0">
                     <views:EditorControl
-                        DataContext="{Binding EditorViewModel}"/>
+                        DataContext="{Binding FiguresViewModel}"/>
                 </Border>
             </DockPanel>
         </TabItem>

@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using BattleChess3.ChessFigures.Localization;
+using BattleChess3.DisneyFigures.Localization;
 using BattleChess3.Core.Model;
 using BattleChess3.Core.Model.Figures;
 using BattleChess3.DefaultFigures.Utilities;
 
-namespace BattleChess3.ChessFigures;
+namespace BattleChess3.DisneyFigures;
 
 public class King : IFigureType
 {
     public static readonly King Instance = new();
     public string ShownName => CurrentLocalization.Instance[$"{nameof(King)}_Name"];
     public string Description => CurrentLocalization.Instance[$"{nameof(King)}_Description"];
-    public string UnitName => $"{nameof(ChessFigureGroup)}.{nameof(King)}";
+    public string UnitName => $"{nameof(DisneyFigureGroup)}.{nameof(King)}";
     public FigureTypes UnitType => FigureTypes.Special;
     public double FullHp => 100;
     public double Attack => 100;

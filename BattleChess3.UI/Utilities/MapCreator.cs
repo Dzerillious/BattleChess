@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using BattleChess3.ChessFigures;
+using BattleChess3.DisneyFigures;
 using BattleChess3.Core.Model;
 using BattleChess3.Core.Model.Figures;
 using BattleChess3.Core.Utilities;
@@ -33,7 +33,6 @@ public static class MapCreator
             MapPath = $"Resources/Maps/Ninja_{new Random().Next()}.map",
             PreviewPath = $"/Resources/Maps/Ninja_{new Random().Next()}.png",
             StartingPlayer = 1,
-            PlayersCount = 2
         });
     }
 
@@ -55,7 +54,6 @@ public static class MapCreator
             MapPath = $"Resources/Maps/LOTR_{new Random().Next()}.map",
             PreviewPath = $"/Resources/Maps/LOTR_{new Random().Next()}.png",
             StartingPlayer = 1,
-            PlayersCount = 2
         });
     }
 
@@ -77,7 +75,6 @@ public static class MapCreator
             MapPath = $"Resources/Maps/Hobbit_{new Random().Next()}.map",
             PreviewPath = $"/Resources/Maps/Hobbit_{new Random().Next()}.png",
             StartingPlayer = 1,
-            PlayersCount = 2
         });
     }
 
@@ -99,7 +96,6 @@ public static class MapCreator
             MapPath = $"Resources/Maps/Silmarillion_{new Random().Next()}.map",
             PreviewPath = $"/Resources/Maps/Silmarillion_{new Random().Next()}.png",
             StartingPlayer = 1,
-            PlayersCount = 2
         });
     }
 
@@ -109,19 +105,18 @@ public static class MapCreator
         {
             Figures = new FigureBlueprint[]
                 {
-                    (2, Rook.Instance), (2, ChessFigures.Knight.Instance), (2, Bishop.Instance), (2, Queen.Instance), (2, King.Instance), (2, Bishop.Instance), (2, ChessFigures.Knight.Instance), (2, Rook.Instance),
+                    (2, Rook.Instance), (2, DisneyFigures.Knight.Instance), (2, Bishop.Instance), (2, Queen.Instance), (2, King.Instance), (2, Bishop.Instance), (2, DisneyFigures.Knight.Instance), (2, Rook.Instance),
                     (2, Pawn.Instance), (2, Pawn.Instance), (2, Pawn.Instance), (2, Pawn.Instance), (2, Pawn.Instance), (2, Pawn.Instance), (2, Pawn.Instance), (2, Pawn.Instance),
                     (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance),
                     (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance),
                     (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance),
                     (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance),
                     (1, Pawn.Instance), (1, Pawn.Instance), (1, Pawn.Instance), (1, Pawn.Instance), (1, Pawn.Instance), (1, Pawn.Instance), (1, Pawn.Instance), (1, Pawn.Instance),
-                    (1, Rook.Instance), (1, ChessFigures.Knight.Instance), (1, Bishop.Instance), (1, Queen.Instance), (1, King.Instance), (1, Bishop.Instance), (1, ChessFigures.Knight.Instance), (1, Rook.Instance),
+                    (1, Rook.Instance), (1, DisneyFigures.Knight.Instance), (1, Bishop.Instance), (1, Queen.Instance), (1, King.Instance), (1, Bishop.Instance), (1, DisneyFigures.Knight.Instance), (1, Rook.Instance),
                 },
             MapPath = $"Resources/Maps/Chess_{new Random().Next()}.map",
             PreviewPath = $"/Resources/Maps/Chess_{new Random().Next()}.png",
             StartingPlayer = 1,
-            PlayersCount = 2
         });
     }
 
@@ -131,19 +126,18 @@ public static class MapCreator
         {
             Figures = new FigureBlueprint[]
                 {
-                    (2, Rook.Instance), (2, ChessFigures.Knight.Instance), (2, Bishop.Instance), (2, Queen.Instance), (2, King.Instance), (2, Bishop.Instance), (2, ChessFigures.Knight.Instance), (2, Rook.Instance),
+                    (2, Rook.Instance), (2, DisneyFigures.Knight.Instance), (2, Bishop.Instance), (2, Queen.Instance), (2, King.Instance), (2, Bishop.Instance), (2, DisneyFigures.Knight.Instance), (2, Rook.Instance),
                     (2, Spy.Instance), (2, Pawn.Instance), (2, Pawn.Instance), (2, Pawn.Instance), (2, Pawn.Instance), (2, Pawn.Instance), (2, Pawn.Instance), (2, Pawn.Instance),
                     (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance),
                     (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance),
                     (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance),
                     (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance), (0, Empty.Instance),
                     (1, Spy.Instance), (1, Pawn.Instance), (1, Pawn.Instance), (1, Pawn.Instance), (1, Pawn.Instance), (1, Pawn.Instance), (1, Pawn.Instance), (1, Pawn.Instance),
-                    (1, Rook.Instance), (1, ChessFigures.Knight.Instance), (1, Bishop.Instance), (1, Queen.Instance), (1, King.Instance), (1, Bishop.Instance), (1, ChessFigures.Knight.Instance), (1, Rook.Instance),
+                    (1, Rook.Instance), (1, DisneyFigures.Knight.Instance), (1, Bishop.Instance), (1, Queen.Instance), (1, King.Instance), (1, Bishop.Instance), (1, DisneyFigures.Knight.Instance), (1, Rook.Instance),
                 },
             MapPath = $"Resources/Maps/Chess_{new Random().Next()}.map",
             PreviewPath = $"/Resources/Maps/Chess_{new Random().Next()}.png",
             StartingPlayer = 1,
-            PlayersCount = 2
         });
     }
 
