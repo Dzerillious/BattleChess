@@ -61,7 +61,7 @@ namespace BattleChess3.CrossFireFigures.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Archer.
         /// </summary>
         internal static string Archer_Description {
             get {
@@ -79,7 +79,7 @@ namespace BattleChess3.CrossFireFigures.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Bomber.
         /// </summary>
         internal static string Bomber_Description {
             get {
@@ -97,7 +97,7 @@ namespace BattleChess3.CrossFireFigures.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Builder.
         /// </summary>
         internal static string Builder_Description {
             get {
@@ -124,7 +124,7 @@ namespace BattleChess3.CrossFireFigures.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Knight.
         /// </summary>
         internal static string Knight_Description {
             get {
@@ -153,9 +153,7 @@ namespace BattleChess3.CrossFireFigures.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 
-        ///Ninja
-        ///        .
+        ///   Looks up a localized string similar to Ninja.
         /// </summary>
         internal static string Ninja_Name {
             get {
@@ -164,7 +162,7 @@ namespace BattleChess3.CrossFireFigures.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Spy.
         /// </summary>
         internal static string Spy_Description {
             get {
@@ -182,7 +180,7 @@ namespace BattleChess3.CrossFireFigures.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Wall.
         /// </summary>
         internal static string Wall_Description {
             get {

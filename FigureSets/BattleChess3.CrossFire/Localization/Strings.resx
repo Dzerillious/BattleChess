@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Archer_Description" xml:space="preserve">
-    <value />
+    <value>Archer</value>
   </data>
   <data name="Archer_Name" xml:space="preserve">
     <value>Archer</value>
   </data>
   <data name="Bomber_Description" xml:space="preserve">
-    <value />
+    <value>Bomber</value>
   </data>
   <data name="Bomber_Name" xml:space="preserve">
     <value>Bomber</value>
   </data>
   <data name="Builder_Description" xml:space="preserve">
-    <value />
+    <value>Builder</value>
   </data>
   <data name="Builder_Name" xml:space="preserve">
     <value>Builder</value>
@@ -139,7 +139,7 @@
     <value>Cross fire</value>
   </data>
   <data name="Knight_Description" xml:space="preserve">
-    <value />
+    <value>Knight</value>
   </data>
   <data name="Knight_Name" xml:space="preserve">
     <value>Knight</value>
@@ -150,18 +150,16 @@
 Ninja is secret warrior and with his diagonal moves can he easily surprise enemy. He is one of cheap figures so he is best in front line.</value>
   </data>
   <data name="Ninja_Name" xml:space="preserve">
-    <value>
-Ninja
-        </value>
+    <value>Ninja</value>
   </data>
   <data name="Spy_Description" xml:space="preserve">
-    <value />
+    <value>Spy</value>
   </data>
   <data name="Spy_Name" xml:space="preserve">
     <value>Spy</value>
   </data>
   <data name="Wall_Description" xml:space="preserve">
-    <value />
+    <value>Wall</value>
   </data>
   <data name="Wall_Name" xml:space="preserve">
     <value>Wall</value>

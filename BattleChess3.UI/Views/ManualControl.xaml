@@ -33,59 +33,36 @@
                     <DataTemplate>
                         <Border Margin="5" Padding="10"
                                 BorderBrush="Black" BorderThickness="10">
-                            <Viewbox>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition />
-                                        <RowDefinition />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" MinWidth="150" />
-                                        <ColumnDefinition Width="*" MinWidth="150" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-        
-                                    <StackPanel Grid.Column="0" Grid.Row="0"
-                                                Orientation="Vertical">
-                                        <TextBlock Text="{util:Loc Info_Name}" Style="{DynamicResource TextBlockStyle}" />
-                                        <TextBlock Text="{util:Loc Info_UnitType}" Style="{DynamicResource TextBlockStyle}" />
-                                        <TextBlock Text="{util:Loc Info_Attack}" Style="{DynamicResource TextBlockStyle}" />
-                                        <TextBlock Text="{util:Loc Info_Cost}" Style="{DynamicResource TextBlockStyle}" />
-                                    </StackPanel>
-        
-                                    <StackPanel Grid.Column="1" Grid.Row="0"
-                                                Orientation="Vertical">
-                                        <TextBlock Text="{Binding Path=ShownName}"
-                                                   Style="{DynamicResource TextBlockStyle}"/>
-                                        <TextBlock Text="{Binding Path=UnitTypes}"
-                                                   Style="{DynamicResource TextBlockStyle}"/>
-                                        <TextBlock Text="{Binding Path=Attack}"
-                                                   Style="{DynamicResource TextBlockStyle}"/>
-                                        <TextBlock Text="{Binding Path=Cost}"
-                                                   Style="{DynamicResource TextBlockStyle}"/>
-                                    </StackPanel>
-        
-                                    <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
-                                           MaxWidth="800"
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" MinWidth="100" />
+                                    <ColumnDefinition Width="*" MinWidth="100" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Row="0" Grid.RowSpan="2" 
+                                           Grid.Column="0" Grid.ColumnSpan="2"
                                            Text="{Binding Path=Description}" TextWrapping="Wrap"
                                            Style="{DynamicResource TextBlockStyle}"/>
-        
-                                    <ItemsControl Grid.Row="0" Grid.RowSpan="2" Grid.Column="2"
+
+                                <ItemsControl Grid.Row="0" Grid.RowSpan="2" Grid.Column="2"
                                                   ItemsSource="{Binding ImageUris}">
-                                        <ItemsControl.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <StackPanel Orientation="Vertical"/>
-                                            </ItemsPanelTemplate>
-                                        </ItemsControl.ItemsPanel>
-                                        <ItemsControl.ItemTemplate>
-                                            <DataTemplate>
-                                                <Image MinHeight="0" MaxHeight="200"
-                                                       Source="{Binding Value}"/>
-                                            </DataTemplate>
-                                        </ItemsControl.ItemTemplate>
-                                    </ItemsControl>
-                                </Grid>
-                            </Viewbox>
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Vertical"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Image Width="200" Source="{Binding Value}"/>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Grid>
                         </Border>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

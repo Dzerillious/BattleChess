@@ -8,7 +8,7 @@
              mc:Ignorable="d" d:DataContext="{d:DesignInstance viewModel:BoardViewModel}"
              d:DesignHeight="300" d:DesignWidth="300"
              Background="{DynamicResource TextBoxBrush}">
-    <Viewbox>
+    <Viewbox Margin="10">
         <Grid DataContext="{Binding MouseOnTile.Figure}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" MinWidth="150" />
