@@ -35,17 +35,22 @@ public class DependenciesBuilder
         builder.RegisterType<PlayerService>()
                .As<IPlayerService>()
                .SingleInstance();
+        builder.RegisterType<MultiplayerService>()
+               .As<IMultiplayerService>()
+               .SingleInstance();
 
         builder.RegisterType<MapsViewModel>()
-               .AsSelf();
+               .SingleInstance();
         builder.RegisterType<BoardViewModel>()
-               .AsSelf();
+               .SingleInstance();
         builder.RegisterType<ThemesViewModel>()
-               .AsSelf();
+               .SingleInstance();
         builder.RegisterType<FiguresViewModel>()
-               .AsSelf();
+               .SingleInstance();
+        builder.RegisterType<MultiplayerViewModel>()
+               .SingleInstance();
         builder.RegisterType<MainWindowViewModel>()
-               .AsSelf();
+               .SingleInstance();
         
 
         var locator = new AutofacServiceLocator(builder.Build());

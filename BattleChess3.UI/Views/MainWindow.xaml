@@ -47,10 +47,14 @@
                  IsSelected="{Binding GameTabSelected}"
                  IsEnabled="{Binding GameTabEnabled}">
             <DockPanel LastChildFill="True">
-                <Border>
+                <Border DockPanel.Dock="Left">
                     <views:GameBoardControl 
                         x:Name="GameBoard"
                         DataContext="{Binding BoardViewModel}"/>
+                </Border>
+                <Border DockPanel.Dock="Top"
+                    BorderBrush="Black" BorderThickness="10,0,0,5">
+                    <views:MultiplayerControl DataContext="{Binding MultiplayerViewModel}"/>
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="10,0,0,0">
                     <views:UnitInfoControl DataContext="{Binding BoardViewModel}"/>

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using BattleChess3.Core.Model;
 using BattleChess3.Core.Model.Figures;
 using BattleChess3.Core.Resources;
@@ -52,7 +53,11 @@ public class BoardViewModel : ViewModelBase
     public RelayCommand<ITileViewModel> ClickedCommand { get; }
     public RelayCommand<ITileViewModel> MouseEnterCommand { get; }
     public RelayCommand<ITileViewModel> MouseExitCommand { get; }
-    
+
+
+    public event EventHandler<Position> RequestClickTile;
+    public event EventHandler<MapBlueprint> RequestLoadMap;
+
 
     public BoardViewModel(
         IFigureService figureService,
@@ -66,9 +71,15 @@ public class BoardViewModel : ViewModelBase
         MouseExitCommand = new RelayCommand<ITileViewModel>(MouseExitTile);
     }
     
-    public void LoadMap(MapBlueprint map)
+    public void ManualLoadMap(MapBlueprint map)
     {
-        ClickedAtTile(NoneTileViewModel.Instance);
+        AutomaticLoadMap(map);
+        RequestLoadMap?.Invoke(this, map);
+    }
+
+    public void AutomaticLoadMap(MapBlueprint map)
+    {
+        AutomaticClickAtTile(NoneTileViewModel.Instance);
         _playerService.InitializePlayers(map.StartingPlayer);
 
         for (var i = 0; i < Constants.BoardSize; i++)
@@ -88,6 +99,13 @@ public class BoardViewModel : ViewModelBase
 
     private void ClickedAtTile(ITileViewModel clickedTile)
     {
+        AutomaticClickAtTile(clickedTile);
+        RequestClickTile?.Invoke(this, clickedTile.Position);
+    }
+
+    public void AutomaticClickAtTile(ITileViewModel clickedTile)
+    {
+
         if (clickedTile.IsPossibleAttack)
         {
             var clickedPovTile = clickedTile.GetPovTile(_playerService.CurrentPlayer);

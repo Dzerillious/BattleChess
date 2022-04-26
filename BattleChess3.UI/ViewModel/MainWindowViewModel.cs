@@ -52,6 +52,7 @@ public class MainWindowViewModel : ViewModelBase
     public MapsViewModel MapsViewModel { get; }
     public BoardViewModel BoardViewModel { get; }
     public FiguresViewModel FiguresViewModel { get; }
+    public MultiplayerViewModel MultiplayerViewModel { get; }
 
     public RelayCommand NewGameCommand { get; }
     public RelayCommand SaveGameCommand { get; }
@@ -64,11 +65,13 @@ public class MainWindowViewModel : ViewModelBase
     public MainWindowViewModel(
         MapsViewModel mapsViewModel,
         BoardViewModel boardViewModel,
-        FiguresViewModel figuresViewModel)
+        FiguresViewModel figuresViewModel,
+        MultiplayerViewModel multiplayerViewModel)
     {
         MapsViewModel = mapsViewModel;
         BoardViewModel = boardViewModel;
         FiguresViewModel = figuresViewModel;
+        MultiplayerViewModel = multiplayerViewModel;
 
         NewGameCommand = new RelayCommand(NewGame);
         SaveGameCommand = new RelayCommand(SaveGame);
@@ -79,7 +82,7 @@ public class MainWindowViewModel : ViewModelBase
 
     private void NewGame()
     {
-        BoardViewModel.LoadMap(MapsViewModel.SelectedMap);
+        BoardViewModel.ManualLoadMap(MapsViewModel.SelectedMap);
         GameTabEnabled = true;
         GameTabSelected = true;
     }
