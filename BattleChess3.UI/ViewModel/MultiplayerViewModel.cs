@@ -79,6 +79,12 @@ public class MultiplayerViewModel : ViewModelBase
             _boardViewModel.AutomaticClickAtTile(_boardViewModel.Board[e]);
     }
 
+    public void SetKey(string key)
+    {
+        ApiKey = key;
+        RaiseCanExecuteChanged();
+    }
+
     private void PasteKey()
     {
         ApiKey = Clipboard.GetText();
