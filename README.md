@@ -4,7 +4,7 @@
 
 Game setup:
 
-![image](https://user-images.githubusercontent.com/26441773/165457591-daedf20f-a194-49c4-ba06-8ac218e90f99.png)
+![image](https://user-images.githubusercontent.com/26441773/165458125-bc1404ec-196d-466c-b6c0-89e2d9d7d6c5.png)
 
 The game itself:
 
