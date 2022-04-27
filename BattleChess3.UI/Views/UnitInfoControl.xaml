@@ -3,41 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:util="clr-namespace:BattleChess3.UI.Utilities"
              xmlns:viewModel="clr-namespace:BattleChess3.UI.ViewModel"
              mc:Ignorable="d" d:DataContext="{d:DesignInstance viewModel:BoardViewModel}"
              d:DesignHeight="300" d:DesignWidth="300"
              Background="{DynamicResource TextBoxBrush}">
-    <Viewbox Margin="10">
-        <Grid DataContext="{Binding MouseOnTile.Figure}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" MinWidth="150" />
-                <ColumnDefinition Width="*" MinWidth="150" />
-            </Grid.ColumnDefinitions>
-    
-            <StackPanel Grid.Column="0"
-                        Orientation="Vertical">
-                <TextBlock Text="{util:Loc Info_Name}" 
-                           Style="{DynamicResource TextBlockStyle}" />
-                <TextBlock Text="{util:Loc Info_Hp}" 
-                           Style="{DynamicResource TextBlockStyle}" />
-                <TextBlock Text="{util:Loc Info_Attack}" 
-                           Style="{DynamicResource TextBlockStyle}" />
-                <TextBlock Text="{util:Loc Info_Cost}" 
-                           Style="{DynamicResource TextBlockStyle}" />
-            </StackPanel>
-    
-            <StackPanel Grid.Column="1"
-                        Orientation="Vertical">
-                <TextBlock Text="{Binding Path=ShownName, UpdateSourceTrigger=PropertyChanged}" 
-                           Style="{DynamicResource TextBlockStyle}" />
-                <TextBlock Text="{Binding Path=Hp, UpdateSourceTrigger=PropertyChanged}" 
-                           Style="{DynamicResource TextBlockStyle}" />
-                <TextBlock Text="{Binding Path=Attack, UpdateSourceTrigger=PropertyChanged}" 
-                           Style="{DynamicResource TextBlockStyle}" />
-                <TextBlock Text="{Binding Path=Cost, UpdateSourceTrigger=PropertyChanged}"
-                           Style="{DynamicResource TextBlockStyle}" />
-            </StackPanel>
-        </Grid>
-    </Viewbox>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Border DataContext="{Binding MouseOnTile.Figure}">
+            <TextBlock Text="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged}"
+                   Style="{DynamicResource TextBlockStyle}"
+                   HorizontalAlignment="Left" VerticalAlignment="Top"
+                   TextWrapping="Wrap"
+                   FontSize="25" Margin="20"/>
+        </Border>
+    </ScrollViewer>
 </UserControl>

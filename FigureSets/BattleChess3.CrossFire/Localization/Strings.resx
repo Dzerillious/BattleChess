@@ -118,19 +118,97 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Archer_Description" xml:space="preserve">
-    <value>Archer</value>
+    <value>Archer
+
+Info: Good for taking control
+Good vs: Ninja, Knight, Spy
+Bad vs: Builder
+Special: Does not move with attack
+
+Attack:
+
+⬜⬜⬜⬛⬜⬜⬜⬜
+⬜⬜⬜⬛⬜⬜⬜⬛
+⬛⬜⬜⬛⬜⬜⬛⬜
+⬜⬛⬜⬛⬜⬛⬜⬜
+⬜⬜⬛⬛⬛⬜⬜⬜
+⬜⬜⬜▣⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+
+Move:
+
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬛▣⬛⬜⬜
+</value>
   </data>
   <data name="Archer_Name" xml:space="preserve">
     <value>Archer</value>
   </data>
   <data name="Bomber_Description" xml:space="preserve">
-    <value>Bomber</value>
+    <value>Bomber
+
+Info: Hard to use, high reward
+Good vs: Ninja, Spy
+Bad vs: Builder, Archer, Knight
+Special: When move, near tiles are destroyed
+
+Attack: Cannot directly attack
+
+Move:
+
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬛⬜⬛⬜⬛⬜⬜⬜
+⬜⬜⬜▩▩▩⬜⬜
+⬛⬜▣▩⬛▩⬜⬜
+⬜⬜⬜▩▩▩⬜⬜
+⬛⬜⬛⬜⬛⬜⬜⬜
+</value>
   </data>
   <data name="Bomber_Name" xml:space="preserve">
     <value>Bomber</value>
   </data>
   <data name="Builder_Description" xml:space="preserve">
-    <value>Builder</value>
+    <value>Builder
+
+Info: Defensive unit
+Good vs: Archer, Spy
+Bad vs: Ninja, Knight
+Special: Creates shield around itself
+Special: Moving shield pushes units away
+
+Attack: Cannot directly attack
+
+Move:
+
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬛⬜⬜⬜⬜
+⬜⬜⬛▣⬛⬜⬜⬜
+⬜⬜⬜⬛⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+
+Shield:
+
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜▦▦▦⬜⬜⬜
+⬜▦⬜⬜⬜▦⬜⬜
+⬜▦⬜▣⬜▦⬜⬜
+⬜▦⬜⬜⬜▦⬜⬜
+⬜⬜▦▦▦⬜⬜⬜
+</value>
   </data>
   <data name="Builder_Name" xml:space="preserve">
     <value>Builder</value>
@@ -139,7 +217,35 @@
     <value>Cross fire</value>
   </data>
   <data name="Knight_Description" xml:space="preserve">
-    <value>Knight</value>
+    <value>Knight
+
+Info: All round good
+Good vs: Builder, Spy, Ninja
+Bad vs: Archer
+
+Attack: Max 3 tiles to each direction 
+Attack: Kills all units to get to target
+
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬛⬜⬜⬛⬜⬜
+⬛⬜⬛⬜⬛⬜⬜⬜
+⬜⬛⬛⬛⬜⬜⬜⬜
+⬛⬛▣⬛⬛⬛⬛⬜
+⬜⬛⬛⬛⬜⬜⬜⬜
+⬛⬜⬛⬜⬛⬜⬜⬜
+
+Movement: As chess knight
+
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬛⬜⬛⬜⬜⬜⬜
+⬛⬜⬜⬜⬛⬜⬜⬜
+⬜⬜▣⬜⬜⬜⬜⬜
+⬛⬜⬜⬜⬛⬜⬜⬜
+⬜⬛⬜⬛⬜⬜⬜⬜
+</value>
   </data>
   <data name="Knight_Name" xml:space="preserve">
     <value>Knight</value>
@@ -147,19 +253,87 @@
   <data name="Ninja_Description" xml:space="preserve">
     <value>Ninja
 
-Ninja is secret warrior and with his diagonal moves can he easily surprise enemy. He is one of cheap figures so he is best in front line.</value>
+Info: Basic unit
+Good vs: Builder
+Bad vs: Spy, Archer, Knight, Bomber
+Special: Can jump over object
+Special: On last tile turns into Bomber
+
+Attack:
+
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬛⬜⬜⬜⬜
+⬜⬜⬜⬛⬜⬜⬜⬜
+⬜⬜⬛▣⬛⬜⬜⬜
+⬜⬜⬜⬛⬜⬜⬜⬜
+
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬛⬜⬜⬜⬜
+⬜⬜⬛▣⬛⬜⬜⬜
+⬜⬜⬜⬛⬜⬜⬜⬜
+
+Movement:
+
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬛⬜⬜⬜⬜
+⬜⬜⬛▦⬛⬜⬜⬜
+⬜⬜⬜▣⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬛⬜⬛⬜⬜⬜
+⬜⬜⬜▣⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+</value>
   </data>
   <data name="Ninja_Name" xml:space="preserve">
     <value>Ninja</value>
   </data>
   <data name="Spy_Description" xml:space="preserve">
-    <value>Spy</value>
+    <value>Ninja
+
+Info: Strategic unit
+Good vs: Builder, Ninja
+Bad vs: Archer, Knight, Bomber
+Special: Can swap with allied unit
+
+Attack + Movement: As chess king
+
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬜⬜⬜⬜⬜⬜
+⬜⬜⬛⬛⬛⬜⬜⬜
+⬜⬜⬛▣⬛⬜⬜⬜
+⬜⬜⬛⬛⬛⬜⬜⬜
+</value>
   </data>
   <data name="Spy_Name" xml:space="preserve">
     <value>Spy</value>
   </data>
   <data name="Wall_Description" xml:space="preserve">
-    <value>Wall</value>
+    <value>Wall
+
+Info: Can be destoyed by allied unit
+
+Attack: Cannot attack
+Movement: Cannot move 
+</value>
   </data>
   <data name="Wall_Name" xml:space="preserve">
     <value>Wall</value>

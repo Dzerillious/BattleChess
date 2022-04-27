@@ -61,7 +61,16 @@ namespace BattleChess3.CrossFireFigures.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Archer.
+        ///   Looks up a localized string similar to Archer
+        ///
+        ///
+        ///⬜⬛⬜      ⬜▣⬜
+        ///⬛▩⬛  →  \t▩▩▩
+        ///⬜▣⬜      \t\t⬜⬜⬜   
+        ///
+        ///⬜▩⬜      \t\t⬜▩⬜
+        ///⬛⬜⬛  -&gt;  \t▩⬜▣
+        ///⬜▣⬜      \t\t⬜⬜⬜.
         /// </summary>
         internal static string Archer_Description {
             get {

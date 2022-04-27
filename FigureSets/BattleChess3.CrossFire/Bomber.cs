@@ -64,27 +64,29 @@ public class Bomber : IFigureType
 
     private readonly Position[][] _moveChain =
     {
+        new Position[] {(2, -2)},
         new Position[] {(2, 0)},
+        new Position[] {(2, 2)},
+        new Position[] {(-2, -2)},
         new Position[] {(-2, 0)},
+        new Position[] {(-2, 2)},
         new Position[] {(0, -2)},
         new Position[] {(0, 2)},
     };
-    public Position[][] GetMoveChains(Position position, ITile[] board) => _attackChain;
+    public Position[][] GetMoveChains(Position position, ITile[] board) => _moveChain;
     
     private readonly Position[] _bombChain =
     {
+        (1, -1),
         (1, 0),
+        (1, 1),
         (0, 1),
         (0, -1),
+        (-1, -1),
         (-1, 0),
+        (-1, 1),
     };
 
-    private readonly Position[][] _attackChain =
-    {
-        new Position[] {(2, 0)},
-        new Position[] {(-2, 0)},
-        new Position[] {(0, -2)},
-        new Position[] {(0, 2)},
-    };
+    private readonly Position[][] _attackChain = { };
     public Position[][] GetAttackChains(Position position, ITile[] board) => _attackChain;
 }

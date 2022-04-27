@@ -7,7 +7,7 @@
         xmlns:viewModel="clr-namespace:BattleChess3.UI.ViewModel"
         xmlns:util="clr-namespace:BattleChess3.UI.Utilities"
         mc:Ignorable="d"
-        Title="{util:Loc MainWindow_Title}" Height="700" Width="900" MinHeight="600" MinWidth="800"
+        Title="{util:Loc MainWindow_Title}" Height="800" Width="1000" MinHeight="600" MinWidth="1000"
         DataContext="{Binding Source={x:Static viewModel:ViewModelLocator.MainWindowViewModel}}"
         Style="{DynamicResource MainWindowStyle}">
     <TabControl>

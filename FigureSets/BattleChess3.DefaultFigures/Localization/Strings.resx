@@ -127,8 +127,7 @@
     <value>
 Empty tile
 
-Empty tile, where you can go. It cannot be destroyed with almost any unit. It does not stop directional attack.
-        </value>
+Empty tile, where you can go.</value>
   </data>
   <data name="Palm_Name" xml:space="preserve">
     <value>Palm</value>
@@ -147,7 +146,15 @@ Palm tile, which you can easily destroy. It cannot move and belongs to no one.
     <value>
 Stone
 
-Stone tile, which cannot be destroyed and where you cannot go. It cannot move and belongs to no one.
+Stone tile, where you cannot go. It cannot move and belongs to no one.
         </value>
+  </data>
+  <data name="Water_Description" xml:space="preserve">
+    <value>Water
+
+Water tile, where you cannot go. It cannot move and belongs to no one.</value>
+  </data>
+  <data name="Water_Name" xml:space="preserve">
+    <value>Water</value>
   </data>
 </root>
