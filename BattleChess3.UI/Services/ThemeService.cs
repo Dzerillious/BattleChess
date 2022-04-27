@@ -1,9 +1,9 @@
 ﻿using BattleChess3.UI.Model;
-using GalaSoft.MvvmLight.Threading;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Windows;
 
 namespace BattleChess3.UI.Services
 {
@@ -37,7 +37,7 @@ namespace BattleChess3.UI.Services
             _watcher.IncludeSubdirectories = true;
             _watcher.EnableRaisingEvents = true;
 
-            DispatcherHelper.CheckBeginInvokeOnUI(ReloadThemes);
+            Application.Current.Dispatcher.Invoke(ReloadThemes);
         }
 
         public IList<ThemeModel> GetCurrentThemes()
@@ -47,7 +47,7 @@ namespace BattleChess3.UI.Services
 
         private void OnChanged(object sender, FileSystemEventArgs e)
         {
-            DispatcherHelper.CheckBeginInvokeOnUI(ReloadThemes);
+            Application.Current.Dispatcher.Invoke(ReloadThemes);
         }
 
         private void ReloadThemes()

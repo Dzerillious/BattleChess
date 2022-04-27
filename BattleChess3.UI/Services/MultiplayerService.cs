@@ -1,6 +1,5 @@
 ﻿using BattleChess3.Core.Model;
 using BattleChess3.Core.Utilities;
-using GalaSoft.MvvmLight.Threading;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -226,12 +225,12 @@ public class MultiplayerService : IMultiplayerService
         if (messageWithType.message_type == nameof(Position))
         {
             var position = JsonConvert.DeserializeObject<Position>(messageWithType.message);
-            DispatcherHelper.CheckBeginInvokeOnUI(() => RequestClickTile?.Invoke(this, position));
+            Application.Current.Dispatcher.Invoke(() => RequestClickTile?.Invoke(this, position));
         }
         else if (messageWithType.message_type == nameof(MapBlueprint))
         {
             var mapBlueprint = JsonConvert.DeserializeObject<MapBlueprint>(messageWithType.message);
-            DispatcherHelper.CheckBeginInvokeOnUI(() => RequestLoadMap?.Invoke(this, mapBlueprint));
+            Application.Current.Dispatcher.Invoke(() => RequestLoadMap?.Invoke(this, mapBlueprint));
         }
         else if (messageWithType.message_type == nameof(Confirm))
         {

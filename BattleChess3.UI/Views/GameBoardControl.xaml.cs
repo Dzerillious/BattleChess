@@ -37,6 +37,24 @@ public partial class GameBoardControl
         }
     }
 
+    private void Button_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+    {
+        var button = (Button)sender;
+        var tileViewModel = (ITileViewModel)button.DataContext;
+        var itemsControl = FindAnchestor<ItemsControl>(button);
+        var boardViewModel = (BoardViewModel)itemsControl.DataContext;
+        boardViewModel.MouseEnterCommand.Execute(tileViewModel);
+    }
+
+    private void Button_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+    {
+        var button = (Button)sender;
+        var tileViewModel = (ITileViewModel)button.DataContext;
+        var itemsControl = FindAnchestor<ItemsControl>(button);
+        var boardViewModel = (BoardViewModel)itemsControl.DataContext;
+        boardViewModel.MouseExitCommand.Execute(tileViewModel);
+    }
+
     private static T FindAnchestor<T>(DependencyObject current)
         where T : DependencyObject
     {
