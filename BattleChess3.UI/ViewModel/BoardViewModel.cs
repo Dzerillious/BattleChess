@@ -1,130 +1,123 @@
-﻿using System;
-using System.Linq;
-using BattleChess3.Core.Model;
-using BattleChess3.Core.Model.Figures;
-using BattleChess3.Core.Resources;
-using BattleChess3.DefaultFigures.Utilities;
-using BattleChess3.UI.Services;
+﻿using BattleChess3.Game.Board;
+using BattleChess3.Game.Figures;
+using BattleChess3.Game.Players;
+using BattleChess3.Maps;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
 namespace BattleChess3.UI.ViewModel;
 
-public class BoardViewModel : ViewModelBase
+public sealed class BoardViewModel : ViewModelBase
 {
-    private readonly IFigureService _figureService;
     private readonly IPlayerService _playerService;
+    private readonly IMapLoader _mapLoader;
+    private readonly IFigureCreator _figureCreator;
 
-    private ITileViewModel _selectedTile = NoneTileViewModel.Instance;
-    public ITileViewModel SelectedTile
+    private TileViewModel _mouseOnTile = NoneTileViewModel.Instance;
+    private TileViewModel _selectedTile = NoneTileViewModel.Instance;
+
+    public BoardViewModel(
+        IPlayerService playerService,
+        IMapLoader mapLoader,
+        IFigureCreator figureCreator)
+    {
+        _playerService = playerService;
+        _mapLoader = mapLoader;
+        _figureCreator = figureCreator;
+
+        ClickedCommand = new RelayCommand<TileViewModel>(ClickedAtTile);
+        MouseEnterCommand = new RelayCommand<TileViewModel>(MouseEnterTile);
+        MouseExitCommand = new RelayCommand<TileViewModel>(MouseExitTile);
+
+        Tiles = Enumerable.Range(0, IBoard.TilesCount)
+            .Select<int, TileViewModel>(position => new TileViewModel(position))
+            .ToArray();
+        Board = new Board(Tiles.Cast<ITile>().ToArray());
+    }
+
+    public TileViewModel SelectedTile
     {
         get => _selectedTile;
-        set
+        private set
         {
             _selectedTile.IsSelected = false;
             Set(ref _selectedTile, value);
+            RaisePropertyChanged(nameof(InfoTile));
             value.IsSelected = true;
         }
     }
 
-    private ITileViewModel _mouseOnTile = NoneTileViewModel.Instance;
-    public ITileViewModel MouseOnTile
+    public TileViewModel MouseOnTile
     {
         get => _mouseOnTile;
-        set
+        private set
         {
             _mouseOnTile.IsMouseOver = false;
             Set(ref _mouseOnTile, value);
+            
+            if (_selectedTile.Equals(NoneTileViewModel.Instance))
+            {                
+                ClearPossibleActions();
+                SetPossibleActions(value);
+            }
+            
+            RaisePropertyChanged(nameof(InfoTile));
             value.IsMouseOver = true;
         }
     }
 
-    private int _boardWidth = 8;
+    public TileViewModel InfoTile =>
+        SelectedTile is not NoneTileViewModel
+            ? SelectedTile
+            : MouseOnTile;
+
     public int BoardWidth
     {
-        get => _boardWidth;
-        set => Set(ref _boardWidth, value);
+        get => IBoard.Length;
     }
 
-    public ITileViewModel[] Board { get; } = Enumerable.Range(0, Constants.BoardSize)
-                                              .Select<int, ITileViewModel>(position => new TileViewModel(position))
-                                              .ToArray();
-    
-    public RelayCommand<ITileViewModel> ClickedCommand { get; }
-    public RelayCommand<ITileViewModel> MouseEnterCommand { get; }
-    public RelayCommand<ITileViewModel> MouseExitCommand { get; }
+    public IBoard Board { get; }
+    public TileViewModel[] Tiles { get; }
+
+    public RelayCommand<TileViewModel> ClickedCommand { get; }
+    public RelayCommand<TileViewModel> MouseEnterCommand { get; }
+    public RelayCommand<TileViewModel> MouseExitCommand { get; }
 
 
-    public event EventHandler<Position> RequestClickTile;
-    public event EventHandler<MapBlueprint> RequestLoadMap;
+    public event EventHandler<Position>? RequestClickTile;
+    public event EventHandler<MapBlueprint>? RequestLoadMap;
 
-
-    public BoardViewModel(
-        IFigureService figureService,
-        IPlayerService playerService)
-    {
-        _figureService = figureService;
-        _playerService = playerService;
-
-        ClickedCommand = new RelayCommand<ITileViewModel>(ClickedAtTile);
-        MouseEnterCommand = new RelayCommand<ITileViewModel>(MouseEnterTile);
-        MouseExitCommand = new RelayCommand<ITileViewModel>(MouseExitTile);
-    }
-    
     public void ManualLoadMap(MapBlueprint map)
     {
-        AutomaticLoadMap(map);
+        _mapLoader.LoadMap(Board, map);
         RequestLoadMap?.Invoke(this, map);
     }
 
     public void AutomaticLoadMap(MapBlueprint map)
     {
-        AutomaticClickAtTile(NoneTileViewModel.Instance);
-        _playerService.InitializePlayers(map.StartingPlayer);
-
-        for (var i = 0; i < Constants.BoardSize; i++)
-            CreateFigure(Board[i], map.Figures[i]);
+        _mapLoader.LoadMap(Board, map);
     }
 
-    public void CreateFigure(ITileViewModel tile, FigureBlueprint figureBlueprint)
+    public void CreateFigure(ITile tile, FigureIdentifier figureIdentifier)
     {
-        tile.KillFigureWithoutMove(tile);
-
-        var figureType = _figureService.GetFigureFromName(figureBlueprint.UnitName);
-        var player = _playerService.GetPlayer(figureBlueprint.PlayerId);
-        var figure = new Figure(player, figureType, figureBlueprint.Hp);
-        player.Figures.Add(figure);
-        tile.Figure = figure;
+        tile.Figure = _figureCreator.CreateFigure(figureIdentifier);
     }
 
-    private void ClickedAtTile(ITileViewModel clickedTile)
+    private void ClickedAtTile(TileViewModel clickedTile)
     {
         AutomaticClickAtTile(clickedTile);
         RequestClickTile?.Invoke(this, clickedTile.Position);
     }
 
-    public void AutomaticClickAtTile(ITileViewModel clickedTile)
+    public void AutomaticClickAtTile(TileViewModel clickedTile)
     {
-
-        if (clickedTile.IsPossibleAttack)
+        if (clickedTile.PossibleAction.ActionType != FigureActionTypes.None)
         {
-            var clickedPovTile = clickedTile.GetPovTile(_playerService.CurrentPlayer);
-            var selectedPovTile = SelectedTile.GetPovTile(_playerService.CurrentPlayer);
-            var povBoard = GetPlayerPOVBoard(_playerService.CurrentPlayer, Board);
-            SelectedTile.Figure.AttackAction(selectedPovTile, clickedPovTile, povBoard);
+            clickedTile.PossibleAction.Action.Invoke();
             SelectedTile = NoneTileViewModel.Instance;
             _playerService.NextTurn();
         }
-        else if (clickedTile.IsPossibleMove)
-        {
-            var clickedPovTile = clickedTile.GetPovTile(_playerService.CurrentPlayer);
-            var selectedPovTile = SelectedTile.GetPovTile(_playerService.CurrentPlayer);
-            var povBoard = GetPlayerPOVBoard(_playerService.CurrentPlayer, Board);
-            SelectedTile.Figure.MoveAction(selectedPovTile, clickedPovTile, povBoard);
-            SelectedTile = NoneTileViewModel.Instance;
-            _playerService.NextTurn();
-        }
-        else if (clickedTile.Figure.Owner == _playerService.CurrentPlayer)
+        else if (clickedTile.Figure.Owner.Equals(_playerService.CurrentPlayer))
         {
             SelectedTile = clickedTile;
         }
@@ -133,89 +126,59 @@ public class BoardViewModel : ViewModelBase
             SelectedTile = NoneTileViewModel.Instance;
         }
 
+        ClearPossibleActions();
         SetPossibleActions(clickedTile);
     }
 
-    private void SetPossibleActions(ITileViewModel clickedTile)
-    {
-        foreach (ITileViewModel tile in Board)
-        {
-            tile.IsPossibleAttack = false;
-            tile.IsPossibleMove = false;
-        }
 
-        if (_playerService.CurrentPlayer != SelectedTile.Figure.Owner)
+    private void ClearPossibleActions()
+    {
+        foreach (var tile in Tiles)
+        {
+            tile.PossibleAction = FigureAction.None;
+        }
+    }
+
+    private void SetPossibleActions(ITile clickedTile)
+    {
+        if (!_playerService.CurrentPlayer.Equals(clickedTile.Figure.Owner))
             return;
-
-        SetPossibleAttacks(clickedTile);
-        SetPossibleMoves(clickedTile);
-    }
-
-    private void SetPossibleAttacks(ITileViewModel clickedTile)
-    {
-        var povTile = clickedTile.GetPovTile(_playerService.CurrentPlayer);
-        var povBoard = GetPlayerPOVBoard(_playerService.CurrentPlayer, Board);
-        Position[][] attackChains = clickedTile.Figure.GetAttackChains(povTile.Position, povBoard);
-
-        foreach (Position[] moveChain in attackChains)
-        foreach (Position relativeAttack in moveChain)
-        {
-            Position boardAttack = (povTile.Position + relativeAttack).GetPlayerPOVPosition(_playerService.CurrentPlayer);
-            if (!boardAttack.InBoard()) 
-                break;
-
-            var attackedTile = Board[boardAttack].GetPovTile(_playerService.CurrentPlayer);
-            if (attackedTile.IsEmpty() ||
-                attackedTile.IsWater())
-                continue;
-
-            Board[boardAttack].IsPossibleAttack = povTile.Figure.CanAttack(povTile, attackedTile, povBoard);
-            break;
-        }
-    }
-
-    private void SetPossibleMoves(ITileViewModel clickedTile)
-    {
-        var povTile = clickedTile.GetPovTile(_playerService.CurrentPlayer);
-        var povBoard = GetPlayerPOVBoard(_playerService.CurrentPlayer, Board);
-        Position[][] moveChains = clickedTile.Figure.GetMoveChains(povTile.Position, povBoard);
         
-        foreach (Position[] moveChain in moveChains)
-        foreach (Position relativeMove in moveChain)
+        var povBoard = GetPlayerPOVBoard(clickedTile.Figure.Owner, Tiles);
+        var povClickedTile = clickedTile.GetPovTile(clickedTile.Figure.Owner);
+        var possibleActions = clickedTile.Figure.GetPossibleActions(povClickedTile, povBoard);
+        
+        foreach (var possibleAction in possibleActions)
         {
-            Position boardMove = (povTile.Position + relativeMove).GetPlayerPOVPosition(_playerService.CurrentPlayer);
-            if (!boardMove.InBoard()) 
-                break;
-
-            var targetTile = Board[boardMove].GetPovTile(_playerService.CurrentPlayer);
-            if (povTile.Figure.CanMove(povTile, targetTile, povBoard))
-                Board[boardMove].IsPossibleMove = true;
-            else if (targetTile.IsWater())
-                continue;
-            else
-                break;
+            Tiles[possibleAction.TargetPosition].PossibleAction = possibleAction;
         }
     }
 
-    private ITile[] GetPlayerPOVBoard(Player player, ITile[] board)
+    private static IBoard GetPlayerPOVBoard(Player player, IReadOnlyList<ITile> board)
     {
-        var povBoard = new ITile[Constants.BoardSize];
+        var povBoard = new ITile[IBoard.TilesCount];
+        var absoluteBoard = board.Select(x => x.GetPovTile(player)).ToArray();
 
-        for (int i = 0; i < Constants.BoardLength; i++)
-        for (int j = 0; j < Constants.BoardLength; j++)
+        for (var i = 0; i < IBoard.Length; i++)
+        for (var j = 0; j < IBoard.Length; j++)
         {
             var position = new Position(j, i);
-            povBoard[position.GetPlayerPOVPosition(player)] = board[position];
+            povBoard[position.GetPlayerPOVPosition(player)] = absoluteBoard[position];
         }
 
-        return povBoard;
+        return new Board(povBoard);
     }
 
-    private void MouseEnterTile(ITileViewModel tile)
-        => MouseOnTile = tile;
-
-    private void MouseExitTile(ITileViewModel tile)
+    private void MouseEnterTile(TileViewModel tile)
     {
-        if (MouseOnTile == tile) MouseOnTile = NoneTileViewModel.Instance;
+        MouseOnTile = tile;
+    }
+
+    private void MouseExitTile(TileViewModel tile)
+    {
+        if (MouseOnTile == tile)
+        {
+            MouseOnTile = NoneTileViewModel.Instance;
+        }
     }
 }

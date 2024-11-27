@@ -8,8 +8,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Remove="Images\**" />
-        <Resource Include="Images\**" />
+        <None Remove="Images\**"/>
+        <Resource Include="Images\**"/>
     </ItemGroup>
 
 </Project>

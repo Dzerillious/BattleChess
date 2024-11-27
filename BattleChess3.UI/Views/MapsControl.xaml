@@ -20,7 +20,7 @@
         <ListBox.ItemTemplate>
             <DataTemplate>
                 <Image Width="300" Margin="10"
-                       Source="{Binding Path=PreviewUri}"/>
+                       Source="{Binding Path=PreviewUri}" />
             </DataTemplate>
         </ListBox.ItemTemplate>
     </ListBox>

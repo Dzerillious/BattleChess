@@ -1,35 +1,22 @@
-﻿
-using BattleChess3.Core.Model;
-using BattleChess3.Core.Model.Figures;
-using BattleChess3.UI.Services;
-using BattleChess3.UI.Utilities;
+﻿using System.Windows;
+using BattleChess3.Game.Board;
+using BattleChess3.Game.Figures;
+using BattleChess3.Game.Players;
+using BattleChess3.Maps;
+using BattleChess3.Multiplayer;
+using BattleChess3.UI.Localization;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using System.Linq;
-using System.Windows;
 
 namespace BattleChess3.UI.ViewModel;
 
-public class MultiplayerViewModel : ViewModelBase
+public sealed class MultiplayerViewModel : ViewModelBase
 {
     private readonly BoardViewModel _boardViewModel;
     private readonly IMultiplayerService _multiplayerService;
     private readonly IPlayerService _playerService;
 
-    public bool IsConnected => _multiplayerService.IsHost || _multiplayerService.IsGuest;
-    public bool CanConnect => !_multiplayerService.IsHost && !_multiplayerService.IsGuest;
-
     private string _apiKey = CurrentLocalization.Instance["MultiplayerService_ApiKey"];
-    public string ApiKey
-    {
-        get => _apiKey;
-        set => Set(ref _apiKey, value);
-    }
-
-    public RelayCommand HostCommand { get; private set; }
-    public RelayCommand JoinCommand { get; private set; }
-    public RelayCommand StopCommand { get; private set; }
-    public RelayCommand PasteKeyCommand { get; private set; }
 
     public MultiplayerViewModel(
         BoardViewModel boardViewModel,
@@ -48,22 +35,42 @@ public class MultiplayerViewModel : ViewModelBase
         SubscribeToEvents();
     }
 
+    public bool IsConnected => _multiplayerService.IsHost || _multiplayerService.IsGuest;
+    public bool CanConnect => _multiplayerService is { IsHost: false, IsGuest: false };
+
+    public string ApiKey
+    {
+        get => _apiKey;
+        set => Set(ref _apiKey, value);
+    }
+
+    public RelayCommand HostCommand { get; }
+    public RelayCommand JoinCommand { get; }
+    public RelayCommand StopCommand { get; }
+    public RelayCommand PasteKeyCommand { get; }
+
     private void SubscribeToEvents()
     {
         _multiplayerService.RequestClickTile += RemoteRequestedClickTile;
         _multiplayerService.RequestLoadMap += RemoteRequestedLoadMap;
+        _multiplayerService.RequestDisplayMessage += RemoteRequestedDisplayMessage;
         _boardViewModel.RequestClickTile += LocalRequestClickTile;
         _boardViewModel.RequestLoadMap += LocalRequestLoadMap;
     }
 
+    private void RemoteRequestedDisplayMessage(object? sender, string e)
+    {
+        Application.Current.Dispatcher.Invoke(() => MessageBox.Show(e));
+    }
+
     private void LocalRequestLoadMap(object? sender, MapBlueprint e)
     {
-        _multiplayerService.LoadMap(e);
+        Application.Current.Dispatcher.Invoke(() => _multiplayerService.LoadMap(e));
     }
 
     private void LocalRequestClickTile(object? sender, Position e)
     {
-        _multiplayerService.ClickOnPosition(e);
+        Application.Current.Dispatcher.Invoke(() => _multiplayerService.ClickOnPosition(e));
     }
 
     private void RemoteRequestedLoadMap(object? sender, MapBlueprint e)
@@ -73,10 +80,9 @@ public class MultiplayerViewModel : ViewModelBase
 
     private void RemoteRequestedClickTile(object? sender, Position e)
     {
-        if (!e.InBoard())
-            _boardViewModel.AutomaticClickAtTile(NoneTileViewModel.Instance);
-        else
-            _boardViewModel.AutomaticClickAtTile(_boardViewModel.Board[e]);
+        _boardViewModel.AutomaticClickAtTile(!e.IsInBoard()
+            ? NoneTileViewModel.Instance
+            : _boardViewModel.Tiles[e]);
     }
 
     public void SetKey(string key)
@@ -107,13 +113,12 @@ public class MultiplayerViewModel : ViewModelBase
     {
         var map = new MapBlueprint
         {
-            Figures = _boardViewModel.Board.Select(x => new FigureBlueprint
+            Figures = _boardViewModel.Tiles.Select(x => new FigureIdentifier
             {
-                Hp = x.Figure.Hp,
                 PlayerId = x.Figure.Owner.Id,
                 UnitName = x.Figure.UnitName
             }).ToArray(),
-            StartingPlayer = _playerService.CurrentPlayer.Id,
+            StartingPlayer = _playerService.CurrentPlayer.Id
         };
 
         _multiplayerService.Host(_apiKey, map, _boardViewModel.SelectedTile.Position);

@@ -1,136 +1,101 @@
-﻿using System;
-using System.Collections.Generic;
-using BattleChess3.Core.Model;
-using BattleChess3.Core.Model.Figures;
+﻿using BattleChess3.DefaultFigures;
 using BattleChess3.DefaultFigures.Utilities;
-using BattleChess3.LordOfTheRingsFigures.Localization;
+using BattleChess3.Game.Board;
+using BattleChess3.Game.Figures;
 
 namespace BattleChess3.LordOfTheRingsFigures;
 
-public class AragornSauron : IFigureType
+public class AragornSauron : ILordOfTheRingsFigureType
 {
-    public static readonly AragornSauron Instance = new();
-    public string ShownName => CurrentLocalization.Instance[$"{nameof(AragornSauron)}_Name"];
-    public string Description => CurrentLocalization.Instance[$"{nameof(AragornSauron)}_Description"];
-    public string UnitName => $"{nameof(LordOfTheRingsFigureGroup)}.{nameof(AragornSauron)}";
-    public FigureTypes UnitType => FigureTypes.Foot;
-    public double FullHp => 100;
-    public double Attack => 100;
-    public int Cost => 0;
-
-    public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
+    private readonly Position[] _movePositions = 
     {
-        {1, new Uri($"pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/{nameof(AragornSauron)}1.png", UriKind.Absolute)},
-        {2, new Uri($"pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/{nameof(AragornSauron)}2.png", UriKind.Absolute)},
+        (-2, -1), (-2, 1),
+        (-1, -2), (-1, 2),
+        (1, -2), (1, 2),
+        (2, -1), (2, 1)
     };
 
-    public double AttackCalculation(IFigureType figureType)
-        => figureType.DefenceCalculation(this);
+    private readonly Position[] _attackPositions =
+    {
+        (-3, -3), (-2, -2), (-1, -1),
+        (-3, 0), (-2, 0), (-1, 0),
+        (-3, 3), (-2, 2), (-1, 1),
+        (0, -3), (0, -2), (0, -1),
+        (0, 3), (0, 2), (0, 1),
+        (3, -3), (2, -2), (1, -1),
+        (3, 0), (2, 0), (1, 0),
+        (3, 3), (2, 2), (1, 1),
+    };
 
-    public double DefenceCalculation(IFigureType figureType)
-        => figureType.Attack;
+    public IEnumerable<FigureAction> GetPossibleActions(ITile unitTile, IBoard board)
+    {
+        foreach (var movementPosition in _movePositions)
+        {
+            var position = unitTile.Position + movementPosition;
+            if (!board.TryGetTile(position, out var targetTile))
+                continue;
+            
+            if (targetTile.IsEmpty())
+            {
+                yield return unitTile.CreateMoveAction(targetTile, board);
+            }
+        }
 
-    public bool CanAttack(ITile unitTile, ITile targetTile, ITile[] board)
-        => unitTile.CanKill(targetTile);
+        foreach (var attackPosition in _attackPositions)
+        {
+            var position = unitTile.Position + attackPosition;
+            if (!board.TryGetTile(position, out var targetTile))
+                continue;
+            
+            if (targetTile.IsOwnedByEnemy(unitTile))
+            {
+                yield return new FigureAction(
+                    FigureActionTypes.Attack, 
+                    unitTile.AbsolutePosition,
+                    targetTile.AbsolutePosition,
+                    () => AttackAction(unitTile, targetTile, board));
+            }
+        }
+    }
 
-    public void AttackAction(ITile unitTile, ITile targetTile, ITile[] board)
-        => unitTile.KillFigureWithMove(targetTile);
-
-    public bool CanMove(ITile unitTile, ITile targetTile, ITile[] board)
+    private void AttackAction(ITile unitTile, ITile targetTile, IBoard board)
     {
         var move = targetTile.Position - unitTile.Position;
 
         if (Math.Abs(move.X) <= 1 &&
             Math.Abs(move.Y) <= 1)
         {
-            return targetTile.IsEmpty();
+            unitTile.KillWithMove(targetTile, board);
         }
-
-        if (unitTile.Position != new Position(4, 0))
-            return false;
-
-        if (targetTile.Position == new Position(0, 0))
+        else if (Math.Abs(move.X) <= 2 &&
+                 Math.Abs(move.Y) <= 2)
         {
-            return (targetTile.Figure.UnitName == GimliNazgul.Instance.UnitName ||
-                targetTile.Figure.UnitName == LegolasNazgul.Instance.UnitName) &&
-                targetTile.Figure.Owner == unitTile.Figure.Owner &&
-                board[new Position(1, 0)].IsEmpty() &&
-                board[new Position(2, 0)].IsEmpty() &&
-                board[new Position(3, 0)].IsEmpty();
-        }
-        else if (targetTile.Position == new Position(7, 0))
-        {
-            return (targetTile.Figure.UnitName == GimliNazgul.Instance.UnitName ||
-                targetTile.Figure.UnitName == LegolasNazgul.Instance.UnitName) &&
-                targetTile.Figure.Owner == unitTile.Figure.Owner &&
-                board[new Position(5, 0)].IsEmpty() &&
-                board[new Position(6, 0)].IsEmpty();
+            var smallMove = new Position(Math.Sign(move.X), Math.Sign(move.Y));
+            var sourcePosition = unitTile.Position;
+            
+            unitTile.KillWithMove(board[sourcePosition + smallMove], board);
+            unitTile = board[sourcePosition + smallMove];
+            if (!unitTile.Figure.Type.Equals(this))
+                return;
+           
+            unitTile.KillWithMove(targetTile, board); 
         }
         else
         {
-            return false;
+            var smallMove = new Position(Math.Sign(move.X), Math.Sign(move.Y));
+            var sourcePosition = unitTile.Position;
+            
+            unitTile.KillWithMove(board[sourcePosition + smallMove], board);
+            unitTile = board[sourcePosition + smallMove];
+            if (!unitTile.Figure.Type.Equals(this))
+                return;
+            
+            unitTile.KillWithMove(board[sourcePosition + 2 * smallMove], board);
+            unitTile = board[sourcePosition + 2 * smallMove];
+            if (!unitTile.Figure.Type.Equals(this))
+                return;
+            
+            unitTile.KillWithMove(targetTile, board);
         }
     }
-
-    public void MoveAction(ITile unitTile, ITile targetTile, ITile[] board)
-    {
-        var move = targetTile.Position - unitTile.Position;
-
-        if (Math.Abs(move.X) <= 1 &&
-            Math.Abs(move.Y) <= 1)
-        {
-            unitTile.MoveToTile(targetTile);
-        }
-        else if (targetTile.Position == new Position(0, 0))
-        {
-            unitTile.MoveToTile(board[new Position(2, 0)]);
-            targetTile.MoveToTile(board[new Position(3, 0)]);
-        }
-        else if (targetTile.Position == new Position(7, 0))
-        {
-            unitTile.MoveToTile(board[new Position(6, 0)]);
-            targetTile.MoveToTile(board[new Position(5, 0)]);
-        }
-        else
-        {
-            throw new ArgumentException("Ivalid target position");
-        }
-    }
-
-    public Position[][] GetMoveChains(Position position, ITile[] board)
-    {
-        var moveChains = new List<Position[]>
-        {
-            new Position[] {(1, 1)},
-            new Position[] {(1, 0)},
-            new Position[] {(1, -1)},
-            new Position[] {(0, 1)},
-            new Position[] {(0, -1)},
-            new Position[] {(-1, 1)},
-            new Position[] {(-1, 0)},
-            new Position[] {(-1, -1)},
-        };
-
-        if (position == new Position(4, 0))
-        {
-            moveChains.Add(new Position[] { new Position(0, 0) - position });
-            moveChains.Add(new Position[] { new Position(7, 0) - position });
-        }
-
-        return moveChains.ToArray();
-    }
-
-
-    private readonly Position[][] _attackChain =
-    {
-        new Position[] {(1, 1)},
-        new Position[] {(1, 0)},
-        new Position[] {(1, -1)},
-        new Position[] {(0, 1)},
-        new Position[] {(0, -1)},
-        new Position[] {(-1, 1)},
-        new Position[] {(-1, 0)},
-        new Position[] {(-1, -1)},
-    };
-    public Position[][] GetAttackChains(Position position, ITile[] board) => _attackChain;
 }

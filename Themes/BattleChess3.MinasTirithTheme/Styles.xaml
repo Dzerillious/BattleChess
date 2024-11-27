@@ -1,39 +1,49 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
-    <BitmapImage x:Key="Preview" UriSource="pack://application:,,,/BattleChess3.MinasTirithTheme;component/Images/Preview.png"/>
-    <ImageBrush x:Key="ApplicationBackground" ImageSource="pack://application:,,,/BattleChess3.MinasTirithTheme;component/Images/ApplicationBackground.jpg" />
-    
+
+    <BitmapImage x:Key="Preview"
+                 UriSource="pack://application:,,,/BattleChess3.MinasTirithTheme;component/Images/Preview.png" />
+    <ImageBrush x:Key="ApplicationBackground"
+                ImageSource="pack://application:,,,/BattleChess3.MinasTirithTheme;component/Images/ApplicationBackground.jpg" />
+
     <SolidColorBrush x:Key="DefaultObjectForeground" Color="#FAF0AF" />
     <SolidColorBrush x:Key="DefaultObjectMouseOnForeground" Color="#B7B080" />
     <SolidColorBrush x:Key="DefaultObjectSelectedForeground" Color="#88B27C" />
     <SolidColorBrush x:Key="DefaultObjectDisabledForeground" Color="#CC8A8B" />
-    
-    <ImageBrush x:Key="DefaultButtonBackground" ImageSource="pack://application:,,,/BattleChess3.MinasTirithTheme;component/Images/DefaultButton.png" />
-    <ImageBrush x:Key="DefaultButtonMouseOnBackground" ImageSource="pack://application:,,,/BattleChess3.MinasTirithTheme;component/Images/DefaultButtonMouseOn.png" />
-    
-    <ImageBrush x:Key="ChessTileMouseOnBackground" ImageSource="pack://application:,,,/BattleChess3.MinasTirithTheme;component/Images/ChessTileMouseOn.png"/>
-    <ImageBrush x:Key="ChessTileSelectedBackground" ImageSource="pack://application:,,,/BattleChess3.MinasTirithTheme;component/Images/ChessTileSelected.png"/>
-    <ImageBrush x:Key="ChessTileCanGoBackground" ImageSource="pack://application:,,,/BattleChess3.MinasTirithTheme;component/Images/ChessTileCanGo.png"/>
-    <ImageBrush x:Key="ChessTileDangeredBackground" ImageSource="pack://application:,,,/BattleChess3.MinasTirithTheme;component/Images/ChessTileDangered.png"/>
-    
-    <Style TargetType="ListBox" >
-        <Setter Property="Background" Value="Transparent"/>
+
+    <ImageBrush x:Key="DefaultButtonBackground"
+                ImageSource="pack://application:,,,/BattleChess3.MinasTirithTheme;component/Images/DefaultButton.png" />
+    <ImageBrush x:Key="DefaultButtonMouseOnBackground"
+                ImageSource="pack://application:,,,/BattleChess3.MinasTirithTheme;component/Images/DefaultButtonMouseOn.png" />
+
+    <ImageBrush x:Key="ChessTileMouseOnBackground"
+                ImageSource="pack://application:,,,/BattleChess3.MinasTirithTheme;component/Images/ChessTileMouseOn.png" />
+    <ImageBrush x:Key="ChessTileSelectedBackground"
+                ImageSource="pack://application:,,,/BattleChess3.MinasTirithTheme;component/Images/ChessTileSelected.png" />
+    <ImageBrush x:Key="ChessTileCanGoBackground"
+                ImageSource="pack://application:,,,/BattleChess3.MinasTirithTheme;component/Images/ChessTileCanGo.png" />
+    <ImageBrush x:Key="ChessTileSpecialBackground"
+                ImageSource="pack://application:,,,/BattleChess3.MinasTirithTheme;component/Images/ChessTileSpecial.png" />
+    <ImageBrush x:Key="ChessTileDangeredBackground"
+                ImageSource="pack://application:,,,/BattleChess3.MinasTirithTheme;component/Images/ChessTileDangered.png" />
+
+    <Style TargetType="ListBox">
+        <Setter Property="Background" Value="Transparent" />
     </Style>
-    
+
     <Style TargetType="TabControl">
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="{StaticResource DefaultObjectForeground}"/>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{StaticResource DefaultObjectForeground}" />
         <Setter Property="FontWeight" Value="Heavy" />
         <Setter Property="BorderThickness" Value="10" />
         <Setter Property="BorderBrush" Value="Black" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="Margin" Value="0" />
     </Style>
-    
+
     <Style TargetType="TabItem">
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="{StaticResource DefaultObjectForeground}"/>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{StaticResource DefaultObjectForeground}" />
         <Setter Property="FontSize" Value="25" />
         <Setter Property="Height" Value="40" />
         <Setter Property="Width" Value="100" />
@@ -52,7 +62,7 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Foreground" Value="{StaticResource DefaultObjectForeground}"/>
+                <Setter Property="Foreground" Value="{StaticResource DefaultObjectForeground}" />
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Foreground" Value="{StaticResource DefaultObjectMouseOnForeground}" />
@@ -67,8 +77,8 @@
     </Style>
 
     <Style TargetType="ToggleButton">
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="{StaticResource DefaultObjectForeground}"/>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{StaticResource DefaultObjectForeground}" />
         <Setter Property="FontSize" Value="25" />
         <Setter Property="Height" Value="40" />
         <Setter Property="Width" Value="100" />
@@ -87,7 +97,7 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Foreground" Value="{StaticResource DefaultObjectForeground}"/>
+                <Setter Property="Foreground" Value="{StaticResource DefaultObjectForeground}" />
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Foreground" Value="{StaticResource DefaultObjectMouseOnForeground}" />
@@ -102,8 +112,8 @@
     </Style>
 
     <Style TargetType="Button">
-        <Setter Property="Foreground" Value="{StaticResource DefaultObjectForeground}"/>
-        <Setter Property="Background" Value="{StaticResource DefaultButtonBackground}"/>
+        <Setter Property="Foreground" Value="{StaticResource DefaultObjectForeground}" />
+        <Setter Property="Background" Value="{StaticResource DefaultButtonBackground}" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="FontSize" Value="50" />
         <Setter Property="FontWeight" Value="Heavy" />
@@ -119,26 +129,26 @@
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Foreground" Value="{StaticResource DefaultObjectMouseOnForeground}" />
-                <Setter Property="Background" Value="{StaticResource DefaultButtonMouseOnBackground}"/>
+                <Setter Property="Background" Value="{StaticResource DefaultButtonMouseOnBackground}" />
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+
     <Style x:Key="MainWindowStyle" TargetType="Window">
-        <Setter Property="Background" Value="{StaticResource ApplicationBackground}"/>
+        <Setter Property="Background" Value="{StaticResource ApplicationBackground}" />
     </Style>
-    
+
     <Style x:Key="TextBlockStyle" TargetType="TextBlock">
-        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="{StaticResource DefaultObjectForeground}" />
         <Setter Property="FontWeight" Value="Heavy" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="TextWrapping" Value="Wrap" />
     </Style>
-    
+
     <Style x:Key="ChessButtonStyle" TargetType="Button">
-        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="FontWeight" Value="Heavy" />
         <Setter Property="Template">
@@ -154,11 +164,12 @@
                                 <EventTrigger RoutedEvent="Loaded">
                                     <BeginStoryboard>
                                         <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(RotateTransform.Angle)"
-                                                             From="0" 
-                                                             To="360"
-                                                             RepeatBehavior="Forever"
-                                                             Duration="0:0:20" />
+                                            <DoubleAnimation
+                                                Storyboard.TargetProperty="(RenderTransform).(RotateTransform.Angle)"
+                                                From="0"
+                                                To="360"
+                                                RepeatBehavior="Forever"
+                                                Duration="0:0:20" />
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </EventTrigger>
@@ -171,23 +182,26 @@
         </Setter>
         <Style.Triggers>
             <DataTrigger Binding="{Binding IsPossibleMove}" Value="True">
-                <Setter Property="Background" Value="{StaticResource ChessTileCanGoBackground}"/>
+                <Setter Property="Background" Value="{StaticResource ChessTileCanGoBackground}" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding IsPossibleSpecial}" Value="True">
+                <Setter Property="Background" Value="{StaticResource ChessTileSpecialBackground}" />
             </DataTrigger>
             <DataTrigger Binding="{Binding IsPossibleAttack}" Value="True">
-                <Setter Property="Background" Value="{StaticResource ChessTileDangeredBackground}"/>
+                <Setter Property="Background" Value="{StaticResource ChessTileDangeredBackground}" />
             </DataTrigger>
             <DataTrigger Binding="{Binding IsMouseOver}" Value="True">
-                <Setter Property="Background" Value="{StaticResource ChessTileMouseOnBackground}"/>
+                <Setter Property="Background" Value="{StaticResource ChessTileMouseOnBackground}" />
             </DataTrigger>
             <DataTrigger Binding="{Binding IsSelected}" Value="True">
-                <Setter Property="Background" Value="{StaticResource ChessTileSelectedBackground}"/>
+                <Setter Property="Background" Value="{StaticResource ChessTileSelectedBackground}" />
             </DataTrigger>
         </Style.Triggers>
     </Style>
-    
+
     <Style x:Key="ManualButtonStyle" TargetType="Button">
         <Setter Property="Foreground" Value="{StaticResource DefaultObjectForeground}" />
-        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="FontSize" Value="50" />
         <Setter Property="FontWeight" Value="Heavy" />
@@ -206,5 +220,5 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+
 </ResourceDictionary>

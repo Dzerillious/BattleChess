@@ -5,60 +5,60 @@
         <TargetFramework>net6.0-windows</TargetFramework>
         <UseWPF>true</UseWPF>
         <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
         <AssemblyName>BattleChess3</AssemblyName>
         <ApplicationIcon>morgoth.ico</ApplicationIcon>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\BattleChess3.Core\BattleChess3.Core.csproj" />
-      <ProjectReference Include="..\FigureSets\BattleChess3.ChessFigures\BattleChess3.ChessFigures.csproj" />
-      <ProjectReference Include="..\FigureSets\BattleChess3.CrossFire\BattleChess3.CrossFireFigures.csproj" />
-      <ProjectReference Include="..\FigureSets\BattleChess3.DefaultFigures\BattleChess3.DefaultFigures.csproj" />
-      <ProjectReference Include="..\FigureSets\BattleChess3.HobbitFigures\BattleChess3.HobbitFigures.csproj" />
-      <ProjectReference Include="..\FigureSets\BattleChess3.LordOfTheRingsFigures\BattleChess3.LordOfTheRingsFigures.csproj" />
-      <ProjectReference Include="..\FigureSets\BattleChess3.SilmarillionFigures\BattleChess3.SilmarillionFigures.csproj" />
-      <ProjectReference Include="..\Themes\BattleChess3.MinasTirithTheme\BattleChess3.MinasTirithTheme.csproj" />
-      <ProjectReference Include="..\Themes\BattleChess3.PaperTheme\BattleChess3.PaperTheme.csproj" />
-      <ProjectReference Include="..\Themes\BattleChess3.PixarTheme\BattleChess3.PixarTheme.csproj" />
-      <ProjectReference Include="..\Themes\BattleChess3.RivendellTheme\BattleChess3.RivendellTheme.csproj" />
-      <ProjectReference Include="..\Themes\BattleChess3.ValinorTheme\BattleChess3.ValinorTheme.csproj" />
+        <ProjectReference Include="..\BattleChess3.Game\BattleChess3.Game.csproj" />
+        <ProjectReference Include="..\BattleChess3.Maps\BattleChess3.Maps.csproj" />
+        <ProjectReference Include="..\BattleChess3.Multiplayer\BattleChess3.Multiplayer.csproj" />
+        <ProjectReference Include="..\FigureSets\BattleChess3.ChessFigures\BattleChess3.ChessFigures.csproj"/>
+        <ProjectReference Include="..\FigureSets\BattleChess3.CrossFire\BattleChess3.CrossFireFigures.csproj"/>
+        <ProjectReference Include="..\FigureSets\BattleChess3.DefaultFigures\BattleChess3.DefaultFigures.csproj"/>
+        <ProjectReference Include="..\FigureSets\BattleChess3.ExplodingChessFigures\BattleChess3.ExplodingChessFigures.csproj" />
+        <ProjectReference Include="..\FigureSets\BattleChess3.SpyFigures\BattleChess3.SpyFigures.csproj" />
+        <ProjectReference Include="..\FigureSets\BattleChess3.DoubleChessFigures\BattleChess3.DoubleChessFigures.csproj"/>
+        <ProjectReference Include="..\FigureSets\BattleChess3.LordOfTheRingsFigures\BattleChess3.LordOfTheRingsFigures.csproj"/>
+        <ProjectReference Include="..\FigureSets\BattleChess3.StarWarsFigures\BattleChess3.StarWarsFigures.csproj" />
+        <ProjectReference Include="..\Themes\BattleChess3.MinasTirithTheme\BattleChess3.MinasTirithTheme.csproj"/>
+        <ProjectReference Include="..\Themes\BattleChess3.PaperTheme\BattleChess3.PaperTheme.csproj"/>
+        <ProjectReference Include="..\Themes\BattleChess3.RivendellTheme\BattleChess3.RivendellTheme.csproj"/>
+        <ProjectReference Include="..\Themes\BattleChess3.ValinorTheme\BattleChess3.ValinorTheme.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-        <None Remove="Resources\Maps\**" />
-        <Content Include="Resources\Maps\**">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
-        <None Remove="BattleChess3.deps.json" />
+        <None Remove="BattleChess3.deps.json"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="morgoth.ico" />
+        <Content Include="morgoth.ico"/>
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Autofac" Version="5.2.0" />
-      <PackageReference Include="Autofac.Extras.CommonServiceLocator" Version="6.0.0" />
-      <PackageReference Include="CommonServiceLocator" Version="2.0.5" />
-      <PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
-      <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+        <PackageReference Include="Autofac" Version="8.0.0"/>
+        <PackageReference Include="Autofac.Extras.CommonServiceLocator" Version="6.1.0"/>
+        <PackageReference Include="CommonServiceLocator" Version="2.0.7"/>
+        <PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1"/>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="Properties\Settings.Designer.cs">
-        <DesignTimeSharedInput>True</DesignTimeSharedInput>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>Settings.settings</DependentUpon>
-      </Compile>
-      <Compile Update="Resources\Strings.Designer.cs">
-        <DependentUpon>Strings.resx</DependentUpon>
-      </Compile>
+        <Compile Update="Properties\Settings.Designer.cs">
+            <DesignTimeSharedInput>True</DesignTimeSharedInput>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>Settings.settings</DependentUpon>
+        </Compile>
+        <Compile Update="Resources\Strings.Designer.cs">
+            <DependentUpon>Strings.resx</DependentUpon>
+        </Compile>
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="Properties\Settings.settings">
-        <Generator>SettingsSingleFileGenerator</Generator>
-        <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-      </None>
+        <None Update="Properties\Settings.settings">
+            <Generator>SettingsSingleFileGenerator</Generator>
+            <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+        </None>
     </ItemGroup>
 </Project>

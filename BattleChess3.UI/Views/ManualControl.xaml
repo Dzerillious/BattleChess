@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:util="clr-namespace:BattleChess3.UI.Utilities"
              xmlns:viewModel="clr-namespace:BattleChess3.UI.ViewModel"
              mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300"
              DataContext="{Binding Source={x:Static viewModel:ViewModelLocator.FiguresViewModel}}">
@@ -16,18 +15,18 @@
                       ItemsSource="{Binding FigureGroups}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Button Content="{Binding ShownName}"
+                    <Button Content="{Binding DisplayName}"
                             Command="{Binding DataContext.SelectFigureGroupCommand, 
                                 RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}}"
                             CommandParameter="{Binding}"
-                            Style="{DynamicResource ManualButtonStyle}"/>
+                            Style="{DynamicResource ManualButtonStyle}" />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
         <ScrollViewer Grid.Column="1"
                       Foreground="Black" Background="{DynamicResource TextBoxBrush}"
                       VerticalScrollBarVisibility="Hidden">
-            <ItemsControl DataContext="{Binding SelectedFigureGroup}" 
+            <ItemsControl DataContext="{Binding SelectedFigureGroup}"
                           ItemsSource="{Binding FigureTypes}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -35,8 +34,8 @@
                                 BorderBrush="Black" BorderThickness="10">
                             <Grid>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" MinWidth="100" />
@@ -44,21 +43,21 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Grid.Row="0" Grid.RowSpan="2" 
+                                <TextBlock Grid.Row="0" Grid.RowSpan="2"
                                            Grid.Column="0" Grid.ColumnSpan="2"
                                            Text="{Binding Path=Description}" TextWrapping="Wrap"
-                                           Style="{DynamicResource TextBlockStyle}"/>
+                                           Style="{DynamicResource TextBlockStyle}" />
 
                                 <ItemsControl Grid.Row="0" Grid.RowSpan="2" Grid.Column="2"
-                                                  ItemsSource="{Binding ImageUris}">
+                                              ItemsSource="{Binding ImageUris}">
                                     <ItemsControl.ItemsPanel>
                                         <ItemsPanelTemplate>
-                                            <StackPanel Orientation="Vertical"/>
+                                            <StackPanel Orientation="Vertical" />
                                         </ItemsPanelTemplate>
                                     </ItemsControl.ItemsPanel>
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <Image Width="200" Source="{Binding Value}"/>
+                                            <Image Width="200" Source="{Binding Value}" />
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>

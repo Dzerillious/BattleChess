@@ -1,53 +1,84 @@
-﻿using BattleChess3.Core.Model;
-using BattleChess3.Core.Model.Figures;
+﻿using BattleChess3.Game.Board;
+using BattleChess3.Game.Figures;
+using BattleChess3.Game.Players;
 using GalaSoft.MvvmLight;
 
 namespace BattleChess3.UI.ViewModel;
 
-public class TileViewModel : ViewModelBase, ITileViewModel
+public class TileViewModel : ViewModelBase, ITile
 {
-    public Position Position { get; }
+    private Figure _figure = Figure.None;
 
     private bool _isMouseOver;
-    public bool IsMouseOver
-    {
-        get => _isMouseOver;
-        set => Set(ref _isMouseOver, value);
-    }
 
-    private bool _isSelected;
-    public bool IsSelected
-    {
-        get => _isSelected;
-        set => Set(ref _isSelected, value);
-    }
+    private bool _isPossibleAttack;
 
     private bool _isPossibleMove;
-    public bool IsPossibleMove
-    {
-        get => _isPossibleMove;
-        set => Set(ref _isPossibleMove, value);
-    }
 
-    private bool _isPossibleAction;
-    public bool IsPossibleAttack
-    {
-        get => _isPossibleAction;
-        set => Set(ref _isPossibleAction, value);
-    }
+    private bool _isPossibleSpecial;
 
-    private Figure _figure = Figure.None;
-    public Figure Figure
-    {
-        get => _figure;
-        set => Set(ref _figure, value);
-    }
+    private bool _isSelected;
+
+    private FigureAction _possibleAction = FigureAction.None;
 
     public TileViewModel(Position position)
     {
         Position = position;
     }
 
+    public Position Position { get; }
+    public Position AbsolutePosition => Position;
+
+    public bool IsMouseOver
+    {
+        get => _isMouseOver;
+        set => Set(ref _isMouseOver, value);
+    }
+
+    public bool IsSelected
+    {
+        get => _isSelected;
+        set => Set(ref _isSelected, value);
+    }
+
+    public bool IsPossibleAttack
+    {
+        get => _isPossibleAttack;
+        private set => Set(ref _isPossibleAttack, value);
+    }
+
+    public bool IsPossibleMove
+    {
+        get => _isPossibleMove;
+        private set => Set(ref _isPossibleMove, value);
+    }
+
+    public bool IsPossibleSpecial
+    {
+        get => _isPossibleSpecial;
+        private set => Set(ref _isPossibleSpecial, value);
+    }
+
+    public FigureAction PossibleAction
+    {
+        get => _possibleAction;
+        set
+        {
+            Set(ref _possibleAction, value);
+            IsPossibleAttack = value.ActionType == FigureActionTypes.Attack;
+            IsPossibleMove = value.ActionType == FigureActionTypes.Move;
+            IsPossibleSpecial = value.ActionType == FigureActionTypes.Special;
+        }
+    }
+
+    public Figure Figure
+    {
+        get => _figure;
+        set => Set(ref _figure, value);
+    }
+
     public ITile GetPovTile(Player player)
-        => new PlayedTile(this, player);
+    {
+        return new PovTile(this, player);
+    }
 }

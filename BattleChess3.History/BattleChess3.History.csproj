@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\BattleChess3.Game\BattleChess3.Game.csproj" />
+      <ProjectReference Include="..\FigureSets\BattleChess3.DefaultFigures\BattleChess3.DefaultFigures.csproj" />
+    </ItemGroup>
+
+</Project>

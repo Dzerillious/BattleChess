@@ -1,61 +1,63 @@
-﻿using System;
-using System.Collections.Generic;
-using BattleChess3.Core.Model;
-using BattleChess3.Core.Model.Figures;
-using BattleChess3.CrossFireFigures.Utilities;
-using BattleChess3.CrossFireFigures.Localization;
+﻿using BattleChess3.DefaultFigures;
 using BattleChess3.DefaultFigures.Utilities;
+using BattleChess3.Game.Board;
+using BattleChess3.Game.Figures;
 
 namespace BattleChess3.CrossFireFigures;
 
-public class Archer : IFigureType
+public class Archer : ICrossFireFigureType
 {
-    public static readonly Archer Instance = new();
-    public string ShownName => CurrentLocalization.Instance[$"{nameof(Archer)}_Name"];
-    public string Description => CurrentLocalization.Instance[$"{nameof(Archer)}_Description"];
-    public string UnitName => $"{nameof(CrossFireFigureGroup)}.{nameof(Archer)}";
-    public FigureTypes UnitType => FigureTypes.Foot;
-    public double FullHp => 100;
-    public double Attack => 100;
-    public int Cost => 1;
-
-    public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
+    private readonly Position[] _directions = 
     {
-        {1, new Uri($"pack://application:,,,/BattleChess3.CrossFireFigures;component/Images/{nameof(Archer)}1.png", UriKind.Absolute)},
-        {2, new Uri($"pack://application:,,,/BattleChess3.CrossFireFigures;component/Images/{nameof(Archer)}2.png", UriKind.Absolute)},
+        (-1, -1), (-1, 1),
+        (0, -1), (0, 1),
+        (1, -1), (1, 1)
     };
 
-    public double AttackCalculation(IFigureType figureType)
-        => figureType.DefenceCalculation(this);
-
-    public double DefenceCalculation(IFigureType figureType)
-        => figureType.Attack;
-
-    public bool CanAttack(ITile unitTile, ITile targetTile, ITile[] board)
-        => CrossFireActionHelper.CanKill(unitTile, targetTile);
-
-    public void AttackAction(ITile unitTile, ITile targetTile, ITile[] board)
-        => unitTile.KillFigureWithoutMove(targetTile);
-
-    public bool CanMove(ITile unitTile, ITile targetTile, ITile[] board)
-        => targetTile.IsEmpty();
-
-    public void MoveAction(ITile unitTile, ITile targetTile, ITile[] board)
-        => unitTile.MoveToTile(targetTile);
-
-    private readonly Position[][] _moveChain = 
+    IEnumerable<FigureAction> IFigureType.GetPossibleActions(ITile unitTile, IBoard board)
     {
-        new Position[] {(1, 0)},
-        new Position[] {(-1, 0)}
-    };
-    public Position[][] GetMoveChains(Position position, ITile[] board) => _moveChain;
-    
-    
-    private readonly Position[][] _attackChain =
+        foreach (var direction in _directions)
+        {
+            for (var i = 1; i < 8; i++)
+            {
+                var position = unitTile.Position + direction * i;
+                if (!board.TryGetTile(position, out var targetTile))
+                    break;
+                
+                if (targetTile.IsOwnedByEnemy(unitTile))
+                {
+                    yield return unitTile.CreateKillWithMove(targetTile, board);
+                }
+
+                if (!targetTile.IsEmpty())
+                {
+                    break;
+                }
+            }
+        }
+        
+        if (TryGetMoveAction(unitTile, board, (-1, 0), out var move1Action))
+        {
+            yield return move1Action;
+        }
+        
+        if (TryGetMoveAction(unitTile, board, (1, 0), out var move2Action))
+        {
+            yield return move2Action;
+        }
+    }
+
+    private static bool TryGetMoveAction(ITile unitTile, IBoard board, Position relativePosition, out FigureAction action)
     {
-        new Position[] {(1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7)},
-        new Position[] {(0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7)},
-        new Position[] {(-1, 1), (-2, 2), (-3, 3), (-4, 4), (-5, 5), (-6, 6), (-7, 7)},
-    };
-    public Position[][] GetAttackChains(Position position, ITile[] board) => _attackChain;
+        var movePosition = unitTile.Position + relativePosition;
+        if (!board.TryGetTile(movePosition, out var targetTile) ||
+            !targetTile.IsEmpty())
+        {
+            action = FigureAction.None;
+            return false;
+        }
+
+        action = unitTile.CreateMoveAction(targetTile, board);
+        return true;
+    }
 }

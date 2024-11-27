@@ -1,84 +1,102 @@
-﻿using System;
-using System.Collections.Generic;
-using BattleChess3.Core.Model;
-using BattleChess3.Core.Model.Figures;
+﻿using BattleChess3.DefaultFigures;
 using BattleChess3.DefaultFigures.Utilities;
-using BattleChess3.LordOfTheRingsFigures.Localization;
+using BattleChess3.Game.Board;
+using BattleChess3.Game.Figures;
 
 namespace BattleChess3.LordOfTheRingsFigures;
 
-public class SoldierOrc : IFigureType
+public class SoldierOrc : ILordOfTheRingsFigureType
 {
-    public static readonly SoldierOrc Instance = new();
-    public string ShownName => CurrentLocalization.Instance[$"{nameof(SoldierOrc)}_Name"];
-    public string Description => CurrentLocalization.Instance[$"{nameof(SoldierOrc)}_Description"];
-    public string UnitName => $"{nameof(LordOfTheRingsFigureGroup)}.{nameof(SoldierOrc)}";
-    public FigureTypes UnitType => FigureTypes.Foot;
-    public double FullHp => 100;
-    public double Attack => 100;
-    public int Cost => 1;
-
-    public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
+    public IEnumerable<FigureAction> GetPossibleActions(ITile unitTile, IBoard board)
     {
-        {1, new Uri($"pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/{nameof(SoldierOrc)}1.png", UriKind.Absolute)},
-        {2, new Uri($"pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/{nameof(SoldierOrc)}2.png", UriKind.Absolute)},
-    };
-
-    public double AttackCalculation(IFigureType figureType)
-        => figureType.DefenceCalculation(this);
-
-    public double DefenceCalculation(IFigureType figureType)
-        => figureType.Attack;
-
-    public bool CanAttack(ITile unitTile, ITile targetTile, ITile[] board)
-        => unitTile.CanKill(targetTile);
-
-    public void AttackAction(ITile unitTile, ITile targetTile, ITile[] board)
-    {
-        if (targetTile.Position.Y == 7)
+        if (TryGetAttackAction(unitTile, board, (1, 1), out var attackAction1))
         {
-            unitTile.KillFigureWithoutMove(targetTile);
-            targetTile.CreateFigure(new Figure(unitTile.Figure.Owner, GandalfWitchKing.Instance));
-            unitTile.KillFigureWithoutMove(unitTile);
+            yield return attackAction1;
+        }
+        else if (TryGetMoveAction(unitTile, board, (1, 1), out var moveAction1))
+        {
+            yield return moveAction1;
+        }
+
+        if (TryGetAttackAction(unitTile, board, (-1, 1), out var attackAction2))
+        {
+            yield return attackAction2;
+        }
+        else if (TryGetMoveAction(unitTile, board, (-1, 1), out var moveAction2))
+        {
+            yield return moveAction2;
+        }
+
+        if (TryGetMoveAction(unitTile, board, (0, 1), out var moveAction3))
+        {
+            yield return moveAction3;
         }
         else
         {
-            unitTile.KillFigureWithMove(targetTile);
+            yield break;
+        }
+
+        if (unitTile.Position.Y == 1 &&
+            TryGetMoveAction(unitTile, board, (0, 2), out var moveAction4))
+        {
+            yield return moveAction4;
         }
     }
 
-    public bool CanMove(ITile unitTile, ITile targetTile, ITile[] board)
-        => targetTile.IsEmpty();
-
-    public void MoveAction(ITile unitTile, ITile targetTile, ITile[] board)
+    private static bool TryGetAttackAction(ITile unitTile, IBoard board, Position relativePosition, out FigureAction action)
     {
-        if (targetTile.Position.Y == 7)
+        var attackPosition = unitTile.Position + relativePosition;
+        if (!board.TryGetTile(attackPosition, out var targetTile) ||
+            !targetTile.IsOwnedByEnemy(unitTile))
         {
-            targetTile.CreateFigure(new Figure(unitTile.Figure.Owner, GandalfWitchKing.Instance));
-            unitTile.KillFigureWithoutMove(unitTile);
+            action = FigureAction.None;
+            return false;
         }
-        else
+
+        if (attackPosition.Y == 7)
         {
-            unitTile.MoveToTile(targetTile);
+            action = new FigureAction(
+                FigureActionTypes.Special,
+                unitTile.AbsolutePosition,
+                targetTile.AbsolutePosition,
+                () =>
+                {
+                    unitTile.KillWithoutMove(targetTile, board);
+                    targetTile.CreateFigure(new Figure(unitTile.Figure.Owner, LordOfTheRingsFigureGroup.SamSaruman), board);
+                    unitTile.Die(board);
+                });
+            return true;
         }
+
+        action = unitTile.CreateKillWithMove(targetTile, board);
+        return true;
     }
 
-    private readonly Position[][] _firstMoveChain =
+    private static bool TryGetMoveAction(ITile unitTile, IBoard board, Position relativePosition, out FigureAction action)
     {
-        new Position[] {(0, 1), (0, 2)},
-    };
-    private readonly Position[][] _moveChain =
-    {
-        new Position[] {(0, 1)},
-    };
-    public Position[][] GetMoveChains(Position position, ITile[] board)
-        => position.Y == 1 ? _firstMoveChain : _moveChain;
+        var movePosition = unitTile.Position + relativePosition;
+        if (!board.TryGetTile(movePosition, out var targetTile) ||
+            !targetTile.IsEmpty())
+        {
+            action = FigureAction.None;
+            return false;
+        }
 
+        if (movePosition.Y == 7)
+        {
+            action = new FigureAction(
+                FigureActionTypes.Special,
+                unitTile.AbsolutePosition,
+                targetTile.AbsolutePosition,
+                () =>
+                {
+                    targetTile.CreateFigure(new Figure(unitTile.Figure.Owner, LordOfTheRingsFigureGroup.SamSaruman), board);
+                    unitTile.Die(board);
+                });
+            return true;
+        }
 
-    private readonly Position[][] _attackChain =
-    {
-        new Position[] {(1, 1)},
-        new Position[] {(-1, 1)},
-    };
-    public Position[][] GetAttackChains(Position position, ITile[] board) => _attackChain;
+        action = unitTile.CreateMoveAction(targetTile, board);
+        return true;
+    }
 }

@@ -1,16 +1,19 @@
 ﻿using System.Resources;
-using BattleChess3.Core.Utilities;
+using BattleChess3.Game.Localization;
 
-namespace BattleChess3.CrossFireFigures.Localization
+namespace BattleChess3.CrossFireFigures.Localization;
+
+internal class CurrentLocalization : LocalizationSourceBase
 {
-    internal class CurrentLocalization : LocalizationSourceBase
+    private CurrentLocalization()
     {
-        public static LocalizationSourceBase Instance { get; } = new CurrentLocalization();
-        private CurrentLocalization()
-        {
-            Sources.Add(this);
-        }
+        Sources.Add(this);
+    }
 
-        protected override ResourceManager ResManager() => Strings.ResourceManager;
+    public static LocalizationSourceBase Instance { get; } = new CurrentLocalization();
+
+    protected override ResourceManager ResManager()
+    {
+        return Strings.ResourceManager;
     }
 }

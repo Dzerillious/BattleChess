@@ -1,63 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using BattleChess3.Core.Model;
-using BattleChess3.Core.Model.Figures;
-using BattleChess3.DefaultFigures.Utilities;
-using BattleChess3.LordOfTheRingsFigures.Localization;
+﻿using BattleChess3.Game.Board;
 
 namespace BattleChess3.LordOfTheRingsFigures;
 
-public class MerryTroll : IFigureType
+public class MerryTroll : ILordOfTheRingsFigureType, IFigureTypeWithDifferentAttacksAndMoves
 {
-    public static readonly MerryTroll Instance = new();
-    public string ShownName => CurrentLocalization.Instance[$"{nameof(MerryTroll)}_Name"];
-    public string Description => CurrentLocalization.Instance[$"{nameof(MerryTroll)}_Description"];
-    public string UnitName => $"{nameof(LordOfTheRingsFigureGroup)}.{nameof(MerryTroll)}";
-    public FigureTypes UnitType => FigureTypes.Foot;
-    public double FullHp => 100;
-    public double Attack => 100;
-    public int Cost => 3;
-
-    public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
+    Position[] IFigureTypeWithDifferentAttacksAndMoves.MovePositions { get; } =
     {
-        {1, new Uri($"pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/{nameof(MerryTroll)}1.png", UriKind.Absolute)},
-        {2, new Uri($"pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/{nameof(MerryTroll)}2.png", UriKind.Absolute)},
+        (-1, 0), (1, 0), (0, -1), (0, 1)
     };
 
-    public double AttackCalculation(IFigureType figureType)
-        => figureType.DefenceCalculation(this);
-
-    public double DefenceCalculation(IFigureType figureType)
-        => figureType.Attack;
-
-    public bool CanAttack(ITile unitTile, ITile targetTile, ITile[] board)
-        => unitTile.CanKill(targetTile);
-
-    public void AttackAction(ITile unitTile, ITile targetTile, ITile[] board)
-        => unitTile.KillFigureWithMove(targetTile);
-
-    public bool CanMove(ITile unitTile, ITile targetTile, ITile[] board)
-        => targetTile.IsEmpty();
-
-    public void MoveAction(ITile unitTile, ITile targetTile, ITile[] board)
-        => unitTile.MoveToTile(targetTile);
-
-    private readonly Position[][] _moveChain = 
+    Position[] IFigureTypeWithDifferentAttacksAndMoves.AttackPositions { get; } =
     {
-        new Position[] {(1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7)},
-        new Position[] {(1, -1), (2, -2), (3, -3), (4, -4), (5, -5), (6, -6), (7, -7)},
-        new Position[] {(-1, 1), (-2, 2), (-3, 3), (-4, 4), (-5, 5), (-6, 6), (-7, 7)},
-        new Position[] {(-1, -1), (-2, -2), (-3, -3), (-4, -4), (-5, -5), (-6, -6), (-7, -7)}
+        (-2, 0),
+        (-1, -1), (-1, 1),
+        (0, -2), (0, 2),
+        (1, -1), (1, 1),
+        (2, 0)
     };
-    public Position[][] GetMoveChains(Position position, ITile[] board) => _moveChain;
-    
-    
-    private readonly Position[][] _attackChain = 
-    {
-        new Position[] {(1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7)},
-        new Position[] {(1, -1), (2, -2), (3, -3), (4, -4), (5, -5), (6, -6), (7, -7)},
-        new Position[] {(-1, 1), (-2, 2), (-3, 3), (-4, 4), (-5, 5), (-6, 6), (-7, 7)},
-        new Position[] {(-1, -1), (-2, -2), (-3, -3), (-4, -4), (-5, -5), (-6, -6), (-7, -7)}
-    };
-    public Position[][] GetAttackChains(Position position, ITile[] board) => _attackChain;
 }

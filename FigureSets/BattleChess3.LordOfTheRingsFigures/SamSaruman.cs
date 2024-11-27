@@ -1,71 +1,67 @@
-﻿using System;
-using System.Collections.Generic;
-using BattleChess3.Core.Model;
-using BattleChess3.Core.Model.Figures;
+﻿using BattleChess3.DefaultFigures;
 using BattleChess3.DefaultFigures.Utilities;
-using BattleChess3.LordOfTheRingsFigures.Localization;
+using BattleChess3.Game.Board;
+using BattleChess3.Game.Figures;
 
 namespace BattleChess3.LordOfTheRingsFigures;
 
-public class SamSaruman : IFigureType
+public class SamSaruman : ILordOfTheRingsFigureType
 {
-    public static readonly SamSaruman Instance = new();
-    public string ShownName => CurrentLocalization.Instance[$"{nameof(SamSaruman)}_Name"];
-    public string Description => CurrentLocalization.Instance[$"{nameof(SamSaruman)}_Description"];
-    public string UnitName => $"{nameof(LordOfTheRingsFigureGroup)}.{nameof(SamSaruman)}";
-    public FigureTypes UnitType => FigureTypes.Foot;
-    public double FullHp => 100;
-    public double Attack => 100;
-    public int Cost => 3;
-
-    public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
+    private readonly Position[] _movePositions =
     {
-        {1, new Uri($"pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/{nameof(SamSaruman)}1.png", UriKind.Absolute)},
-        {2, new Uri($"pack://application:,,,/BattleChess3.LordOfTheRingsFigures;component/Images/{nameof(SamSaruman)}2.png", UriKind.Absolute)},
+        (-1, 0), (1, 0), (0, -1), (0, 1)
     };
 
-    public double AttackCalculation(IFigureType figureType)
-        => figureType.DefenceCalculation(this);
-
-    public double DefenceCalculation(IFigureType figureType)
-        => figureType.Attack;
-
-    public bool CanAttack(ITile unitTile, ITile targetTile, ITile[] board)
-        => unitTile.CanKill(targetTile);
-
-    public void AttackAction(ITile unitTile, ITile targetTile, ITile[] board)
-        => unitTile.KillFigureWithMove(targetTile);
-
-    public bool CanMove(ITile unitTile, ITile targetTile, ITile[] board)
-        => targetTile.IsEmpty();
-
-    public void MoveAction(ITile unitTile, ITile targetTile, ITile[] board)
-        => unitTile.MoveToTile(targetTile);
-
-    private readonly Position[][] _moveChain = 
+    private readonly Position[] _attackDirections =
     {
-        new Position[] {(-2, 1)},
-        new Position[] {(-2, -1)},
-        new Position[] {(2, 1)},
-        new Position[] {(2, -1)},
-        new Position[] {(-1, -2)},
-        new Position[] {(1, -2)},
-        new Position[] {(-1, 2)},
-        new Position[] {(1, 2)},
+        (-1, -1), (-1, 1), (1, -1), (1, 1)
     };
-    public Position[][] GetMoveChains(Position position, ITile[] board) => _moveChain;
-    
-    
-    private readonly Position[][] _attackChain = 
+
+    IEnumerable<FigureAction> IFigureType.GetPossibleActions(ITile unitTile, IBoard board)
     {
-        new Position[] {(-2, 1)},
-        new Position[] {(-2, -1)},
-        new Position[] {(2, 1)},
-        new Position[] {(2, -1)},
-        new Position[] {(-1, -2)},
-        new Position[] {(1, -2)},
-        new Position[] {(-1, 2)},
-        new Position[] {(1, 2)},
-    };
-    public Position[][] GetAttackChains(Position position, ITile[] board) => _attackChain;
+        foreach (var movement in _movePositions)
+        {
+            var position = unitTile.Position + movement;
+            if (!board.TryGetTile(position, out var targetTile))
+                continue;
+            
+            if (targetTile.IsEmpty())
+            {
+                yield return unitTile.CreateMoveAction(targetTile, board);
+            }
+        }
+        
+        foreach (var direction in _attackDirections)
+        {
+            for (var i = 1; i <= 2; i++)
+            {
+                var position = unitTile.Position + direction * i;
+                if (!board.TryGetTile(position, out var targetTile))
+                    break;
+                
+                if (targetTile.IsOwnedByEnemy(unitTile))
+                {
+                    yield return unitTile.CreateKillWithMove(targetTile, board);
+                }
+
+                if (!targetTile.IsEmpty())
+                {
+                    break;
+                }
+            }
+        }
+        
+        foreach (var targetTile in board)
+        {
+            if (targetTile.IsOwnedByYou(unitTile) &&
+                targetTile.Figure != unitTile.Figure)
+            {
+                yield return new FigureAction(
+                    FigureActionTypes.Special,
+                    unitTile.AbsolutePosition,
+                    targetTile.AbsolutePosition,
+                    () => unitTile.MoveToTile(targetTile, board));
+            }
+        }
+    }
 }

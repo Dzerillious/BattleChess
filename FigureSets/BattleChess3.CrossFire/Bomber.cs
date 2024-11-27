@@ -1,92 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
-using BattleChess3.Core.Model;
-using BattleChess3.Core.Model.Figures;
-using BattleChess3.CrossFireFigures.Utilities;
-using BattleChess3.CrossFireFigures.Localization;
+﻿using BattleChess3.DefaultFigures;
 using BattleChess3.DefaultFigures.Utilities;
+using BattleChess3.Game.Board;
+using BattleChess3.Game.Figures;
+using BattleChess3.Game.Players;
 
 namespace BattleChess3.CrossFireFigures;
 
-public class Bomber : IFigureType
+public class Bomber : ICrossFireFigureType
 {
-    public static readonly Bomber Instance = new();
-    public string ShownName => CurrentLocalization.Instance[$"{nameof(Bomber)}_Name"];
-    public string Description => CurrentLocalization.Instance[$"{nameof(Bomber)}_Description"];
-    public string UnitName => $"{nameof(CrossFireFigureGroup)}.{nameof(Bomber)}";
-    public FigureTypes UnitType => FigureTypes.Foot;
-    public double FullHp => 100;
-    public double Attack => 100;
-    public int Cost => 1;
-
-    public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
+    private readonly Position[] _positions = 
     {
-        {1, new Uri($"pack://application:,,,/BattleChess3.CrossFireFigures;component/Images/{nameof(Bomber)}1.png", UriKind.Absolute)},
-        {2, new Uri($"pack://application:,,,/BattleChess3.CrossFireFigures;component/Images/{nameof(Bomber)}2.png", UriKind.Absolute)},
+        (-2, -2), (-2, 0), (-2, 2),
+        (0, -2), (0, 2),
+        (2, -2), (2, 0), (2, 2)
     };
 
-    public double AttackCalculation(IFigureType figureType)
-        => figureType.DefenceCalculation(this);
-
-    public double DefenceCalculation(IFigureType figureType)
-        => figureType.Attack;
-
-    public bool CanAttack(ITile unitTile, ITile targetTile, ITile[] board)
-        => CrossFireActionHelper.CanKill(unitTile, targetTile);
-
-    public void AttackAction(ITile unitTile, ITile targetTile, ITile[] board)
+    IEnumerable<FigureAction> IFigureType.GetPossibleActions(ITile unitTile, IBoard board)
     {
-        foreach (var explosionPosition in _bombChain)
+        foreach (var movement in _positions)
         {
-            if (!(targetTile.Position + explosionPosition).InBoard())
+            var position = unitTile.Position + movement;
+            if (!board.TryGetTile(position, out var targetTile))
                 continue;
-
-            var explosionTile = board[targetTile.Position + explosionPosition];
-            unitTile.KillFigureWithoutMove(explosionTile);
+            
+            if (targetTile.IsEmpty())
+            {
+                yield return unitTile.CreateMoveAction(targetTile, board);
+            }
         }
     }
-    public bool CanMove(ITile unitTile, ITile targetTile, ITile[] board)
-        => targetTile.IsEmpty();
 
-    public void MoveAction(ITile unitTile, ITile targetTile, ITile[] board)
+    void IFigureType.OnMoved(ITile unitTile, ITile targetTile, IBoard board)
     {
-        foreach (var explosionPosition in _bombChain)
-        {
-            if (!(targetTile.Position + explosionPosition).InBoard())
-                continue;
-
-            var explosionTile = board[targetTile.Position + explosionPosition];
-            unitTile.KillFigureWithoutMove(explosionTile);
-        }
-
-        unitTile.MoveToTile(targetTile);
+        SilentDie(board, targetTile.Position + (-1, -1));
+        SilentDie(board, targetTile.Position + (-1, 0));
+        SilentDie(board, targetTile.Position + (-1, 1));
+        SilentDie(board, targetTile.Position + (0, -1));
+        SilentDie(board, targetTile.Position + (0, 0));
+        SilentDie(board, targetTile.Position + (0, 1));
+        SilentDie(board, targetTile.Position + (1, -1));
+        SilentDie(board, targetTile.Position + (1, 0));
+        SilentDie(board, targetTile.Position + (1, 1));
     }
 
-    private readonly Position[][] _moveChain =
+    private static void SilentDie(IBoard board, Position position)
     {
-        new Position[] {(2, -2)},
-        new Position[] {(2, 0)},
-        new Position[] {(2, 2)},
-        new Position[] {(-2, -2)},
-        new Position[] {(-2, 0)},
-        new Position[] {(-2, 2)},
-        new Position[] {(0, -2)},
-        new Position[] {(0, 2)},
-    };
-    public Position[][] GetMoveChains(Position position, ITile[] board) => _moveChain;
-    
-    private readonly Position[] _bombChain =
-    {
-        (1, -1),
-        (1, 0),
-        (1, 1),
-        (0, 1),
-        (0, -1),
-        (-1, -1),
-        (-1, 0),
-        (-1, 1),
-    };
+        if (!board.TryGetTile(position, out var tile))
+            return;
 
-    private readonly Position[][] _attackChain = { };
-    public Position[][] GetAttackChains(Position position, ITile[] board) => _attackChain;
+        tile.Figure.Owner.Figures.Remove(tile.Figure);
+        tile.Figure = new Figure(Player.Neutral, DefaultFigureGroup.Empty);
+    }
 }

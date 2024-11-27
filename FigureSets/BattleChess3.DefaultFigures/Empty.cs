@@ -1,51 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using BattleChess3.Core.Model;
-using BattleChess3.Core.Model.Figures;
-using BattleChess3.DefaultFigures.Localization;
-using BattleChess3.DefaultFigures.Utilities;
+﻿using BattleChess3.DefaultFigures.Localization;
+using BattleChess3.Game.Board;
+using BattleChess3.Game.Figures;
 
 namespace BattleChess3.DefaultFigures;
 
-public class Empty : IFigureType
+public class Empty : IEmptyFigureType
 {
-    public static Empty Instance { get; } = new();
-    
-    public string ShownName => CurrentLocalization.Instance[$"{nameof(Empty)}_Name"];
-    public string Description => CurrentLocalization.Instance[$"{nameof(Empty)}_Description"];
-    public string UnitName => $"{nameof(DefaultFigureGroup)}.{nameof(Empty)}";
-    public FigureTypes UnitType => FigureTypes.Nothing;
-    public double FullHp => 0;
-    public double Attack => 0;
-    public int Cost => 0;
+    string IFigureType.DisplayName => CurrentLocalization.Instance[$"{GetType().Name}_{nameof(IFigureType.DisplayName)}"];
+    string IFigureType.Description => CurrentLocalization.Instance[$"{GetType().Name}_{nameof(IFigureType.Description)}"];
 
-    public Dictionary<int, Uri> ImageUris { get; } = new Dictionary<int, Uri>
+    IDictionary<int, Uri> IFigureType.ImageUris =>
+        new Dictionary<int, Uri>
+        {
+            { 0, new Uri($"pack://application:,,,/BattleChess3.DefaultFigures;component/Images/{GetType().Name}0.png", UriKind.Absolute) }
+        };
+
+    public IEnumerable<FigureAction> GetPossibleActions(ITile unitTile, IBoard board)
     {
-        {0, new Uri($"pack://application:,,,/BattleChess3.DefaultFigures;component/Images/{nameof(Empty)}0.png", UriKind.Absolute)},
-    };
-
-    public double AttackCalculation(IFigureType figureType)
-        => 0;
-
-    public double DefenceCalculation(IFigureType figureType)
-        => 0;
-
-    public bool CanAttack(ITile unitTile, ITile targetTile, ITile[] board)
-        => false;
-
-    public void AttackAction(ITile unitTile, ITile targetTile, ITile[] board)
-        => unitTile.PassTurn();
-
-    public bool CanMove(ITile unitTile, ITile targetTile, ITile[] board)
-        => false;
-
-    public void MoveAction(ITile unitTile, ITile targetTile, ITile[] board)
-        => unitTile.PassTurn();
-
-    private readonly Position[][] _moveChain = { };
-    public Position[][] GetMoveChains(Position position, ITile[] board) => _moveChain;
-    
-    
-    private readonly Position[][] _attackChain = { };
-    public Position[][] GetAttackChains(Position position, ITile[] board) => _attackChain;
+        return Array.Empty<FigureAction>();
+    }
 }

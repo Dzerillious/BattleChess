@@ -9,12 +9,12 @@
              Background="{DynamicResource TextBoxBrush}">
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <Border DataContext="{Binding MouseOnTile.Figure}">
+        <Border DataContext="{Binding InfoTile.Figure}">
             <TextBlock Text="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged}"
-                   Style="{DynamicResource TextBlockStyle}"
-                   HorizontalAlignment="Left" VerticalAlignment="Top"
-                   TextWrapping="Wrap"
-                   FontSize="25" Margin="20"/>
+                       Style="{DynamicResource TextBlockStyle}"
+                       HorizontalAlignment="Left" VerticalAlignment="Top"
+                       TextWrapping="Wrap"
+                       FontSize="25" Margin="20" />
         </Border>
     </ScrollViewer>
 </UserControl>

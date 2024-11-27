@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BattleChess3.Core", "BattleChess3.Core\BattleChess3.Core.csproj", "{4663DA29-AA05-4134-800D-1974BE8DB559}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BattleChess3.Game", "BattleChess3.Game\BattleChess3.Game.csproj", "{4663DA29-AA05-4134-800D-1974BE8DB559}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BattleChess3.UI", "BattleChess3.UI\BattleChess3.UI.csproj", "{EDC1603E-4D88-440C-BEFF-7EB78DB64FE0}"
 EndProject
@@ -10,11 +10,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BattleChess3.ChessFigures",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FigureSets", "FigureSets", "{F4AE98FC-E8F7-4D64-8EDD-CCAF59A5CDDF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BattleChess3.SilmarillionFigures", "FigureSets\BattleChess3.SilmarillionFigures\BattleChess3.SilmarillionFigures.csproj", "{685C60EC-C7F4-4B61-9E27-43A0EC10FA4B}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BattleChess3.LordOfTheRingsFigures", "FigureSets\BattleChess3.LordOfTheRingsFigures\BattleChess3.LordOfTheRingsFigures.csproj", "{95FBC958-BF26-41AF-9220-697330DAAF20}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BattleChess3.HobbitFigures", "FigureSets\BattleChess3.HobbitFigures\BattleChess3.HobbitFigures.csproj", "{97F09675-4228-4442-AFD7-4CF7BBE6BBB7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BattleChess3.DefaultFigures", "FigureSets\BattleChess3.DefaultFigures\BattleChess3.DefaultFigures.csproj", "{EF9D77DE-FDAF-4A48-9224-C101A2E277F1}"
 EndProject
@@ -28,9 +24,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BattleChess3.RivendellTheme
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BattleChess3.ValinorTheme", "Themes\BattleChess3.ValinorTheme\BattleChess3.ValinorTheme.csproj", "{097371C8-8D8B-4E1D-ADD8-32AD7D919BF9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BattleChess3.PixarTheme", "Themes\BattleChess3.PixarTheme\BattleChess3.PixarTheme.csproj", "{D076094B-98CB-48BB-8665-191B9B2EBF0C}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BattleChess3.CrossFireFigures", "FigureSets\BattleChess3.CrossFire\BattleChess3.CrossFireFigures.csproj", "{6342F138-8B23-498B-ACD6-E75FC3342BF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.SpyFigures", "FigureSets\BattleChess3.SpyFigures\BattleChess3.SpyFigures.csproj", "{D185C649-137B-4B87-9261-DF0F4A110A71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.DoubleChessFigures", "FigureSets\BattleChess3.DoubleChessFigures\BattleChess3.DoubleChessFigures.csproj", "{0AE307D1-03E9-4CB5-8950-737F370EA202}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.ExplodingChessFigures", "FigureSets\BattleChess3.ExplodingChessFigures\BattleChess3.ExplodingChessFigures.csproj", "{9FD72853-4EDE-4613-9AC7-95473D6E720F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.StarWarsFigures", "FigureSets\BattleChess3.StarWarsFigures\BattleChess3.StarWarsFigures.csproj", "{1ADD9B8C-4C65-4AF7-97C7-F1B6421268C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.Maps", "BattleChess3.Maps\BattleChess3.Maps.csproj", "{34CDCE2C-4349-4FA9-8355-1D6FB8B07811}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleChess3.Multiplayer", "BattleChess3.Multiplayer\BattleChess3.Multiplayer.csproj", "{593FD7A1-8693-42C6-8247-537278F4CA13}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -82,14 +88,34 @@ Global
 		{097371C8-8D8B-4E1D-ADD8-32AD7D919BF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{097371C8-8D8B-4E1D-ADD8-32AD7D919BF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{097371C8-8D8B-4E1D-ADD8-32AD7D919BF9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D076094B-98CB-48BB-8665-191B9B2EBF0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D076094B-98CB-48BB-8665-191B9B2EBF0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D076094B-98CB-48BB-8665-191B9B2EBF0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D076094B-98CB-48BB-8665-191B9B2EBF0C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6342F138-8B23-498B-ACD6-E75FC3342BF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6342F138-8B23-498B-ACD6-E75FC3342BF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6342F138-8B23-498B-ACD6-E75FC3342BF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6342F138-8B23-498B-ACD6-E75FC3342BF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D185C649-137B-4B87-9261-DF0F4A110A71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D185C649-137B-4B87-9261-DF0F4A110A71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D185C649-137B-4B87-9261-DF0F4A110A71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D185C649-137B-4B87-9261-DF0F4A110A71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AE307D1-03E9-4CB5-8950-737F370EA202}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AE307D1-03E9-4CB5-8950-737F370EA202}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AE307D1-03E9-4CB5-8950-737F370EA202}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AE307D1-03E9-4CB5-8950-737F370EA202}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FD72853-4EDE-4613-9AC7-95473D6E720F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FD72853-4EDE-4613-9AC7-95473D6E720F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FD72853-4EDE-4613-9AC7-95473D6E720F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FD72853-4EDE-4613-9AC7-95473D6E720F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1ADD9B8C-4C65-4AF7-97C7-F1B6421268C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ADD9B8C-4C65-4AF7-97C7-F1B6421268C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ADD9B8C-4C65-4AF7-97C7-F1B6421268C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ADD9B8C-4C65-4AF7-97C7-F1B6421268C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34CDCE2C-4349-4FA9-8355-1D6FB8B07811}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34CDCE2C-4349-4FA9-8355-1D6FB8B07811}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34CDCE2C-4349-4FA9-8355-1D6FB8B07811}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34CDCE2C-4349-4FA9-8355-1D6FB8B07811}.Release|Any CPU.Build.0 = Release|Any CPU
+		{593FD7A1-8693-42C6-8247-537278F4CA13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{593FD7A1-8693-42C6-8247-537278F4CA13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{593FD7A1-8693-42C6-8247-537278F4CA13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{593FD7A1-8693-42C6-8247-537278F4CA13}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -104,8 +130,11 @@ Global
 		{12F6BBBE-511B-49E0-9A58-D5F21F00907C} = {A20E2905-567B-420B-951E-D888DFAC7632}
 		{B8F5AF3E-D0BB-44B6-9C08-1971805FA7B5} = {A20E2905-567B-420B-951E-D888DFAC7632}
 		{097371C8-8D8B-4E1D-ADD8-32AD7D919BF9} = {A20E2905-567B-420B-951E-D888DFAC7632}
-		{D076094B-98CB-48BB-8665-191B9B2EBF0C} = {A20E2905-567B-420B-951E-D888DFAC7632}
 		{6342F138-8B23-498B-ACD6-E75FC3342BF2} = {F4AE98FC-E8F7-4D64-8EDD-CCAF59A5CDDF}
+		{D185C649-137B-4B87-9261-DF0F4A110A71} = {F4AE98FC-E8F7-4D64-8EDD-CCAF59A5CDDF}
+		{0AE307D1-03E9-4CB5-8950-737F370EA202} = {F4AE98FC-E8F7-4D64-8EDD-CCAF59A5CDDF}
+		{9FD72853-4EDE-4613-9AC7-95473D6E720F} = {F4AE98FC-E8F7-4D64-8EDD-CCAF59A5CDDF}
+		{1ADD9B8C-4C65-4AF7-97C7-F1B6421268C1} = {F4AE98FC-E8F7-4D64-8EDD-CCAF59A5CDDF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0A17059C-17CB-4FA9-BE6E-9BA95510BEFE}

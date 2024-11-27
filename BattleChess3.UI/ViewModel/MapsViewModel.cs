@@ -1,46 +1,20 @@
-﻿using BattleChess3.Core.Model;
-using BattleChess3.Core.Model.Figures;
-using BattleChess3.UI.Services;
+﻿using System.Collections.ObjectModel;
+using BattleChess3.Game.Board;
+using BattleChess3.Game.Figures;
+using BattleChess3.Game.Players;
+using BattleChess3.Maps;
 using GalaSoft.MvvmLight;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
 
 namespace BattleChess3.UI.ViewModel;
 
-public class MapsViewModel : ViewModelBase, IDisposable
+public sealed class MapsViewModel : ViewModelBase, IDisposable
 {
     private readonly IMapService _mapService;
     private readonly IPlayerService _playerService;
 
-    private MapBlueprint _selectedMap = MapBlueprint.None;
-    public MapBlueprint SelectedMap
-    {
-        get => _selectedMap;
-        set
-        {
-            if (value == null)
-                value = MapBlueprint.None;
-
-            Set(ref _selectedMap, value);
-        }
-    }
-
     private IList<MapBlueprint> _maps = Array.Empty<MapBlueprint>();
-    public IList<MapBlueprint> Maps
-    {
-        get => _maps;
-        set
-        {
-            if (!value.Any(x => x.MapPath == _selectedMap.MapPath))
-            {
-                SelectedMap = value.FirstOrDefault()
-                    ?? MapBlueprint.None;
-            }
-            Set(ref _maps, value);
-        }
-    }
+
+    private MapBlueprint _selectedMap = MapBlueprint.None;
 
     public MapsViewModel(
         IMapService mapService,
@@ -53,39 +27,59 @@ public class MapsViewModel : ViewModelBase, IDisposable
         _mapService.MapsChanged += OnMapsChanged;
     }
 
-    public void OnMapsChanged(object? sender, IList<MapBlueprint> maps)
+    public MapBlueprint SelectedMap
+    {
+        get => _selectedMap;
+        set => Set(ref _selectedMap, value);
+    }
+
+    public IList<MapBlueprint> Maps
+    {
+        get => _maps;
+        private set
+        {
+            if (value.All(x => x.MapPath != _selectedMap.MapPath))
+            {
+                SelectedMap = value.FirstOrDefault()
+                              ?? MapBlueprint.None;
+            }
+
+            Set(ref _maps, value);
+        }
+    }
+
+    public void Dispose()
+    {
+        _mapService.MapsChanged -= OnMapsChanged;
+    }
+
+    private void OnMapsChanged(object? sender, IList<MapBlueprint> maps)
     {
         Maps = new ObservableCollection<MapBlueprint>(maps);
     }
 
     internal void DeleteSelectedMap()
     {
-        if (SelectedMap is null)
-            return;
-
-        _mapService.Delete(SelectedMap);
+        if (SelectedMap != MapBlueprint.None)
+        {
+            _mapService.Delete(SelectedMap);
+        }
     }
 
-    internal void SaveSelectedMap(string identifier, ITile[] board)
+    internal void SaveSelectedMap(string identifier, IEnumerable<ITile> board)
     {
         var map = new MapBlueprint
         {
-            Figures = board.Select(x => new FigureBlueprint
+            Figures = board.Select(x => new FigureIdentifier
             {
-                Hp = x.Figure.Hp,
                 PlayerId = x.Figure.Owner.Id,
                 UnitName = x.Figure.UnitName
             }).ToArray(),
             MapPath = $"Resources/Maps/{identifier}.map",
             PreviewPath = $"./Resources/Maps/{identifier}.png",
-            StartingPlayer = _playerService.CurrentPlayer.Id,
+            StartingPlayer = _playerService.CurrentPlayer.Id
         };
 
         _mapService.Save(map);
-    }
-
-    public void Dispose()
-    {
-        _mapService.MapsChanged -= OnMapsChanged;
     }
 }

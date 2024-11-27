@@ -1,38 +1,40 @@
-﻿using BattleChess3.UI.ViewModel;
-using System.IO;
+﻿using System.IO;
 using System.Text;
 using System.Windows;
-using System.Windows.Controls;
+using BattleChess3.UI.ViewModel;
 
-namespace BattleChess3.UI.Views
+namespace BattleChess3.UI.Views;
+
+/// <summary>
+///     Interaction logic for MultiplayerControl.xaml
+/// </summary>
+public partial class MultiplayerControl
 {
-    /// <summary>
-    /// Interaction logic for MultiplayerControl.xaml
-    /// </summary>
-    public partial class MultiplayerControl : UserControl
+    public MultiplayerControl()
     {
-        public MultiplayerControl()
+        InitializeComponent();
+    }
+
+    private void Button_Drop(object sender, DragEventArgs e)
+    {
+        if (!(e.Data.GetData("text") is MemoryStream ms))
         {
-            InitializeComponent();
+            return;
         }
 
-        private void Button_Drop(object sender, DragEventArgs e)
-        { 
-            if (!(e.Data.GetData("text") is MemoryStream ms))
-                return;
+        var text = Encoding.ASCII.GetString(ms.ToArray());
+        var viewModel = DataContext as MultiplayerViewModel;
 
-            var text = Encoding.ASCII.GetString(ms.ToArray());
-            var viewModel = DataContext as MultiplayerViewModel;
-
-            if (viewModel is null)
-                return;
-
-            viewModel.SetKey(text);
-        }
-
-        private void Button_DragEnter(object sender, DragEventArgs e)
+        if (viewModel is null)
         {
-            e.Effects = DragDropEffects.Copy;
+            return;
         }
+
+        viewModel.SetKey(text);
+    }
+
+    private void Button_DragEnter(object sender, DragEventArgs e)
+    {
+        e.Effects = DragDropEffects.Copy;
     }
 }

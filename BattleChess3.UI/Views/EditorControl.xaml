@@ -1,8 +1,8 @@
 ﻿<UserControl x:Class="BattleChess3.UI.Views.EditorControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewModel="clr-namespace:BattleChess3.UI.ViewModel"
              mc:Ignorable="d" d:DataContext="{d:DesignInstance viewModel:FiguresViewModel}"
              d:DesignHeight="300" d:DesignWidth="300"
@@ -13,16 +13,16 @@
         <ItemsControl ItemsSource="{Binding FigureGroups}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <StackPanel Orientation="Vertical"/>
+                    <StackPanel Orientation="Vertical" />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Expander Header="{Binding ShownName}">
+                    <Expander Header="{Binding DisplayName}">
                         <ItemsControl ItemsSource="{Binding FigureTypes}">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <StackPanel Orientation="Vertical"/>
+                                    <WrapPanel Orientation="Horizontal" />
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
@@ -31,15 +31,15 @@
                                                   Margin="15">
                                         <ItemsControl.ItemsPanel>
                                             <ItemsPanelTemplate>
-                                                <WrapPanel Orientation="Horizontal"/>
+                                                <WrapPanel Orientation="Horizontal" />
                                             </ItemsPanelTemplate>
                                         </ItemsControl.ItemsPanel>
                                         <ItemsControl.ItemTemplate>
                                             <DataTemplate>
                                                 <Image Source="{Binding Value}"
-                                                       MaxWidth="100" 
+                                                       MaxWidth="100"
                                                        PreviewMouseLeftButtonDown="Image_PreviewMouseLeftButtonDown"
-                                                       PreviewMouseMove="Image_PreviewMouseMove"/>
+                                                       PreviewMouseMove="Image_PreviewMouseMove" />
                                             </DataTemplate>
                                         </ItemsControl.ItemTemplate>
                                     </ItemsControl>
